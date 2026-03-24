@@ -6,12 +6,6 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-  /* 變數與字體設定 */
-  :root {
-    --primary-red: #af111c;
-    --stroke-color: rgba(255, 255, 255, 0.4);
-  }
-
   @font-face {
     font-family: 'YouSheBiaoTiHei';
     src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype');
@@ -20,11 +14,13 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     font-display: swap;
   }
 
+  /* 必須在所有 CSS 選擇器最前面加上專屬的 wrapper class，避免污染全站 */
   .aks-sr75-wrapper {
-    /* 建立一個外層容器，確保不影響其他頁面 */
+    --primary-red: #af111c;
+    --stroke-color: rgba(255, 255, 255, 0.4);
     color: #ffffff;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: hidden; /* 強制二次保護，避免橫向跑版 */
   }
 
   .aks-sr75-wrapper .container {
@@ -49,7 +45,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
   }
 
   /* Hero 區塊 */
-  .aks-hero-section {
+  .aks-sr75-wrapper .aks-hero-section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +53,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     box-sizing: border-box;
   }
 
-  .aks-hero-container {
+  .aks-sr75-wrapper .aks-hero-container {
     display: flex;
     gap: 30px;
     max-width: 1100px;
@@ -65,12 +61,12 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     align-items: stretch;
   }
 
-  .aks-hero-mobile-title {
+  .aks-sr75-wrapper .aks-hero-mobile-title {
     font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
     display: none;
   }
 
-  .aks-hero-image-box {
+  .aks-sr75-wrapper .aks-hero-image-box {
     flex: 2;
     border: 2px solid var(--primary-red);
     border-radius: 6px;
@@ -78,14 +74,14 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     display: flex;
   }
 
-  .aks-hero-image-box img {
+  .aks-sr75-wrapper .aks-hero-image-box img {
     width: 100%;
     height: 100%;
     display: block;
     transform: scale(1.15);
   }
 
-  .aks-hero-info-box {
+  .aks-sr75-wrapper .aks-hero-info-box {
     flex: .9;
     border: 2px solid var(--primary-red);
     border-radius: 6px;
@@ -96,7 +92,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     box-sizing: border-box;
   }
 
-  .aks-hero-title {
+  .aks-sr75-wrapper .aks-hero-title {
     font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
     color: var(--primary-red);
     font-size: 4rem;
@@ -104,19 +100,19 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     letter-spacing: 2px;
   }
 
-  .aks-hero-name {
+  .aks-sr75-wrapper .aks-hero-name {
     font-size: 2rem;
     font-weight: bold;
     margin: 0 0 20px 0;
     letter-spacing: 3px;
   }
 
-  .aks-hero-tags {
+  .aks-sr75-wrapper .aks-hero-tags {
     display: flex;
     gap: 12px;
   }
 
-  .aks-hero-tags span {
+  .aks-sr75-wrapper .aks-hero-tags span {
     background-color: rgba(255, 255, 255, 0.3);
     color: #ffffff;
     padding: 2px 8px;
@@ -126,14 +122,16 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
   }
 
   /* ========== 跑馬燈 ========== */
-  .section-header-wrapper {
+  .aks-sr75-wrapper .section-header-wrapper {
     margin: 30px 0 50px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    overflow: hidden; /* 防止跑馬燈外溢造成橫向捲軸 */
+    width: 100%;
   }
 
-  .marquee-bg {
+  .aks-sr75-wrapper .marquee-bg {
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -141,7 +139,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     user-select: none;
   }
 
-  .marquee-text-hollow {
+  .aks-sr75-wrapper .marquee-text-hollow {
     font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
     font-size: 6rem;
     color: transparent;
@@ -153,20 +151,20 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     line-height: 1;
   }
 
-  .scroll-left { animation: scrollLeft 25s linear infinite; }
+  .aks-sr75-wrapper .scroll-left { animation: scrollLeft 25s linear infinite; }
   @keyframes scrollLeft {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
 
-  .scroll-right { animation: scrollRight 25s linear infinite; }
+  .aks-sr75-wrapper .scroll-right { animation: scrollRight 25s linear infinite; }
   @keyframes scrollRight {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
   }
 
   /* 規格數據表 */
-  .specs-table {
+  .aks-sr75-wrapper .specs-table {
     display: grid;
     grid-template-columns: minmax(120px, 1.2fr) 1fr 1fr;
     gap: 6px;
@@ -174,7 +172,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     margin: 0 auto 100px auto;
   }
 
-  .specs-table .cell {
+  .aks-sr75-wrapper .specs-table .cell {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,19 +184,19 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     border-radius: 4px;
   }
 
-  .specs-table .bg-red {
+  .aks-sr75-wrapper .specs-table .bg-red {
     background-color: var(--primary-red);
     color: #ffffff;
   }
 
-  .specs-table .bg-white {
+  .aks-sr75-wrapper .specs-table .bg-white {
     background-color: #ffffff;
     color: var(--primary-red);
   }
 
-  .section-title-container { box-sizing: border-box; }
+  .aks-sr75-wrapper .section-title-container { box-sizing: border-box; }
 
-  .section-title-box {
+  .aks-sr75-wrapper .section-title-box {
     width: 100%;
     background-color: var(--primary-red);
     color: #ffffff;
@@ -210,14 +208,14 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
   }
 
   /* 特色介紹區塊 */
-  .features-grid {
+  .aks-sr75-wrapper .features-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 60px 40px;
     padding: 20px 0 80px 0;
   }
 
-  .feature-item {
+  .aks-sr75-wrapper .feature-item {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -225,18 +223,18 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     opacity: 0;
   }
 
-  .feature-item.animated-fade-in-up {
+  .aks-sr75-wrapper .feature-item.animated-fade-in-up {
     animation-name: fadeInUp;
     opacity: 1;
   }
 
-  .feature-icon {
+  .aks-sr75-wrapper .feature-icon {
     font-size: 3.5rem;
     margin-bottom: 20px;
     color: #ffffff;
   }
 
-  .feature-tag {
+  .aks-sr75-wrapper .feature-tag {
     display: inline-block;
     background: var(--primary-red);
     padding: 6px 25px;
@@ -245,7 +243,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     border-radius: 5px;
   }
 
-  .feature-tag span {
+  .aks-sr75-wrapper .feature-tag span {
     display: inline-block;
     transform: skewX(20deg);
     font-weight: bold;
@@ -254,7 +252,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     color: #ffffff;
   }
 
-  .feature-desc {
+  .aks-sr75-wrapper .feature-desc {
     font-size: 1.2rem;
     color: #dddddd;
     line-height: 1.8;
@@ -262,14 +260,14 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
   }
 
   /* 圖文區 */
-  .comparison-section {
+  .aks-sr75-wrapper .comparison-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
   }
 
-  .comparison-wrapper {
+  .aks-sr75-wrapper .comparison-wrapper {
     position: relative;
     border: 2px solid var(--primary-red);
     border-radius: 5px;
@@ -278,14 +276,14 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     margin-bottom: 120px;
   }
 
-  .comparison-wrapper img {
+  .aks-sr75-wrapper .comparison-wrapper img {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 5px;
   }
 
-  .comparison-banner {
+  .aks-sr75-wrapper .comparison-banner {
     position: absolute;
     bottom: -22px;
     left: 50%;
@@ -296,7 +294,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     border-radius: 5px;
   }
 
-  .comparison-banner span {
+  .aks-sr75-wrapper .comparison-banner span {
     display: inline-block;
     transform: skewX(15deg);
     color: #ffffff;
@@ -306,15 +304,15 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     white-space: nowrap;
   }
 
-  .comparison-bottom { margin-bottom: 50px; }
+  .aks-sr75-wrapper .comparison-bottom { margin-bottom: 50px; }
 
   /* LINE 按鈕 */
-  .line-btn-wrapper {
+  .aks-sr75-wrapper .line-btn-wrapper {
     text-align: center;
     margin-bottom: 120px;
   }
 
-  .line-btn {
+  .aks-sr75-wrapper .line-btn {
     position: relative;
     overflow: hidden;
     display: inline-flex;
@@ -338,7 +336,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     100% { box-shadow: 0 0 0 0 rgba(175, 17, 28, 0); }
   }
 
-  .line-btn::after {
+  .aks-sr75-wrapper .line-btn::after {
     content: '';
     position: absolute;
     top: 0;
@@ -356,17 +354,18 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
     100% { left: 200%; }
   }
 
-  .line-btn i, .line-btn span {
+  .aks-sr75-wrapper .line-btn i, 
+  .aks-sr75-wrapper .line-btn span {
     position: relative;
     z-index: 2;
   }
 
-  .line-btn i {
+  .aks-sr75-wrapper .line-btn i {
     font-size: 1.4rem;
     margin-right: 10px;
   }
 
-  .line-btn:hover {
+  .aks-sr75-wrapper .line-btn:hover {
     background-color: #d61f2b;
     transform: translateY(-2px);
     animation: none;
@@ -376,20 +375,20 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
 
   /* RWD 響應式設計 */
   @media (max-width: 992px) {
-    .aks-hero-mobile-title { font-size: 3.5rem; }
+    .aks-sr75-wrapper .aks-hero-mobile-title { font-size: 3.5rem; }
   }
 
   @media (max-width: 768px) {
-    .aks-hero-section {
+    .aks-sr75-wrapper .aks-hero-section {
       padding: 15px 15px;
       align-items: flex-start;
     }
-    .aks-hero-container {
+    .aks-sr75-wrapper .aks-hero-container {
       flex-direction: column;
       gap: 0;
       align-items: center;
     }
-    .aks-hero-mobile-title {
+    .aks-sr75-wrapper .aks-hero-mobile-title {
       display: block;
       color: var(--primary-red);
       font-size: 3.2rem;
@@ -397,63 +396,63 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
       text-align: center;
       letter-spacing: 2px;
     }
-    .aks-hero-desktop-title { display: none; }
-    .aks-hero-image-box {
+    .aks-sr75-wrapper .aks-hero-desktop-title { display: none; }
+    .aks-sr75-wrapper .aks-hero-image-box {
       width: 100%;
       height: 400px;
       max-width: 500px;
       flex: none;
       border-radius: 8px;
     }
-    .aks-hero-image-box img {
+    .aks-sr75-wrapper .aks-hero-image-box img {
       transform: scale(1.3);
       object-fit: cover;
       object-position: 75% center;
     }
-    .aks-hero-info-box {
+    .aks-sr75-wrapper .aks-hero-info-box {
       width: 100%;
       border: none;
       padding: 25px 0 0 0;
       align-items: center;
       text-align: center;
     }
-    .aks-hero-name {
+    .aks-sr75-wrapper .aks-hero-name {
       font-size: 2.2rem;
       margin-bottom: 15px;
     }
-    .aks-hero-tags { justify-content: center; }
-    .aks-hero-tags span {
+    .aks-sr75-wrapper .aks-hero-tags { justify-content: center; }
+    .aks-sr75-wrapper .aks-hero-tags span {
       font-size: 1rem;
       padding: 3px 10px;
     }
-    .marquee-text-hollow {
+    .aks-sr75-wrapper .marquee-text-hollow {
       font-size: 4rem;
       letter-spacing: 8px;
     }
-    .specs-table {
+    .aks-sr75-wrapper .specs-table {
       margin-bottom: 60px;
       padding: 0 15px;
     }
-    .specs-table .cell {
+    .aks-sr75-wrapper .specs-table .cell {
       font-size: 0.95rem;
       padding: 10px 5px;
       letter-spacing: 1px;
     }
-    .section-header-wrapper {
+    .aks-sr75-wrapper .section-header-wrapper {
       margin: 30px 0 40px 0;
       gap: 10px;
     }
-    .features-grid {
+    .aks-sr75-wrapper .features-grid {
       grid-template-columns: 1fr;
       gap: 50px;
     }
-    .comparison-section { padding: 0 15px; }
-    .comparison-banner {
+    .aks-sr75-wrapper .comparison-section { padding: 0 15px; }
+    .aks-sr75-wrapper .comparison-banner {
       padding: 8px 20px;
       width: 85%;
       text-align: center;
     }
-    .comparison-banner span {
+    .aks-sr75-wrapper .comparison-banner span {
       font-size: 0.9rem;
       white-space: normal;
       line-height: 1.4;
@@ -461,167 +460,169 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF 艾鎧斯車漆保護膜
   }
 </style>
 
-<div class="aks-sr75-wrapper">
-  <div class="aks-hero-section">
-    <div class="aks-hero-container">
-      <div class="aks-hero-mobile-title">SR-75</div>
+<div class="w-full overflow-x-hidden pt-[80px] md:pt-[100px]">
+  <div class="aks-sr75-wrapper">
+    <div class="aks-hero-section">
+      <div class="aks-hero-container">
+        <div class="aks-hero-mobile-title">SR-75</div>
 
-      <div class="aks-hero-image-box">
-        <img src="https://aks-ppf.github.io/images/SR-75-hero-title.jpg" alt="SR-75 天窗隔熱膜">
-      </div>
+        <div class="aks-hero-image-box">
+          <img src="https://aks-ppf.github.io/images/SR-75-hero-title.jpg" alt="SR-75 天窗隔熱膜">
+        </div>
 
-      <div class="aks-hero-info-box">
-        <div class="aks-hero-title aks-hero-desktop-title">SR-75</div>
-        <div class="aks-hero-name">天窗隔熱膜</div>
-        <div class="aks-hero-tags">
-          <span>TPU</span>
-          <span>防護膜</span>
+        <div class="aks-hero-info-box">
+          <div class="aks-hero-title aks-hero-desktop-title">SR-75</div>
+          <div class="aks-hero-name">天窗隔熱膜</div>
+          <div class="aks-hero-tags">
+            <span>TPU</span>
+            <span>防護膜</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="section-header-wrapper">
-    <div class="marquee-bg">
-      <div class="marquee-text-hollow scroll-left">SR-75 SR-75 SR-75 SR-75 SR-75 SR-75</div>
-      <div class="marquee-text-hollow scroll-left">SR-75 SR-75 SR-75 SR-75 SR-75 SR-75</div>
+    <div class="section-header-wrapper">
+      <div class="marquee-bg">
+        <div class="marquee-text-hollow scroll-left">SR-75 SR-75 SR-75 SR-75 SR-75 SR-75</div>
+        <div class="marquee-text-hollow scroll-left">SR-75 SR-75 SR-75 SR-75 SR-75 SR-75</div>
+      </div>
+      <div class="section-title-container">
+        <div class="section-title-box">規格說明</div>
+      </div>
     </div>
-    <div class="section-title-container">
-      <div class="section-title-box">規格說明</div>
+
+    <div class="specs-table">
+      <div class="cell bg-red">品項</div>
+      <div class="cell bg-red">SR-75L(藍)</div>
+      <div class="cell bg-red">SR-75B(黑)</div>
+
+      <div class="cell bg-red">透光率</div>
+      <div class="cell bg-white">70%</div>
+      <div class="cell bg-white">50%</div>
+
+      <div class="cell bg-red">紫外線阻隔率</div>
+      <div class="cell bg-white">99%</div>
+      <div class="cell bg-white">99%</div>
+
+      <div class="cell bg-red">紅外線阻隔率</div>
+      <div class="cell bg-white">99%</div>
+      <div class="cell bg-white">99%</div>
+
+      <div class="cell bg-red">厚度</div>
+      <div class="cell bg-white">7.5mil</div>
+      <div class="cell bg-white">7.5mil</div>
     </div>
-  </div>
 
-  <div class="specs-table">
-    <div class="cell bg-red">品項</div>
-    <div class="cell bg-red">SR-75L(藍)</div>
-    <div class="cell bg-red">SR-75B(黑)</div>
-
-    <div class="cell bg-red">透光率</div>
-    <div class="cell bg-white">70%</div>
-    <div class="cell bg-white">50%</div>
-
-    <div class="cell bg-red">紫外線阻隔率</div>
-    <div class="cell bg-white">99%</div>
-    <div class="cell bg-white">99%</div>
-
-    <div class="cell bg-red">紅外線阻隔率</div>
-    <div class="cell bg-white">99%</div>
-    <div class="cell bg-white">99%</div>
-
-    <div class="cell bg-red">厚度</div>
-    <div class="cell bg-white">7.5mil</div>
-    <div class="cell bg-white">7.5mil</div>
-  </div>
-
-  <div class="section-header-wrapper">
-    <div class="marquee-bg">
-      <div class="marquee-text-hollow scroll-right">SR-75 SR-75 SR-75 SR-75 SR-75 SR-75</div>
-      <div class="marquee-text-hollow scroll-right">SR-75 SR-75 SR-75 SR-75 SR-75 SR-75</div>
+    <div class="section-header-wrapper">
+      <div class="marquee-bg">
+        <div class="marquee-text-hollow scroll-right">SR-75 SR-75 SR-75 SR-75 SR-75 SR-75</div>
+        <div class="marquee-text-hollow scroll-right">SR-75 SR-75 SR-75 SR-75 SR-75 SR-75</div>
+      </div>
+      <div class="section-title-container">
+        <div class="section-title-box">詳細介紹</div>
+      </div>
     </div>
-    <div class="section-title-container">
-      <div class="section-title-box">詳細介紹</div>
-    </div>
-  </div>
 
-  <div class="container">
-    <div class="features-grid">
-      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.1s;">
-        <div class="feature-icon"><i class="fa-solid fa-sun"></i></div>
-        <div class="feature-tag"><span>超強隔熱效果</span></div>
-        <div class="feature-desc">
-          SR-75擁有高達99%以上的抗UV及抗紅外線效果，<br>有效隔熱的同時還能防止內裝日曬變質
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.1s;">
+          <div class="feature-icon"><i class="fa-solid fa-sun"></i></div>
+          <div class="feature-tag"><span>超強隔熱效果</span></div>
+          <div class="feature-desc">
+            SR-75擁有高達99%以上的抗UV及抗紅外線效果，<br>有效隔熱的同時還能防止內裝日曬變質
+          </div>
+        </div>
+
+        <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.2s;">
+          <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="feature-tag"><span>完整防護玻璃車頂</span></div>
+          <div class="feature-desc">
+            外貼式天窗隔熱膜除了隔熱外，更是有TPU保護膜效果，<br>可以防止玻璃車頂遇跳石、掉落物傷害
+          </div>
+        </div>
+
+        <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.3s;">
+          <div class="feature-icon"><i class="fa-solid fa-droplet"></i></div>
+          <div class="feature-tag"><span>潑水抗汙效果</span></div>
+          <div class="feature-desc">
+            SR-75擁有潑水防汙塗層，不僅更好清理，<br>也可以擁有更棒的天窗視野
+          </div>
+        </div>
+
+        <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.4s;">
+          <div class="feature-icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <div class="feature-tag"><span>降低電動車耗電量</span></div>
+          <div class="feature-desc">
+            電動車大面積的天窗吸熱會導致冷氣強力運轉，<br>貼上天窗隔熱膜後可大幅降低冷氣耗電量
+          </div>
+        </div>
+
+        <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.5s;">
+          <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <div class="feature-tag"><span>最新塗層製程</span></div>
+          <div class="feature-desc">
+            SR-75將奈米陶瓷隔熱微粒混入TPU基材製作，<br>有別於以往塗在膜料表面，可能因長時間使用失去隔熱效果
+          </div>
+        </div>
+
+        <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.6s;">
+          <div class="feature-icon"><i class="fa-solid fa-award"></i></div>
+          <div class="feature-tag"><span>高品質TPU基材</span></div>
+          <div class="feature-desc">
+            SR-75採用美國頂尖品牌Lubrizol的TPU原料，<br>可使用長達3年以上不產生質變，<br>良好的停車環境可使用達5年
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comparison-section">
+      <div class="comparison-wrapper">
+        <img src="https://aks-ppf.github.io/images/SR-75-1.jpg" alt="天窗隔熱對照圖">
+        <div class="comparison-banner">
+          <span>陶瓷隔熱微粒混入TPU製作 長效隔熱不衰退</span>
         </div>
       </div>
 
-      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.2s;">
-        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <div class="feature-tag"><span>完整防護玻璃車頂</span></div>
-        <div class="feature-desc">
-          外貼式天窗隔熱膜除了隔熱外，更是有TPU保護膜效果，<br>可以防止玻璃車頂遇跳石、掉落物傷害
+      <div class="comparison-wrapper">
+        <img src="https://aks-ppf.github.io/images/SR-75-2.png" alt="天窗隔熱施工圖">
+        <div class="comparison-banner">
+          <span>施工快速 1小時即可完工</span>
         </div>
       </div>
 
-      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.3s;">
-        <div class="feature-icon"><i class="fa-solid fa-droplet"></i></div>
-        <div class="feature-tag"><span>潑水抗汙效果</span></div>
-        <div class="feature-desc">
-          SR-75擁有潑水防汙塗層，不僅更好清理，<br>也可以擁有更棒的天窗視野
+      <div class="comparison-wrapper">
+        <img src="https://aks-ppf.github.io/images/SR-75-3.png" alt="天窗隔熱效果">
+        <div class="comparison-banner">
+          <span>貼上立即享受頂級隔熱效果</span>
         </div>
       </div>
 
-      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.4s;">
-        <div class="feature-icon"><i class="fa-solid fa-lightbulb"></i></div>
-        <div class="feature-tag"><span>降低電動車耗電量</span></div>
-        <div class="feature-desc">
-          電動車大面積的天窗吸熱會導致冷氣強力運轉，<br>貼上天窗隔熱膜後可大幅降低冷氣耗電量
+      <div class="comparison-wrapper">
+        <img src="https://aks-ppf.github.io/images/SR-75-4.png" alt="烤鴨對照圖">
+        <div class="comparison-banner">
+          <span>別讓內裝被紫外線烤熟了</span>
         </div>
       </div>
 
-      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.5s;">
-        <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-        <div class="feature-tag"><span>最新塗層製程</span></div>
-        <div class="feature-desc">
-          SR-75將奈米陶瓷隔熱微粒混入TPU基材製作，<br>有別於以往塗在膜料表面，可能因長時間使用失去隔熱效果
+      <div class="comparison-wrapper">
+        <img src="https://aks-ppf.github.io/images/SR-75-5.jpg" alt="潑水防汙塗層">
+        <div class="comparison-banner">
+          <span>潑水防汙塗層 更好清理</span>
         </div>
       </div>
 
-      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.6s;">
-        <div class="feature-icon"><i class="fa-solid fa-award"></i></div>
-        <div class="feature-tag"><span>高品質TPU基材</span></div>
-        <div class="feature-desc">
-          SR-75採用美國頂尖品牌Lubrizol的TPU原料，<br>可使用長達3年以上不產生質變，<br>良好的停車環境可使用達5年
+      <div class="comparison-wrapper comparison-bottom">
+        <img src="https://aks-ppf.github.io/images/SR-75-6.jpg" alt="天窗隔熱視野">
+        <div class="comparison-banner">
+          <span>馬上聯絡AKS享受清楚的天窗視野及99%的隔熱效果！</span>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="comparison-section">
-    <div class="comparison-wrapper">
-      <img src="https://aks-ppf.github.io/images/SR-75-1.jpg" alt="天窗隔熱對照圖">
-      <div class="comparison-banner">
-        <span>陶瓷隔熱微粒混入TPU製作 長效隔熱不衰退</span>
+      <div class="line-btn-wrapper">
+        <a href="https://line.me/R/ti/p/@087qaxca" class="line-btn">
+          <i class="fa-brands fa-line"></i> 加入好友
+        </a>
       </div>
-    </div>
-
-    <div class="comparison-wrapper">
-      <img src="https://aks-ppf.github.io/images/SR-75-2.png" alt="天窗隔熱施工圖">
-      <div class="comparison-banner">
-        <span>施工快速 1小時即可完工</span>
-      </div>
-    </div>
-
-    <div class="comparison-wrapper">
-      <img src="https://aks-ppf.github.io/images/SR-75-3.png" alt="天窗隔熱效果">
-      <div class="comparison-banner">
-        <span>貼上立即享受頂級隔熱效果</span>
-      </div>
-    </div>
-
-    <div class="comparison-wrapper">
-      <img src="https://aks-ppf.github.io/images/SR-75-4.png" alt="烤鴨對照圖">
-      <div class="comparison-banner">
-        <span>別讓內裝被紫外線烤熟了</span>
-      </div>
-    </div>
-
-    <div class="comparison-wrapper">
-      <img src="https://aks-ppf.github.io/images/SR-75-5.jpg" alt="潑水防汙塗層">
-      <div class="comparison-banner">
-        <span>潑水防汙塗層 更好清理</span>
-      </div>
-    </div>
-
-    <div class="comparison-wrapper comparison-bottom">
-      <img src="https://aks-ppf.github.io/images/SR-75-6.jpg" alt="天窗隔熱視野">
-      <div class="comparison-banner">
-        <span>馬上聯絡AKS享受清楚的天窗視野及99%的隔熱效果！</span>
-      </div>
-    </div>
-
-    <div class="line-btn-wrapper">
-      <a href="https://line.me/R/ti/p/@087qaxca" class="line-btn">
-        <i class="fa-brands fa-line"></i> 加入好友
-      </a>
     </div>
   </div>
 </div>
