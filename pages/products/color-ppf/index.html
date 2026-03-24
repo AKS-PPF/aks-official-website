@@ -1,20 +1,664 @@
 ---
-layout: default
-title: AKS PPF 路徑開通
+layout: page
+title: AKS Color PPF | AKS PPF
 ---
 
-<div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-    <div class="mb-8 opacity-20">
-        <svg width="100" height="100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-        </svg>
-    </div>
-    <h1 class="text-3xl font-bold tracking-widest text-[#c81f2a] aks-font-youshe uppercase mb-4">
-        Room Established
-    </h1>
-    <p class="text-gray-400 aks-font-clean tracking-widest mb-10 leading-loose">
-        全站路徑已完美開通。<br>
-        目前的網址位置：<span class="text-white font-bold border-b border-white/20 pb-1">{{ page.url }}</span>
-    </p>
-    <a href="/" class="px-10 py-3 bg-white/5 border border-white/10 text-white/60 text-sm tracking-[0.2em] hover:bg-[#c81f2a] hover:text-white transition-all duration-300">BACK TO HOME</a>
+<style>
+  .aks-color-ppf-wrapper * { box-sizing: border-box !important; }
+
+  .aks-color-ppf-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    color: #f3f3f5;
+    background: transparent;
+    font-family: inherit;
+    --bg: #111111;
+    --fg: #f3f3f5;
+    --muted: rgba(255,255,255,.72);
+    --line: rgba(255,255,255,.12);
+    --red: #c81f2a;
+    --card: rgba(0,0,0,.35);
+  }
+
+  .aks-color-ppf-wrapper a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .aks-color-ppf-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .aks-color-ppf-wrapper .red { color: var(--red); }
+  .aks-color-ppf-wrapper .thin { font-weight: 400; }
+
+  @font-face {
+    font-family: 'YouSheBiaoTiHei';
+    src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .aks-color-ppf-wrapper .hero-display {
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .aks-color-ppf-wrapper .font-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .aks-color-ppf-wrapper .io-reveal {
+    opacity: 0;
+    transform: translateY(18px) scale(.99);
+    filter: blur(6px);
+    transition: opacity .7s ease, transform .7s ease, filter .7s ease;
+    will-change: opacity, transform, filter;
+  }
+
+  .aks-color-ppf-wrapper .io-reveal.is-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  .aks-color-ppf-wrapper .io-reveal[data-delay="1"] { transition-delay: .06s; }
+  .aks-color-ppf-wrapper .io-reveal[data-delay="2"] { transition-delay: .12s; }
+  .aks-color-ppf-wrapper .io-reveal[data-delay="3"] { transition-delay: .18s; }
+  .aks-color-ppf-wrapper .io-reveal[data-delay="4"] { transition-delay: .24s; }
+  .aks-color-ppf-wrapper .io-reveal[data-delay="5"] { transition-delay: .30s; }
+
+  .aks-color-ppf-wrapper .hero {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .aks-color-ppf-wrapper .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(.45);
+  }
+
+  .aks-color-ppf-wrapper .hero__inner {
+    position: relative;
+    padding: 10px 28px 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .aks-color-ppf-wrapper .hero__brandline {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    justify-content: center;
+  }
+
+  .aks-color-ppf-wrapper .hero__brand {
+    font-weight: 800;
+    letter-spacing: .06em;
+    font-size: clamp(28px, 4.4vw, 56px);
+  }
+
+  .aks-color-ppf-wrapper .hero__brand--red { color: var(--red); }
+
+  .aks-color-ppf-wrapper .cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 25px;
+  }
+
+  .aks-color-ppf-wrapper .card {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(0,0,0,.8);
+    min-height: 140px;
+    transition: transform .3s ease, box-shadow .3s ease, filter .3s ease;
+    will-change: transform;
+  }
+
+  .aks-color-ppf-wrapper .card__img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(.75);
+  }
+
+  .aks-color-ppf-wrapper .card__text {
+    position: relative;
+    padding: 16px;
+  }
+
+  .aks-color-ppf-wrapper .card__kicker {
+    font-size: 12px;
+    letter-spacing: .18em;
+    opacity: .8;
+    margin-bottom: 6px;
+  }
+
+  .aks-color-ppf-wrapper .card__title {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .aks-color-ppf-wrapper .card__sub {
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: .75;
+    letter-spacing: .06em;
+  }
+
+  .aks-color-ppf-wrapper .sec {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 86px 0;
+  }
+
+  .aks-color-ppf-wrapper .sec__grid {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 28px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 48px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .aks-color-ppf-wrapper .sec__grid--reverse {
+    grid-template-columns: .95fr 1.05fr;
+  }
+
+  .aks-color-ppf-wrapper .sec__grid--reverse .sec__content { order: 1; }
+  .aks-color-ppf-wrapper .sec__grid--reverse .sec__media { order: 2; }
+
+  .aks-color-ppf-wrapper .h2 {
+    margin: 0 0 12px;
+    font-size: clamp(26px, 3.4vw, 46px);
+    letter-spacing: .02em;
+  }
+
+  .aks-color-ppf-wrapper .h2--xl { font-size: clamp(30px, 4vw, 56px); }
+  .aks-color-ppf-wrapper .h2--center { text-align: center; }
+
+  .aks-color-ppf-wrapper .p {
+    margin: 0 0 18px;
+    color: var(--muted);
+    line-height: 1.85;
+    font-size: 14px;
+  }
+
+  .aks-color-ppf-wrapper .p--big { font-size: clamp(16px, 1.35vw, 22px); }
+  .aks-color-ppf-wrapper .p--bigger { font-size: clamp(18px, 1.55vw, 26px); }
+  .aks-color-ppf-wrapper .p--center { text-align: center; }
+  .aks-color-ppf-wrapper .p.strong {
+    color: var(--fg);
+    font-weight: 900;
+  }
+
+  .aks-color-ppf-wrapper .btn {
+    display: inline-block;
+    padding: 14px 22px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.22);
+    font-weight: 900;
+    letter-spacing: .08em;
+  }
+
+  .aks-color-ppf-wrapper .btn--red {
+    background: var(--red);
+    border-color: transparent;
+    color: #fff;
+    transition: transform .3s ease, filter .3s ease, box-shadow .3s ease, background .3s ease;
+    will-change: transform, filter;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .aks-color-ppf-wrapper .btn--red:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 30px rgba(170, 26, 36, 0.5);
+    transform: translateY(-3px);
+  }
+
+  .aks-color-ppf-wrapper .btn--red:active {
+    transform: translateY(0);
+    filter: brightness(0.95);
+  }
+
+  .aks-color-ppf-wrapper .sec--ai {
+    background:
+      radial-gradient(1200px 600px at 20% 40%, rgba(255,255,255,.06), rgba(0,0,0,0) 60%),
+      radial-gradient(900px 500px at 75% 45%, rgba(255,255,255,.04), rgba(0,0,0,0) 55%),
+      #0b0b0c;
+  }
+
+  .aks-color-ppf-wrapper .sec--ai .sec__media {
+    display: flex;
+    justify-content: center;
+  }
+
+  .aks-color-ppf-wrapper .sec--ai img {
+    max-width: 520px;
+    width: 100%;
+    filter: drop-shadow(0 22px 44px rgba(0,0,0,.55));
+  }
+
+  .aks-color-ppf-wrapper .sec--colors {
+    position: relative;
+    padding: 96px 0;
+    overflow: hidden;
+  }
+
+  .aks-color-ppf-wrapper .colors__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(.35);
+    transform: scale(1.02);
+  }
+
+  .aks-color-ppf-wrapper .colors__inner {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 28px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .aks-color-ppf-wrapper .colors__inner .p {
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .aks-color-ppf-wrapper .panel {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #0b0b0c;
+  }
+
+  .aks-color-ppf-wrapper .panel__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(.5);
+    transform: scale(1.02);
+  }
+
+  .aks-color-ppf-wrapper .panel__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(900px 450px at 50% 50%, rgba(0,0,0,.12), rgba(0,0,0,.78));
+  }
+
+  .aks-color-ppf-wrapper .panel__inner {
+    position: relative;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 28px;
+    text-align: center;
+  }
+
+  .aks-color-ppf-wrapper .panel__title {
+    margin: 0 0 18px;
+    font-size: clamp(28px, 3.8vw, 54px);
+    font-weight: 900;
+    letter-spacing: .02em;
+  }
+
+  .aks-color-ppf-wrapper .panel__kicker {
+    margin: 0 0 18px;
+    font-size: clamp(24px, 3.2vw, 46px);
+    font-weight: 900;
+    letter-spacing: .02em;
+  }
+
+  .aks-color-ppf-wrapper .panel__sub {
+    margin: 0;
+    font-size: clamp(18px, 2.2vw, 34px);
+    font-weight: 900;
+    letter-spacing: .08em;
+    opacity: .95;
+  }
+
+  .aks-color-ppf-wrapper .sec--dry {
+    background:
+      radial-gradient(1100px 650px at 70% 40%, rgba(255,255,255,.05), rgba(0,0,0,0) 60%),
+      #0b0b0c;
+  }
+
+  .aks-color-ppf-wrapper .sec--dry .sec__media {
+    display: flex;
+    justify-content: center;
+  }
+
+  .aks-color-ppf-wrapper .sec--dry img {
+    max-width: 560px;
+    width: 100%;
+    filter: none;
+    opacity: .92;
+    mix-blend-mode: lighten;
+  }
+
+  .aks-color-ppf-wrapper .seo-wrap {
+    padding: 34px 0;
+  }
+
+  .aks-color-ppf-wrapper .seo-mini {
+    margin: 0 auto;
+    max-width: 980px;
+    text-align: left;
+    background: rgba(0,0,0,.28);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .aks-color-ppf-wrapper .seo-mini h3 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 900;
+  }
+
+  .aks-color-ppf-wrapper .seo-mini p {
+    margin: 0 0 10px;
+    color: rgba(255,255,255,.75);
+    line-height: 1.8;
+    font-size: 13px;
+  }
+
+  .aks-color-ppf-wrapper .seo-links a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (min-width: 901px) {
+    .aks-color-ppf-wrapper .sec--pin .sec__grid { align-items: start; }
+
+    .aks-color-ppf-wrapper .sec--pin .sec__content {
+      position: sticky;
+      top: 90px;
+      align-self: start;
+    }
+
+    .aks-color-ppf-wrapper .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .aks-color-ppf-wrapper .hero__inner {
+      max-width: 1240px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 10px 64px 64px;
+    }
+
+    .aks-color-ppf-wrapper .cards:hover .card {
+      transform: scale(0.95);
+      opacity: 0.6;
+      filter: blur(2px);
+    }
+
+    .aks-color-ppf-wrapper .cards .card:hover {
+      transform: scale(1.05);
+      opacity: 1;
+      filter: blur(0);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      z-index: 10;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .aks-color-ppf-wrapper .hero__bg { filter: brightness(0.2); }
+    .aks-color-ppf-wrapper .cards { grid-template-columns: 1fr; }
+
+    .aks-color-ppf-wrapper .sec__grid,
+    .aks-color-ppf-wrapper .sec__grid--reverse {
+      grid-template-columns: 1fr;
+    }
+
+    .aks-color-ppf-wrapper .sec__grid--reverse .sec__content,
+    .aks-color-ppf-wrapper .sec__grid--reverse .sec__media {
+      order: initial;
+    }
+
+    .aks-color-ppf-wrapper .hero__inner { padding: 10px 16px 18px; }
+    .aks-color-ppf-wrapper .sec { padding: 72px 0; }
+
+    .aks-color-ppf-wrapper .panel {
+      border-radius: 0;
+      min-height: 50svh;
+    }
+
+    .aks-color-ppf-wrapper .sec--dry img {
+      mix-blend-mode: normal;
+      opacity: .96;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aks-color-ppf-wrapper * {
+      scroll-behavior: auto !important;
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+</style>
+
+<div class="aks-color-ppf-wrapper">
+  <section class="aks-colorppf-page">
+    <header class="hero" id="top">
+      <div class="hero__bg" aria-hidden="true" style="background-image: url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_139128f1-d9c5-41aa-af24-39ea727b34b6.png');"></div>
+
+      <div class="hero__inner">
+        <div class="hero__brandline io-reveal" data-delay="1">
+          <span class="hero__brand"><span class="red">改色</span>即防護</span>
+        </div>
+
+        <div class="hero__brandline hero-display io-reveal" data-delay="2">
+          <span class="hero__brand">AKS</span>
+          <span class="hero__brand hero__brand--red">COLOR</span>
+          <span class="hero__brand">PPF</span>
+        </div>
+
+        <div class="cards">
+          <a class="card io-reveal" data-delay="3" href="#ai">
+            <div class="card__img" style="background-image:url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_7e4b8c78-2e56-4382-8d25-44880f8d5719.png');" aria-hidden="true"></div>
+            <div class="card__text">
+              <div class="card__kicker">— 業界首創 —</div>
+              <div class="card__title"><span class="red">AI</span>換色完工預覽</div>
+              <div class="card__sub">AI real-time preview</div>
+            </div>
+          </a>
+
+          <a class="card io-reveal" data-delay="4" href="#colors">
+            <div class="card__img" style="background-image:url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_cae404d5-b7dd-47ce-9242-bb80f6137a35.png');" aria-hidden="true"></div>
+            <div class="card__text">
+              <div class="card__kicker">— 全台最齊全 —</div>
+              <div class="card__title"><span class="red">400+</span>色任君挑選</div>
+              <div class="card__sub">Over 400+ colors to choose from</div>
+            </div>
+          </a>
+
+          <a class="card io-reveal" data-delay="5" href="#dry">
+            <div class="card__img" style="background-image:url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_5e67803c-9c97-46dd-be45-8feb4880ee60.png');" aria-hidden="true"></div>
+            <div class="card__text">
+              <div class="card__kicker">— 最新技術 —</div>
+              <div class="card__title"><span class="red">純乾貼</span>施工</div>
+              <div class="card__sub">COLOR PPF • DRY INSTALLATION</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="sec sec--ai" id="ai">
+      <div class="sec__grid">
+        <div class="sec__media io-reveal" data-delay="1">
+          <img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_8ad360d8-7286-439f-83d6-45ee52271f93.png" alt="AI Real-Time Preview 換色預覽示意圖" />
+        </div>
+
+        <div class="sec__content">
+          <h2 class="h2 h2--xl font-heading io-reveal" data-delay="2">
+            AI <span class="thin">Real-Time</span> <span class="red">Preview</span>
+          </h2>
+          <p class="p p--big io-reveal" data-delay="3">
+            選色，不用再靠想像。<br />
+            一張照片，即時預覽完工後的真實樣貌。
+          </p>
+          <a class="btn btn--red io-reveal" data-delay="4" href="https://www.aks-ppf.com/pages/ai-preview-partners">立即預約</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec--colors" id="colors">
+      <div class="colors__bg" aria-hidden="true" style="background-image:url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_3c81facc-759c-4182-9bc2-085602807f59.png');"></div>
+
+      <div class="colors__inner">
+        <h2 class="h2 h2--xl h2--center font-heading io-reveal" data-delay="1">
+          Over <span class="red">400+</span> Colors to Choose From
+        </h2>
+        <p class="p p--center p--big io-reveal" data-delay="2">
+          AKS Color PPF，收錄全台最齊全的車色資料庫<br />
+          從 Porsche、Lamborghini、Ferrari、Mercedes-Benz、BMW、Tesla<br />
+          到消光、碳纖維、金屬砂感、幻彩變色龍、液態電鍍色系
+        </p>
+        <p class="p p--center strong p--bigger io-reveal" data-delay="3">每一種顏色，都是一種態度。</p>
+      </div>
+    </section>
+
+    <section class="panel panel--cta" id="colorcard">
+      <div class="panel__bg" aria-hidden="true" style="background-image:url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_c7edf2db-45d3-4637-9f0e-a826abbdfbae.png');"></div>
+
+      <div class="panel__inner">
+        <h2 class="panel__title io-reveal" data-delay="1">為你的車，找到真正適合的顏色。</h2>
+        <a class="btn btn--red io-reveal" data-delay="2" href="https://www.aks-ppf.com/pages/color-chart">線上色卡</a>
+      </div>
+    </section>
+
+    <section class="sec sec--dry sec--pin" id="dry">
+      <div class="sec__grid sec__grid--reverse">
+        <div class="sec__content">
+          <h2 class="h2 h2--xl font-heading io-reveal" data-delay="1">
+            Color PPF —<br />
+            <span class="red">Dry</span> Installation
+          </h2>
+
+          <p class="p p--big io-reveal" data-delay="2">
+            不同於傳統 PET 改色膜，<br />
+            AKS Color PPF 採用 TPU 基材 × <span class="red">純乾貼</span>膠層技術。<br /><br />
+            更深邃的烤漆光澤<br />
+            同時兼具 防刮、防污、耐候 的漆面防護效果。
+          </p>
+        </div>
+
+        <div class="sec__media sec__media--blend io-reveal" data-delay="3" data-parallax="0.12">
+          <img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_38471185-0ce7-440d-b361-fb648132670e.png" alt="Color PPF 結構示意圖" />
+        </div>
+      </div>
+    </section>
+
+    <section class="panel panel--statement" id="statement">
+      <div class="panel__bg" aria-hidden="true" style="background-image:url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_0c574557-bbba-4ac0-878e-c668fbe13b4d.png');"></div>
+
+      <div class="panel__inner">
+        <p class="panel__kicker io-reveal" data-delay="1"><span class="red">改色</span>，從來不該只是好看。</p>
+        <p class="panel__sub io-reveal" data-delay="2">AKS Color PPF，讓外觀與保護同時到位。</p>
+      </div>
+    </section>
+
+    <section class="seo-wrap">
+      <div class="seo-mini io-reveal">
+        <h3>改色犀牛皮（Color PPF）</h3>
+        <p>
+          改色犀牛皮（Color PPF）為 TPU 車漆保護膜的一種，兼具改色外觀與漆面防護。
+          若你正在比較改色犀牛皮、Color PPF 與傳統改色膜差異，可由色卡與 AI 預覽快速決策，並與合作店家確認施工細節。
+        </p>
+        <p class="seo-links">
+          <a href="https://www.aks-ppf.com/blogs/%E7%8A%80%E7%89%9B%E7%9A%AE%E5%B8%B8%E8%A6%8B%E5%95%8F%E7%AD%94/182910">了解：改色犀牛皮／Color PPF 優缺點與差異解析</a>
+        </p>
+      </div>
+    </section>
+  </section>
 </div>
+
+<script>
+(function(){
+  const root = document.querySelector('.aks-color-ppf-wrapper .aks-colorppf-page');
+  if (!root) return;
+
+  const els = root.querySelectorAll('.io-reveal');
+  if (!('IntersectionObserver' in window) || !els.length) {
+    els.forEach(el => el.classList.add('is-in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+    els.forEach(el => io.observe(el));
+  }
+
+  const items = [...root.querySelectorAll('[data-parallax]')];
+  if (!items.length) return;
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+  function tick() {
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      items.forEach(el => el.style.transform = '');
+      requestAnimationFrame(tick);
+      return;
+    }
+
+    const vh = window.innerHeight || 800;
+    items.forEach(el => {
+      const k = parseFloat(el.dataset.parallax || '0.12');
+      const r = el.getBoundingClientRect();
+      const p = clamp(1 - (r.top / vh), 0, 1);
+      const y = (p - 0.5) * 120 * k;
+      const s = 1 + p * 0.06;
+      el.style.transform = `translateY(${y}px) scale(${s})`;
+    });
+
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+})();
+</script>
