@@ -1,0 +1,67 @@
+/* =========================================
+   AKS PPF 全站共用核心樣式 (Global CSS)
+========================================= */
+body { background-color: #050505 !important; color: #ffffff; margin: 0; padding-top: 0 !important; font-family: 'Montserrat', "PingFang TC", "Helvetica Neue", "Microsoft JhengHei", sans-serif; }
+@font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-display: swap; }
+.aks-font-youshe { font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif; }
+.aks-font-clean { font-family: 'Montserrat', "PingFang TC", "Helvetica Neue", "Microsoft JhengHei", sans-serif; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* 進場動畫引擎 */
+.io-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1); }
+.io-reveal.is-in { opacity: 1; transform: translateY(0); }
+.io-reveal[data-delay="1"] { transition-delay: 0.1s; }
+.io-reveal[data-delay="2"] { transition-delay: 0.2s; }
+.io-reveal[data-delay="3"] { transition-delay: 0.3s; }
+
+/* =========================================
+   導覽列 (Header) 與 手機選單 UI
+========================================= */
+.aks-header { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 9998; background-color: transparent; transition: all 0.3s ease; box-sizing: border-box; }
+.aks-header.is-scrolled { background-color: rgba(5, 5, 5, 0.98); padding: 12px 5%; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+.aks-logo img { transition: height 0.3s ease; display: block; }
+.aks-mobile-toggle { display: none; background: none; border: none; color: white; cursor: pointer; padding: 5px; }
+.aks-logo-desktop { display: none; }
+.aks-logo-mobile { display: none; }
+
+@media (min-width: 992px) {
+    .aks-logo-desktop { display: block; height: 45px; width: auto; }
+    .aks-header.is-scrolled .aks-logo-desktop { height: 38px; }
+    .aks-logo-mobile { display: none !important; }
+    .aks-nav { display: flex; align-items: center; gap: 35px; margin: 0; padding: 0; }
+    .aks-nav-item { position: relative; list-style: none; margin: 0; padding: 0; }
+    .aks-nav-link { color: #ffffff; text-decoration: none; font-weight: 700; font-size: 16px; letter-spacing: 1.5px; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); transition: color 0.3s ease; padding: 15px 0; display: block; }
+    .aks-nav-link:hover { color: #d31212; }
+    .aks-dropdown-menu { visibility: hidden; opacity: 0; position: absolute; top: calc(100% + 5px); left: -20px; background-color: rgba(18, 18, 18, 0.98); min-width: 160px; padding: 10px 0; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; box-sizing: border-box; }
+    .aks-dropdown-menu::before { content: ''; position: absolute; top: -20px; left: 0; width: 100%; height: 20px; }
+    .aks-nav-item:hover .aks-dropdown-menu { visibility: visible; opacity: 1; top: 100%; }
+    .aks-dropdown-item { display: block; color: #e0e0e0; text-decoration: none; padding: 12px 20px; font-size: 14px; letter-spacing: 1.5px; white-space: nowrap; transition: all 0.2s ease; }
+    .aks-dropdown-item:hover { background-color: #d31212; color: #fff; text-decoration: none; }
+    .aks-contact-btn { background-color: #d31212; color: #ffffff !important; padding: 10px 24px; border-radius: 8px; font-weight: 700; text-decoration: none; letter-spacing: 2px; transition: all 0.3s ease; display: inline-block; }
+    .aks-contact-btn:hover { background-color: #a80e0e; transform: translateY(-2px); }
+}
+
+@media (max-width: 991px) {
+    .aks-nav { display: none; } 
+    .aks-header { padding: 15px 5%; }
+    .aks-mobile-toggle { display: block; } 
+    .aks-logo { position: absolute; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; align-items: center; width: auto; }
+    .aks-logo-mobile { display: block !important; height: 32px !important; width: auto !important; margin: 0 auto; }
+    .aks-header.is-scrolled .aks-logo-mobile { height: 28px !important; }
+    .aks-logo-desktop { display: none !important; }
+}
+
+/* 手機版全螢幕選單 */
+.aks-mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background-color: #050505; z-index: 10000; transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); overflow-y: auto; padding: 80px 30px 40px; box-sizing: border-box; }
+.aks-mobile-menu.is-open { right: 0; }
+.aks-mobile-close { position: absolute; top: 25px; right: 25px; background: none; border: none; color: white; cursor: pointer; padding: 5px; }
+.aks-mobile-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
+.aks-mobile-link { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 20px 0; color: white; font-size: 16px; font-weight: 700; letter-spacing: 1.5px; text-decoration: none; background: none; border: none; text-align: left; }
+.aks-mobile-sub { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.aks-mobile-sub-inner { padding-bottom: 20px; display: flex; flex-direction: column; gap: 15px; padding-left: 15px; }
+.aks-mobile-sub-link { color: #a0a0a0; font-size: 14px; letter-spacing: 1.5px; text-decoration: none; transition: color 0.3s ease; }
+.aks-mobile-sub-link:hover { color: #ffffff; }
+.aks-mobile-item.is-active .aks-mobile-sub { max-height: 500px; }
+.aks-mobile-item.is-active .aks-chevron { transform: rotate(180deg); color: #d31212; }
+.aks-chevron { transition: transform 0.3s ease; }
