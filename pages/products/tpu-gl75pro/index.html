@@ -1,20 +1,515 @@
 ---
-layout: default
-title: AKS PPF 路徑開通
+layout: page
+title: GL-75PRO 超拉伸亮面犀牛皮 | AKS PPF
 ---
 
-<div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-    <div class="mb-8 opacity-20">
-        <svg width="100" height="100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-        </svg>
+<style>
+  .aks-gl-75pro-wrapper * { box-sizing: border-box !important; }
+  .aks-gl-75pro-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    --primary-red: #af111c;
+    --bg-dark: #000;
+    --text-light: #ffffff;
+    --text-gray: #dddddd;
+    --stroke-color: rgba(255, 255, 255, 0.4);
+  }
+
+  @font-face {
+    font-family: 'YouSheBiaoTiHei';
+    src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .aks-gl-75pro-wrapper .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .aks-gl-75pro-wrapper a:hover {
+    color: #fff;
+  }
+
+  @keyframes aks-gl-75pro-fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes aks-gl-75pro-scrollLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes aks-gl-75pro-scrollRight {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .aks-gl-75pro-wrapper .animated {
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+  }
+
+  .aks-gl-75pro-wrapper .aks-hero-section {
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px 30px;
+  }
+
+  .aks-gl-75pro-wrapper .aks-hero-container {
+    display: flex;
+    gap: 30px;
+    max-width: 1100px;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .aks-gl-75pro-wrapper .aks-hero-mobile-title {
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    display: none;
+  }
+
+  .aks-gl-75pro-wrapper .aks-hero-image-box {
+    flex: 2;
+    border: 2px solid var(--primary-red);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .aks-gl-75pro-wrapper .aks-hero-image-box img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .aks-gl-75pro-wrapper .aks-hero-info-box {
+    flex: 1.2;
+    border: 2px solid var(--primary-red);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .aks-gl-75pro-wrapper .aks-hero-title {
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    color: var(--primary-red);
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+
+  .aks-gl-75pro-wrapper .aks-hero-name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    letter-spacing: 3px;
+  }
+
+  .aks-gl-75pro-wrapper .aks-hero-tags {
+    display: flex;
+    gap: 12px;
+  }
+
+  .aks-gl-75pro-wrapper .aks-hero-tags span {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+  }
+
+  .aks-gl-75pro-wrapper .section-header-wrapper {
+    margin: 30px 0 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .aks-gl-75pro-wrapper .marquee-bg {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .aks-gl-75pro-wrapper .marquee-text-hollow {
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    font-size: 6rem;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--stroke-color);
+    letter-spacing: 15px;
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  .aks-gl-75pro-wrapper .scroll-left {
+    animation: aks-gl-75pro-scrollLeft 25s linear infinite;
+  }
+
+  .aks-gl-75pro-wrapper .scroll-right {
+    animation: aks-gl-75pro-scrollRight 25s linear infinite;
+  }
+
+  .aks-gl-75pro-wrapper .section-title-container {
+    box-sizing: border-box;
+  }
+
+  .aks-gl-75pro-wrapper .section-title-box {
+    width: 100%;
+    background-color: var(--primary-red);
+    color: var(--text-light);
+    display: inline-block;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    padding: 10px 16px;
+  }
+
+  .aks-gl-75pro-wrapper .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 60px 40px;
+    padding: 20px 0 80px 0;
+  }
+
+  .aks-gl-75pro-wrapper .feature-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    min-width: 0;
+  }
+
+  .aks-gl-75pro-wrapper .feature-item.animated-fade-in-up {
+    animation-name: aks-gl-75pro-fadeInUp;
+    opacity: 1;
+  }
+
+  .aks-gl-75pro-wrapper .feature-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--text-light);
+  }
+
+  .aks-gl-75pro-wrapper .feature-tag {
+    display: inline-block;
+    background: var(--primary-red);
+    padding: 6px 25px;
+    transform: skewX(-20deg);
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+
+  .aks-gl-75pro-wrapper .feature-tag span {
+    display: inline-block;
+    transform: skewX(20deg);
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .aks-gl-75pro-wrapper .feature-desc {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin: 0 auto;
+  }
+
+  .aks-gl-75pro-wrapper .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding: 20px 0 40px 0;
+  }
+
+  .aks-gl-75pro-wrapper .gallery-item {
+    aspect-ratio: 1 / 1;
+    background-color: #222;
+    overflow: hidden;
+    border-radius: 4px;
+    opacity: 0;
+    min-width: 0;
+  }
+
+  .aks-gl-75pro-wrapper .gallery-item.animated-fade-in {
+    animation-name: aks-gl-75pro-fadeInUp;
+    opacity: 1;
+  }
+
+  .aks-gl-75pro-wrapper .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+
+  .aks-gl-75pro-wrapper .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .aks-gl-75pro-wrapper .ig-btn-wrapper {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .aks-gl-75pro-wrapper .ig-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 10px 30px;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+
+  .aks-gl-75pro-wrapper .ig-btn i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+
+  .aks-gl-75pro-wrapper .ig-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+  }
+
+  @media (max-width: 992px) {
+    .aks-gl-75pro-wrapper .aks-hero-mobile-title {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .aks-gl-75pro-wrapper .aks-hero-section {
+      padding: 10px 15px 15px;
+      align-items: flex-start;
+    }
+
+    .aks-gl-75pro-wrapper .aks-hero-container {
+      flex-direction: column;
+      gap: 0;
+      align-items: center;
+    }
+
+    .aks-gl-75pro-wrapper .aks-hero-mobile-title {
+      display: block;
+      color: var(--primary-red);
+      font-size: 3.2rem;
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .aks-gl-75pro-wrapper .aks-hero-desktop-title {
+      display: none;
+    }
+
+    .aks-gl-75pro-wrapper .aks-hero-image-box {
+      width: 100%;
+      height: 400px;
+      max-width: 500px;
+      flex: none;
+      border-radius: 8px;
+    }
+
+    .aks-gl-75pro-wrapper .aks-hero-image-box img {
+      transform: scale(1.2);
+      object-fit: cover;
+      object-position: 70% center;
+      transform-origin: center;
+    }
+
+    .aks-gl-75pro-wrapper .aks-hero-info-box {
+      width: 100%;
+      border: none;
+      padding: 25px 0 0 0;
+      align-items: center;
+      text-align: center;
+    }
+
+    .aks-gl-75pro-wrapper .aks-hero-name {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+
+    .aks-gl-75pro-wrapper .aks-hero-tags {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .aks-gl-75pro-wrapper .aks-hero-tags span {
+      font-size: 1rem;
+      padding: 3px 10px;
+    }
+
+    .aks-gl-75pro-wrapper .marquee-text-hollow {
+      font-size: 4rem;
+      letter-spacing: 8px;
+    }
+
+    .aks-gl-75pro-wrapper .section-header-wrapper {
+      margin: 30px 0 40px 0;
+      gap: 10px;
+    }
+
+    .aks-gl-75pro-wrapper .features-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    .aks-gl-75pro-wrapper .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="aks-gl-75pro-wrapper">
+  <div class="aks-hero-section">
+    <div class="aks-hero-container">
+      <div class="aks-hero-mobile-title">GL-75PRO</div>
+
+      <div class="aks-hero-image-box">
+        <img src="https://aks-ppf.github.io/images/GL-75PRO-hero-title.jpg" alt="GL-75PRO 亮面犀牛皮">
+      </div>
+
+      <div class="aks-hero-info-box">
+        <div class="aks-hero-title aks-hero-desktop-title">GL-75PRO</div>
+        <div class="aks-hero-name">超拉伸亮面犀牛皮</div>
+        <div class="aks-hero-tags">
+          <span>TPU</span>
+          <span>防護膜</span>
+        </div>
+      </div>
     </div>
-    <h1 class="text-3xl font-bold tracking-widest text-[#c81f2a] aks-font-youshe uppercase mb-4">
-        Room Established
-    </h1>
-    <p class="text-gray-400 aks-font-clean tracking-widest mb-10 leading-loose">
-        全站路徑已完美開通。<br>
-        目前的網址位置：<span class="text-white font-bold border-b border-white/20 pb-1">{{ page.url }}</span>
-    </p>
-    <a href="/" class="px-10 py-3 bg-white/5 border border-white/10 text-white/60 text-sm tracking-[0.2em] hover:bg-[#c81f2a] hover:text-white transition-all duration-300">BACK TO HOME</a>
+  </div>
+
+  <div class="section-header-wrapper">
+    <div class="marquee-bg">
+      <div class="marquee-text-hollow scroll-left">GL-75PRO GL-75PRO GL-75PRO GL-75PRO GL-75PRO GL-75PRO</div>
+      <div class="marquee-text-hollow scroll-left">GL-75PRO GL-75PRO GL-75PRO GL-75PRO GL-75PRO GL-75PRO</div>
+    </div>
+    <div class="section-title-container">
+      <div class="section-title-box">詳細介紹</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.1s;">
+        <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="feature-tag"><span>高品質TPU基材</span></div>
+        <div class="feature-desc">
+          GL-75PRO採用美國頂尖品牌Lubrizol的TPU原料，<br>為您的愛車提供超長效高光澤表現
+        </div>
+      </div>
+
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="feature-icon"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+        <div class="feature-tag"><span>超潑水抗污</span></div>
+        <div class="feature-desc">
+          GL-75PRO使用潑水防汙塗層，不僅讓愛車更好清理，<br>更為漆面抵擋鳥屎、果實、酸雨的侵蝕
+        </div>
+      </div>
+
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.6s;">
+        <div class="feature-icon"><i class="fa-solid fa-thumbs-up"></i></div>
+        <div class="feature-tag"><span>7年期 超長保固</span></div>
+        <div class="feature-desc">
+          GL-75PRO使用特製超拉伸塗層及頂級TPU，<br>經實測能為您的愛車提供7年的完整防護以及高光澤漆面增艷效果
+        </div>
+      </div>
+
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.3s;">
+        <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="feature-tag"><span>跳石及刮傷防護</span></div>
+        <div class="feature-desc">
+          7.5mil的紮實厚度可以完整擋下路上跳石對車漆造成傷害，<br>輕微刮傷也可以透過犀牛皮擋下，小碰撞僅需更換膜料，維持愛車的原漆
+        </div>
+      </div>
+
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.4s;">
+        <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+        <div class="feature-tag"><span>自動修復塗層</span></div>
+        <div class="feature-desc">
+          表面修復塗層只需曬太陽遇熱即可以將細紋自動修復，<br>再也不怕洗車造成車漆滿滿細紋
+        </div>
+      </div>
+
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.5s;">
+        <div class="feature-icon"><i class="fa-solid fa-sun"></i></div>
+        <div class="feature-tag"><span>長效耐黃化</span></div>
+        <div class="feature-desc">
+          AKS皆採用脂肪族TPU材質，擁有比芳香烴更穩定的化學特性，<br>能夠長時間抗黃化
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header-wrapper">
+    <div class="marquee-bg">
+      <div class="marquee-text-hollow scroll-right">GL-75PRO GL-75PRO GL-75PRO GL-75PRO GL-75PRO GL-75PRO</div>
+      <div class="marquee-text-hollow scroll-right">GL-75PRO GL-75PRO GL-75PRO GL-75PRO GL-75PRO GL-75PRO</div>
+    </div>
+    <div class="section-title-container">
+      <div class="section-title-box">成品分享</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="gallery-grid">
+      <div class="gallery-item animated animated-fade-in" style="animation-delay: 0.1s;">
+        <img src="https://aks-ppf.github.io/images/GL-75PRO-Gcar-1.jpg" alt="GL-75PRO 成品照 1">
+      </div>
+      <div class="gallery-item animated animated-fade-in" style="animation-delay: 0.2s;">
+        <img src="https://aks-ppf.github.io/images/GL-75PRO-Gcar-2.jpg" alt="GL-75PRO 成品照 2">
+      </div>
+      <div class="gallery-item animated animated-fade-in" style="animation-delay: 0.3s;">
+        <img src="https://aks-ppf.github.io/images/GL-75PRO-Gcar-3.jpg" alt="GL-75PRO 成品照 3">
+      </div>
+    </div>
+
+    <div class="ig-btn-wrapper">
+      <a href="https://www.instagram.com/p/DPD8yzUidjm/?next=%2F&img_index=1" class="ig-btn" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-instagram"></i> 前往IG看更多成品照
+      </a>
+    </div>
+  </div>
 </div>
