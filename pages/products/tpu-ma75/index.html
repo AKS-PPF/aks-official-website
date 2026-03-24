@@ -1,20 +1,538 @@
 ---
-layout: default
-title: AKS PPF 路徑開通
+layout: page
+title: MA-75 消光犀牛皮 | AKS PPF
 ---
 
-<div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-    <div class="mb-8 opacity-20">
-        <svg width="100" height="100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-        </svg>
+<style>
+  .aks-ma-75-wrapper * { box-sizing: border-box !important; }
+  .aks-ma-75-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .aks-ma-75-wrapper {
+    --primary-red: #af111c;
+    --bg-dark: #000;
+    --text-light: #ffffff;
+    --text-gray: #dddddd;
+    --stroke-color: rgba(255, 255, 255, 0.4);
+  }
+
+  @font-face {
+    font-family: 'YouSheBiaoTiHei';
+    src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .aks-ma-75-wrapper .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .aks-ma-75-wrapper a:hover {
+    color: #fff;
+  }
+
+  @keyframes aks-ma-75-fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes aks-ma-75-scrollLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes aks-ma-75-scrollRight {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .aks-ma-75-wrapper .animated {
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+  }
+
+  .aks-ma-75-wrapper .aks-hero-section {
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px 30px;
+  }
+
+  .aks-ma-75-wrapper .aks-hero-container {
+    display: flex;
+    gap: 30px;
+    max-width: 1100px;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .aks-ma-75-wrapper .aks-hero-mobile-title {
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    display: none;
+  }
+
+  .aks-ma-75-wrapper .aks-hero-image-box {
+    flex: 2;
+    border: 2px solid var(--primary-red);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .aks-ma-75-wrapper .aks-hero-image-box img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform: scale(1.15);
+  }
+
+  .aks-ma-75-wrapper .aks-hero-info-box {
+    flex: 0.9;
+    border: 2px solid var(--primary-red);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .aks-ma-75-wrapper .aks-hero-title {
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    color: var(--primary-red);
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+
+  .aks-ma-75-wrapper .aks-hero-name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    letter-spacing: 3px;
+  }
+
+  .aks-ma-75-wrapper .aks-hero-tags {
+    display: flex;
+    gap: 12px;
+  }
+
+  .aks-ma-75-wrapper .aks-hero-tags span {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+  }
+
+  .aks-ma-75-wrapper .section-header-wrapper {
+    margin: 30px 0 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .aks-ma-75-wrapper .marquee-bg {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .aks-ma-75-wrapper .marquee-text-hollow {
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    font-size: 6rem;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--stroke-color);
+    letter-spacing: 15px;
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  .aks-ma-75-wrapper .scroll-left {
+    animation: aks-ma-75-scrollLeft 25s linear infinite;
+  }
+
+  .aks-ma-75-wrapper .scroll-right {
+    animation: aks-ma-75-scrollRight 25s linear infinite;
+  }
+
+  .aks-ma-75-wrapper .section-title-container {
+    box-sizing: border-box;
+  }
+
+  .aks-ma-75-wrapper .section-title-box {
+    width: 100%;
+    background-color: var(--primary-red);
+    color: var(--text-light);
+    display: inline-block;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    padding: 10px 16px;
+  }
+
+  .aks-ma-75-wrapper .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px 40px;
+    padding: 20px 0 80px 0;
+  }
+
+  .aks-ma-75-wrapper .feature-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+  }
+
+  .aks-ma-75-wrapper .feature-item.animated-fade-in-up {
+    animation-name: aks-ma-75-fadeInUp;
+    opacity: 1;
+  }
+
+  .aks-ma-75-wrapper .feature-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--text-light);
+  }
+
+  .aks-ma-75-wrapper .feature-tag {
+    display: inline-block;
+    background: var(--primary-red);
+    padding: 6px 25px;
+    transform: skewX(-20deg);
+    margin-bottom: 15px;
+    border-radius: 5px;
+  }
+
+  .aks-ma-75-wrapper .feature-tag span {
+    display: inline-block;
+    transform: skewX(20deg);
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .aks-ma-75-wrapper .feature-desc {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin: 0 auto;
+  }
+
+  .aks-ma-75-wrapper .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding: 20px 0 40px 0;
+  }
+
+  .aks-ma-75-wrapper .gallery-item {
+    aspect-ratio: 1 / 1;
+    background-color: #222;
+    overflow: hidden;
+    border-radius: 4px;
+    opacity: 0;
+    min-width: 0;
+  }
+
+  .aks-ma-75-wrapper .gallery-item.animated-fade-in {
+    animation-name: aks-ma-75-fadeInUp;
+    opacity: 1;
+  }
+
+  .aks-ma-75-wrapper .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+
+  .aks-ma-75-wrapper .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .aks-ma-75-wrapper .ig-btn-wrapper {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .aks-ma-75-wrapper .ig-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 10px 30px;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+
+  .aks-ma-75-wrapper .ig-btn i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+  }
+
+  .aks-ma-75-wrapper .ig-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+  }
+
+  @media (max-width: 992px) {
+    .aks-ma-75-wrapper .aks-hero-mobile-title {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .aks-ma-75-wrapper .aks-hero-section {
+      padding: 10px 15px 15px;
+      align-items: flex-start;
+    }
+
+    .aks-ma-75-wrapper .aks-hero-container {
+      flex-direction: column;
+      gap: 0;
+      align-items: center;
+    }
+
+    .aks-ma-75-wrapper .aks-hero-mobile-title {
+      display: block;
+      color: var(--primary-red);
+      font-size: 3.2rem;
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .aks-ma-75-wrapper .aks-hero-desktop-title {
+      display: none;
+    }
+
+    .aks-ma-75-wrapper .aks-hero-image-box {
+      width: 100%;
+      height: 400px;
+      max-width: 500px;
+      flex: none;
+      border-radius: 8px;
+    }
+
+    .aks-ma-75-wrapper .aks-hero-image-box img {
+      transform: scale(1.4);
+      object-fit: cover;
+      object-position: 40% center;
+      transform-origin: center;
+    }
+
+    .aks-ma-75-wrapper .aks-hero-info-box {
+      width: 100%;
+      border: none;
+      padding: 25px 0 0 0;
+      align-items: center;
+      text-align: center;
+    }
+
+    .aks-ma-75-wrapper .aks-hero-name {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+
+    .aks-ma-75-wrapper .aks-hero-tags {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .aks-ma-75-wrapper .aks-hero-tags span {
+      font-size: 1rem;
+      padding: 3px 10px;
+    }
+
+    .aks-ma-75-wrapper .marquee-text-hollow {
+      font-size: 4rem;
+      letter-spacing: 8px;
+    }
+
+    .aks-ma-75-wrapper .section-header-wrapper {
+      margin: 30px 0 40px 0;
+      gap: 10px;
+    }
+
+    .aks-ma-75-wrapper .features-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    .aks-ma-75-wrapper .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="aks-ma-75-wrapper">
+  <div class="aks-hero-section">
+    <div class="aks-hero-container">
+      <div class="aks-hero-mobile-title">MA-75</div>
+
+      <div class="aks-hero-image-box">
+        <img src="https://aks-ppf.github.io/images/MA-75-hero-title.jpg" alt="MA-75 消光犀牛皮">
+      </div>
+
+      <div class="aks-hero-info-box">
+        <div class="aks-hero-title aks-hero-desktop-title">MA-75</div>
+        <div class="aks-hero-name">消光犀牛皮</div>
+        <div class="aks-hero-tags">
+          <span>TPU</span>
+          <span>防護膜</span>
+        </div>
+      </div>
     </div>
-    <h1 class="text-3xl font-bold tracking-widest text-[#c81f2a] aks-font-youshe uppercase mb-4">
-        Room Established
-    </h1>
-    <p class="text-gray-400 aks-font-clean tracking-widest mb-10 leading-loose">
-        全站路徑已完美開通。<br>
-        目前的網址位置：<span class="text-white font-bold border-b border-white/20 pb-1">{{ page.url }}</span>
-    </p>
-    <a href="/" class="px-10 py-3 bg-white/5 border border-white/10 text-white/60 text-sm tracking-[0.2em] hover:bg-[#c81f2a] hover:text-white transition-all duration-300">BACK TO HOME</a>
+  </div>
+
+  <div class="section-header-wrapper">
+    <div class="marquee-bg">
+      <div class="marquee-text-hollow scroll-left">MA-75 MA-75 MA-75 MA-75 MA-75 MA-75</div>
+      <div class="marquee-text-hollow scroll-left">MA-75 MA-75 MA-75 MA-75 MA-75 MA-75</div>
+    </div>
+    <div class="section-title-container">
+      <div class="section-title-box">詳細介紹</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.1s;">
+        <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="feature-tag"><span>高品質TPU基材</span></div>
+        <div class="feature-desc">
+          MA-75採用美國頂尖品牌Lubrizol的TPU原料，<br>絲綢面的消光質感可以遮蓋大部份車漆瑕疵
+        </div>
+      </div>
+
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="feature-icon"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+        <div class="feature-tag"><span>耐汙抗雨斑性能</span></div>
+        <div class="feature-desc">
+          MA-75使用疏水塗層，有效降低水珠停留表面造成雨斑，<br>優異的抗汙性能也可以避免鳥屎、果實侵蝕車漆
+        </div>
+      </div>
+
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.3s;">
+        <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="feature-tag"><span>跳石及刮傷防護</span></div>
+        <div class="feature-desc">
+          7.5mil的紮實厚度可以完整擋下路上跳石對車漆造成傷害，<br>輕微刮傷也可以透過犀牛皮擋下，小碰撞僅需更換膜料，維持愛車的原漆
+        </div>
+      </div>
+
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.4s;">
+        <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+        <div class="feature-tag"><span>自動修復塗層</span></div>
+        <div class="feature-desc">
+          表面修復塗層只需曬太陽遇熱即可以將細紋自動修復，<br>再也不怕洗車造成車漆滿滿細紋
+        </div>
+      </div>
+
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.5s;">
+        <div class="feature-icon"><i class="fa-solid fa-sun"></i></div>
+        <div class="feature-tag"><span>長效耐黃化</span></div>
+        <div class="feature-desc">
+          AKS皆採用脂肪族TPU材質，擁有比芳香烴更穩定的化學特性，<br>能夠長時間抗黃化
+        </div>
+      </div>
+
+      <div class="feature-item animated animated-fade-in-up" style="animation-delay: 0.6s;">
+        <div class="feature-icon"><i class="fa-solid fa-thumbs-up"></i></div>
+        <div class="feature-tag"><span>不脫膠不殘膠</span></div>
+        <div class="feature-desc">
+          AKS採用高品質德國Henkel底膠，施工完不易翹邊，<br>長時間使用後撕除也不會有殘膠問題
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header-wrapper">
+    <div class="marquee-bg">
+      <div class="marquee-text-hollow scroll-right">MA-75 MA-75 MA-75 MA-75 MA-75 MA-75</div>
+      <div class="marquee-text-hollow scroll-right">MA-75 MA-75 MA-75 MA-75 MA-75 MA-75</div>
+    </div>
+    <div class="section-title-container">
+      <div class="section-title-box">成品分享</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="gallery-grid">
+      <div class="gallery-item animated animated-fade-in" style="animation-delay: 0.1s;">
+        <img src="https://aks-ppf.github.io/images/MA-75-MODEL3-1.jpg" alt="MA-75 Tesla Model 3 消光犀牛皮成品照 1">
+      </div>
+      <div class="gallery-item animated animated-fade-in" style="animation-delay: 0.2s;">
+        <img src="https://aks-ppf.github.io/images/MA-75-MODEL3-2.jpg" alt="MA-75 Tesla Model 3 消光犀牛皮成品照 2">
+      </div>
+      <div class="gallery-item animated animated-fade-in" style="animation-delay: 0.3s;">
+        <img src="https://aks-ppf.github.io/images/MA-75-MODEL3-3.jpg" alt="MA-75 Tesla Model 3 消光犀牛皮成品照 3">
+      </div>
+    </div>
+
+    <div class="ig-btn-wrapper">
+      <a href="https://www.instagram.com/p/DE1xaxMSvgG/?next=%2F&img_index=1" class="ig-btn" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-instagram"></i> 前往IG看更多成品照
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="gallery-grid">
+      <div class="gallery-item animated animated-fade-in" style="animation-delay: 0.1s;">
+        <img src="https://aks-ppf.github.io/images/MA-75-MODELX-1.jpg" alt="MA-75 Tesla Model X 消光犀牛皮成品照 1">
+      </div>
+      <div class="gallery-item animated animated-fade-in" style="animation-delay: 0.2s;">
+        <img src="https://aks-ppf.github.io/images/MA-75-MODELX-2.jpg" alt="MA-75 Tesla Model X 消光犀牛皮成品照 2">
+      </div>
+      <div class="gallery-item animated animated-fade-in" style="animation-delay: 0.3s;">
+        <img src="https://aks-ppf.github.io/images/MA-75-MODELX-3.jpg" alt="MA-75 Tesla Model X 消光犀牛皮成品照 3">
+      </div>
+    </div>
+
+    <div class="ig-btn-wrapper">
+      <a href="https://www.instagram.com/p/DIvRywUSkJc/?next=%2F&img_index=1" class="ig-btn" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-instagram"></i> 前往IG看更多成品照
+      </a>
+    </div>
+  </div>
 </div>
