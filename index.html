@@ -13,7 +13,7 @@
 
 <body class="flex flex-col min-h-screen aks-font-clean">
 
-  <header class="aks-header">
+  <header class="aks-header aks-font-clean">
     <button class="aks-mobile-toggle">
       <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
     </button>
@@ -28,16 +28,16 @@
     <nav class="aks-nav">
       <li class="aks-nav-item aks-has-dropdown"><a href="/pages/products/" class="aks-nav-link">產品</a>
           <div class="aks-dropdown-menu">
-              <a href="/pages/products/tpu-gl75/" class="aks-dropdown-item">亮面TPU GL-75</a>
-              <a href="/pages/products/tpu-gl75pro/" class="aks-dropdown-item">亮面TPU GL-75PRO</a>
-              <a href="/pages/products/tpu-ma75/" class="aks-dropdown-item">消光TPU MA-75</a>
-              <a href="/pages/products/tpu-sr75/" class="aks-dropdown-item">天窗隔熱膜TPU SR-75</a>
-              <a href="/pages/products/color-ppf/" class="aks-dropdown-item">改色犀牛皮COLOR PPF</a>
+              <a href="/pages/products-tpu-gl75/" class="aks-dropdown-item">亮面TPU GL-75</a>
+              <a href="/pages/products-tpu-gl75pro/" class="aks-dropdown-item">亮面TPU GL-75PRO</a>
+              <a href="/pages/products-tpu-ma75/" class="aks-dropdown-item">消光TPU MA-75</a>
+              <a href="/pages/products-tpu-sr75/" class="aks-dropdown-item">天窗隔熱膜TPU SR-75</a>
+              <a href="/pages/products-color-ppf/" class="aks-dropdown-item">改色犀牛皮COLOR PPF</a>
           </div>
       </li>
       <li class="aks-nav-item aks-has-dropdown"><a href="javascript:void(0)" class="aks-nav-link">保固</a>
           <div class="aks-dropdown-menu">
-              <a href="/pages/warranty/" class="aks-dropdown-item">保固資訊</a>
+              <a href="/pages/warranty-information/" class="aks-dropdown-item">保固資訊</a>
               <a href="/pages/warranty-status/" class="aks-dropdown-item">保固查詢</a>
           </div>
       </li>
@@ -45,20 +45,103 @@
       <li class="aks-nav-item aks-has-dropdown"><a href="/pages/dealers/" class="aks-nav-link">配合店家</a>
           <div class="aks-dropdown-menu">
               <a href="/pages/ai-preview-partners/" class="aks-dropdown-item text-[#d31212] font-bold">AI 換色特約店家</a>
-              <a href="/pages/dealers/taipei/" class="aks-dropdown-item">台北</a>
-              <a href="/pages/dealers/newtaipei/" class="aks-dropdown-item">新北</a>
+              <a href="/pages/dealers-taipei/" class="aks-dropdown-item">台北</a>
+              <a href="/pages/dealers-newtaipei/" class="aks-dropdown-item">新北</a>
+              <a href="/pages/dealers-taoyuan/" class="aks-dropdown-item">桃園</a>
+              <a href="/pages/dealers-hsinchu/" class="aks-dropdown-item">新竹</a>
+              <a href="/pages/dealers-miaoli/" class="aks-dropdown-item">苗栗</a>
+              <a href="/pages/dealers-taichung/" class="aks-dropdown-item">台中</a>
+              <a href="/pages/dealers-tainan/" class="aks-dropdown-item">台南</a>
+              <a href="/pages/dealers-kaohsiung/" class="aks-dropdown-item">高雄</a>
           </div>
       </li>
-      <li class="aks-nav-item"><a href="/pages/about/" class="aks-nav-link">關於我們</a></li>
+      <li class="aks-nav-item aks-has-dropdown"><a href="javascript:void(0)" class="aks-nav-link">經銷商專區</a>
+          <div class="aks-dropdown-menu">
+              <a href="/pages/經銷合作/" class="aks-dropdown-item">成為合作店家</a>
+              <a href="/pages/電腦版型裁切/" class="aks-dropdown-item">電腦版型裁切</a>
+          </div>
+      </li>
+      <li class="aks-nav-item"><a href="/pages/關於我們/" class="aks-nav-link">關於我們</a></li>
       <li class="aks-nav-item"><a href="https://lin.ee/OYaZjKO" target="_blank" class="aks-contact-btn">聯絡我們</a></li>
     </nav>
   </header>
 
   <div class="aks-mobile-menu aks-font-clean">
-      <button class="aks-mobile-close"><svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-      <div class="aks-mobile-item"><a href="/pages/color-chart/" class="aks-mobile-link">線上色卡</a></div>
-      <div class="aks-mobile-item"><a href="/blogs/news/179737/" class="aks-mobile-link text-[#d31212]">常見問答 (SEO保留區)</a></div>
-      <div class="mt-10 mb-8 flex justify-center"><a href="https://lin.ee/OYaZjKO" target="_blank" class="aks-contact-btn w-full text-center py-4">聯絡我們</a></div>
+      <button class="aks-mobile-close">
+          <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+
+      <div class="aks-mobile-item aks-has-sub">
+          <button class="aks-mobile-link">產品 
+              <svg class="aks-chevron w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="aks-mobile-sub">
+              <div class="aks-mobile-sub-inner">
+                  <a href="/pages/products/" class="aks-mobile-sub-link text-white font-bold mb-2 pb-2 border-b border-white/10 block">查看所有產品 ➔</a>
+                  <a href="/pages/products-tpu-gl75/" class="aks-mobile-sub-link">亮面TPU GL-75</a>
+                  <a href="/pages/products-tpu-gl75pro/" class="aks-mobile-sub-link">亮面TPU GL-75PRO</a>
+                  <a href="/pages/products-tpu-ma75/" class="aks-mobile-sub-link">消光TPU MA-75</a>
+                  <a href="/pages/products-tpu-sr75/" class="aks-mobile-sub-link">天窗隔熱膜TPU SR-75</a>
+                  <a href="/pages/products-color-ppf/" class="aks-mobile-sub-link">改色犀牛皮COLOR PPF</a>
+              </div>
+          </div>
+      </div>
+
+      <div class="aks-mobile-item aks-has-sub">
+          <button class="aks-mobile-link">保固 
+              <svg class="aks-chevron w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="aks-mobile-sub">
+              <div class="aks-mobile-sub-inner">
+                  <a href="/pages/warranty-information/" class="aks-mobile-sub-link">保固資訊</a>
+                  <a href="/pages/warranty-status/" class="aks-mobile-sub-link">保固查詢</a>
+              </div>
+          </div>
+      </div>
+
+      <div class="aks-mobile-item">
+          <a href="/pages/color-chart/" class="aks-mobile-link">線上色卡</a>
+      </div>
+
+      <div class="aks-mobile-item aks-has-sub">
+          <button class="aks-mobile-link">配合店家 
+              <svg class="aks-chevron w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="aks-mobile-sub">
+              <div class="aks-mobile-sub-inner">
+                  <a href="/pages/dealers/" class="aks-mobile-sub-link text-white font-bold mb-2 pb-2 border-b border-white/10 block">查看所有店家 ➔</a>
+                  <a href="/pages/ai-preview-partners/" class="aks-mobile-sub-link text-[#d31212]">AI 換色特約店家</a>
+                  <a href="/pages/dealers-taipei/" class="aks-mobile-sub-link">台北</a>
+                  <a href="/pages/dealers-newtaipei/" class="aks-mobile-sub-link">新北</a>
+                  <a href="/pages/dealers-taoyuan/" class="aks-mobile-sub-link">桃園</a>
+                  <a href="/pages/dealers-hsinchu/" class="aks-mobile-sub-link">新竹</a>
+                  <a href="/pages/dealers-miaoli/" class="aks-mobile-sub-link">苗栗</a>
+                  <a href="/pages/dealers-taichung/" class="aks-mobile-sub-link">台中</a>
+                  <a href="/pages/dealers-tainan/" class="aks-mobile-sub-link">台南</a>
+                  <a href="/pages/dealers-kaohsiung/" class="aks-mobile-sub-link">高雄</a>
+              </div>
+          </div>
+      </div>
+
+      <div class="aks-mobile-item aks-has-sub">
+          <button class="aks-mobile-link">經銷商專區 
+              <svg class="aks-chevron w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="aks-mobile-sub">
+              <div class="aks-mobile-sub-inner">
+                  <a href="/pages/經銷合作/" class="aks-mobile-sub-link">成為合作店家</a>
+                  <a href="/pages/電腦版型裁切/" class="aks-mobile-sub-link">電腦版型裁切</a>
+              </div>
+          </div>
+      </div>
+
+      <div class="aks-mobile-item">
+          <a href="/pages/關於我們/" class="aks-mobile-link">關於我們</a>
+      </div>
+
+      <div class="mt-10 mb-8 flex justify-center">
+          <a href="https://lin.ee/OYaZjKO" target="_blank" class="aks-contact-btn w-full text-center py-4">聯絡我們</a>
+      </div>
   </div>
 
   <div style="height: 100px;"></div>
@@ -68,7 +151,7 @@
       <h1 class="text-4xl font-bold mb-4 text-[#d31212] tracking-widest aks-font-youshe">AKS OFFICIAL WEBSITE</h1>
       <p class="text-gray-400 leading-loose">
         恭喜！這是全新官網的首頁。<br>
-        共用的 CSS 與 JS 管線已經完美接通。
+        共用的 CSS 與 JS 管線已經完美接通，選單也已更新為完整版。
       </p>
     </div>
   </main>
