@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: "AKS PPF 艾鎧斯車漆保護膜" }}</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { corePlugins: { preflight: false } }</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -18,7 +19,6 @@
         .aks-font-clean { font-family: 'Montserrat', sans-serif; }
 
         /* 2. 智慧下推空間 (完美解決覆蓋問題！) */
-        /* 當 JS 判斷這頁不是透明首頁時，會自動加上 has-solid-header，把內容往下推 85px */
         body.has-solid-header main { padding-top: 85px; }
         @media (max-width: 991px) {
             body.has-solid-header main { padding-top: 68px; }
@@ -27,20 +27,21 @@
         /* 3. AKS 客製化導覽列核心 CSS */
         .aks-header { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 9998; background-color: transparent; transition: all 0.3s ease; box-sizing: border-box; }
         .aks-header.is-scrolled { background-color: rgba(5, 5, 5, 0.98); padding: 12px 5%; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-        .aks-header.is-hidden { transform: translateY(-100%); } /* 滾動收起效果 */
+        .aks-header.is-hidden { transform: translateY(-100%); }
         .aks-header.force-solid { background-color: #050505 !important; box-shadow: 0 4px 20px rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-        .aks-logo img { transition: height 0.3s ease; display: block; }
+        /* 🔥 修復爆版兇手：加上 !important 確保隱藏命令絕對生效 */
+        .aks-logo img { transition: height 0.3s ease; }
         .aks-mobile-toggle { display: none; background: none; border: none; color: white; cursor: pointer; padding: 5px; }
-        .aks-logo-desktop { display: none; }
-        .aks-logo-mobile { display: none; }
+        .aks-logo-desktop { display: none !important; }
+        .aks-logo-mobile { display: none !important; }
 
         /* 桌機版選單 */
         @media (min-width: 992px) {
-            .aks-logo-desktop { display: block; height: 45px; width: auto; }
+            .aks-logo-desktop { display: block !important; height: 45px; width: auto; }
             .aks-header.is-scrolled .aks-logo-desktop { height: 38px; }
-            .aks-nav { display: flex; align-items: center; gap: 35px; margin: 0; padding: 0; }
-            .aks-nav-item { position: relative; list-style: none; margin: 0; padding: 0; }
+            .aks-nav { display: flex; align-items: center; gap: 35px; margin: 0; padding: 0; flex-wrap: nowrap; }
+            .aks-nav-item { position: relative; list-style: none; margin: 0; padding: 0; white-space: nowrap; }
             .aks-nav-link { color: #ffffff; text-decoration: none; font-weight: 700; font-size: 16px; letter-spacing: 1.5px; transition: color 0.3s ease; padding: 15px 0; display: block; }
             .aks-nav-link:hover { color: #d31212; }
             .aks-dropdown-menu { visibility: hidden; opacity: 0; position: absolute; top: calc(100% + 5px); left: -20px; background-color: rgba(18, 18, 18, 0.98); min-width: 160px; padding: 10px 0; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; }
@@ -103,25 +104,21 @@
             if (header) {
                 const path = window.location.pathname;
                 
-                // 🔥 新架構的「透明背景」白名單
+                // 🔥 改良版白名單判斷，避免斜線干擾
                 const transparentPages = [
-                    '/pages/products/color-ppf/',
-                    '/pages/dealers/',
-                    '/pages/dealers/ai-preview/',
-                    '/pages/distributor/join/',
-                    '/pages/distributor/dap/',
-                    '/pages/about/'
+                    '/color-ppf',
+                    '/dealers',
+                    '/distributor',
+                    '/about'
                 ];
                 
                 let isTransparent = false;
-                // 如果是首頁或在白名單內
                 if (path === '/' || path.endsWith('aks-official-website/') || path.endsWith('index.html')) {
                     isTransparent = true; 
                 } else {
                     isTransparent = transparentPages.some(keyword => path.includes(keyword));
                 }
 
-                // 若非透明頁面，啟動防護罩與自動下推
                 if (!isTransparent) {
                     header.classList.add('force-solid');
                     document.body.classList.add('has-solid-header'); 
