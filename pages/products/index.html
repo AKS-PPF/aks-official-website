@@ -1,20 +1,331 @@
 ---
-layout: default
-title: AKS PPF 路徑開通
+layout: page
+title: AKS 產品總覽 | AKS PPF
 ---
 
-<div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-    <div class="mb-8 opacity-20">
-        <svg width="100" height="100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-        </svg>
+<style>
+  .aks-products-overview-wrapper * { box-sizing: border-box !important; }
+
+  .aks-products-overview-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #0b0b0b;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    --bg-color: #0b0b0b;
+    --primary-red: #c1272d;
+    --text-white: #ffffff;
+  }
+
+  @font-face {
+    font-family: 'YouSheBiaoTiHei';
+    src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .aks-products-overview-wrapper .aks-section {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aks-products-overview-wrapper .aks-card {
+    display: flex;
+    width: 100%;
+    height: 350px;
+    text-decoration: none;
+    color: var(--text-white);
+    background-color: var(--bg-color);
+  }
+
+  .aks-products-overview-wrapper .aks-card.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .aks-products-overview-wrapper .img-box {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .aks-products-overview-wrapper .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: block;
+  }
+
+  .aks-products-overview-wrapper .aks-card:not(.reverse) .img-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    background: linear-gradient(to right, transparent, var(--bg-color));
+    pointer-events: none;
+  }
+
+  .aks-products-overview-wrapper .aks-card.reverse .img-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    background: linear-gradient(to left, transparent, var(--bg-color));
+    pointer-events: none;
+  }
+
+  .aks-products-overview-wrapper .txt-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    min-width: 0;
+  }
+
+  .aks-products-overview-wrapper .txt-box h2 {
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin: 0 0 8px 0;
+  }
+
+  .aks-products-overview-wrapper .txt-box p {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .aks-products-overview-wrapper .text-red {
+    color: var(--primary-red);
+  }
+
+  .aks-products-overview-wrapper .text-white {
+    color: var(--text-white);
+  }
+
+  .aks-products-overview-wrapper .aks-card:hover .img-box img {
+    transform: scale(1.08);
+  }
+
+  .aks-products-overview-wrapper .marquee {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--bg-color);
+    display: flex;
+    line-height: 1;
+  }
+
+  .aks-products-overview-wrapper .track {
+    display: flex;
+    width: max-content;
+  }
+
+  .aks-products-overview-wrapper .track span {
+    font-size: 4rem;
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+    padding-right: 20px;
+    white-space: nowrap;
+  }
+
+  .aks-products-overview-wrapper .track-left {
+    animation: aks-products-scroll-left 30s linear infinite;
+  }
+
+  .aks-products-overview-wrapper .track-right {
+    animation: aks-products-scroll-right 30s linear infinite;
+  }
+
+  @keyframes aks-products-scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes aks-products-scroll-right {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .aks-products-overview-wrapper .aks-section {
+      flex-direction: column;
+    }
+
+    .aks-products-overview-wrapper .aks-card {
+      position: relative;
+      height: 200px;
+      flex-direction: row;
+      overflow: hidden;
+    }
+
+    .aks-products-overview-wrapper .img-box {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 70%;
+      z-index: 1;
+    }
+
+    .aks-products-overview-wrapper .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .aks-products-overview-wrapper .txt-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 30px;
+      background-color: transparent;
+    }
+
+    .aks-products-overview-wrapper .txt-box h2 {
+      font-size: 1.6rem;
+    }
+
+    .aks-products-overview-wrapper .txt-box p {
+      font-size: 1.2rem;
+    }
+
+    .aks-products-overview-wrapper .track span {
+      font-size: 2.3rem;
+    }
+
+    .aks-products-overview-wrapper .aks-card:not(.reverse) .img-box {
+      left: 0;
+    }
+
+    .aks-products-overview-wrapper .aks-card:not(.reverse) .txt-box {
+      align-items: flex-end;
+      background: linear-gradient(to right, transparent 30%, rgba(11, 11, 11, 0.8) 70%);
+    }
+
+    .aks-products-overview-wrapper .aks-card:not(.reverse) .txt-box h2,
+    .aks-products-overview-wrapper .aks-card:not(.reverse) .txt-box p {
+      text-align: right;
+    }
+
+    .aks-products-overview-wrapper .aks-card.reverse .img-box {
+      right: 0;
+    }
+
+    .aks-products-overview-wrapper .aks-card.reverse .txt-box {
+      align-items: flex-start;
+      background: linear-gradient(to left, transparent 30%, rgba(11, 11, 11, 0.8) 70%);
+    }
+
+    .aks-products-overview-wrapper .aks-card.reverse .txt-box h2,
+    .aks-products-overview-wrapper .aks-card.reverse .txt-box p {
+      text-align: left;
+    }
+  }
+</style>
+
+<div class="aks-products-overview-wrapper">
+  <section class="aks-section">
+    <a href="https://www.aks-ppf.com/pages/products-color-ppf" class="aks-card">
+      <div class="img-box">
+        <img src="https://aks-ppf.github.io/images/products-homepage-color-ppf.png" alt="改色犀牛皮">
+      </div>
+      <div class="txt-box">
+        <h2><span class="text-red">COLOR</span> <span class="text-white">PPF</span></h2>
+        <p><span class="text-red">改色</span><span class="text-white">犀牛皮</span></p>
+      </div>
+    </a>
+
+    <div class="marquee">
+      <div class="track track-left">
+        <span>AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF</span>
+        <span>AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF</span>
+      </div>
     </div>
-    <h1 class="text-3xl font-bold tracking-widest text-[#c81f2a] aks-font-youshe uppercase mb-4">
-        Room Established
-    </h1>
-    <p class="text-gray-400 aks-font-clean tracking-widest mb-10 leading-loose">
-        全站路徑已完美開通。<br>
-        目前的網址位置：<span class="text-white font-bold border-b border-white/20 pb-1">{{ page.url }}</span>
-    </p>
-    <a href="/" class="px-10 py-3 bg-white/5 border border-white/10 text-white/60 text-sm tracking-[0.2em] hover:bg-[#c81f2a] hover:text-white transition-all duration-300">BACK TO HOME</a>
+
+    <a href="https://www.aks-ppf.com/pages/products-tpu-gl75" class="aks-card reverse">
+      <div class="img-box">
+        <img src="https://aks-ppf.github.io/images/products-homepage-gl-75.png" alt="亮面犀牛皮">
+      </div>
+      <div class="txt-box">
+        <h2><span class="text-red">GL-75</span></h2>
+        <p><span class="text-white">亮面犀牛皮</span></p>
+      </div>
+    </a>
+
+    <div class="marquee">
+      <div class="track track-right">
+        <span>AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF</span>
+        <span>AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF</span>
+      </div>
+    </div>
+
+    <a href="https://www.aks-ppf.com/pages/products-tpu-gl75pro" class="aks-card">
+      <div class="img-box">
+        <img src="https://aks-ppf.github.io/images/products-homepage-gl-75pro.png" alt="超拉伸亮面犀牛皮">
+      </div>
+      <div class="txt-box">
+        <h2><span class="text-red">GL-75PRO</span></h2>
+        <p><span class="text-white">超拉伸亮面犀牛皮</span></p>
+      </div>
+    </a>
+
+    <div class="marquee">
+      <div class="track track-left">
+        <span>AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF</span>
+        <span>AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF</span>
+      </div>
+    </div>
+
+    <a href="https://www.aks-ppf.com/pages/products-tpu-ma75" class="aks-card reverse">
+      <div class="img-box">
+        <img src="https://aks-ppf.github.io/images/products-homepage-ma-75.png" alt="消光犀牛皮">
+      </div>
+      <div class="txt-box">
+        <h2><span class="text-red">MA-75</span></h2>
+        <p><span class="text-white">消光犀牛皮</span></p>
+      </div>
+    </a>
+
+    <div class="marquee">
+      <div class="track track-right">
+        <span>AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF</span>
+        <span>AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF AKS PPF</span>
+      </div>
+    </div>
+
+    <a href="https://www.aks-ppf.com/pages/products-tpu-sr75" class="aks-card">
+      <div class="img-box">
+        <img src="https://aks-ppf.github.io/images/products-homepage-sr-75.png" alt="天窗隔熱膜">
+      </div>
+      <div class="txt-box">
+        <h2><span class="text-red">SR-75</span></h2>
+        <p><span class="text-white">天窗隔熱膜</span></p>
+      </div>
+    </a>
+  </section>
 </div>
