@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: "AKS PPF 艾鎧斯車漆保護膜 | 官方網站" }}</title>
+  
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { corePlugins: { preflight: false } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}">
+</head>
+<body class="flex flex-col min-h-screen aks-font-clean bg-[#050505] text-white m-0 p-0">
+
+    {% include header.html %}
+
+    <main class="flex-grow">
+        {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
