@@ -30,7 +30,7 @@
         .aks-header.is-hidden { transform: translateY(-100%); }
         .aks-header.force-solid { background-color: #050505 !important; box-shadow: 0 4px 20px rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-        /* 🔥 修復爆版兇手：加上 !important 確保隱藏命令絕對生效 */
+        /* 修復爆版兇手：加上 !important 確保隱藏命令絕對生效 */
         .aks-logo img { transition: height 0.3s ease; }
         .aks-mobile-toggle { display: none; background: none; border: none; color: white; cursor: pointer; padding: 5px; }
         .aks-logo-desktop { display: none !important; }
@@ -79,7 +79,8 @@
         .io-reveal.is-in { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+
+<body class="flex flex-col min-h-screen layout-{{ page.layout | default: 'default' }}">
     
     {% include header.html %}
 
@@ -104,21 +105,13 @@
             if (header) {
                 const path = window.location.pathname;
                 
-                // 🔥 改良版白名單判斷，避免斜線干擾
-                const transparentPages = [
-                    '/color-ppf',
-                    '/dealers',
-                    '/distributor',
-                    '/about'
-                ];
+                // 🔥 自動判斷：檢查 Body 是否有 layout-page-hero 或是不是首頁根目錄
+                const isHeroLayout = document.body.classList.contains('layout-page-hero');
+                const isRoot = path === '/' || path.endsWith('aks-official-website/') || path.endsWith('index.html');
                 
-                let isTransparent = false;
-                if (path === '/' || path.endsWith('aks-official-website/') || path.endsWith('index.html')) {
-                    isTransparent = true; 
-                } else {
-                    isTransparent = transparentPages.some(keyword => path.includes(keyword));
-                }
+                let isTransparent = isHeroLayout || isRoot;
 
+                // 若最終判定不是透明頁面，啟動防護罩與自動下推 (實心黑底)
                 if (!isTransparent) {
                     header.classList.add('force-solid');
                     document.body.classList.add('has-solid-header'); 
