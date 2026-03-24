@@ -1,24 +1,28 @@
 ---
-layout: default
-title: 天窗隔熱膜 TPU SR-75 | AKS PPF
+layout: page
+title: SR-75 天窗隔熱膜 | AKS PPF
 ---
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 <style>
-  /* 1. 強制修正：杜絕超出 100vw 的橫向跑版，採用安全的繼承寫法避免破壞 FontAwesome */
-  .aks-sr75-wrapper {
-    width: 100%;
-    overflow-x: hidden;
-    box-sizing: border-box;
-  }
-  .aks-sr75-wrapper *,
-  .aks-sr75-wrapper *::before,
-  .aks-sr75-wrapper *::after {
-    box-sizing: inherit;
+  /* 1. 強制修正：杜絕所有超出 100vw 的橫向跑版問題 */
+  .aks-sr-75-wrapper * { box-sizing: border-box !important; }
+  .aks-sr-75-wrapper { 
+    width: 100%; 
+    overflow-x: hidden; 
+    background-color: #000; 
+    color: #ffffff; 
+    font-family: 'Montserrat', sans-serif !important; 
+    line-height: 1.6;
+    
+    /* 變數繼承區 */
+    --primary-red: #af111c;
+    --bg-dark: #000;
+    --text-light: #ffffff;
+    --text-gray: #dddddd;
+    --stroke-color: rgba(255, 255, 255, 0.4);
   }
 
-  /* 2. 舊 CSS 隔離區 */
+  /* 2. 舊 CSS 隔離區 (所有選擇器前面都要加上 .aks-sr-75-wrapper) */
   @font-face {
     font-family: 'YouSheBiaoTiHei';
     src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype');
@@ -27,43 +31,43 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     font-display: swap;
   }
 
-  .aks-sr75-wrapper {
-    --primary-red: #af111c;
-    --stroke-color: rgba(255, 255, 255, 0.4);
-    color: #ffffff;
-    line-height: 1.6;
-  }
-
-  .aks-sr75-wrapper .container {
+  .aks-sr-75-wrapper .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
   }
 
-  .aks-sr75-wrapper a:hover {
+  .aks-sr-75-wrapper a:hover {
     color: #FFF;
   }
 
+  /* 元素進場動畫設定 */
   @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  .aks-sr75-wrapper .animated {
+  .aks-sr-75-wrapper .animated {
     animation-duration: 0.8s;
     animation-fill-mode: both;
   }
 
-  /* Hero 區塊 - 已縮減上方 padding 避免與系統 default 導覽列產生雙重留白 */
-  .aks-sr75-wrapper .aks-hero-section {
+  /* Hero 區塊 */
+  .aks-sr-75-wrapper .aks-hero-section {
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 20px 30px; /* 原為 60px 20px 30px */
-    box-sizing: border-box;
+    padding: 10px 20px 30px; /* 原 60px 縮減至 10px 避免雙重留白 */
   }
 
-  .aks-sr75-wrapper .aks-hero-container {
+  .aks-sr-75-wrapper .aks-hero-container {
     display: flex;
     gap: 30px;
     max-width: 1100px;
@@ -71,12 +75,12 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     align-items: stretch;
   }
 
-  .aks-sr75-wrapper .aks-hero-mobile-title {
+  .aks-sr-75-wrapper .aks-hero-mobile-title {
     font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
     display: none;
   }
 
-  .aks-sr75-wrapper .aks-hero-image-box {
+  .aks-sr-75-wrapper .aks-hero-image-box {
     flex: 2;
     border: 2px solid var(--primary-red);
     border-radius: 6px;
@@ -84,14 +88,14 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     display: flex;
   }
 
-  .aks-sr75-wrapper .aks-hero-image-box img {
+  .aks-sr-75-wrapper .aks-hero-image-box img {
     width: 100%;
     height: 100%;
     display: block;
     transform: scale(1.15);
   }
 
-  .aks-sr75-wrapper .aks-hero-info-box {
+  .aks-sr-75-wrapper .aks-hero-info-box {
     flex: .9;
     border: 2px solid var(--primary-red);
     border-radius: 6px;
@@ -99,10 +103,9 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     flex-direction: column;
     justify-content: center;
     padding: 40px;
-    box-sizing: border-box;
   }
 
-  .aks-sr75-wrapper .aks-hero-title {
+  .aks-sr-75-wrapper .aks-hero-title {
     font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
     color: var(--primary-red);
     font-size: 4rem;
@@ -110,19 +113,19 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     letter-spacing: 2px;
   }
 
-  .aks-sr75-wrapper .aks-hero-name {
+  .aks-sr-75-wrapper .aks-hero-name {
     font-size: 2rem;
     font-weight: bold;
     margin: 0 0 20px 0;
     letter-spacing: 3px;
   }
 
-  .aks-sr75-wrapper .aks-hero-tags {
+  .aks-sr-75-wrapper .aks-hero-tags {
     display: flex;
     gap: 12px;
   }
 
-  .aks-sr75-wrapper .aks-hero-tags span {
+  .aks-sr-75-wrapper .aks-hero-tags span {
     background-color: rgba(255, 255, 255, 0.3);
     color: #ffffff;
     padding: 2px 8px;
@@ -131,17 +134,15 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     letter-spacing: 1.5px;
   }
 
-  /* 跑馬燈 */
-  .aks-sr75-wrapper .section-header-wrapper {
+  /* ========== 跑馬燈 ========== */
+  .aks-sr-75-wrapper .section-header-wrapper {
     margin: 30px 0 50px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    overflow: hidden;
-    width: 100%;
   }
 
-  .aks-sr75-wrapper .marquee-bg {
+  .aks-sr-75-wrapper .marquee-bg {
     width: 100%;
     overflow: hidden;
     display: flex;
@@ -149,7 +150,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     user-select: none;
   }
 
-  .aks-sr75-wrapper .marquee-text-hollow {
+  .aks-sr-75-wrapper .marquee-text-hollow {
     font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
     font-size: 6rem;
     color: transparent;
@@ -161,20 +162,31 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     line-height: 1;
   }
 
-  .aks-sr75-wrapper .scroll-left { animation: scrollLeft 25s linear infinite; }
+  .aks-sr-75-wrapper .scroll-left {
+    animation: scrollLeft 25s linear infinite;
+  }
+
   @keyframes scrollLeft {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
 
-  .aks-sr75-wrapper .scroll-right { animation: scrollRight 25s linear infinite; }
+  .aks-sr-75-wrapper .scroll-right {
+    animation: scrollRight 25s linear infinite;
+  }
+
   @keyframes scrollRight {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
   }
 
-  /* 規格數據表 */
-  .aks-sr75-wrapper .specs-table {
+  .aks-sr-75-wrapper .new-section {
+    padding-top: 10px; /* 原 60px 縮減至 10px */
+    padding-bottom: 60px;
+  }
+
+  /* 規格數據表 (CSS Grid) */
+  .aks-sr-75-wrapper .specs-table {
     display: grid;
     grid-template-columns: minmax(120px, 1.2fr) 1fr 1fr;
     gap: 6px;
@@ -182,7 +194,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     margin: 0 auto 100px auto;
   }
 
-  .aks-sr75-wrapper .specs-table .cell {
+  .aks-sr-75-wrapper .specs-table .cell {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -194,22 +206,24 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     border-radius: 4px;
   }
 
-  .aks-sr75-wrapper .specs-table .bg-red {
+  .aks-sr-75-wrapper .specs-table .bg-red {
     background-color: var(--primary-red);
-    color: #ffffff;
+    color: var(--text-light);
   }
 
-  .aks-sr75-wrapper .specs-table .bg-white {
+  .aks-sr-75-wrapper .specs-table .bg-white {
     background-color: #ffffff;
     color: var(--primary-red);
   }
 
-  .aks-sr75-wrapper .section-title-container { box-sizing: border-box; }
+  .aks-sr-75-wrapper .section-title-container {
+    /* box-sizing 已全域設定 */
+  }
 
-  .aks-sr75-wrapper .section-title-box {
+  .aks-sr-75-wrapper .section-title-box {
     width: 100%;
     background-color: var(--primary-red);
-    color: #ffffff;
+    color: var(--text-light);
     display: inline-block;
     text-align: center;
     font-size: 1.5rem;
@@ -218,14 +232,14 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
   }
 
   /* 特色介紹區塊 */
-  .aks-sr75-wrapper .features-grid {
+  .aks-sr-75-wrapper .features-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 60px 40px;
     padding: 20px 0 80px 0;
   }
 
-  .aks-sr75-wrapper .feature-item {
+  .aks-sr-75-wrapper .feature-item {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -233,18 +247,18 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     opacity: 0;
   }
 
-  .aks-sr75-wrapper .feature-item.animated-fade-in-up {
+  .aks-sr-75-wrapper .feature-item.animated-fade-in-up {
     animation-name: fadeInUp;
     opacity: 1;
   }
 
-  .aks-sr75-wrapper .feature-icon {
+  .aks-sr-75-wrapper .feature-icon {
     font-size: 3.5rem;
     margin-bottom: 20px;
-    color: #ffffff;
+    color: var(--text-light);
   }
 
-  .aks-sr75-wrapper .feature-tag {
+  .aks-sr-75-wrapper .feature-tag {
     display: inline-block;
     background: var(--primary-red);
     padding: 6px 25px;
@@ -253,31 +267,30 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     border-radius: 5px;
   }
 
-  .aks-sr75-wrapper .feature-tag span {
+  .aks-sr-75-wrapper .feature-tag span {
     display: inline-block;
     transform: skewX(20deg);
     font-weight: bold;
     font-size: 1.2rem;
     letter-spacing: 1px;
-    color: #ffffff;
   }
 
-  .aks-sr75-wrapper .feature-desc {
+  .aks-sr-75-wrapper .feature-desc {
     font-size: 1.2rem;
-    color: #dddddd;
+    color: var(--text-gray);
     line-height: 1.8;
     margin: 0 auto;
   }
 
   /* 圖文區 */
-  .aks-sr75-wrapper .comparison-section {
+  .aks-sr-75-wrapper .comparison-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
   }
 
-  .aks-sr75-wrapper .comparison-wrapper {
+  .aks-sr-75-wrapper .comparison-wrapper {
     position: relative;
     border: 2px solid var(--primary-red);
     border-radius: 5px;
@@ -286,14 +299,14 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     margin-bottom: 120px;
   }
 
-  .aks-sr75-wrapper .comparison-wrapper img {
+  .aks-sr-75-wrapper .comparison-wrapper img {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 5px;
   }
 
-  .aks-sr75-wrapper .comparison-banner {
+  .aks-sr-75-wrapper .comparison-banner {
     position: absolute;
     bottom: -22px;
     left: 50%;
@@ -304,32 +317,34 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     border-radius: 5px;
   }
 
-  .aks-sr75-wrapper .comparison-banner span {
+  .aks-sr-75-wrapper .comparison-banner span {
     display: inline-block;
     transform: skewX(15deg);
-    color: #ffffff;
+    color: var(--text-light);
     font-weight: bold;
     font-size: 1.2rem;
     letter-spacing: 2px;
     white-space: nowrap;
   }
 
-  .aks-sr75-wrapper .comparison-bottom { margin-bottom: 50px; }
+  .aks-sr-75-wrapper .comparison-bottom {
+    margin-bottom: 50px;
+  }
 
   /* LINE 按鈕 */
-  .aks-sr75-wrapper .line-btn-wrapper {
+  .aks-sr-75-wrapper .line-btn-wrapper {
     text-align: center;
     margin-bottom: 120px;
   }
 
-  .aks-sr75-wrapper .line-btn {
+  .aks-sr-75-wrapper .line-btn {
     position: relative;
     overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     background-color: var(--primary-red);
-    color: #ffffff;
+    color: var(--text-light);
     text-decoration: none;
     padding: 12px 40px;
     border-radius: 30px;
@@ -346,14 +361,17 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     100% { box-shadow: 0 0 0 0 rgba(175, 17, 28, 0); }
   }
 
-  .aks-sr75-wrapper .line-btn::after {
+  .aks-sr-75-wrapper .line-btn::after {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 50%;
     height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0) 100%);
     transform: skewX(-25deg);
     animation: shineSweep 3s infinite;
   }
@@ -364,18 +382,18 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
     100% { left: 200%; }
   }
 
-  .aks-sr75-wrapper .line-btn i, 
-  .aks-sr75-wrapper .line-btn span {
+  .aks-sr-75-wrapper .line-btn i,
+  .aks-sr-75-wrapper .line-btn span {
     position: relative;
     z-index: 2;
   }
 
-  .aks-sr75-wrapper .line-btn i {
+  .aks-sr-75-wrapper .line-btn i {
     font-size: 1.4rem;
     margin-right: 10px;
   }
 
-  .aks-sr75-wrapper .line-btn:hover {
+  .aks-sr-75-wrapper .line-btn:hover {
     background-color: #d61f2b;
     transform: translateY(-2px);
     animation: none;
@@ -385,20 +403,24 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
 
   /* RWD 響應式設計 */
   @media (max-width: 992px) {
-    .aks-sr75-wrapper .aks-hero-mobile-title { font-size: 3.5rem; }
+    .aks-sr-75-wrapper .aks-hero-mobile-title {
+      font-size: 3.5rem;
+    }
   }
 
   @media (max-width: 768px) {
-    .aks-sr75-wrapper .aks-hero-section {
+    .aks-sr-75-wrapper .aks-hero-section {
       padding: 15px 15px;
       align-items: flex-start;
     }
-    .aks-sr75-wrapper .aks-hero-container {
+
+    .aks-sr-75-wrapper .aks-hero-container {
       flex-direction: column;
       gap: 0;
       align-items: center;
     }
-    .aks-sr75-wrapper .aks-hero-mobile-title {
+
+    .aks-sr-75-wrapper .aks-hero-mobile-title {
       display: block;
       color: var(--primary-red);
       font-size: 3.2rem;
@@ -406,63 +428,89 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
       text-align: center;
       letter-spacing: 2px;
     }
-    .aks-sr75-wrapper .aks-hero-desktop-title { display: none; }
-    .aks-sr75-wrapper .aks-hero-image-box {
+
+    .aks-sr-75-wrapper .aks-hero-desktop-title {
+      display: none;
+    }
+
+    .aks-sr-75-wrapper .aks-hero-image-box {
       width: 100%;
       height: 400px;
       max-width: 500px;
       flex: none;
       border-radius: 8px;
     }
-    .aks-sr75-wrapper .aks-hero-image-box img {
+
+    .aks-sr-75-wrapper .aks-hero-image-box img {
       transform: scale(1.3);
       object-fit: cover;
       object-position: 75% center;
+      transform-origin: center;
     }
-    .aks-sr75-wrapper .aks-hero-info-box {
+
+    .aks-sr-75-wrapper .aks-hero-info-box {
       width: 100%;
       border: none;
       padding: 25px 0 0 0;
       align-items: center;
       text-align: center;
     }
-    .aks-sr75-wrapper .aks-hero-name {
+
+    .aks-sr-75-wrapper .aks-hero-name {
       font-size: 2.2rem;
       margin-bottom: 15px;
     }
-    .aks-sr75-wrapper .aks-hero-tags { justify-content: center; }
-    .aks-sr75-wrapper .aks-hero-tags span {
+
+    .aks-sr-75-wrapper .aks-hero-tags {
+      justify-content: center;
+    }
+
+    .aks-sr-75-wrapper .aks-hero-tags span {
       font-size: 1rem;
       padding: 3px 10px;
     }
-    .aks-sr75-wrapper .marquee-text-hollow {
+
+    .aks-sr-75-wrapper .marquee-text-hollow {
       font-size: 4rem;
       letter-spacing: 8px;
     }
-    .aks-sr75-wrapper .specs-table {
+
+    .aks-sr-75-wrapper .specs-table {
       margin-bottom: 60px;
       padding: 0 15px;
     }
-    .aks-sr75-wrapper .specs-table .cell {
+
+    .aks-sr-75-wrapper .specs-table .cell {
       font-size: 0.95rem;
       padding: 10px 5px;
       letter-spacing: 1px;
     }
-    .aks-sr75-wrapper .section-header-wrapper {
+
+    .aks-sr-75-wrapper .section-header-wrapper {
       margin: 30px 0 40px 0;
       gap: 10px;
     }
-    .aks-sr75-wrapper .features-grid {
+
+    .aks-sr-75-wrapper .features-grid {
       grid-template-columns: 1fr;
       gap: 50px;
     }
-    .aks-sr75-wrapper .comparison-section { padding: 0 15px; }
-    .aks-sr75-wrapper .comparison-banner {
+
+    .aks-sr-75-wrapper .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .aks-sr-75-wrapper .comparison-section {
+      padding: 0 15px;
+    }
+
+    .aks-sr-75-wrapper .comparison-banner {
       padding: 8px 20px;
       width: 85%;
       text-align: center;
     }
-    .aks-sr75-wrapper .comparison-banner span {
+
+    .aks-sr-75-wrapper .comparison-banner span {
       font-size: 0.9rem;
       white-space: normal;
       line-height: 1.4;
@@ -470,7 +518,7 @@ title: 天窗隔熱膜 TPU SR-75 | AKS PPF
   }
 </style>
 
-<div class="aks-sr75-wrapper" markdown="0">
+<div class="aks-sr-75-wrapper">
   <div class="aks-hero-section">
     <div class="aks-hero-container">
       <div class="aks-hero-mobile-title">SR-75</div>
