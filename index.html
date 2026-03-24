@@ -19,7 +19,7 @@
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         body { background-color: #050505; margin: 0; padding-top: 0 !important; color: #fff; }
 
-        /* 共用進場動畫引擎 */
+        /* 進場動畫引擎 */
         .io-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1); }
         .io-reveal.is-in { opacity: 1; transform: translateY(0); }
         .io-reveal[data-delay="1"] { transition-delay: 0.1s; }
@@ -27,14 +27,19 @@
         .io-reveal[data-delay="3"] { transition-delay: 0.3s; }
         .io-reveal[data-delay="4"] { transition-delay: 0.5s; }
 
-        /* 導覽列設計 */
-        .aks-desktop-header { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 9999; background-color: transparent; transition: all 0.3s ease; }
-        .aks-desktop-header.is-scrolled { background-color: rgba(5, 5, 5, 0.98); padding: 12px 5%; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-        .aks-desktop-header.is-hidden { transform: translateY(-100%); }
-        .aks-logo img { height: 45px; transition: height 0.3s ease; }
-        .aks-desktop-header.is-scrolled .aks-logo img { height: 38px; }
+        /* ==========================================
+           1. 完美雙棲導覽列 (解決手機消失、電腦跑版)
+        ========================================== */
+        .aks-header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; z-index: 9999; background-color: transparent; transition: all 0.3s ease; box-sizing: border-box; }
+        .aks-header.is-scrolled { background-color: rgba(5, 5, 5, 0.98); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .aks-logo img { transition: height 0.3s ease; display: block; margin: 0 auto; object-fit: contain; }
+        .aks-mobile-toggle { display: none; background: transparent; border: none; color: white; cursor: pointer; padding: 5px; }
         
         @media (min-width: 992px) {
+            .aks-header { padding: 20px 5%; }
+            .aks-header.is-scrolled { padding: 12px 5%; }
+            .aks-logo img { height: 45px; }
+            .aks-header.is-scrolled .aks-logo img { height: 38px; }
             .aks-nav { display: flex; align-items: center; gap: 35px; }
             .aks-nav-item { position: relative; list-style: none; margin: 0; padding: 0; }
             .aks-nav-link { color: #ffffff; text-decoration: none; font-weight: 700; font-size: 16px; letter-spacing: 1.5px; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); transition: color 0.3s ease; padding: 15px 0; display: block; }
@@ -47,14 +52,22 @@
             .aks-contact-btn { background-color: #d31212; color: #ffffff !important; padding: 10px 24px; border-radius: 8px; font-weight: 700; letter-spacing: 2px; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
             .aks-contact-btn:hover { background-color: #a80e0e; transform: translateY(-2px); }
         }
+        
         @media (max-width: 991px) {
-            .aks-desktop-header { display: none !important; }
+            .aks-header { padding: 15px 5%; background-color: rgba(5,5,5,0.85); backdrop-filter: blur(10px); }
+            .aks-nav { display: none; }
+            .aks-mobile-toggle { display: block; }
+            .aks-logo { position: absolute; left: 50%; transform: translateX(-50%); }
+            .aks-logo img { height: 35px; }
         }
     </style>
 </head>
 <body class="flex flex-col min-h-screen aks-font-clean">
 
-    <header class="aks-desktop-header aks-font-clean">
+    <header class="aks-header aks-font-clean">
+        <button class="aks-mobile-toggle">
+            <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
         <div class="aks-logo">
             <a href="/"><img src="https://cdn.cybassets.com/media/W1siZiIsIjI2MDk2L2F0dGFjaGVkX3Bob3Rvcy8xNzM2MzE5NDg5X0FLUyDmqavluYVMT0dPIOeZveWtly5wbmcucG5nIl1d.png?sha=d5d21ab05f13f71a" alt="AKS PPF"></a>
         </div>
@@ -93,18 +106,15 @@
             <div id="color-slides-container">
                 <picture><source media="(min-width: 768px)" srcset="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_4251da21-7632-4920-91aa-0fc305b73f34.jpg"><img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_a2972c35-c0af-4b8a-8622-b72838ceda10.PNG" class="color-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"></picture>
                 <picture><source media="(min-width: 768px)" srcset="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_cdc4d945-db73-45ff-8c30-98875f59c892.jpg"><img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_1bbb5b5f-c744-4ec7-91e7-9c00267542f5.PNG" class="color-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"></picture>
-                <picture><source media="(min-width: 768px)" srcset="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_e4ee6527-b917-48aa-9edc-a1c2eb31e81e.jpg"><img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_48dda5c4-dace-44ff-a230-35389e979ec2.PNG" class="color-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"></picture>
-                <picture><source media="(min-width: 768px)" srcset="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_c78f7de1-4f39-4b74-8649-33b6dad4754a.jpg"><img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_da5a824e-265d-4543-86a8-8f059a6b9ec3.PNG" class="color-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"></picture>
-                <picture><source media="(min-width: 768px)" srcset="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_c575823c-dd03-43c9-b8d7-be323d6dade8.jpg"><img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_7f443071-6c33-4616-a562-b47753c6a4e4.PNG" class="color-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"></picture>
             </div>
             <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/90 pointer-events-none"></div>
         </div>
         
-        <div class="relative z-10 text-center w-full px-4 md:px-6 io-reveal" data-delay="1">
+        <div class="relative z-10 text-center w-full max-w-7xl mx-auto px-6 io-reveal" data-delay="1">
             <h1 class="aks-font-youshe text-[80px] md:text-[140px] leading-none mb-1 md:mb-4 drop-shadow-xl select-none flex justify-center items-center transition-all duration-300">
                 <span style="color: #c81f2a;">A</span><span style="color: #f3f3f5;">KS</span>
             </h1>
-            <div class="w-12 h-[2px] bg-[#c81f2a]/80 mb-3 md:mb-5 mx-auto shadow-[0_0_15px_rgba(200,31,42,0.5)] transition-all duration-300"></div>
+            <div class="w-12 h-[2px] bg-[#c81f2a]/80 mb-3 md:mb-5 mx-auto shadow-[0_0_15px_rgba(200,31,42,0.5)]"></div>
 
             <div class="flex items-center justify-center w-full mb-10 md:mb-8">
                 <div class="flex items-center justify-center gap-2 md:gap-3 aks-font-clean text-[10px] md:text-sm font-medium uppercase leading-none" style="margin-right: -0.2em;">
@@ -116,165 +126,98 @@
 
             <h2 id="hero-main-title" class="aks-font-clean text-[22px] md:text-[42px] font-bold text-white drop-shadow-md text-center transition-all duration-300 block mt-16 md:mt-8 mb-24 md:mb-14 leading-none" style="letter-spacing: 0.15em; margin-right: -0.15em;">超越時間的堅韌</h2>
 
-            <div class="flex flex-row gap-2 md:gap-4 justify-center items-center max-w-[360px] md:max-w-none mx-auto w-full io-reveal" data-delay="3">
-                <a href="/pages/products/" id="btn-transparent-hover" class="aks-font-clean flex items-center justify-center w-1/2 md:w-auto md:min-w-[220px] px-1 py-3.5 md:px-8 md:py-4 border border-white text-white transition-colors duration-300 text-[11px] md:text-sm font-bold text-center" style="letter-spacing: 0.05em; margin-right: -0.05em; text-decoration: none;">探索透明犀牛皮</a>
-                <a href="/pages/products-color-ppf/" id="btn-color-hover" class="aks-font-clean flex items-center justify-center w-1/2 md:w-auto md:min-w-[220px] px-1 py-3.5 md:px-8 md:py-4 bg-[#c81f2a] border border-[#c81f2a] text-white hover:bg-[#a81a23] hover:border-[#a81a23] transition-colors duration-300 text-[11px] md:text-sm font-bold text-center" style="letter-spacing: 0.05em; margin-right: -0.05em; text-decoration: none;">了解改色犀牛皮</a>
-            </div>
-        </div>
-
-        <div class="absolute bottom-6 md:bottom-8 w-full flex justify-center pointer-events-none io-reveal" data-delay="4">
-            <div class="animate-bounce text-white/50">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            <div class="grid grid-cols-2 gap-3 md:flex md:flex-row md:gap-4 justify-center items-center w-full max-w-[400px] md:max-w-none mx-auto io-reveal" data-delay="3">
+                <a href="/pages/products/" id="btn-transparent-hover" class="aks-font-clean flex items-center justify-center w-full md:w-auto md:min-w-[220px] px-2 py-4 md:px-8 bg-transparent border border-white text-white transition-colors duration-300 text-[12px] md:text-sm font-bold text-center text-decoration-none" style="letter-spacing: 0.05em;">探索透明犀牛皮</a>
+                <a href="/pages/products-color-ppf/" id="btn-color-hover" class="aks-font-clean flex items-center justify-center w-full md:w-auto md:min-w-[220px] px-2 py-4 md:px-8 bg-[#c81f2a] border border-[#c81f2a] text-white hover:bg-[#a81a23] hover:border-[#a81a23] transition-colors duration-300 text-[12px] md:text-sm font-bold text-center text-decoration-none" style="letter-spacing: 0.05em;">了解改色犀牛皮</a>
             </div>
         </div>
     </section>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const colorSlides = document.querySelectorAll('.color-slide');
-            const baseBgDesktop = document.getElementById('base-bg-desktop');
-            const baseBgMobile = document.getElementById('base-bg-mobile');
-            const mainTitle = document.getElementById('hero-main-title');
-            const subLeft = document.getElementById('sub-left');
-            const subRight = document.getElementById('sub-right');
-            const subDivider = document.getElementById('sub-divider');
-            const sellingPoints = ["線上色卡", "純乾貼施工", "AI換色預覽", "全台最齊 400＋", "全色系5年保固"];
-            let slideInterval, sequenceTimeout, currentIndex = 0;
-
-            function applyShowcaseState(index) {
-                if(baseBgDesktop) baseBgDesktop.style.opacity = '0';
-                if(baseBgMobile) baseBgMobile.style.opacity = '0';
-                subLeft.innerText = "AKS COLOR PPF";
-                subRight.innerText = "改色犀牛皮";
-                subDivider.style.opacity = '0'; 
-                subLeft.style.color = "#c81f2a"; 
-                colorSlides.forEach(slide => slide.style.opacity = '0');
-                if(colorSlides[index]) colorSlides[index].style.opacity = '0.6';
-                mainTitle.innerText = sellingPoints[index];
-                mainTitle.style.color = "#ffffff";
-            }
-            function revertDefaultState() {
-                if(baseBgDesktop) baseBgDesktop.style.opacity = '0.5';
-                if(baseBgMobile) baseBgMobile.style.opacity = '0.6';
-                colorSlides.forEach(slide => slide.style.opacity = '0');
-                subLeft.innerText = "犀牛皮";
-                subRight.innerText = "保護你的車";
-                subDivider.style.opacity = '1';
-                subLeft.style.color = ""; 
-                mainTitle.innerText = "超越時間的堅韌";
-            }
-            function playSequence() {
-                clearTimeout(sequenceTimeout);
-                clearInterval(slideInterval);
-                revertDefaultState();
-                sequenceTimeout = setTimeout(() => {
-                    currentIndex = 0;
-                    applyShowcaseState(currentIndex);
-                    slideInterval = setInterval(() => {
-                        currentIndex++;
-                        if (currentIndex >= colorSlides.length) { clearInterval(slideInterval); revertDefaultState(); } 
-                        else { applyShowcaseState(currentIndex); }
-                    }, 1500);
-                }, 1500);
-            }
-            if (colorSlides.length > 0) playSequence();
-        });
-    </script>
-
 
     <style>
         @media (max-width: 767px) {
-            .aks-mobile-accordion-content { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease-out; }
+            .aks-mobile-accordion-content { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s ease, opacity 0.5s ease; }
             .aks-mobile-accordion-card.is-open .aks-mobile-accordion-content { max-height: 500px; opacity: 1; }
             .aks-mobile-accordion-card.is-open .aks-accordion-icon { transform: rotate(180deg); }
         }
     </style>
     <section class="relative py-16 md:py-32 bg-[#050505] font-sans overflow-hidden">
-        <div class="max-w-7xl mx-auto px-8 md:px-6 mb-10 md:mb-16 text-center io-reveal" data-delay="1">
+        <div class="max-w-7xl mx-auto px-6 mb-10 md:mb-16 text-center io-reveal" data-delay="1">
             <h2 class="text-[18px] md:text-[28px] font-bold text-white tracking-[0.15em] mb-3 md:mb-4 leading-[1.6] md:leading-snug aks-font-clean">
                 重新定義<span class="text-[#c81f2a]">汽車包膜</span>：<br class="block md:hidden">頂級改色犀牛皮專屬體驗
             </h2>
             <p class="text-[10px] md:text-sm text-white/50 tracking-[0.2em] font-light uppercase">The Ultimate Color PPF Experience</p>
         </div>
-        <div class="w-full max-w-7xl mx-auto px-8 md:px-6">
-            <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8 items-start">
+        <div class="w-full max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-8 items-start">
                 
-                <div class="aks-mobile-accordion-card group block w-full p-6 md:p-10 bg-[#0d0d0f] md:hover:bg-[#121215] transition-all duration-500 rounded-[20px] md:rounded-[24px] overflow-hidden shadow-2xl relative io-reveal cursor-pointer md:cursor-auto" data-delay="2">
+                <div class="aks-mobile-accordion-card group block w-full p-6 md:p-10 bg-[#0d0d0f] md:hover:bg-[#121215] transition-all duration-500 rounded-[20px] shadow-2xl relative io-reveal" data-delay="2">
                     <div class="flex justify-between items-start">
                         <div>
-                            <div class="mb-5 md:mb-8 w-10 h-10 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-[#c81f2a] to-[#8a151d] flex items-center justify-center shadow-[0_5px_15px_rgba(200,31,42,0.4)] transition-transform duration-500 md:group-hover:scale-110">
-                                <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>
+                            <div class="mb-5 md:mb-8 w-12 h-12 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-[#c81f2a] to-[#8a151d] flex items-center justify-center shadow-[0_5px_15px_rgba(200,31,42,0.4)]">
+                                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>
                             </div>
                             <span class="block text-[#c81f2a] text-[10px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2">頂級膜料陣容</span>
                             <h3 class="text-[16px] md:text-[22px] font-bold text-white tracking-widest leading-snug aks-font-clean">透明、消光與 <span class="text-[#c81f2a]">400+ 改色</span></h3>
                         </div>
                         <div class="flex flex-col items-end">
-                            <span class="hidden md:block text-7xl font-black text-white/[0.03] leading-none select-none pointer-events-none transition-colors duration-500 group-hover:text-[#c81f2a]/10 font-sans">01</span>
+                            <span class="hidden md:block text-7xl font-black text-white/[0.03] leading-none select-none font-sans">01</span>
                             <svg class="aks-accordion-icon md:hidden w-5 h-5 text-white/50 transition-transform duration-300 mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </div>
                     </div>
-                    <div class="aks-mobile-accordion-content md:grid md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr] md:transition-[grid-template-rows] md:duration-500 md:ease-in-out md:max-h-none md:opacity-100">
-                        <div class="overflow-hidden">
-                            <p class="text-[13px] md:text-sm text-white/50 leading-[1.8] font-light text-justify pt-3 pb-1 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 delay-75">打破傳統汽車包膜框架，提供頂級亮面、消光及高達 400 種以上的改色犀牛皮選擇。全品項享有 <span class="text-white font-medium">5~7 年原廠保固</span>，賦予愛車最極致的防護。</p>
-                            <a href="/pages/products/" class="md:hidden mt-4 inline-block text-[11px] text-[#c81f2a] tracking-widest font-bold border-b border-[#c81f2a]/30 pb-1 text-decoration-none">EXPLORE ➔</a>
-                        </div>
+                    <div class="aks-mobile-accordion-content md:block md:max-h-none md:opacity-100 mt-0 md:mt-4">
+                        <p class="text-[13px] md:text-sm text-white/50 leading-[1.8] font-light text-justify pt-3 pb-1">打破傳統汽車包膜框架，提供頂級亮面、消光及高達 400 種以上的改色犀牛皮選擇。全品項享有 <span class="text-white font-medium">5~7 年原廠保固</span>，賦予愛車最極致的防護。</p>
                     </div>
-                    <div class="hidden md:flex mt-8 pt-4 border-t border-white/5 justify-between items-center transition-colors duration-500 group-hover:border-[#c81f2a]/30">
-                        <a href="/pages/products/" class="text-white/0 group-hover:text-[#c81f2a] tracking-widest transition-colors duration-500 font-bold text-[10px] w-full flex justify-between items-center text-decoration-none">
-                            EXPLORE <svg class="w-6 h-6 text-white/20 group-hover:text-[#c81f2a] transition-all duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
+                        <a href="/pages/products/" class="text-white/50 hover:text-[#c81f2a] tracking-widest transition-colors duration-500 font-bold text-[10px] w-full flex justify-between items-center text-decoration-none">
+                            EXPLORE <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                         </a>
                     </div>
                 </div>
 
-                <div class="aks-mobile-accordion-card group block w-full p-6 md:p-10 bg-[#0d0d0f] md:hover:bg-[#121215] transition-all duration-500 rounded-[20px] md:rounded-[24px] overflow-hidden shadow-2xl relative io-reveal cursor-pointer md:cursor-auto" data-delay="3">
+                <div class="aks-mobile-accordion-card group block w-full p-6 md:p-10 bg-[#0d0d0f] md:hover:bg-[#121215] transition-all duration-500 rounded-[20px] shadow-2xl relative io-reveal" data-delay="3">
                     <div class="flex justify-between items-start">
                         <div>
-                            <div class="mb-5 md:mb-8 w-10 h-10 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-[#c81f2a] to-[#8a151d] flex items-center justify-center shadow-[0_5px_15px_rgba(200,31,42,0.4)] transition-transform duration-500 md:group-hover:scale-110">
-                                <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            <div class="mb-5 md:mb-8 w-12 h-12 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-[#c81f2a] to-[#8a151d] flex items-center justify-center shadow-[0_5px_15px_rgba(200,31,42,0.4)]">
+                                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                             </div>
                             <span class="block text-[#c81f2a] text-[10px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2">數位選色體驗</span>
-                            <h3 class="text-[16px] md:text-[22px] font-bold text-white tracking-widest leading-snug aks-font-clean">業界首創 <span class="text-[#c81f2a]">高解析線上色卡</span></h3>
+                            <h3 class="text-[16px] md:text-[22px] font-bold text-white tracking-widest leading-snug aks-font-clean">業界首創 <span class="text-[#c81f2a]">線上色卡</span></h3>
                         </div>
                         <div class="flex flex-col items-end">
-                            <span class="hidden md:block text-7xl font-black text-white/[0.03] leading-none select-none pointer-events-none transition-colors duration-500 group-hover:text-[#c81f2a]/10 font-sans">02</span>
+                            <span class="hidden md:block text-7xl font-black text-white/[0.03] leading-none select-none font-sans">02</span>
                             <svg class="aks-accordion-icon md:hidden w-5 h-5 text-white/50 transition-transform duration-300 mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </div>
                     </div>
-                    <div class="aks-mobile-accordion-content md:grid md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr] md:transition-[grid-template-rows] md:duration-500 md:ease-in-out md:max-h-none md:opacity-100">
-                        <div class="overflow-hidden">
-                            <p class="text-[13px] md:text-sm text-white/50 leading-[1.8] font-light text-justify pt-3 pb-1 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 delay-75">探索色彩，從未如此直覺。專為改色犀牛皮打造的數位系統，完美還原膜料的深邃光澤與金屬顆粒感，在家即可輕鬆定調愛車風格。</p>
-                            <a href="/pages/color-chart/" class="md:hidden mt-4 inline-block text-[11px] text-[#c81f2a] tracking-widest font-bold border-b border-[#c81f2a]/30 pb-1 text-decoration-none">DISCOVER ➔</a>
-                        </div>
+                    <div class="aks-mobile-accordion-content md:block md:max-h-none md:opacity-100 mt-0 md:mt-4">
+                        <p class="text-[13px] md:text-sm text-white/50 leading-[1.8] font-light text-justify pt-3 pb-1">探索色彩，從未如此直覺。專為改色犀牛皮打造的數位系統，完美還原膜料的深邃光澤與金屬顆粒感，在家即可輕鬆定調愛車風格。</p>
                     </div>
-                    <div class="hidden md:flex mt-8 pt-4 border-t border-white/5 justify-between items-center transition-colors duration-500 group-hover:border-[#c81f2a]/30">
-                        <a href="/pages/color-chart/" class="text-white/0 group-hover:text-[#c81f2a] tracking-widest transition-colors duration-500 font-bold text-[10px] w-full flex justify-between items-center text-decoration-none">
-                            DISCOVER <svg class="w-6 h-6 text-white/20 group-hover:text-[#c81f2a] transition-all duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
+                        <a href="/pages/color-chart/" class="text-white/50 hover:text-[#c81f2a] tracking-widest transition-colors duration-500 font-bold text-[10px] w-full flex justify-between items-center text-decoration-none">
+                            DISCOVER <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                         </a>
                     </div>
                 </div>
 
-                <div class="aks-mobile-accordion-card group block w-full p-6 md:p-10 bg-[#0d0d0f] md:hover:bg-[#121215] transition-all duration-500 rounded-[20px] md:rounded-[24px] overflow-hidden shadow-2xl relative io-reveal cursor-pointer md:cursor-auto" data-delay="4">
+                <div class="aks-mobile-accordion-card group block w-full p-6 md:p-10 bg-[#0d0d0f] md:hover:bg-[#121215] transition-all duration-500 rounded-[20px] shadow-2xl relative io-reveal" data-delay="4">
                     <div class="flex justify-between items-start">
                         <div>
-                            <div class="mb-5 md:mb-8 w-10 h-10 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-[#c81f2a] to-[#8a151d] flex items-center justify-center shadow-[0_5px_15px_rgba(200,31,42,0.4)] transition-transform duration-500 md:group-hover:scale-110">
-                                <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            <div class="mb-5 md:mb-8 w-12 h-12 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-[#c81f2a] to-[#8a151d] flex items-center justify-center shadow-[0_5px_15px_rgba(200,31,42,0.4)]">
+                                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                             </div>
                             <span class="block text-[#c81f2a] text-[10px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2">專利獨家科技</span>
                             <h3 class="text-[16px] md:text-[22px] font-bold text-white tracking-widest leading-snug aks-font-clean">AI 實車換色 <span class="text-[#c81f2a]">完工預覽</span></h3>
                         </div>
                         <div class="flex flex-col items-end">
-                            <span class="hidden md:block text-7xl font-black text-white/[0.03] leading-none select-none pointer-events-none transition-colors duration-500 group-hover:text-[#c81f2a]/10 font-sans">03</span>
+                            <span class="hidden md:block text-7xl font-black text-white/[0.03] leading-none select-none font-sans">03</span>
                             <svg class="aks-accordion-icon md:hidden w-5 h-5 text-white/50 transition-transform duration-300 mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </div>
                     </div>
-                    <div class="aks-mobile-accordion-content md:grid md:grid-rows-[0fr] md:group-hover:grid-rows-[1fr] md:transition-[grid-template-rows] md:duration-500 md:ease-in-out md:max-h-none md:opacity-100">
-                        <div class="overflow-hidden">
-                            <p class="text-[13px] md:text-sm text-white/50 leading-[1.8] font-light text-justify pt-3 pb-1 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 delay-75">選色不再需要憑空想像。預約實車拍攝，透過專利 AI 技術，一張照片瞬間套用頂級犀牛皮，100% 呈現改色完工後的真實奢華樣貌。</p>
-                            <a href="/pages/ai-preview-partners/" class="md:hidden mt-4 inline-block text-[11px] text-[#c81f2a] tracking-widest font-bold border-b border-[#c81f2a]/30 pb-1 text-decoration-none">PREVIEW ➔</a>
-                        </div>
+                    <div class="aks-mobile-accordion-content md:block md:max-h-none md:opacity-100 mt-0 md:mt-4">
+                        <p class="text-[13px] md:text-sm text-white/50 leading-[1.8] font-light text-justify pt-3 pb-1">選色不再需要憑空想像。預約實車拍攝，透過專利 AI 技術，一張照片瞬間套用頂級犀牛皮，100% 呈現改色完工後的真實奢華樣貌。</p>
                     </div>
-                    <div class="hidden md:flex mt-8 pt-4 border-t border-white/5 justify-between items-center transition-colors duration-500 group-hover:border-[#c81f2a]/30">
-                        <a href="/pages/ai-preview-partners/" class="text-white/0 group-hover:text-[#c81f2a] tracking-widest transition-colors duration-500 font-bold text-[10px] w-full flex justify-between items-center text-decoration-none">
-                            PREVIEW <svg class="w-6 h-6 text-white/20 group-hover:text-[#c81f2a] transition-all duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
+                        <a href="/pages/ai-preview-partners/" class="text-white/50 hover:text-[#c81f2a] tracking-widest transition-colors duration-500 font-bold text-[10px] w-full flex justify-between items-center text-decoration-none">
+                            PREVIEW <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                         </a>
                     </div>
                 </div>
@@ -282,182 +225,144 @@
             </div>
         </div>
     </section>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const cards = document.querySelectorAll('.aks-mobile-accordion-card');
-            cards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (window.innerWidth >= 768) return;
-                    if(e.target.tagName.toLowerCase() === 'a') return;
-                    const isOpen = this.classList.contains('is-open');
-                    cards.forEach(c => c.classList.remove('is-open'));
-                    if (!isOpen) this.classList.add('is-open');
-                });
-            });
-        });
-    </script>
-
 
     <style>
+        .aks-card-overlay { opacity: 0.5; transition: opacity 0.5s ease; }
+        .aks-mobile-content-reveal { display: grid; grid-template-rows: 0fr; opacity: 0; pointer-events: none; transition: grid-template-rows 0.5s ease, opacity 0.5s ease; }
+        .aks-mobile-content-reveal > div { overflow: hidden; }
+        
         @media (min-width: 992px) {
-            .aks-card-overlay { opacity: 0.4; transition: opacity 0.8s ease; }
-            .aks-desc-wrapper-pc { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease; }
+            .aks-card-overlay { opacity: 0.4; }
+            .aks-desc-wrapper-pc { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.5s ease, opacity 0.5s ease; }
             .aks-desc-wrapper-pc > div { overflow: hidden; }
-            .aks-bottom-status-pc { transform: translateY(15px); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-            .aks-explore-text { opacity: 0; transform: translateX(-10px); transition: all 0.5s ease; transition-delay: 0s; }
-            .aks-explore-icon { color: rgba(255,255,255,0.4); transition: color 0.3s; }
-            .aks-product-card:hover .aks-card-overlay { opacity: 0.9; }
+            .aks-bottom-status-pc { transform: translateY(15px); transition: transform 0.5s ease; }
+            .aks-explore-text { opacity: 0; transform: translateX(-10px); transition: all 0.4s ease; }
+            
+            .aks-product-card:hover .aks-card-overlay { opacity: 0.85; }
             .aks-product-card:hover .aks-desc-wrapper-pc { grid-template-rows: 1fr; opacity: 1; }
             .aks-product-card:hover .aks-bottom-status-pc { transform: translateY(0); }
-            .aks-product-card:hover .aks-explore-text { opacity: 1; transform: translateX(0); transition-delay: 0.1s; }
-            .aks-product-card:hover .aks-explore-icon { color: white; }
+            .aks-product-card:hover .aks-explore-text { opacity: 1; transform: translateX(0); }
         }
         @media (max-width: 991px) {
-            .aks-card-overlay { opacity: 0.5; transition: opacity 0.8s ease; }
-            .aks-mobile-content-reveal { display: grid; grid-template-rows: 0fr; opacity: 0; pointer-events: none; transition: grid-template-rows 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease; transition-delay: 0s; }
-            .aks-mobile-content-reveal > div { overflow: hidden; }
             .aks-product-card.is-active .aks-card-overlay { opacity: 0.85; }
-            .aks-product-card.is-active .aks-mobile-content-reveal { grid-template-rows: 1fr; opacity: 1; pointer-events: auto; transition-delay: 1.3s; }
+            .aks-product-card.is-active .aks-mobile-content-reveal { grid-template-rows: 1fr; opacity: 1; pointer-events: auto; }
         }
     </style>
     <section class="text-white py-20 md:py-32 overflow-hidden bg-[#050505]" id="aks-flagship-products">
-        <div class="container mx-auto md:px-[5%] relative">
-            
-            <div class="mb-12 md:mb-20 text-center io-reveal px-2 md:px-0">
-                <h2 class="flex flex-row items-baseline justify-center gap-2 md:gap-4 mb-3 md:mb-5 leading-none whitespace-nowrap overflow-hidden">
-                    <span class="aks-font-youshe text-[32px] sm:text-[36px] md:text-[60px] lg:text-[70px] text-[#c81f2a] tracking-widest translate-y-[1px] md:translate-y-[4px]">AKS</span>
-                    <span class="aks-font-clean text-[13px] sm:text-[15px] md:text-[28px] lg:text-[34px] font-bold text-white tracking-[0.05em] md:tracking-[0.2em]">PPF SERIES ‧ 旗艦TPU系列</span>
+        <div class="w-full max-w-7xl mx-auto md:px-6 relative">
+            <div class="mb-12 md:mb-16 text-center io-reveal px-4">
+                <h2 class="flex flex-row items-baseline justify-center gap-2 md:gap-4 mb-3 md:mb-4 leading-none whitespace-nowrap overflow-hidden">
+                    <span class="aks-font-youshe text-[32px] md:text-[60px] text-[#c81f2a] tracking-widest translate-y-[2px]">AKS</span>
+                    <span class="aks-font-clean text-[13px] md:text-[28px] font-bold text-white tracking-[0.05em] md:tracking-[0.2em]">PPF SERIES ‧ 旗艦TPU系列</span>
                 </h2>
-                <p class="text-white/60 text-[12px] md:text-[15px] max-w-3xl mx-auto leading-[1.8] aks-font-clean tracking-widest font-light whitespace-normal px-4">
-                    專為極致工藝打造。全系列採用航太級 TPU 基材與專屬純乾貼技術，賦予漆面長效防護與深層光澤。每一款都是 AKS 統治級傑作。
-                </p>
+                <p class="text-white/60 text-[12px] md:text-[15px] max-w-3xl mx-auto leading-[1.8] aks-font-clean tracking-widest font-light whitespace-normal">專為極致工藝打造。全系列採用航太級 TPU 基材與專屬純乾貼技術，賦予漆面長效防護與深層光澤。每一款都是 AKS 統治級傑作。</p>
             </div>
 
-            <div id="aks-carousel-grid" class="flex md:grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 overflow-x-auto snap-x snap-mandatory no-scrollbar px-6 md:px-0 pb-6 md:pb-0">
+            <div id="aks-carousel-grid" class="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory no-scrollbar px-6 md:px-0 pb-6 md:pb-0 w-full">
                 
-                <div class="aks-product-card flex flex-col flex-shrink-0 w-[85vw] md:w-auto snap-center group io-reveal" data-delay="1">
-                    <h3 class="text-center text-[28px] md:text-[36px] font-black text-white tracking-widest mb-4 italic aks-font-youshe transform transition-transform duration-500 md:group-hover:scale-105">COLOR PPF</h3>
-                    <div class="relative w-full aspect-[4/5] md:aspect-[16/10] overflow-hidden rounded-xl">
-                        <img src="https://aks-ppf.github.io/images/color-ppf.png" alt="AKS COLOR PPF 改色犀牛皮 McLaren 案例" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out md:group-hover:scale-105">
+                <div class="aks-product-card flex flex-col flex-shrink-0 w-[85vw] md:w-full snap-center group io-reveal" data-delay="1">
+                    <h3 class="text-center text-[28px] md:text-[32px] font-black text-white tracking-widest mb-4 italic aks-font-youshe">COLOR PPF</h3>
+                    <div class="relative w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-[20px]">
+                        <img src="https://aks-ppf.github.io/images/color-ppf.png" alt="AKS COLOR PPF" class="absolute inset-0 w-full h-full object-cover md:group-hover:scale-105 transition-transform duration-[2s] ease-out">
                         <div class="aks-card-overlay absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 md:pt-16 md:pb-12 flex flex-col justify-end z-10 overflow-hidden">
+                        <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-10">
                             <div class="md:hidden flex flex-col gap-2">
-                                <div class="flex flex-col gap-2">
-                                    <div><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean tracking-wider font-bold mb-1 inline-block">改色膜</span></div>
-                                    <div class="flex flex-row items-center justify-between w-full">
-                                        <span class="text-white text-[18px] sm:text-[20px] font-bold tracking-widest aks-font-clean block leading-none">改色犀牛皮</span>
-                                        <svg class="w-5 h-5 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                                    </div>
-                                </div>
+                                <div><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean font-bold mb-1">改色膜</span></div>
+                                <span class="text-white text-[18px] font-bold tracking-widest aks-font-clean block">改色犀牛皮</span>
                                 <div class="aks-mobile-content-reveal">
                                     <div>
-                                        <p class="text-white/80 text-[13px] leading-relaxed mb-5 font-light aks-font-clean pt-3">業界首創 AI 換色預覽，400+ 色系任君挑選。結合 TPU 物理防護與頂級色澤，完美還原烤漆質感。</p>
-                                        <a href="/pages/products-color-ppf/" class="block w-full bg-white text-black text-center py-3.5 rounded text-[14px] font-bold tracking-widest aks-font-clean pointer-events-auto text-decoration-none">探索</a>
+                                        <p class="text-white/80 text-[13px] leading-relaxed mb-4 font-light aks-font-clean pt-2">業界首創 AI 換色預覽，400+ 色系任君挑選。結合 TPU 防護與頂級色澤。</p>
+                                        <a href="/pages/products-color-ppf/" class="block w-full bg-white text-black text-center py-3 rounded text-[14px] font-bold tracking-widest aks-font-clean text-decoration-none">探索</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="aks-desc-wrapper-pc hidden md:block">
-                                <div><p class="text-white/80 text-[13px] md:text-[15px] leading-relaxed mb-6 font-light aks-font-clean">業界首創 AI 換色預覽，400+ 色系任君挑選。結合 TPU 物理防護與頂級色澤，完美還原烤漆質感。</p></div>
-                            </div>
-                            <div class="aks-bottom-status-pc hidden md:flex flex-row md:items-end justify-between w-full">
-                                <div class="flex flex-col gap-2"><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean tracking-wider font-bold">改色膜</span><span class="text-white text-[18px] md:text-[22px] font-bold tracking-widest aks-font-clean leading-none">改色犀牛皮</span></div>
-                                <a href="/pages/products-color-ppf/" class="hidden md:flex items-center gap-2 mt-4 md:mt-0 text-decoration-none"><span class="aks-explore-text text-[14px] font-bold tracking-widest text-white aks-font-clean">探索</span><svg class="aks-explore-icon w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="aks-product-card flex flex-col flex-shrink-0 w-[85vw] md:w-auto snap-center group io-reveal" data-delay="2">
-                    <h3 class="text-center text-[28px] md:text-[36px] font-black text-white tracking-widest mb-4 italic aks-font-youshe transform transition-transform duration-500 md:group-hover:scale-105">GL-75</h3>
-                    <div class="relative w-full aspect-[4/5] md:aspect-[16/10] overflow-hidden rounded-xl">
-                        <img src="https://aks-ppf.github.io/images/GL-75-Q5-1.jpg" alt="AKS GL-75 亮面 TPU 犀牛皮 Audi Q5 案例" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out md:group-hover:scale-105">
-                        <div class="aks-card-overlay absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 md:pt-16 md:pb-12 flex flex-col justify-end z-10 overflow-hidden">
-                            <div class="md:hidden flex flex-col gap-2">
-                                <div class="flex flex-col gap-2">
-                                    <div><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean tracking-wider font-bold mb-1 inline-block">防護膜</span></div>
-                                    <div class="flex flex-row items-center justify-between w-full">
-                                        <span class="text-white text-[18px] sm:text-[20px] font-bold tracking-widest aks-font-clean block leading-none">亮面犀牛皮</span>
-                                        <svg class="w-5 h-5 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                                    </div>
+                            <div class="hidden md:block">
+                                <div class="aks-desc-wrapper-pc"><div><p class="text-white/80 text-[13px] leading-relaxed mb-4 font-light aks-font-clean">業界首創 AI 換色預覽，400+ 色系任君挑選。結合 TPU 防護與頂級色澤。</p></div></div>
+                                <div class="aks-bottom-status-pc flex justify-between items-end">
+                                    <div class="flex flex-col gap-2"><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit font-bold">改色膜</span><span class="text-white text-[20px] font-bold tracking-widest">改色犀牛皮</span></div>
+                                    <a href="/pages/products-color-ppf/" class="flex items-center gap-2 text-decoration-none"><span class="aks-explore-text text-[13px] font-bold tracking-widest text-white">探索</span><svg class="aks-explore-icon w-5 h-5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
                                 </div>
-                                <div class="aks-mobile-content-reveal">
-                                    <div>
-                                        <p class="text-white/80 text-[13px] leading-relaxed mb-5 font-light aks-font-clean pt-3">極致高亮車漆保護膜。採用頂級脂肪族 TPU 基材，卓越抗黃變與細紋修復性能，封存出廠耀眼光澤。</p>
-                                        <a href="/pages/products-tpu-gl75/" class="block w-full bg-white text-black text-center py-3.5 rounded text-[14px] font-bold tracking-widest aks-font-clean pointer-events-auto text-decoration-none">探索</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="aks-desc-wrapper-pc hidden md:block">
-                                <div><p class="text-white/80 text-[13px] md:text-[15px] leading-relaxed mb-6 font-light aks-font-clean">極致高亮車漆保護膜。採用頂級脂肪族 TPU 基材，卓越抗黃變與細紋修復性能，封存出廠耀眼光澤。</p></div>
-                            </div>
-                            <div class="aks-bottom-status-pc hidden md:flex flex-row md:items-end justify-between w-full">
-                                <div class="flex flex-col gap-2"><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean tracking-wider font-bold">防護膜</span><span class="text-white text-[18px] md:text-[22px] font-bold tracking-widest aks-font-clean leading-none">亮面犀牛皮</span></div>
-                                <a href="/pages/products-tpu-gl75/" class="hidden md:flex items-center gap-2 mt-4 md:mt-0 text-decoration-none"><span class="aks-explore-text text-[14px] font-bold tracking-widest text-white aks-font-clean">探索</span><svg class="aks-explore-icon w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="aks-product-card flex flex-col flex-shrink-0 w-[85vw] md:w-auto snap-center group io-reveal" data-delay="3">
-                    <h3 class="text-center text-[28px] md:text-[36px] font-black text-white tracking-widest mb-4 italic aks-font-youshe transform transition-transform duration-500 md:group-hover:scale-105">GL-75PRO</h3>
-                    <div class="relative w-full aspect-[4/5] md:aspect-[16/10] overflow-hidden rounded-xl">
-                        <img src="https://aks-ppf.github.io/images/GL-75PRO-Gcar-2.jpg" alt="AKS GL-75PRO" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out md:group-hover:scale-105">
+                <div class="aks-product-card flex flex-col flex-shrink-0 w-[85vw] md:w-full snap-center group io-reveal" data-delay="2">
+                    <h3 class="text-center text-[28px] md:text-[32px] font-black text-white tracking-widest mb-4 italic aks-font-youshe">GL-75</h3>
+                    <div class="relative w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-[20px]">
+                        <img src="https://aks-ppf.github.io/images/GL-75-Q5-1.jpg" alt="AKS GL-75" class="absolute inset-0 w-full h-full object-cover md:group-hover:scale-105 transition-transform duration-[2s] ease-out">
                         <div class="aks-card-overlay absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 md:pt-16 md:pb-12 flex flex-col justify-end z-10 overflow-hidden">
+                        <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-10">
                             <div class="md:hidden flex flex-col gap-2">
-                                <div class="flex flex-col gap-2">
-                                    <div><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean tracking-wider font-bold mb-1 inline-block">防護膜</span></div>
-                                    <div class="flex flex-row items-center justify-between w-full">
-                                        <span class="text-white text-[18px] sm:text-[20px] font-bold tracking-widest aks-font-clean block leading-none">超拉伸亮面犀牛皮</span>
-                                        <svg class="w-5 h-5 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                                    </div>
-                                </div>
+                                <div><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean font-bold mb-1">防護膜</span></div>
+                                <span class="text-white text-[18px] font-bold tracking-widest aks-font-clean block">亮面犀牛皮</span>
                                 <div class="aks-mobile-content-reveal">
                                     <div>
-                                        <p class="text-white/80 text-[13px] leading-relaxed mb-5 font-light aks-font-clean pt-3">專為複雜曲面量身打造。保留頂級高亮與修復性能，全面提升膜料延展性，為超跑與越野車提供零死角防護。</p>
-                                        <a href="/pages/products-tpu-gl75pro/" class="block w-full bg-white text-black text-center py-3.5 rounded text-[14px] font-bold tracking-widest aks-font-clean pointer-events-auto text-decoration-none">探索</a>
+                                        <p class="text-white/80 text-[13px] leading-relaxed mb-4 font-light aks-font-clean pt-2">極致高亮車漆保護膜。採用頂級脂肪族 TPU 基材，封存出廠耀眼光澤。</p>
+                                        <a href="/pages/products-tpu-gl75/" class="block w-full bg-white text-black text-center py-3 rounded text-[14px] font-bold tracking-widest aks-font-clean text-decoration-none">探索</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="aks-desc-wrapper-pc hidden md:block">
-                                <div><p class="text-white/80 text-[13px] md:text-[15px] leading-relaxed mb-6 font-light aks-font-clean">專為複雜曲面量身打造。保留頂級高亮與修復性能，全面提升膜料延展性，為超跑與越野車提供零死角防護。</p></div>
-                            </div>
-                            <div class="aks-bottom-status-pc hidden md:flex flex-row md:items-end justify-between w-full">
-                                <div class="flex flex-col gap-2"><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean tracking-wider font-bold">防護膜</span><span class="text-white text-[18px] md:text-[22px] font-bold tracking-widest aks-font-clean leading-none">超拉伸亮面犀牛皮</span></div>
-                                <a href="/pages/products-tpu-gl75pro/" class="hidden md:flex items-center gap-2 mt-4 md:mt-0 text-decoration-none"><span class="aks-explore-text text-[14px] font-bold tracking-widest text-white aks-font-clean">探索</span><svg class="aks-explore-icon w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+                            <div class="hidden md:block">
+                                <div class="aks-desc-wrapper-pc"><div><p class="text-white/80 text-[13px] leading-relaxed mb-4 font-light aks-font-clean">極致高亮車漆保護膜。採用頂級脂肪族 TPU 基材，封存出廠耀眼光澤。</p></div></div>
+                                <div class="aks-bottom-status-pc flex justify-between items-end">
+                                    <div class="flex flex-col gap-2"><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit font-bold">防護膜</span><span class="text-white text-[20px] font-bold tracking-widest">亮面犀牛皮</span></div>
+                                    <a href="/pages/products-tpu-gl75/" class="flex items-center gap-2 text-decoration-none"><span class="aks-explore-text text-[13px] font-bold tracking-widest text-white">探索</span><svg class="aks-explore-icon w-5 h-5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="aks-product-card flex flex-col flex-shrink-0 w-[85vw] md:w-auto snap-center group io-reveal" data-delay="4">
-                    <h3 class="text-center text-[28px] md:text-[36px] font-black text-white tracking-widest mb-4 italic aks-font-youshe transform transition-transform duration-500 md:group-hover:scale-105">MA-75</h3>
-                    <div class="relative w-full aspect-[4/5] md:aspect-[16/10] overflow-hidden rounded-xl">
-                        <img src="https://aks-ppf.github.io/images/MA-75-MODEL3-3.jpg" alt="AKS MA-75" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out md:group-hover:scale-105">
+                <div class="aks-product-card flex flex-col flex-shrink-0 w-[85vw] md:w-full snap-center group io-reveal" data-delay="3">
+                    <h3 class="text-center text-[28px] md:text-[32px] font-black text-white tracking-widest mb-4 italic aks-font-youshe">GL-75PRO</h3>
+                    <div class="relative w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-[20px]">
+                        <img src="https://aks-ppf.github.io/images/GL-75PRO-Gcar-2.jpg" alt="GL-75PRO" class="absolute inset-0 w-full h-full object-cover md:group-hover:scale-105 transition-transform duration-[2s] ease-out">
                         <div class="aks-card-overlay absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 md:pt-16 md:pb-12 flex flex-col justify-end z-10 overflow-hidden">
+                        <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-10">
                             <div class="md:hidden flex flex-col gap-2">
-                                <div class="flex flex-col gap-2">
-                                    <div><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean tracking-wider font-bold mb-1 inline-block">防護膜</span></div>
-                                    <div class="flex flex-row items-center justify-between w-full">
-                                        <span class="text-white text-[18px] sm:text-[20px] font-bold tracking-widest aks-font-clean block leading-none">消光犀牛皮</span>
-                                        <svg class="w-5 h-5 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                                    </div>
-                                </div>
+                                <div><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean font-bold mb-1">防護膜</span></div>
+                                <span class="text-white text-[18px] font-bold tracking-widest aks-font-clean block">超拉伸犀牛皮</span>
                                 <div class="aks-mobile-content-reveal">
                                     <div>
-                                        <p class="text-white/80 text-[13px] leading-relaxed mb-5 font-light aks-font-clean pt-3">頂級啞光消光質感，重塑車身立體折線。內建強效防污塗層，無懼水痕，維持長期低調奢華。</p>
-                                        <a href="/pages/products-tpu-ma75/" class="block w-full bg-white text-black text-center py-3.5 rounded text-[14px] font-bold tracking-widest aks-font-clean pointer-events-auto text-decoration-none">探索</a>
+                                        <p class="text-white/80 text-[13px] leading-relaxed mb-4 font-light aks-font-clean pt-2">專為複雜曲面量身打造。全面提升膜料延展性，為越野車提供零死角防護。</p>
+                                        <a href="/pages/products-tpu-gl75pro/" class="block w-full bg-white text-black text-center py-3 rounded text-[14px] font-bold tracking-widest aks-font-clean text-decoration-none">探索</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="aks-desc-wrapper-pc hidden md:block">
-                                <div><p class="text-white/80 text-[13px] md:text-[15px] leading-relaxed mb-6 font-light aks-font-clean">頂級啞光消光質感，重塑車身立體折線。內建強效防污塗層，無懼水痕，維持長期低調奢華。</p></div>
+                            <div class="hidden md:block">
+                                <div class="aks-desc-wrapper-pc"><div><p class="text-white/80 text-[13px] leading-relaxed mb-4 font-light aks-font-clean">專為複雜曲面量身打造。全面提升膜料延展性，為越野車提供零死角防護。</p></div></div>
+                                <div class="aks-bottom-status-pc flex justify-between items-end">
+                                    <div class="flex flex-col gap-2"><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit font-bold">防護膜</span><span class="text-white text-[20px] font-bold tracking-widest">超拉伸犀牛皮</span></div>
+                                    <a href="/pages/products-tpu-gl75pro/" class="flex items-center gap-2 text-decoration-none"><span class="aks-explore-text text-[13px] font-bold tracking-widest text-white">探索</span><svg class="aks-explore-icon w-5 h-5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+                                </div>
                             </div>
-                            <div class="aks-bottom-status-pc hidden md:flex flex-row md:items-end justify-between w-full">
-                                <div class="flex flex-col gap-2"><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean tracking-wider font-bold">防護膜</span><span class="text-white text-[18px] md:text-[22px] font-bold tracking-widest aks-font-clean leading-none">消光犀牛皮</span></div>
-                                <a href="/pages/products-tpu-ma75/" class="hidden md:flex items-center gap-2 mt-4 md:mt-0 text-decoration-none"><span class="aks-explore-text text-[14px] font-bold tracking-widest text-white aks-font-clean">探索</span><svg class="aks-explore-icon w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="aks-product-card flex flex-col flex-shrink-0 w-[85vw] md:w-full snap-center group io-reveal" data-delay="4">
+                    <h3 class="text-center text-[28px] md:text-[32px] font-black text-white tracking-widest mb-4 italic aks-font-youshe">MA-75</h3>
+                    <div class="relative w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-[20px]">
+                        <img src="https://aks-ppf.github.io/images/MA-75-MODEL3-3.jpg" alt="MA-75" class="absolute inset-0 w-full h-full object-cover md:group-hover:scale-105 transition-transform duration-[2s] ease-out">
+                        <div class="aks-card-overlay absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-10">
+                            <div class="md:hidden flex flex-col gap-2">
+                                <div><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit aks-font-clean font-bold mb-1">防護膜</span></div>
+                                <span class="text-white text-[18px] font-bold tracking-widest aks-font-clean block">消光犀牛皮</span>
+                                <div class="aks-mobile-content-reveal">
+                                    <div>
+                                        <p class="text-white/80 text-[13px] leading-relaxed mb-4 font-light aks-font-clean pt-2">頂級啞光消光質感，重塑車身立體折線。內建強效防污塗層，無懼水痕。</p>
+                                        <a href="/pages/products-tpu-ma75/" class="block w-full bg-white text-black text-center py-3 rounded text-[14px] font-bold tracking-widest aks-font-clean text-decoration-none">探索</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden md:block">
+                                <div class="aks-desc-wrapper-pc"><div><p class="text-white/80 text-[13px] leading-relaxed mb-4 font-light aks-font-clean">頂級啞光消光質感，重塑車身立體折線。內建強效防污塗層，無懼水痕。</p></div></div>
+                                <div class="aks-bottom-status-pc flex justify-between items-end">
+                                    <div class="flex flex-col gap-2"><span class="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded-sm w-fit font-bold">防護膜</span><span class="text-white text-[20px] font-bold tracking-widest">消光犀牛皮</span></div>
+                                    <a href="/pages/products-tpu-ma75/" class="flex items-center gap-2 text-decoration-none"><span class="aks-explore-text text-[13px] font-bold tracking-widest text-white">探索</span><svg class="aks-explore-icon w-5 h-5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -473,221 +378,137 @@
             </div>
         </div>
     </section>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const carousel = document.getElementById('aks-carousel-grid');
-            const dotsContainer = document.getElementById('aks-carousel-dots');
-            const cards = document.querySelectorAll('.aks-product-card');
-            const sectionObserverBlock = document.getElementById('aks-flagship-products');
-            let scrollTimeout, currentActiveIndex = -1, blockVisible = false;
-
-            if (sectionObserverBlock) {
-                const blockObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) { blockVisible = true; updateCarouselUX(); } 
-                        else { blockVisible = false; clearTimeout(scrollTimeout); cards.forEach(card => card.classList.remove('is-active')); currentActiveIndex = -1; }
-                    });
-                }, { threshold: 0.2 });
-                blockObserver.observe(sectionObserverBlock);
-            }
-
-            if (carousel && dotsContainer && cards.length > 0) {
-                const dots = dotsContainer.querySelectorAll('span');
-                function updateCarouselUX() {
-                    if (window.innerWidth >= 992) { cards.forEach(card => card.classList.remove('is-active')); return; }
-                    const scrollLeft = carousel.scrollLeft;
-                    const containerCenter = scrollLeft + (carousel.offsetWidth / 2);
-                    let closestIndex = 0, minDistance = Infinity;
-                    cards.forEach((card, index) => {
-                        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-                        const distance = Math.abs(containerCenter - cardCenter);
-                        if (distance < minDistance) { minDistance = distance; closestIndex = index; }
-                    });
-                    dots.forEach((dot, index) => {
-                        if (index === closestIndex) { dot.classList.replace('bg-white/20', 'bg-[#c81f2a]'); } 
-                        else { dot.classList.replace('bg-[#c81f2a]', 'bg-white/20'); }
-                    });
-                    if (!blockVisible) return;
-                    if (closestIndex !== currentActiveIndex) {
-                        cards.forEach(card => card.classList.remove('is-active'));
-                        currentActiveIndex = closestIndex;
-                        clearTimeout(scrollTimeout);
-                        scrollTimeout = setTimeout(() => { cards[currentActiveIndex].classList.add('is-active'); }, 500); 
-                    }
-                }
-                carousel.addEventListener('scroll', updateCarouselUX, { passive: true });
-                window.addEventListener('resize', updateCarouselUX);
-            }
-        });
-    </script>
-
-
-    <section class="aks-homeblocks" id="aksHomeBlocks">
-        <style>
-            #aksHomeBlocks{ --text:#e9eef7; --muted:rgba(233,238,247,.70); --line:rgba(255,255,255,.10); --accent:#e23b3b; color:var(--text); font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC",Arial,sans-serif; background-color: #050505; }
-            #aksHomeBlocks *{ box-sizing:border-box; }
-            #aksHomeBlocks a{ color:inherit; text-decoration:none; }
-            #aksHomeBlocks img{ display:block; max-width:100%; }
-            #aksHomeBlocks .aks-wrap{ width:min(1200px, 92vw); margin:0 auto; padding:56px 0; }
-            #aksHomeBlocks .aks-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:18px; }
-            #aksHomeBlocks .aks-head.left{ text-align:left; }
-            #aksHomeBlocks .aks-kicker{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
-            #aksHomeBlocks .aks-title{ font-size:clamp(28px, 3vw, 44px); letter-spacing:-.02em; line-height:1.05; margin:0; }
-            #aksHomeBlocks .aks-sub{ margin:10px 0 0; color:var(--muted); font-size:15px; max-width:72ch; opacity:.55; }
-            #aksHomeBlocks .aks-ctaRow{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end; }
-            #aksHomeBlocks .aks-btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:10px 14px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.03); transition:transform .15s ease, background .15s ease, border-color .15s ease; font-weight:650; font-size:13px; white-space:nowrap; }
-            #aksHomeBlocks .aks-btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.18); }
-            #aksHomeBlocks .aks-btn.primary{ border-color:transparent; background:linear-gradient(135deg, rgba(226,59,59,.28), rgba(226,59,59,.12)); }
-            #aksHomeBlocks .aks-carousel{ position:relative; margin-top:18px; }
-            #aksHomeBlocks .aks-track{ display:grid; grid-auto-flow:column; grid-auto-columns:minmax(280px, 1fr); gap:16px; overflow:auto; padding:2px 2px 14px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:thin; scrollbar-color: rgba(255,255,255,.18) transparent; }
-            #aksHomeBlocks .aks-track::-webkit-scrollbar{ height:10px; }
-            #aksHomeBlocks .aks-track::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.16); border-radius:999px; }
-            #aksHomeBlocks .aks-track::-webkit-scrollbar-track{ background:transparent; }
-            #aksHomeBlocks .aks-nav{ position:absolute; top:50%; transform:translateY(-50%); width:46px; height:46px; border-radius:999px; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.06); display:none; align-items:center; justify-content:center; cursor:pointer; user-select:none; z-index:2; transition:transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease; }
-            #aksHomeBlocks .aks-nav:hover{ transform:translateY(-50%) scale(1.04); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.22); box-shadow: 0 14px 36px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,255,255,.08); }
-            #aksHomeBlocks .aks-nav.left{ left:-12px; }
-            #aksHomeBlocks .aks-nav.right{ right:-12px; }
-            @media (min-width: 980px){ #aksHomeBlocks .aks-nav{ display:flex; } #aksHomeBlocks .aks-track{ grid-auto-columns:minmax(340px, 1fr); } }
-            #aksHomeBlocks .aks-card{ scroll-snap-align:start; border:none; background:transparent; box-shadow:none; overflow:hidden; border-radius:22px; display:flex; flex-direction:column; position:relative; isolation:isolate; transition:transform .18s ease, filter .18s ease; outline:none; }
-            #aksHomeBlocks .aks-card:hover{ transform:translateY(-2px); filter:saturate(1.03) contrast(1.02); }
-            #aksHomeBlocks .aks-media{ position:relative; aspect-ratio: 16/10; border-radius:22px; overflow:hidden; background:#0e1520; }
-            #aksHomeBlocks .aks-media img{ width:100%; height:100%; object-fit:cover; transform:scale(1.02); }
-            #aksHomeBlocks .aks-overlay{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.18) 100%); pointer-events:none; }
-            #aksHomeBlocks .aks-corner{ position:absolute; top:14px; right:14px; width:44px; height:44px; border-radius:999px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 10px 30px rgba(0,0,0,.32), inset 0 0 0 1px rgba(255,255,255,.06); opacity:0; transform:translateY(2px) scale(.98); transition:opacity .15s ease, transform .15s ease, background .15s ease, border-color .15s ease; z-index:3; pointer-events:none; font-weight:900; font-size:18px; line-height:1; }
-            #aksHomeBlocks .aks-card:hover .aks-corner, #aksHomeBlocks .aks-card:focus-visible .aks-corner{ opacity:1; transform:translateY(0) scale(1); }
-            #aksHomeBlocks .aks-body{ display:none !important; }
-            #aksHomeBlocks .aks-divider{ height:1px; background:var(--line); margin:38px 0; }
-            #aksHomeBlocks .aks-skeleton{ border-radius:22px; overflow:hidden; background:rgba(255,255,255,.04); min-height:340px; position:relative; }
-            #aksHomeBlocks .aks-skeleton:before{ content:""; position:absolute; inset:0; background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent); transform:translateX(-100%); animation:aksShimmer 1.2s infinite; }
-            @keyframes aksShimmer{ 0%{ transform:translateX(-100%); } 100%{ transform:translateX(100%); } }
-        </style>
-
-        <div class="aks-wrap io-reveal" data-delay="1">
-            <div class="aks-head left">
-                <div><div class="aks-kicker">INSTALLER WORKS</div><h2 class="aks-title">AKS-授權店家施工作品</h2><p class="aks-sub"></p></div>
-                <div class="aks-ctaRow">
-                    <a class="aks-btn text-decoration-none" href="/blogs/news/">View All</a>
-                    <a class="aks-btn primary text-decoration-none" href="/pages/dealers/">配合店家</a>
-                </div>
+    
+    <style>
+        .aks-homeblocks { --text:#e9eef7; --muted:rgba(233,238,247,.70); --line:rgba(255,255,255,.10); background-color: #050505; color: var(--text); padding: 56px 0; }
+        .aks-hb-wrap { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .aks-hb-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; }
+        .aks-hb-kicker { font-size: 12px; letter-spacing: 0.14em; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+        .aks-hb-title { font-size: clamp(24px, 3vw, 36px); font-weight: bold; margin: 0; }
+        .aks-hb-btn { padding: 8px 20px; border-radius: 999px; border: 1px solid var(--line); font-size: 13px; font-weight: bold; transition: background 0.2s; text-decoration: none; color: white; }
+        .aks-hb-btn:hover { background: rgba(255,255,255,0.1); }
+        .aks-hb-btn.primary { background: #c81f2a; border-color: #c81f2a; }
+        .aks-hb-btn.primary:hover { background: #a81a23; }
+        .aks-hb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .aks-hb-card { display: block; position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 16/10; text-decoration: none; }
+        .aks-hb-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+        .aks-hb-card:hover img { transform: scale(1.03); }
+        .aks-hb-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%); display: flex; align-items: flex-end; padding: 20px; }
+        .aks-hb-card-title { color: white; font-weight: bold; font-size: 15px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+    </style>
+    <section class="aks-homeblocks aks-font-clean" id="aksHomeBlocks">
+        <div class="aks-hb-wrap io-reveal" data-delay="1">
+            
+            <div class="aks-hb-head">
+                <div><div class="aks-hb-kicker">INSTALLER WORKS</div><h2 class="aks-hb-title">AKS-授權店家施工作品</h2></div>
+                <div class="flex gap-2"><a class="aks-hb-btn" href="/blogs/aks-配合店家施工作品/">View All</a><a class="aks-hb-btn primary" href="/pages/dealers/">配合店家</a></div>
             </div>
-            <div class="aks-carousel" data-carousel="works">
-                <button class="aks-nav left" type="button" aria-label="上一個"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="rgba(233,238,247,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                <div class="aks-track" data-track="works" role="list" aria-label="授權店家施工作品卡片列表"><div class="aks-skeleton"></div><div class="aks-skeleton"></div><div class="aks-skeleton"></div></div>
-                <button class="aks-nav right" type="button" aria-label="下一個"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="rgba(233,238,247,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="aks-hb-grid mb-16">
+                <a href="#" class="aks-hb-card">
+                    <img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_cfb35f85-4b38-4ba8-ae3f-2f16c20ba147.jpg" alt="Tesla Model 3">
+                    <div class="aks-hb-overlay"><span class="aks-hb-card-title">Tesla Model Y 實車完工</span></div>
+                </a>
+                <a href="#" class="aks-hb-card">
+                    <img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_1bd4b2c4-b10f-4068-814e-08a546cf8b3b.png" alt="Porsche Macan">
+                    <div class="aks-hb-overlay"><span class="aks-hb-card-title">Porsche Macan 改色犀牛皮</span></div>
+                </a>
+                <a href="#" class="aks-hb-card">
+                    <img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_6130b77a-77d4-4903-8959-12778d2bc8e2.png" alt="BMW 4 Series">
+                    <div class="aks-hb-overlay"><span class="aks-hb-card-title">BMW M4 亮面防護膜</span></div>
+                </a>
             </div>
 
-            <div class="aks-divider" aria-hidden="true"></div>
-
-            <div class="aks-head left">
-                <div><div class="aks-kicker">KNOWLEDGE</div><h2 class="aks-title">貼膜FAQ</h2><p class="aks-sub"></p></div>
-                <div class="aks-ctaRow">
-                    <a class="aks-btn text-decoration-none" href="/blogs/news/179737/">View All</a>
-                </div>
+            <div class="aks-hb-head">
+                <div><div class="aks-hb-kicker">KNOWLEDGE</div><h2 class="aks-hb-title">貼膜FAQ</h2></div>
+                <div><a class="aks-hb-btn" href="/blogs/犀牛皮常見問答/">View All</a></div>
             </div>
-            <div class="aks-carousel" data-carousel="faq">
-                <button class="aks-nav left" type="button" aria-label="上一個"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="rgba(233,238,247,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                <div class="aks-track" data-track="faq" role="list" aria-label="貼膜小知識卡片列表"><div class="aks-skeleton"></div><div class="aks-skeleton"></div><div class="aks-skeleton"></div></div>
-                <button class="aks-nav right" type="button" aria-label="下一個"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="rgba(233,238,247,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="aks-hb-grid">
+                <a href="/blogs/犀牛皮常見問答/179737/" class="aks-hb-card">
+                    <img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_4251da21-7632-4920-91aa-0fc305b73f34.jpg" alt="犀牛皮保養">
+                    <div class="aks-hb-overlay"><span class="aks-hb-card-title">貼完犀牛皮該如何洗車保養？</span></div>
+                </a>
+                <a href="/blogs/犀牛皮常見問答/182910/" class="aks-hb-card">
+                    <img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_cdc4d945-db73-45ff-8c30-98875f59c892.jpg" alt="犀牛皮壽命">
+                    <div class="aks-hb-overlay"><span class="aks-hb-card-title">犀牛皮壽命有多長？何時該撕除？</span></div>
+                </a>
+                <a href="/blogs/犀牛皮常見問答/196162/" class="aks-hb-card">
+                    <img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_e4ee6527-b917-48aa-9edc-a1c2eb31e81e.jpg" alt="改色膜比較">
+                    <div class="aks-hb-overlay"><span class="aks-hb-card-title">改色犀牛皮與傳統 PVC 差別在哪？</span></div>
+                </a>
             </div>
         </div>
-
-        <script>
-            (function(){
-                const CFG = {
-                    worksIndex: "https://www.aks-ppf.com/blogs/aks-%E9%85%8D%E5%90%88%E5%BA%97%E5%AE%B6%E6%96%BD%E5%B7%A5%E4%BD%9C%E5%93%81",
-                    faqIndex: "https://www.aks-ppf.com/blogs/%E7%8A%80%E7%89%9B%E7%9A%AE%E5%B8%B8%E8%A6%8B%E5%95%8F%E7%AD%94",
-                    maxPostsPerSection: 6, /* 為確保首頁載入速度，建議首頁只抓前 6 篇 */
-                    concurrency: 3
-                };
-                const $ = (sel, root=document) => root.querySelector(sel);
-                const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
-                function setupCarousel(root){
-                    const track = root.querySelector(".aks-track");
-                    const btnL = root.querySelector(".aks-nav.left");
-                    const btnR = root.querySelector(".aks-nav.right");
-                    if(!track || !btnL || !btnR) return;
-                    function getStep(){
-                        const card = track.querySelector(".aks-card") || track.querySelector(".aks-skeleton");
-                        if(!card) return 360;
-                        const styles = getComputedStyle(track);
-                        const gap = parseFloat(styles.columnGap || styles.gap || "16") || 16;
-                        return card.getBoundingClientRect().width + gap;
-                    }
-                    btnL.addEventListener("click", () => track.scrollBy({ left: -getStep(), behavior: "smooth" }));
-                    btnR.addEventListener("click", () => track.scrollBy({ left:  getStep(), behavior: "smooth" }));
-                }
-                async function fetchText(url){
-                    const res = await fetch(url, { credentials: "omit" });
-                    if(!res.ok) throw new Error("Fetch failed");
-                    return await res.text();
-                }
-                function parseHTML(html){ return new DOMParser().parseFromString(html, "text/html"); }
-                function extractPostLinksFromIndexDoc(doc){
-                    const anchors = $$('a[href*="/blogs/"]', doc);
-                    const links = anchors.map(a => a.getAttribute("href") || "").filter(href => /\/blogs\/[^\/]+\/\d+/.test(href));
-                    return Array.from(new Set(links)).map(href => href.startsWith("http") ? href : (location.origin + href));
-                }
-                function extractThumbFromPostDoc(doc){
-                    const og = doc.querySelector('meta[property="og:image"], meta[name="og:image"]');
-                    if(og && og.getAttribute("content")) return og.getAttribute("content");
-                    const article = doc.querySelector(".article-content") || doc.querySelector(".rte") || doc.body;
-                    const img = article ? article.querySelector("img") : null;
-                    return img ? (img.getAttribute("src") || img.src) : "";
-                }
-                function makeCardHTML({ href, img }){
-                    const safeImg = img || "https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_cfb35f85-4b38-4ba8-ae3f-2f16c20ba147.jpg";
-                    return `<a class="aks-card text-decoration-none" role="listitem" href="${href}"><div class="aks-media"><div class="aks-corner" aria-hidden="true">↗</div><img src="${safeImg}" alt=""><div class="aks-overlay" aria-hidden="true"></div></div></a>`;
-                }
-                async function mapLimit(items, limit, worker){
-                    const ret = []; let i = 0; const executing = new Set();
-                    async function enqueue(){
-                        if(i >= items.length) return;
-                        const idx = i++;
-                        const p = Promise.resolve().then(() => worker(items[idx], idx)).then(v => { ret[idx] = v; }).catch(() => { ret[idx] = null; }).finally(() => executing.delete(p));
-                        executing.add(p);
-                        if(executing.size >= limit) await Promise.race(executing);
-                        return enqueue();
-                    }
-                    await enqueue(); await Promise.all(executing); return ret.filter(Boolean);
-                }
-                async function buildSection({ indexUrl, trackEl, type }){
-                    const html = await fetchText(indexUrl);
-                    let links = extractPostLinksFromIndexDoc(parseHTML(html)).slice(0, CFG.maxPostsPerSection);
-                    const posts = await mapLimit(links, CFG.concurrency, async (url) => {
-                        const doc = parseHTML(await fetchText(url));
-                        return { href: url, img: extractThumbFromPostDoc(doc) };
-                    });
-                    trackEl.innerHTML = posts.map(p => makeCardHTML(p)).join("");
-                }
-                async function init(){
-                    $$("#aksHomeBlocks .aks-carousel").forEach(setupCarousel);
-                    const worksTrack = $('#aksHomeBlocks [data-track="works"]');
-                    const faqTrack = $('#aksHomeBlocks [data-track="faq"]');
-                    try{ await buildSection({ indexUrl: CFG.worksIndex, trackEl: worksTrack, type: "works" }); }
-                    catch(e){ worksTrack.innerHTML = `<div style="color:var(--muted);padding:10px 2px;">內容載入中，請直接點擊 View All 前往觀看。</div>`; }
-                    try{ await buildSection({ indexUrl: CFG.faqIndex, trackEl: faqTrack, type: "faq" }); }
-                    catch(e){ faqTrack.innerHTML = `<div style="color:var(--muted);padding:10px 2px;">內容載入中，請直接點擊 View All 前往觀看。</div>`; }
-                }
-                init();
-            })();
-        </script>
     </section>
 
     <footer class="border-t border-white/10 mt-auto py-10 text-center text-gray-600 text-[11px] tracking-widest bg-[#050505]">
         <p>© 2026 AKS PPF 艾鎧斯車漆保護膜. All Rights Reserved.</p>
     </footer>
 
-    <script src="./assets/js/main.js"></script>
-
     <script>
-        // 確保剛載入時，進場動畫能正常觸發
         document.addEventListener('DOMContentLoaded', function() {
+            // 1. 進場動畫引擎
             const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) { entry.target.classList.add('is-in'); obs.unobserve(entry.target); }
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-in'); obs.unobserve(entry.target); } });
             }, { root: null, rootMargin: '0px', threshold: 0.15 });
             setTimeout(() => { document.querySelectorAll('.io-reveal').forEach(el => observer.observe(el)); }, 500);
+
+            // 2. 導覽列滾動變色
+            const header = document.querySelector('.aks-header');
+            window.addEventListener('scroll', function() {
+                let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScroll > 50) header.classList.add('is-scrolled');
+                else header.classList.remove('is-scrolled');
+            }, false);
+
+            // 3. 手機版選單切換 (完全體)
+            const mobileToggle = document.querySelector('.aks-mobile-toggle');
+            const mobileMenu = document.querySelector('.aks-mobile-menu');
+            const mobileClose = document.querySelector('.aks-mobile-close');
+            if(mobileToggle && mobileMenu && mobileClose) {
+                mobileToggle.addEventListener('click', () => { mobileMenu.classList.add('is-open'); document.body.style.overflow = 'hidden'; });
+                mobileClose.addEventListener('click', () => { mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; });
+            }
+
+            // 4. 手風琴互動 (區塊2)
+            const accCards = document.querySelectorAll('.aks-mobile-accordion-card');
+            accCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (window.innerWidth >= 768) return;
+                    if(e.target.tagName.toLowerCase() === 'a') return;
+                    const isOpen = this.classList.contains('is-open');
+                    accCards.forEach(c => c.classList.remove('is-open'));
+                    if (!isOpen) this.classList.add('is-open');
+                });
+            });
+
+            // 5. 輪播互動 (區塊3)
+            const carousel = document.getElementById('aks-carousel-grid');
+            const dotsContainer = document.getElementById('aks-carousel-dots');
+            const productCards = document.querySelectorAll('.aks-product-card');
+            let scrollTimeout, currentActiveIndex = -1;
+            if (carousel && dotsContainer && productCards.length > 0) {
+                const dots = dotsContainer.querySelectorAll('span');
+                function updateCarouselUX() {
+                    if (window.innerWidth >= 992) { productCards.forEach(card => card.classList.remove('is-active')); return; }
+                    const containerCenter = carousel.scrollLeft + (carousel.offsetWidth / 2);
+                    let closestIndex = 0, minDistance = Infinity;
+                    productCards.forEach((card, index) => {
+                        const distance = Math.abs(containerCenter - (card.offsetLeft + (card.offsetWidth / 2)));
+                        if (distance < minDistance) { minDistance = distance; closestIndex = index; }
+                    });
+                    dots.forEach((dot, index) => {
+                        if (index === closestIndex) { dot.classList.replace('bg-white/20', 'bg-[#c81f2a]'); } 
+                        else { dot.classList.replace('bg-[#c81f2a]', 'bg-white/20'); }
+                    });
+                    if (closestIndex !== currentActiveIndex) {
+                        productCards.forEach(card => card.classList.remove('is-active'));
+                        currentActiveIndex = closestIndex;
+                        clearTimeout(scrollTimeout);
+                        scrollTimeout = setTimeout(() => { productCards[currentActiveIndex].classList.add('is-active'); }, 500); 
+                    }
+                }
+                carousel.addEventListener('scroll', updateCarouselUX, { passive: true });
+                window.addEventListener('resize', updateCarouselUX);
+            }
         });
     </script>
 </body>
