@@ -105,13 +105,28 @@
             if (header) {
                 const path = window.location.pathname;
                 
-                // 🔥 自動判斷：檢查 Body 是否有 layout-page-hero 或是不是首頁根目錄
-                const isHeroLayout = document.body.classList.contains('layout-page-hero');
+                // 檢查是否為滿版 Layout (包含 hero 或未來首頁的 home)
+                const isHeroLayout = document.body.classList.contains('layout-page-hero') || document.body.classList.contains('layout-home');
                 const isRoot = path === '/' || path.endsWith('aks-official-website/') || path.endsWith('index.html');
                 
+                // 預設透明判定：只要是滿版 Layout 或網站根目錄，就全透明
                 let isTransparent = isHeroLayout || isRoot;
 
-                // 若最終判定不是透明頁面，啟動防護罩與自動下推 (實心黑底)
+                // ==========================================
+                // 🔥 特殊特例預留區 (手機/電腦版差異化設定) 🔥
+                // 如果未來有些滿版頁面，在手機版因為太矮會被 Logo 擋住，
+                // 可以將該頁面的網址加在這裡，強制手機版變為實心黑底並下推。
+                // (搬運完成後，若確認需要防卡 Logo，直接解開下方註解即可)
+                // ==========================================
+                /*
+                if (path.includes('/color-ppf')) {
+                    if (window.innerWidth <= 991) {
+                        isTransparent = false; // 手機版強制改回實心，啟動下推閃避
+                    }
+                }
+                */
+
+                // 若最終判定不是透明頁面 (例如 page-flush 或 page-padded)，啟動防護罩與自動下推
                 if (!isTransparent) {
                     header.classList.add('force-solid');
                     document.body.classList.add('has-solid-header'); 
