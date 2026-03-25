@@ -1,20 +1,175 @@
 ---
-layout: default
-title: AKS PPF 路徑開通
+layout: page-hero
+title: 配合店家 高雄 | AKS PPF
 ---
 
-<div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-    <div class="mb-8 opacity-20">
-        <svg width="100" height="100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-        </svg>
+<style>
+  .aks-dealers-kaohsiung-wrapper * { box-sizing: border-box !important; }
+  .aks-dealers-kaohsiung-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    background: #000;
+    color: #fff;
+    font-family: 'Montserrat', "PingFang TC", "Microsoft JhengHei", sans-serif;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .red {
+    color: #c81f2a;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .hero-header {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_657a7762-7c60-4bd5-a161-6d84bbb4679a.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 10px;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .hero-title {
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 700;
+    line-height: 1.4;
+    color: #fff;
+    margin: 0;
+    padding: 10px 20px;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .contact-section {
+    color: #fff;
+    padding: 50px 100px;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .contact-info {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .contact-info h1 {
+    font-size: clamp(24px, 3vw, 36px);
+    margin: 0 0 20px 0;
+    font-weight: 800;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .contact-info li {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ccc;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .contact-info li span {
+    color: #fff;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .contact-visual {
+    display: flex;
+    gap: 0;
+    flex-wrap: nowrap;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .logo-box,
+  .aks-dealers-kaohsiung-wrapper .map-box {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .map-placeholder {
+    width: 100%;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .aks-dealers-kaohsiung-wrapper .btn-wrapper {
+    margin-top: 25px;
+  }
+
+  @media (max-width: 900px) {
+    .aks-dealers-kaohsiung-wrapper .hero-header {
+      height: 200px;
+    }
+
+    .aks-dealers-kaohsiung-wrapper .hero-title {
+      font-size: clamp(28px, 5vw, 48px);
+      padding: 8px 15px;
+    }
+
+    .aks-dealers-kaohsiung-wrapper .contact-section {
+      padding: 15px;
+      margin-bottom: 45px;
+    }
+
+    .aks-dealers-kaohsiung-wrapper .contact-info li {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<div class="aks-dealers-kaohsiung-wrapper">
+  <div class="hero-header">
+    <h1 class="hero-title">配合店家 高雄</h1>
+  </div>
+
+  <div class="contact-section">
+    <div class="contact-info">
+      <h1>Always Shiny車の膜手(車的膜手)</h1>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期六 09:30-18:30</li>
+        <li><span>- 連絡電話：</span>0968-993-375</li>
+        <li><span>- 地址：</span>807高雄市三民區義光街28號1樓</li>
+      </ul>
     </div>
-    <h1 class="text-3xl font-bold tracking-widest text-[#c81f2a] aks-font-youshe uppercase mb-4">
-        Room Established
-    </h1>
-    <p class="text-gray-400 aks-font-clean tracking-widest mb-10 leading-loose">
-        全站路徑已完美開通。<br>
-        目前的網址位置：<span class="text-white font-bold border-b border-white/20 pb-1">{{ page.url }}</span>
-    </p>
-    <a href="/" class="px-10 py-3 bg-white/5 border border-white/10 text-white/60 text-sm tracking-[0.2em] hover:bg-[#c81f2a] hover:text-white transition-all duration-300">BACK TO HOME</a>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img
+          src="https://aks-ppf.github.io/images/dealers-kaohsiung-1.jpg"
+          alt="Always Shiny車の膜手 車的膜手 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.3173770643743!2d120.3412476!3d22.641952499999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e05a15e63736f%3A0x7942976bbc04541!2zQWx3YXlzIFNoaW556LuK44Gu6Iac5omLKOi7iueahOiGnOaJiykt5rG96LuK5YyF6Iac772c5rG96LuK6LK86Iac772c54qA54mb55qu772c6LuK6auU5YyF6Iac772c5aSn54eI5YyF6Iac772c6L-O6aKo6Z2i5YyF6Iac772c6Y2N6Iac772c546755KD6Y2N6Iac772c5YmN5pOL6Ziy54iG6Iac!5e0!3m2!1szh-TW!2stw!4v1773312844719!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Always Shiny車の膜手 車的膜手 Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
