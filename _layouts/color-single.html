@@ -2,11 +2,22 @@
 layout: default
 ---
 <style>
-    /* 基礎設定 */
-    .aks-color-product-root { width: 100%; background-color: #050505; color: #f3f3f5; padding-top: 40px; padding-bottom: 120px; }
-    .aks-color-product-root * { box-sizing: border-box; }
-    
-    /* 動畫 */
+    /* ✅ 1. 舊版 UI 保留：所有質感、光暈、毛玻璃樣式 100% 復刻，移除 Cyberbiz 補丁 */
+    #aks-color-product-root {
+        width: 100%; background-color: #050505; color: #f3f3f5;
+        /* Jekyll 乾淨環境：移除硬寫的 padding-top 補丁，靠 Layout 智慧控制 */
+        padding-top: 40px; 
+        padding-bottom: 120px;
+    }
+    #aks-color-product-root * { box-sizing: border-box !important; }
+
+    /* 全域字體防跑版，確保繼承 default */
+    #aks-color-product-root { font-family: 'Montserrat', 'PingFang TC', sans-serif !important; }
+    @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
+    .aks-font-youshe { font-family: 'YouSheBiaoTiHei', sans-serif !important; }
+    .aks-font-clean { font-family: 'Montserrat', 'PingFang TC', sans-serif !important; }
+
+    /* 動畫Reveal */
     .io-reveal { opacity: 0; transform: translateY(20px); filter: blur(5px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease; }
     .io-reveal.is-in { opacity: 1; transform: translateY(0); filter: blur(0); }
 
@@ -17,17 +28,41 @@ layout: default
     .aks-main-swatch-img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: right center; transition: transform 0.5s ease; cursor: zoom-in; }
 
     /* 文字排版 */
+    /* ✅ 3. 黃圈：Kicker 預設改為 COLOR PPF */
     .aks-kicker { font-size: 11px; letter-spacing: 0.25em; color: #c81f2a; font-weight: 800; margin-bottom: 16px; display: block; text-transform: uppercase; }
+    
     .aks-tags-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .aks-tag { border: 1px solid rgba(255,255,255,0.25); color: white; padding: 4px 14px; border-radius: 4px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; }
-    .aks-title-zh { font-size: clamp(36px, 4vw, 56px); font-weight: 900; color: white; line-height: 1.1; margin: 0 0 8px 0; letter-spacing: 0.05em; }
-    .aks-title-en { font-size: clamp(16px, 2vw, 24px); font-weight: 300; color: rgba(255,255,255,0.6); margin: 0 0 16px 0; letter-spacing: 0.05em; text-transform: uppercase; }
+    .aks-tag { border: 1px solid rgba(255,255,255,0.25); color: white; padding: 4px 14px; border-radius: 4px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ✅ 2. 紅圈字體調整 */
+    .aks-title-zh { 
+        font-size: clamp(36px, 4vw, 56px); 
+        font-weight: 900; 
+        color: white; 
+        line-height: 1.1; 
+        margin: 0 0 8px 0; 
+        letter-spacing: 0.05em; 
+        /* 中文標題用 Montserrat (跟按鈕一致)，不帶優設類 */
+        font-family: 'Montserrat', 'PingFang TC', sans-serif !important; 
+    }
+    .aks-title-en { 
+        font-size: clamp(16px, 2vw, 24px); 
+        font-weight: 300; 
+        color: rgba(255,255,255,0.6); 
+        margin: 0 0 16px 0; 
+        letter-spacing: 0.05em; 
+        text-transform: uppercase;
+        /* 英文用優設標題黑 */
+        font-family: 'YouSheBiaoTiHei', sans-serif !important; 
+    }
+    
     .aks-sku { font-size: 13px; color: #666; letter-spacing: 0.15em; margin: 0 0 32px 0; font-weight: 600; }
     .aks-desc { font-size: 15px; color: #aaa; line-height: 1.8; margin: 0 0 40px 0; font-weight: 300; }
 
     /* 按鈕與 FAQ */
-    .aks-btn-cta { display: flex; align-items: center; justify-content: center; width: 100%; background-color: #ffffff; color: #000000; padding: 18px 32px; border-radius: 6px; font-size: 14px; font-weight: 900; letter-spacing: 0.2em; transition: 0.3s; margin-bottom: 40px; text-transform: uppercase; text-decoration: none; }
+    .aks-btn-cta { display: flex; align-items: center; justify-content: center; width: 100%; background-color: #ffffff; color: #000000; padding: 18px 32px; border-radius: 6px; font-size: 14px; font-weight: 900; letter-spacing: 0.2em; transition: 0.3s; margin-bottom: 40px; text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; }
     .aks-btn-cta:hover { background-color: #c81f2a; color: #ffffff; box-shadow: 0 15px 30px rgba(200,31,42,0.4); transform: translateY(-2px); }
+    
     .aks-faq-wrapper { border-top: 1px solid rgba(255,255,255,0.1); }
     .aks-faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
     .aks-faq-item details { width: 100%; }
@@ -43,16 +78,19 @@ layout: default
     @media (min-width: 992px) {
         .aks-split-container { max-width: 1440px; margin: 0 auto; display: flex; flex-direction: row; align-items: flex-start; gap: 60px; padding: 0 40px; }
         .aks-media-col { width: 45%; }
+        /* 乾淨環境 Sticky 智慧距離 */
         .aks-info-col { width: 55%; position: sticky; top: 120px; }
         .aks-gallery-slider { flex-direction: column; gap: 32px; } 
         .aks-slider-dots { display: none; } 
         .aks-main-swatch-container:hover .aks-main-swatch-img { transform: scale(1.02); }
     }
     @media (max-width: 991px) {
-        .aks-color-product-root { padding-top: 10px; padding-bottom: 80px; } 
+        /* 乾淨環境 手機版智慧 Padding */
+        #aks-color-product-root { padding-top: 10px; padding-bottom: 80px; } 
         .aks-split-container { display: flex; flex-direction: column; gap: 24px; }
         .aks-info-col { padding: 0 20px; } 
         .aks-gallery-slider { flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 0; padding-bottom: 10px; }
+        .aks-gallery-slider::-webkit-scrollbar { display: none; }
         .aks-slide { width: 100vw; scroll-snap-align: start; padding: 0; }
         .aks-main-swatch-container { border-radius: 0; box-shadow: none; aspect-ratio: 4/3; } 
         .aks-slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; margin-bottom: 10px; }
@@ -68,7 +106,7 @@ layout: default
     .aks-lightbox-close:hover { color: #c81f2a; transform: scale(1.1); }
 </style>
 
-<div class="aks-color-product-root aks-font-clean">
+<div id="aks-color-product-root" class="aks-font-clean">
     <div class="aks-split-container">
         
         <div class="aks-media-col io-reveal" data-delay="1">
@@ -78,7 +116,6 @@ layout: default
                         <img src="https://cdn.jsdelivr.net/gh/AKS-PPF/color-ppf-images@main/{{ page.code }}.jpg?v={{ site.time | date: '%s' }}" class="aks-main-swatch-img" alt="{{ page.title_zh }}">
                     </div>
                 </div>
-                
                 {% if page.gallery %}
                     {% for img in page.gallery %}
                     <div class="aks-slide">
@@ -93,7 +130,7 @@ layout: default
         </div>
 
         <div class="aks-info-col io-reveal" data-delay="2">
-            <span class="aks-kicker">{{ page.series }}</span>
+            <span class="aks-kicker">COLOR PPF</span>
             
             <div class="aks-tags-group">
                 {% if page.finish %}<span class="aks-tag">{{ page.finish }}</span>{% endif %}
@@ -101,7 +138,7 @@ layout: default
                 {% if page.brand %}<span class="aks-tag">{{ page.brand }}</span>{% endif %}
             </div>
 
-            <h1 class="aks-title-zh aks-font-youshe">{{ page.title_zh }}</h1>
+            <h1 class="aks-title-zh">{{ page.title_zh }}</h1>
             <h2 class="aks-title-en">{{ page.title_en }}</h2>
             <p class="aks-sku">SKU: {{ page.code }}</p>
             
@@ -117,6 +154,16 @@ layout: default
                         <summary>為什麼選擇改色犀牛皮，而非傳統改色膜？</summary>
                         <div class="aks-faq-content">
                             傳統改色膜多為 PVC 材質，僅改變外觀無保護力。AKS 改色犀牛皮採用航太級 TPU 基材，不僅擁有真實烤漆般的頂級光澤，更具備抗刮、自體修復與防污耐候特性。<br>
+                            <a href="https://www.aks-ppf.com/blogs/%E7%8A%80%E7%89%9B%E7%9A%AE%E5%B8%B8%E8%A6%8B%E5%95%8F%E7%AD%94/182911" target="_blank">深入了解差異 ➔</a>
+                        </div>
+                    </details>
+                </div>
+                <div class="aks-faq-item">
+                    <details>
+                        <summary>改色犀牛皮的優缺點分析？</summary>
+                        <div class="aks-faq-content">
+                            最大優勢在於「改色即防護」，一次施工獲得雙重價值，且使用壽命遠超傳統膜料。缺點則是初期建置成本較高，但從長期保護原車漆與保值角度來看，絕對是更劃算的投資。<br>
+                            <a href="https://www.aks-ppf.com/blogs/%E7%8A%80%E7%89%9B%E7%9A%AE%E5%B8%B8%E8%A6%8B%E5%95%8F%E7%AD%94/182910" target="_blank">完整優缺點解析 ➔</a>
                         </div>
                     </details>
                 </div>
@@ -124,7 +171,7 @@ layout: default
                     <details>
                         <summary>什麼是純乾貼施工技術？</summary>
                         <div class="aks-faq-content">
-                            AKS 專屬底膠技術，施工過程不需大量噴水，不僅能避免水氣殘留導致的起泡問題，更能完美貼合複雜曲面，確保包膜邊緣不翹邊，耐用度與美觀度大幅提升。
+                            AKS 專屬底膠技術，施工過程不需大量噴水，不僅能避免水氣殘留導致的起泡問題，更能完美貼合複雜曲面，確保包膜邊緣不翘邊，耐用度與美觀度大幅提升。
                         </div>
                     </details>
                 </div>
