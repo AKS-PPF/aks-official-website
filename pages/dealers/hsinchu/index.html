@@ -1,20 +1,204 @@
 ---
-layout: default
-title: AKS PPF 路徑開通
+layout: page-hero
+title: 配合店家 新竹 | AKS PPF
 ---
 
-<div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-    <div class="mb-8 opacity-20">
-        <svg width="100" height="100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-        </svg>
+<style>
+  .aks-dealers-hsinchu-wrapper * { box-sizing: border-box !important; }
+  .aks-dealers-hsinchu-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    background: #000;
+    color: #fff;
+    font-family: 'Montserrat', "PingFang TC", "Microsoft JhengHei", sans-serif;
+  }
+
+  .aks-dealers-hsinchu-wrapper .red {
+    color: #c81f2a;
+  }
+
+  .aks-dealers-hsinchu-wrapper .hero-header {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_657a7762-7c60-4bd5-a161-6d84bbb4679a.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 10px;
+  }
+
+  .aks-dealers-hsinchu-wrapper .hero-title {
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 700;
+    line-height: 1.4;
+    color: #fff;
+    margin: 0;
+    padding: 10px 20px;
+  }
+
+  .aks-dealers-hsinchu-wrapper .contact-section {
+    color: #fff;
+    padding: 50px 100px;
+  }
+
+  .aks-dealers-hsinchu-wrapper .contact-info {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .aks-dealers-hsinchu-wrapper .contact-info h1 {
+    font-size: clamp(24px, 3vw, 36px);
+    margin: 0 0 20px 0;
+    font-weight: 800;
+  }
+
+  .aks-dealers-hsinchu-wrapper .contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+  }
+
+  .aks-dealers-hsinchu-wrapper .contact-info li {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ccc;
+  }
+
+  .aks-dealers-hsinchu-wrapper .contact-info li span {
+    color: #fff;
+  }
+
+  .aks-dealers-hsinchu-wrapper .contact-visual {
+    display: flex;
+    gap: 0;
+    flex-wrap: nowrap;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .aks-dealers-hsinchu-wrapper .logo-box,
+  .aks-dealers-hsinchu-wrapper .map-box {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .aks-dealers-hsinchu-wrapper .logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .aks-dealers-hsinchu-wrapper .map-placeholder {
+    width: 100%;
+  }
+
+  .aks-dealers-hsinchu-wrapper .map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .aks-dealers-hsinchu-wrapper .btn-wrapper {
+    margin-top: 25px;
+  }
+
+  @media (max-width: 900px) {
+    .aks-dealers-hsinchu-wrapper .hero-header {
+      height: 200px;
+    }
+
+    .aks-dealers-hsinchu-wrapper .hero-title {
+      font-size: clamp(28px, 5vw, 48px);
+      padding: 8px 15px;
+    }
+
+    .aks-dealers-hsinchu-wrapper .contact-section {
+      padding: 15px;
+      margin-bottom: 45px;
+    }
+
+    .aks-dealers-hsinchu-wrapper .contact-info li {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<div class="aks-dealers-hsinchu-wrapper">
+  <div class="hero-header">
+    <h1 class="hero-title">配合店家 新竹</h1>
+  </div>
+
+  <div class="contact-section">
+    <div class="contact-info">
+      <h1>MIRACLE車體防護貼膜專門店</h1>
+      <ul>
+        <li><span>- 營業時間：</span>星期一二五六 09:00-20:30｜三09:00-00:00 四00:00-08:30 09:00-20:30</li>
+        <li><span>- 連絡電話：</span>0963-730-568</li>
+        <li><span>- 地址：</span>302新竹縣竹北市光明六路277號1樓</li>
+      </ul>
     </div>
-    <h1 class="text-3xl font-bold tracking-widest text-[#c81f2a] aks-font-youshe uppercase mb-4">
-        Room Established
-    </h1>
-    <p class="text-gray-400 aks-font-clean tracking-widest mb-10 leading-loose">
-        全站路徑已完美開通。<br>
-        目前的網址位置：<span class="text-white font-bold border-b border-white/20 pb-1">{{ page.url }}</span>
-    </p>
-    <a href="/" class="px-10 py-3 bg-white/5 border border-white/10 text-white/60 text-sm tracking-[0.2em] hover:bg-[#c81f2a] hover:text-white transition-all duration-300">BACK TO HOME</a>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img
+          src="https://aks-ppf.github.io/images/dealers-hsinchu-1.jpg"
+          alt="MIRACLE車體防護貼膜專門店 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.015501195767!2d121.005488!3d24.829143499999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468373c5aefc9af%3A0xfd3408521a1e491a!2zTUlSQUNMRei7iumrlOmYsuitt-iyvOiGnOWwiOmWgOW6lyAvIOaxvei7ii7mqZ_ou4ot6LK86IacL-mNjeiGnC_mtJfou4o!5e0!3m2!1szh-TW!2stw!4v1773310859835!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="MIRACLE車體防護貼膜專門店 Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-section">
+    <div class="contact-info">
+      <h1>膜谷汽機車車體防護專門店</h1>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期五 10:00-19:00</li>
+        <li><span>- 連絡電話：</span>0988-828-176</li>
+        <li><span>- 地址：</span>302新竹縣竹北市環北路五段18-5號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img
+          src="https://aks-ppf.github.io/images/dealers-hsinchu-2.jpg"
+          alt="膜谷汽機車車體防護專門店 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.6212425485737!2d120.99373949999999!3d24.842623199999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346837c01593d69b%3A0xb33e4b9aec41c501!2z6Iac6LC35rG95qmf6LuK6LuK6auU6Ziy6K235bCI6ZaA5bqX!5e0!3m2!1szh-TW!2stw!4v1773310915341!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="膜谷汽機車車體防護專門店 Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
