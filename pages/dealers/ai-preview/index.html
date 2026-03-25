@@ -1,20 +1,401 @@
 ---
-layout: default
-title: AKS PPF 路徑開通
+layout: page-hero
+title: AI 換色特約店家 | AKS PPF
 ---
 
-<div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-    <div class="mb-8 opacity-20">
-        <svg width="100" height="100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-        </svg>
-    </div>
-    <h1 class="text-3xl font-bold tracking-widest text-[#c81f2a] aks-font-youshe uppercase mb-4">
-        Room Established
+<style>
+  .aks-ai-preview-partners-wrapper * { box-sizing: border-box !important; }
+  .aks-ai-preview-partners-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    background: #000;
+    color: #fff;
+    font-family: 'Montserrat', "PingFang TC", "Microsoft JhengHei", sans-serif;
+  }
+
+  .aks-ai-preview-partners-wrapper .red {
+    color: #c81f2a;
+  }
+
+  .aks-ai-preview-partners-wrapper .hero-header {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_e2818f83-22eb-4290-9a46-aff7d322620d.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 10px;
+  }
+
+  .aks-ai-preview-partners-wrapper .hero-title {
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 700;
+    line-height: 1.4;
+    color: #fff;
+    margin: 0;
+    padding: 10px 20px;
+  }
+
+  .aks-ai-preview-partners-wrapper .contact-section {
+    color: #fff;
+    padding: 50px 100px;
+  }
+
+  .aks-ai-preview-partners-wrapper .contact-info {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .aks-ai-preview-partners-wrapper .contact-info h2 {
+    font-size: clamp(24px, 3vw, 36px);
+    margin: 0 0 20px 0;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  .aks-ai-preview-partners-wrapper .contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+  }
+
+  .aks-ai-preview-partners-wrapper .contact-info li {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ccc;
+  }
+
+  .aks-ai-preview-partners-wrapper .contact-info li span {
+    color: #fff;
+  }
+
+  .aks-ai-preview-partners-wrapper .contact-visual {
+    display: flex;
+    gap: 0;
+    flex-wrap: nowrap;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .aks-ai-preview-partners-wrapper .logo-box,
+  .aks-ai-preview-partners-wrapper .map-box {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .aks-ai-preview-partners-wrapper .logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .aks-ai-preview-partners-wrapper .map-placeholder {
+    width: 100%;
+    min-height: 300px;
+  }
+
+  .aks-ai-preview-partners-wrapper .map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    border: 0;
+    display: block;
+  }
+
+  .aks-ai-preview-partners-wrapper .btn-wrapper {
+    margin-top: 25px;
+  }
+
+  .aks-ai-preview-partners-wrapper .coming-soon-section {
+    background-color: #1a1a1a;
+    padding: 60px 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .aks-ai-preview-partners-wrapper .coming-soon-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .aks-ai-preview-partners-wrapper .status-text {
+    font-size: clamp(24px, 4vw, 32px);
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+  }
+
+  .aks-ai-preview-partners-wrapper .contact-call {
+    font-size: clamp(16px, 2vw, 20px);
+    color: #c81f2a;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .aks-ai-preview-partners-wrapper .contact-btn {
+    display: inline-block;
+    background-color: #c81f2a;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 12px 25px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+
+  .aks-ai-preview-partners-wrapper .contact-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(200, 31, 42, 0.6);
+  }
+
+  @media (max-width: 900px) {
+    .aks-ai-preview-partners-wrapper .hero-header {
+      height: 200px;
+    }
+
+    .aks-ai-preview-partners-wrapper .hero-title {
+      font-size: clamp(28px, 5vw, 48px);
+      padding: 8px 15px;
+    }
+
+    .aks-ai-preview-partners-wrapper .contact-section {
+      padding: 15px;
+      margin-bottom: 45px;
+    }
+
+    .aks-ai-preview-partners-wrapper .contact-info li {
+      font-size: 16px;
+    }
+
+    .aks-ai-preview-partners-wrapper .contact-btn {
+      width: 50%;
+      padding: 15px 20px;
+    }
+
+    .aks-ai-preview-partners-wrapper .coming-soon-section {
+      padding: 40px 10px;
+    }
+  }
+</style>
+
+<div class="aks-ai-preview-partners-wrapper">
+  <div class="hero-header">
+    <h1 class="hero-title">
+      AI Real-Time <span class="red">Preview</span><br>特約店家
     </h1>
-    <p class="text-gray-400 aks-font-clean tracking-widest mb-10 leading-loose">
-        全站路徑已完美開通。<br>
-        目前的網址位置：<span class="text-white font-bold border-b border-white/20 pb-1">{{ page.url }}</span>
-    </p>
-    <a href="/" class="px-10 py-3 bg-white/5 border border-white/10 text-white/60 text-sm tracking-[0.2em] hover:bg-[#c81f2a] hover:text-white transition-all duration-300">BACK TO HOME</a>
+  </div>
+
+  <section class="contact-section">
+    <div class="contact-info">
+      <h2>松山店帥｜旺福車體保護膜 WF.legend</h2>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期日 13:00-20:30</li>
+        <li><span>- 連絡電話：</span>0911-965-962</li>
+        <li><span>- 地址：</span>105 台北市松山區撫遠街403巷14號1樓</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img src="https://aks-ppf.github.io/images/dealers-taipei-1-wf.jpg" alt="松山店帥 旺福車體保護膜 WF.legend 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14456.234977840084!2d121.566508!3d25.065998!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ababc100f9e1%3A0xbbef170a76c8d91!2z5p2-5bGx5bqX5bil772c5pe656aP6LuK6auU5L-d6K236IacV0YubGVnZW5k!5e0!3m2!1szh-TW!2stw!4v1770025874840!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="松山店帥 旺福車體保護膜 WF.legend Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-info">
+      <h2>ACME | Carwrap 汽車貼膜＆隔熱紙</h2>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期日 11:00-21:00</li>
+        <li><span>- 連絡電話：</span>0938-159-590</li>
+        <li><span>- 地址：</span>114 台北市內湖區新明路301號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img src="https://aks-ppf.github.io/images/dealers-taipei-2-acme.jpg" alt="ACME Carwrap 汽車貼膜與隔熱紙 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7228.640235092938!2d121.585248!3d25.057137!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ab64ecb895af%3A0xf9bc923825cd0364!2zQUNNRSB8IENhcndyYXAg5rG96LuK6LK86IacJumalOeGsee0mSAt5YWn5rmW5bqX!5e0!3m2!1szh-TW!2stw!4v1770028908691!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="ACME Carwrap 汽車貼膜與隔熱紙 Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-info">
+      <h2>DW22 專業車體防護</h2>
+      <ul>
+        <li><span>- 連絡電話：</span>0917-569-330</li>
+        <li><span>- 地址：</span>112 台北市北投區明德路29號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img src="https://aks-ppf.github.io/images/dealers-taipei-3-dw22.jpg" alt="DW22 專業車體防護 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7225.677986420839!2d121.517664!3d25.107311!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ae939a1de1af%3A0xa6feb25d958a300f!2zRFcyMuWwiOalrei7iumrlOmYsuittw!5e0!3m2!1szh-TW!2stw!4v1770381163601!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="DW22 專業車體防護 Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-info">
+      <h2>羅柏汽車包膜 Robert Wrap</h2>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期六 24小時營業</li>
+        <li><span>- 連絡電話：</span>0985-023-475</li>
+        <li><span>- 地址：</span>247 新北市蘆洲區永安南路二段154號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img src="https://aks-ppf.github.io/images/dealers-newtaipei-1-robo.png" alt="羅柏汽車包膜 Robert Wrap 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7227.35361840092!2d121.461854!3d25.078941!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9cec12d7ab5%3A0x467dd283825bf470!2z576F5p-P5rG96LuK5YyF6IacUm9iZXJ0IFdyYXDvvI3msb3mqZ_ou4pUUFXnioDniZvnmq7vvI3vvZzpmpTnhrHntJnvvZzmlLnoibLohpzvvZzpmLLniIbohpzvvZzpjY3ohpzvvZznvo7lrrnvvI3poJDntITliLY!5e0!3m2!1szh-TW!2stw!4v1770029152926!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="羅柏汽車包膜 Robert Wrap Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-info">
+      <h2>THE 4 WRAP 物理防護車體包膜</h2>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期六 10:00-20:00</li>
+        <li><span>- 連絡電話：</span>02-89933993</li>
+        <li><span>- 地址：</span>242 新北市新莊區頭前里頭前路15巷11號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img src="https://aks-ppf.github.io/images/dealers-newtaipei-12-the4.jpg" alt="THE 4 WRAP 物理防護車體包膜 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.4837524880036!2d121.46771000000001!3d25.051588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9005ca2a449%3A0xbef68f0eb781e65d!2zVEhFIDQgV1JBUCDniannkIbpmLLorbfou4rpq5TljIXohpw!5e0!3m2!1szh-TW!2stw!4v1770112439378!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="THE 4 WRAP 物理防護車體包膜 Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-info">
+      <h2>克特先生尊爵車膜坊</h2>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期六 10:00-19:00</li>
+        <li><span>- 連絡電話：</span>0976-096-706</li>
+        <li><span>- 地址：</span>330028 桃園市桃園區埔新路153號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img src="https://aks-ppf.github.io/images/dealers-taoyuan-2.jpg" alt="克特先生尊爵車膜坊 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7231.852608504669!2d121.305033!3d25.00262!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681f8f2759b171%3A0xb238a806a3a41873!2z5YWL54m55YWI55Sf5bCK54i16LuK6Iac5Z2KLeaxvei7iuWMheiGnCDmoYPlnJLmsb3ou4rpjY3ohpwg6LuK6auU576O5a65IOaUueiJsiDmiZPooJ8g5bCI5qWt6LuK6auU6LK86IacIOeKgOeJm-earuiyvOiGnOaOqOiWpg!5e0!3m2!1szh-TW!2stw!4v1770029594904!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="克特先生尊爵車膜坊 Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-info">
+      <h2>潔特曼車體美研館</h2>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期日 09:00-20:00</li>
+        <li><span>- 連絡電話：</span>03-495-0204</li>
+        <li><span>- 地址：</span>324 桃園市平鎮區延平路二段193號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img src="https://aks-ppf.github.io/images/dealers-taoyuan-1.jpg" alt="潔特曼車體美研館 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7235.102844426585!2d121.210648!3d24.947347!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468238f9e6cad65%3A0x38aeb8dfcde87df5!2z5r2U54m55pu86LuK6auU576O56CU6aSoIC0gVFBV44CB54qA54mb55qu44CB6LK86Iac44CB5YyF6Iac44CB5pS56Imy44CB6Y2N6Iac!5e0!3m2!1szh-TW!2stw!4v1770029741342!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="潔特曼車體美研館 Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="coming-soon-section">
+    <div class="coming-soon-content">
+      <p class="status-text">其他地區將陸續上線</p>
+      <div class="btn-wrapper">
+        <a href="https://line.me/R/ti/p/@087qaxca" class="contact-btn" target="_blank" rel="noopener noreferrer">歡迎店家聯繫</a>
+      </div>
+    </div>
+  </section>
 </div>
