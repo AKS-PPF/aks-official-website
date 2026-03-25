@@ -11,5 +11,5 @@ finish: Gloss
 brand: AKS PPF
 
 # 網頁敘述
-description: "極致深邃的亮面金屬紅，在光影流轉間展現如液體般流動的光澤感。純乾貼技術確保完美服貼。"
+description: 
 ---
