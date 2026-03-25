@@ -1,20 +1,169 @@
 ---
-layout: default
-title: AKS PPF 路徑開通
+layout: page-hero
+title: 配合店家 台南 | AKS PPF
 ---
 
-<div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-    <div class="mb-8 opacity-20">
-        <svg width="100" height="100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-        </svg>
+<style>
+  .aks-dealers-tainan-wrapper * { box-sizing: border-box !important; }
+  .aks-dealers-tainan-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    background: #000;
+    color: #fff;
+    font-family: 'Montserrat', "PingFang TC", "Microsoft JhengHei", sans-serif;
+  }
+
+  .aks-dealers-tainan-wrapper .red {
+    color: #c81f2a;
+  }
+
+  .aks-dealers-tainan-wrapper .hero-header {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_657a7762-7c60-4bd5-a161-6d84bbb4679a.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 10px;
+  }
+
+  .aks-dealers-tainan-wrapper .hero-title {
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 700;
+    line-height: 1.4;
+    color: #fff;
+    margin: 0;
+    padding: 10px 20px;
+  }
+
+  .aks-dealers-tainan-wrapper .contact-section {
+    color: #fff;
+    padding: 50px 100px;
+  }
+
+  .aks-dealers-tainan-wrapper .contact-info {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .aks-dealers-tainan-wrapper .contact-info h1 {
+    font-size: clamp(24px, 3vw, 36px);
+    margin: 0 0 20px 0;
+    font-weight: 800;
+  }
+
+  .aks-dealers-tainan-wrapper .contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+  }
+
+  .aks-dealers-tainan-wrapper .contact-info li {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ccc;
+  }
+
+  .aks-dealers-tainan-wrapper .contact-info li span {
+    color: #fff;
+  }
+
+  .aks-dealers-tainan-wrapper .contact-visual {
+    display: flex;
+    gap: 0;
+    flex-wrap: nowrap;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .aks-dealers-tainan-wrapper .logo-box,
+  .aks-dealers-tainan-wrapper .map-box {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .aks-dealers-tainan-wrapper .logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .aks-dealers-tainan-wrapper .map-placeholder {
+    width: 100%;
+  }
+
+  .aks-dealers-tainan-wrapper .map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .aks-dealers-tainan-wrapper .btn-wrapper {
+    margin-top: 25px;
+  }
+
+  @media (max-width: 900px) {
+    .aks-dealers-tainan-wrapper .hero-header {
+      height: 200px;
+    }
+
+    .aks-dealers-tainan-wrapper .hero-title {
+      font-size: clamp(28px, 5vw, 48px);
+      padding: 8px 15px;
+    }
+
+    .aks-dealers-tainan-wrapper .contact-section {
+      padding: 15px;
+      margin-bottom: 45px;
+    }
+
+    .aks-dealers-tainan-wrapper .contact-info li {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<div class="aks-dealers-tainan-wrapper">
+  <div class="hero-header">
+    <h1 class="hero-title">配合店家 台南</h1>
+  </div>
+
+  <!-- <div class="contact-section">
+    <div class="contact-info">
+      <h1>店名</h1>
+      <ul>
+        <li><span>- 營業時間：</span></li>
+        <li><span>- 連絡電話：</span></li>
+        <li><span>- 地址：</span></li>
+      </ul>
     </div>
-    <h1 class="text-3xl font-bold tracking-widest text-[#c81f2a] aks-font-youshe uppercase mb-4">
-        Room Established
-    </h1>
-    <p class="text-gray-400 aks-font-clean tracking-widest mb-10 leading-loose">
-        全站路徑已完美開通。<br>
-        目前的網址位置：<span class="text-white font-bold border-b border-white/20 pb-1">{{ page.url }}</span>
-    </p>
-    <a href="/" class="px-10 py-3 bg-white/5 border border-white/10 text-white/60 text-sm tracking-[0.2em] hover:bg-[#c81f2a] hover:text-white transition-all duration-300">BACK TO HOME</a>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img
+          src="https://aks-ppf.github.io/images/"
+          alt="店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          
+        </div>
+      </div>
+    </div>
+  </div> -->
 </div>
