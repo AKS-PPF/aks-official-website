@@ -1,20 +1,190 @@
 ---
-layout: default
-title: AKS PPF 路徑開通
+layout: page-hero
+title: AKS 配合店家總覽 | AKS PPF
 ---
 
-<div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-    <div class="mb-8 opacity-20">
-        <svg width="100" height="100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-        </svg>
+<style>
+  .aks-dealers-index-wrapper * { box-sizing: border-box !important; }
+  .aks-dealers-index-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
+    line-height: 1.6;
+    --primary-red: #c81f2a;
+    --bg-black: #0a0a0a;
+    --card-bg: #161616;
+    --text-gray: #a0a0a0;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .aks-dealers-index-wrapper .hero-banner {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_657a7762-7c60-4bd5-a161-6d84bbb4679a.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 10px;
+  }
+
+  .aks-dealers-index-wrapper .hero-banner h1 {
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .aks-dealers-index-wrapper .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  .aks-dealers-index-wrapper .store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .aks-dealers-index-wrapper .store-card {
+    background: var(--card-bg);
+    border: 1px solid #333;
+    border-radius: 14px;
+    padding: 40px 20px;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    .aks-dealers-index-wrapper .store-card.special {
+      grid-column: span 2;
+    }
+  }
+
+  .aks-dealers-index-wrapper .store-card:hover {
+    border-color: var(--primary-red);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(200, 31, 42, 0.2);
+    color: #ffffff;
+  }
+
+  .aks-dealers-index-wrapper a:hover {
+    color: #c81f2a;
+  }
+
+  .aks-dealers-index-wrapper .store-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(200, 31, 42, 0.1), transparent);
+    transition: 0.5s;
+  }
+
+  .aks-dealers-index-wrapper .store-card:hover::before {
+    left: 100%;
+  }
+
+  .aks-dealers-index-wrapper .store-card h3 {
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+  }
+
+  .aks-dealers-index-wrapper .store-card.special h3 {
+    color: var(--primary-red);
+  }
+
+  .aks-dealers-index-wrapper .store-card p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    .aks-dealers-index-wrapper .hero-banner {
+      height: 30vh;
+    }
+
+    .aks-dealers-index-wrapper .store-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="aks-dealers-index-wrapper">
+  <section class="hero-banner">
+    <h1>配合店家</h1>
+  </section>
+
+  <main class="container">
+    <div class="store-grid">
+      <a href="/pages/ai-preview-partners" class="store-card special">
+        <h3>AI 換色特約店家</h3>
+        <p>AI Real-Time Preview</p>
+      </a>
+
+      <a href="/pages/dealers-taipei" class="store-card">
+        <h3>台北</h3>
+        <p>Taipei</p>
+      </a>
+
+      <a href="/pages/dealers-newtaipei" class="store-card">
+        <h3>新北</h3>
+        <p>New Taipei</p>
+      </a>
+
+      <a href="/pages/dealers-taoyuan" class="store-card">
+        <h3>桃園</h3>
+        <p>Taoyuan</p>
+      </a>
+
+      <a href="/pages/dealers-hsinchu" class="store-card">
+        <h3>新竹</h3>
+        <p>Hsinchu</p>
+      </a>
+
+      <a href="/pages/dealers-miaoli" class="store-card">
+        <h3>苗栗</h3>
+        <p>Miaoli</p>
+      </a>
+
+      <a href="/pages/dealers-taichung" class="store-card">
+        <h3>台中</h3>
+        <p>Taichung</p>
+      </a>
+
+      <a href="/pages/dealers-tainan" class="store-card">
+        <h3>台南</h3>
+        <p>Tainan</p>
+      </a>
+
+      <a href="/pages/dealers-kaohsiung" class="store-card">
+        <h3>高雄</h3>
+        <p>Kaohsiung</p>
+      </a>
     </div>
-    <h1 class="text-3xl font-bold tracking-widest text-[#c81f2a] aks-font-youshe uppercase mb-4">
-        Room Established
-    </h1>
-    <p class="text-gray-400 aks-font-clean tracking-widest mb-10 leading-loose">
-        全站路徑已完美開通。<br>
-        目前的網址位置：<span class="text-white font-bold border-b border-white/20 pb-1">{{ page.url }}</span>
-    </p>
-    <a href="/" class="px-10 py-3 bg-white/5 border border-white/10 text-white/60 text-sm tracking-[0.2em] hover:bg-[#c81f2a] hover:text-white transition-all duration-300">BACK TO HOME</a>
+  </main>
 </div>
