@@ -72,8 +72,8 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
       animation-delay: 0.5s; 
     }
     
-    /* ✅ 手機版 Hero 容器：重心上移 */
-    .aks-about-hero { justify-content: flex-start; padding: 10vh 20px 0 20px; } 
+    /* ✅ 這次來真的！手機版 Hero 容器：重心降到底部 (flex-end)，並預留 120px 給滾動指示器 */
+    .aks-about-hero { justify-content: flex-end; padding: 0 24px 120px 24px; } 
   }
 
   @keyframes kenBurnsBreath {
@@ -94,7 +94,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
     }
   }
 
-  /* Kicker (只有 AKS PPF 標籤) */
+  /* Kicker (We are AKS PPF) */
   .aks-kicker { 
     font-size: clamp(12px, 1.2vw, 14px); letter-spacing: 0.3em; color: rgba(255,255,255,0.6); 
     font-weight: 300; text-transform: uppercase; display: block; margin-bottom: 24px;
@@ -111,8 +111,6 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
     max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; padding: 0 24px;
   }
   @media (max-width: 991px) { .aks-hero-title-zh { padding: 0; text-align: right; margin-right: 0; margin-left: auto; } }
-  
-  /* ✅ 英文副標題已彻底移除 */
 
   /* Scroll 指示器 */
   .aks-scroll-indicator {
@@ -141,7 +139,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   }
 
   @media (max-width: 991px) {
-    /* ✅ 手機版指示器保持靠左，與文字形成視覺平衡 */
+    /* ✅ 手機版指示器保持靠左，與靠右的文字形成視覺平衡 */
     .aks-scroll-indicator { left: 24px; transform: none; align-items: flex-start; }
     .aks-scroll-line { height: 60px; }
   }
@@ -242,11 +240,10 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
       </div>
 
       <div class="aks-hero-content" id="aks-parallax-content">
-        <span class="aks-kicker"><span class="aks-brand-tag">AKS PPF</span></span>
+        <span class="aks-kicker">WE ARE <span class="aks-brand-tag">AKS PPF</span></span>
         
         <h1 class="aks-hero-title-zh">源自追求完美細節的<br>極致偏執</h1>
-        
-        </div>
+      </div>
       
       <div class="aks-scroll-indicator" id="aks-parallax-indicator">
         <span class="aks-scroll-text">SCROLL</span>
@@ -314,7 +311,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. 動畫Reveal (一般元素浮出)
+    // 1. 動畫Reveal
     const reveals = document.querySelectorAll('.io-reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -326,36 +323,34 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     reveals.forEach(el => observer.observe(el));
 
-    // 2. JS 淡入背景圖片 (手機版防閃爍)
+    // 2. JS 淡入背景圖片
     const isMobile = window.innerWidth < 992;
     if(isMobile) {
         setTimeout(() => { document.getElementById('aks-hero-bg').style.opacity = '1'; }, 300);
     }
 
-    // 3. 頂級硬體加速視差引擎 (Hardware Accelerated Parallax)
+    // 3. 頂級硬體加速視差引擎
     const parallaxBg = document.getElementById('aks-parallax-bg');
     const parallaxContent = document.getElementById('aks-parallax-content');
     const parallaxIndicator = document.getElementById('aks-parallax-indicator');
 
     window.addEventListener('scroll', () => {
-        // 使用 requestAnimationFrame 確保絲滑不掉幀
         requestAnimationFrame(() => {
             const scrollY = window.scrollY;
             const heroHeight = window.innerHeight;
 
-            // 只有在 Hero 區塊還在畫面中時才計算，節省效能
             if (scrollY <= heroHeight) {
-                // 背景圖：往下沉 (速度較慢 0.3)
+                // 背景圖：往下沉
                 parallaxBg.style.transform = `translateY(${scrollY * 0.3}px)`;
                 
-                // 文字內容：往上飄 (速度較快 -0.4) 並迅速淡出
+                // 文字內容：往上飄並淡出
                 parallaxContent.style.transform = `translateY(${scrollY * -0.4}px)`;
                 parallaxContent.style.opacity = 1 - (scrollY / (heroHeight * 0.45)); 
                 
                 // 指示器：往下移動並淡出
                 parallaxIndicator.style.transform = `translateX(-50%) translateY(${scrollY * 0.5}px)`;
                 if(isMobile) {
-                    parallaxIndicator.style.transform = `translateY(${scrollY * 0.5}px)`; // 手機版靠左無 X軸偏移
+                    parallaxIndicator.style.transform = `translateY(${scrollY * 0.5}px)`; // 手機版靠左
                 }
                 parallaxIndicator.style.opacity = 1 - (scrollY / (heroHeight * 0.3));
             }
