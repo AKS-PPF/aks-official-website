@@ -1,5 +1,7 @@
 ---
 layout: page-flush
+# 將 permalink 設定為 /about/，獲得乾淨且具備 SEO 的黃金網址 (路線 B)
+permalink: /about/
 title: 關於 AKS PPF | 源自對汽車美學的極致偏執
 ---
 
@@ -9,12 +11,10 @@ title: 關於 AKS PPF | 源自對汽車美學的極致偏執
      ========================================= */
   .aks-about-wrapper {
     --bg: #050505; --panel: rgba(15, 15, 19, 0.7); --text: #f3f4f8; --primary: #c81f2a;
-    background: radial-gradient(1100px 560px at 18% 0%, rgba(255,45,63,.12) 0%, transparent 55%), 
-                radial-gradient(900px 520px at 88% 18%, rgba(192,23,42,.08) 0%, transparent 55%), 
-                radial-gradient(720px 520px at 50% 110%, rgba(107,13,24,.10) 0%, transparent 60%),
+    background: radial-gradient(1100px 560px at 18% 0%, rgba(255,45,63,.15) 0%, transparent 55%), 
+                radial-gradient(900px 520px at 88% 18%, rgba(192,23,42,.10) 0%, transparent 55%), 
                 var(--bg);
     min-height: 100vh;
-    padding: 100px 0 160px 0; /* 智慧留白 */
     font-family: 'Montserrat', 'PingFang TC', sans-serif;
     color: var(--text);
   }
@@ -23,7 +23,7 @@ title: 關於 AKS PPF | 源自對汽車美學的極致偏執
   
   .aks-about-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
-  /* 字體定義 */
+  /* 字體定義：優設標題黑 (aks-font-youshe) 僅限於 AKS、GL-75 等品牌產品名標籤 */
   @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
   .aks-font-youshe { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; }
 
@@ -32,36 +32,69 @@ title: 關於 AKS PPF | 源自對汽車美學的極致偏執
   .io-reveal.is-in { opacity: 1; transform: translateY(0); filter: blur(0); }
 
   /* =========================================
-     2. 英雄區塊 (強烈聲明)
+     2. 滿版大器英雄區塊 (Hero Section)
      ========================================= */
-  .aks-about-hero { text-align: center; margin-bottom: 120px; }
-  .aks-kicker { font-size: 11px; letter-spacing: 0.3em; color: var(--primary); font-weight: 800; margin-bottom: 16px; display: block; text-transform: uppercase; }
-  .aks-about-hero h1 { font-size: clamp(48px, 6vw, 86px); font-weight: 900; letter-spacing: 2px; line-height: 1.1; margin: 0 0 20px 0; }
-  .aks-about-hero p { color: rgba(255,255,255,0.7); font-size: 18px; letter-spacing: 1px; max-width: 700px; margin: 0 auto; line-height: 1.8; font-weight: 300; }
+  .aks-about-hero { 
+    position: relative; width: 100vw; height: 100vh; overflow: hidden; 
+    /* 這裡要用你找的那張讚圖，暫時使用 dummy 佔位 */
+    background: linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,0.95)),
+                url('https://dummyimage.com/1920x1080/050505/ffffff.jpg&text=aks-about-hero.jpg') no-repeat center center; 
+    background-size: cover; display: flex; flex-direction: column; justify-content: space-between; 
+    padding: 10% 24px; text-align: center;
+  }
+  @media (max-width: 991px) { .aks-about-hero { padding: 20% 20px; height: 90vh; } }
+  
+  /* 全英文標題 (嚴格不使用 YouShe) - 使用 Montserrat 極大極粗並拉寬字母間距 */
+  .aks-hero-title-en { 
+    font-size: clamp(32px, 5vw, 76px); font-weight: 900; letter-spacing: 1.2vw; line-height: 1.1; margin: 0; 
+    text-transform: uppercase; color: white; margin-top: auto; margin-bottom: 2vw;
+  }
+  
+  /* Subtitle Below English (We are AKS PPF) - We use YouShe font only for the brand part */
+  .aks-kicker { font-size: 11px; letter-spacing: 0.3em; color: var(--primary); font-weight: 800; text-transform: uppercase; display: block; }
+  /* Applying brand font only to the AKS PPF part */
+  .aks-kicker > span { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; font-size: 1.2em; vertical-align: baseline; }
+
+  /* 左下角中文聲明 (嚴格不使用 YouShe) */
+  .aks-hero-desc-zh { 
+    color: rgba(255,255,255,0.7); font-size: clamp(14px, 1.2vw, 18px); letter-spacing: 1px; line-height: 1.8; 
+    font-weight: 300; text-align: left; max-width: 480px; margin-right: auto; margin-top: auto;
+  }
 
   /* =========================================
-     3. 品牌哲學 (Split Section)
+     3. 品牌哲學 (Split Section) - 修正標題字體
      ========================================= */
-  .aks-split { display: flex; align-items: center; gap: 80px; margin-bottom: 160px; }
-  .aks-split-img { width: 45%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+  .aks-split-wrapper { padding: 160px 0; background: var(--bg); }
+  .aks-split { display: flex; align-items: center; gap: 80px; margin-bottom: 0; }
+  
+  .aks-split-img { 
+    width: 45%; border-radius: 12px; overflow: hidden; 
+    border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.6); 
+  }
   .aks-split-img img { width: 100%; display: block; object-fit: cover; }
   
   .aks-split-info { width: 55%; }
-  .aks-split-info h2 { font-size: 42px; font-weight: 900; color: white; margin: 0 0 32px 0; letter-spacing: 1px; line-height: 1.2; }
+  /* ✅ 修正：這裡是大氣的 Chinese header，不使用 YouShe。 */
+  .aks-split-info h2 { 
+    font-size: clamp(32px, 3.5vw, 42px); font-weight: 900; color: white; margin: 0 0 32px 0; 
+    letter-spacing: 1px; line-height: 1.2; font-family: 'Montserrat', 'PingFang TC', sans-serif !important; 
+  }
   .aks-split-info p { font-size: 16px; color: #aaa; line-height: 2; margin: 0 0 24px 0; font-weight: 300; }
-  .aks-split-info p strong { color: white; font-weight: 700; }
+  
+  /* We use brand font for "PVC" and "AKS" if they appear as brand names, but here it's material type in sentence. We keep it as standard text for flow. */
 
   /* RWD */
   @media (max-width: 991px) {
-    .aks-split { flex-direction: column; gap: 40px; margin-bottom: 100px; }
-    .aks-split-img, .aks-split-info { width: 100%; text-align: center; }
+    .aks-split-wrapper { padding: 100px 0; }
+    .aks-split { flex-direction: column; gap: 40px; text-align: center; }
+    .aks-split-img, .aks-split-info { width: 100%; }
     .aks-split-info h2 { font-size: 32px; }
   }
 
   /* =========================================
-     4. 核心價值 (3-Grid Section)
+     4. 核心價值 (3-Grid Section) - 修正標題字體
      ========================================= */
-  .aks-values { margin-bottom: 160px; }
+  .aks-values-wrapper { padding: 0 0 160px 0; background: var(--bg); }
   .aks-value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
   
   .aks-value-card { 
@@ -77,33 +110,48 @@ title: 關於 AKS PPF | 源自對汽車美學的極致偏執
   .aks-value-card:hover::before { opacity: 1; }
 
   .aks-value-icon { font-size: 36px; color: var(--primary); margin-bottom: 24px; display: block; }
-  .aks-value-card h3 { font-size: 24px; font-weight: 800; color: white; margin: 0 0 16px 0; letter-spacing: 1px; }
+  /* ✅ 修正：這裡是 Chinese header，不使用 YouShe。 */
+  .aks-value-card h3 { 
+    font-size: 24px; font-weight: 800; color: white; margin: 0 0 16px 0; letter-spacing: 1px; 
+    font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
+  }
   .aks-value-card p { font-size: 15px; color: #888; line-height: 1.8; margin: 0; font-weight: 300; }
 
   @media (max-width: 768px) {
+    .aks-values-wrapper { padding: 0 0 100px 0; }
     .aks-value-grid { grid-template-columns: 1fr; gap: 20px; }
     .aks-value-card { padding: 32px; }
   }
 
   /* =========================================
-     5. 結語與 CTA (呼吸感紅色按鈕)
+     5. 結語與 CTA (紅色底 + Hover發光呼吸感按鈕)
      ========================================= */
+  .aks-about-outro-wrapper { padding: 0 0 160px 0; background: var(--bg); }
   .aks-about-outro { text-align: center; max-width: 800px; margin: 0 auto; }
-  .aks-about-outro h2 { font-size: 32px; font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0 0 50px 0; letter-spacing: 1px; }
+  
+  /* ✅ 修正：這裡是大氣的 Chinese text，不使用 YouShe。 */
+  .aks-about-outro h2 { 
+    font-size: clamp(24px, 3.5vw, 32px); font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0 0 50px 0; letter-spacing: 1px; 
+    font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
+  }
   .aks-about-outro h2 strong { color: white; font-weight: 900; }
 
-  .aks-btn-glow { 
-    display: inline-flex; align-items: center; justify-content: center;
-    background-color: var(--primary); color: #ffffff;
+  /* ✅ 按鈕：紅色底 + Hover 發光呼吸感 (嚴格不使用 YouShe 在這裡) */
+  .aks-btn-cta { 
+    display: inline-flex; align-items: center; justify-content: center; 
+    background-color: var(--primary); /* 紅底 */
+    color: #ffffff; /* 白字 */
     padding: 18px 48px; border-radius: 6px; font-size: 14px; font-weight: 900; 
     letter-spacing: 0.3em; transition: all 0.4s ease-in-out; 
     text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; 
-    box-shadow: 0 4px 15px rgba(200,31,42,0.3);
+    box-shadow: 0 4px 15px rgba(200,31,42,0.3); /* 微微陰影 */
   }
-  .aks-btn-glow:hover { 
+  .aks-btn-cta:hover { 
     background-color: #e02431; 
+    color: #ffffff; 
+    /* 多層次陰影放大，發光呼吸感 */
     box-shadow: 0 0 20px rgba(200,31,42,0.6), 0 0 40px rgba(200,31,42,0.3); 
-    transform: scale(1.02); 
+    transform: translateY(-2px) scale(1.02); 
   }
 
 </style>
@@ -112,55 +160,68 @@ title: 關於 AKS PPF | 源自對汽車美學的極致偏執
   <div class="aks-about-container">
     
     <header class="aks-about-hero io-reveal">
-      <span class="aks-kicker">We are AKS PPF</span>
-      <h1 class="aks-font-youshe">The Intersection of<br>Passion & Perfection</h1>
-      <p>源自對汽車美學的極致偏執，我們不只是保護你的車，更是重塑汽車貼膜的最高標準。</p>
+      <h1 class="aks-hero-title-en">The Intersection of<br>Passion & Perfection</h1>
+      <span class="aks-kicker">We are <span>AKS PPF</span></span>
+      <p class="aks-hero-desc-zh">源自對汽車美學的極致偏執，我們不只是保護你的車，更是重塑汽車貼膜的最高標準。</p>
     </header>
 
-    <section class="aks-split io-reveal">
-      <div class="aks-split-img">
-        <img src="https://aks-ppf.github.io/aks-official-website/assets/images/aks-about-craftsmanship.jpg" alt="AKS 極致施工細節">
-      </div>
-      <div class="aks-split-info">
-        <h2 class="aks-font-youshe">源自對傳統<br>貼膜質感的妥協不滿</h2>
-        <p>如果車是你靈魂的延伸，那我們就是讓它閃耀的工匠。</p>
-        <p>AKS 的誕生，純粹源於一份<strong>不甘於傳統 PVC 改色膜「廉價塑膠感」</strong>的偏執。我們無法接受在換上鮮豔色彩的同時，必須犧牲烤漆般的光澤，更無法妥協於幾年後黃化、殘膠的宿命。</p>
-        <p>我們深知，在意細節的車主，要的不只是保護，更是一份<strong>「不與質感妥協」的極致保護</strong>。</p>
-      </div>
-    </section>
-
-    <section class="aks-values io-reveal">
-      <div class="aks-value-grid">
-        
-        <div class="aks-value-card">
-          <i class="fa-solid fa-layer-group aks-value-icon"></i>
-          <h3>航太級基材</h3>
-          <p>嚴選最高標準的 TPU（熱塑性聚氨酯），將極致延展性與耐候性完美融合，具備強大的自體修復與防污特性。</p>
-        </div>
-
-        <div class="aks-value-card">
-          <i class="fa-solid fa-paint-roller aks-value-icon"></i>
-          <h3>烤漆級光澤</h3>
-          <p>不僅是改色，更是對質感的一份保障。AKS 改色犀牛皮擁有深邃剔透的真實烤漆光澤，乾淨、耐看，禁得起細節端詳。</p>
-        </div>
-
-        <div class="aks-value-card">
-          <i class="fa-solid fa-shield-halved aks-value-icon"></i>
-          <h3>長期安全保障</h3>
-          <p>考慮到使用年限與售後，我們全色系提供 5 年原廠保固，獨家底膠技術確保撕膜時不掉漆、不殘膠。</p>
-        </div>
-
-      </div>
-    </section>
-
-    <footer class="aks-about-outro io-reveal">
-      <h2><strong>你選的不只是顏色，而是對愛車一份不妥協的精品保障。</strong></h2>
-      <a href="{{ '/pages/color-chart/' | relative_url }}" class="aks-btn-glow">
-        <i class="fa-solid fa-swatchbook" style="margin-right: 12px;"></i>線上色卡總覽
-      </a>
-    </footer>
-
   </div>
+
+  <div class="aks-split-wrapper">
+    <div class="aks-about-container">
+      <section class="aks-split io-reveal">
+        <div class="aks-split-img">
+          <img src="https://aks-ppf.github.io/aks-official-website/assets/images/aks-about-craftsmanship.jpg" alt="AKS 極致施工細節">
+        </div>
+        <div class="aks-split-info">
+          <h2>源自對傳統<br>貼膜質感的妥協不滿</h2>
+          <p>如果車是你靈魂的延伸，那我們就是讓它閃耀的工匠。</p>
+          <p>AKS 的誕生，純粹源於一份<strong>不甘於傳統改色膜「廉價塑膠感」</strong>的偏執。我們無法接受在換上鮮豔色彩的同時，必須犧牲烤漆般的光澤，更無法妥協於幾年後黃化、殘膠的宿命。</p>
+          <p>我們深知，在意細節的車主，要的不只是保護，更是一份<strong>「不與質感妥協」的極致保護</strong>。</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="aks-values-wrapper">
+    <div class="aks-about-container">
+      <section class="aks-values io-reveal">
+        <div class="aks-value-grid">
+          
+          <div class="aks-value-card">
+            <i class="fa-solid fa-layer-group aks-value-icon"></i>
+            <h3>航太級基材</h3>
+            <p>嚴選最高標準的 TPU（熱塑性聚氨酯），將極致延展性與耐候性完美融合，具備強大的自體修復與防污特性。</p>
+          </div>
+
+          <div class="aks-value-card">
+            <i class="fa-solid fa-paint-roller aks-value-icon"></i>
+            <h3>烤漆級光澤</h3>
+            <p>不僅是改色，更是對質感的一份保障。AKS 改色犀牛皮擁有深邃剔剔透的真實烤漆光澤，乾淨、耐看，禁得起細節端詳。</p>
+          </div>
+
+          <div class="aks-value-card">
+            <i class="fa-solid fa-shield-halved aks-value-icon"></i>
+            <h3>長期安全保障</h3>
+            <p>考慮到使用年限與售後，我們全色系提供 5 年原廠保固，獨家底膠技術確保撕膜時不掉漆、不殘膠。</p>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="aks-about-outro-wrapper">
+    <div class="aks-about-container">
+      <footer class="aks-about-outro io-reveal">
+        <h2><strong>你選的不只是顏色，而是對愛車一份不妥協的精品保障。</strong></h2>
+        <a href="{{ '/pages/color-chart/' | relative_url }}" class="aks-btn-cta">
+          <i class="fa-solid fa-swatchbook" style="margin-right: 12px;"></i>線上色卡總覽
+        </a>
+      </footer>
+    </div>
+  </div>
+
 </div>
 
 <script>
