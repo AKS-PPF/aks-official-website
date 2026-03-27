@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: "AKS PPF 艾鎧斯車漆保護膜" }}</title>
 
+    <link rel="preload" href="https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
     <script>tailwind.config = { corePlugins: { preflight: false } }</script>
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -14,17 +16,25 @@
     <style>
         /* 1. 全站基礎護盾：鎖死黑底白字，防止溢出 */
         body { background-color: #050505; color: #ffffff; margin: 0; padding: 0; overflow-x: hidden; }
-        @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-display: swap; }
-        .aks-font-youshe { font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif; }
+        
+        /* ✅ 2. 全站共用字體 CSS 定義 (使用 font-display: block 消除閃爍) */
+        @font-face { 
+            font-family: 'YouSheBiaoTiHei'; 
+            src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); 
+            font-weight: normal; 
+            font-style: normal; 
+            font-display: block; /* 核心：隱藏等待，完美現身 */
+        }
+        .aks-font-youshe { font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif !important; }
         .aks-font-clean { font-family: 'Montserrat', sans-serif; }
 
-        /* 2. 智慧下推空間 (完美解決覆蓋問題！) */
+        /* 3. 智慧下推空間 (完美解決覆蓋問題！) */
         body.has-solid-header main { padding-top: 85px; }
         @media (max-width: 991px) {
             body.has-solid-header main { padding-top: 68px; }
         }
 
-        /* 3. AKS 客製化導覽列核心 CSS */
+        /* 4. AKS 客製化導覽列核心 CSS */
         .aks-header { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 9998; background-color: transparent; transition: all 0.3s ease; box-sizing: border-box; }
         .aks-header.is-scrolled { background-color: rgba(5, 5, 5, 0.98); padding: 12px 5%; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
         .aks-header.is-hidden { transform: translateY(-100%); }
@@ -82,7 +92,136 @@
 
 <body class="flex flex-col min-h-screen layout-{{ page.layout | default: 'default' }}">
     
-    {% include header.html %}
+    <header class="aks-header aks-font-clean">
+        <button class="aks-mobile-toggle">
+            <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+
+        <div class="aks-logo">
+            <a href="{{ '/' | relative_url }}">
+                <img src="https://cdn.cybassets.com/media/W1siZiIsIjI2MDk2L2F0dGFjaGVkX3Bob3Rvcy8xNzM2MzE5NDg5X0FLUyDmqavluYVMT0dPIOeZveWtly5wbmcucG5nIl1d.png?sha=d5d21ab05f13f71a" alt="AKS PPF" class="aks-logo-desktop">
+                <img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_839b2538-f88b-49f9-9936-cbc75fdf0fc6.png" alt="AKS PPF" class="aks-logo-mobile">
+            </a>
+        </div>
+        
+        <nav class="aks-nav">
+            <li class="aks-nav-item aks-has-dropdown"><a href="{{ '/pages/products/' | relative_url }}" class="aks-nav-link">產品</a>
+                <div class="aks-dropdown-menu">
+                    <a href="{{ '/pages/products/tpu-gl75/' | relative_url }}" class="aks-dropdown-item">亮面TPU GL-75</a>
+                    <a href="{{ '/pages/products/tpu-gl75pro/' | relative_url }}" class="aks-dropdown-item">亮面TPU GL-75PRO</a>
+                    <a href="{{ '/pages/products/tpu-ma75/' | relative_url }}" class="aks-dropdown-item">消光TPU MA-75</a>
+                    <a href="{{ '/pages/products/tpu-sr75/' | relative_url }}" class="aks-dropdown-item">天窗隔熱膜TPU SR-75</a>
+                    <a href="{{ '/pages/products/color-ppf/' | relative_url }}" class="aks-dropdown-item">改色犀牛皮COLOR PPF</a>
+                </div>
+            </li>
+            <li class="aks-nav-item aks-has-dropdown"><a href="javascript:void(0)" class="aks-nav-link">保固</a>
+                <div class="aks-dropdown-menu">
+                    <a href="{{ '/pages/warranty-info' | relative_url }}" class="aks-dropdown-item">保固資訊</a>
+                    <a href="{{ '/pages/warranty-status' | relative_url }}" class="aks-dropdown-item">保固查詢</a>
+                </div>
+            </li>
+            <li class="aks-nav-item"><a href="{{ '/pages/color-chart/' | relative_url }}" class="aks-nav-link">線上色卡</a></li>
+            <li class="aks-nav-item aks-has-dropdown"><a href="{{ '/pages/dealers/' | relative_url }}" class="aks-nav-link">配合店家</a>
+                <div class="aks-dropdown-menu">
+                    <a href="{{ '/pages/dealers/ai-preview/' | relative_url }}" class="aks-dropdown-item text-[#d31212] font-bold">AI 換色特約店家</a>
+                    <a href="{{ '/pages/dealers/taipei/' | relative_url }}" class="aks-dropdown-item">台北</a>
+                    <a href="{{ '/pages/dealers/newtaipei/' | relative_url }}" class="aks-dropdown-item">新北</a>
+                    <a href="{{ '/pages/dealers/taoyuan/' | relative_url }}" class="aks-dropdown-item">桃園</a>
+                    <a href="{{ '/pages/dealers/hsinchu/' | relative_url }}" class="aks-dropdown-item">新竹</a>
+                    <a href="{{ '/pages/dealers/miaoli/' | relative_url }}" class="aks-dropdown-item">苗栗</a>
+                    <a href="{{ '/pages/dealers/taichung/' | relative_url }}" class="aks-dropdown-item">台中</a>
+                    <a href="{{ '/pages/dealers/tainan/' | relative_url }}" class="aks-dropdown-item">台南</a>
+                    <a href="{{ '/pages/dealers/kaohsiung/' | relative_url }}" class="aks-dropdown-item">高雄</a>
+                </div>
+            </li>
+            <li class="aks-nav-item aks-has-dropdown"><a href="javascript:void(0)" class="aks-nav-link">經銷商專區</a>
+                <div class="aks-dropdown-menu">
+                    <a href="{{ '/pages/distributor/join/' | relative_url }}" class="aks-dropdown-item">成為合作店家</a>
+                    <a href="{{ '/pages/distributor/dap/' | relative_url }}" class="aks-dropdown-item">電腦版型裁切</a>
+                </div>
+            </li>
+            <li class="aks-nav-item"><a href="{{ '/pages/about/' | relative_url }}" class="aks-nav-link">關於我們</a></li>
+            <li class="aks-nav-item"><a href="https://lin.ee/OYaZjKO" target="_blank" class="aks-contact-btn">聯絡我們</a></li>
+        </nav>
+    </header>
+
+    <div class="aks-mobile-menu aks-font-clean">
+        <button class="aks-mobile-close">
+            <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <div class="aks-mobile-item aks-has-sub">
+            <button class="aks-mobile-link">產品 
+                <svg class="aks-chevron w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="aks-mobile-sub">
+                <div class="aks-mobile-sub-inner">
+                    <a href="{{ '/pages/products/' | relative_url }}" class="aks-mobile-sub-link text-white font-bold mb-2 pb-2 border-b border-white/10 block">查看所有產品 ➔</a>
+                    <a href="{{ '/pages/products/tpu-gl75/' | relative_url }}" class="aks-mobile-sub-link">亮面TPU GL-75</a>
+                    <a href="{{ '/pages/products/tpu-gl75pro/' | relative_url }}" class="aks-mobile-sub-link">亮面TPU GL-75PRO</a>
+                    <a href="{{ '/pages/products/tpu-ma75/' | relative_url }}" class="aks-mobile-sub-link">消光TPU MA-75</a>
+                    <a href="{{ '/pages/products/tpu-sr75/' | relative_url }}" class="aks-mobile-sub-link">天窗隔熱膜TPU SR-75</a>
+                    <a href="{{ '/pages/products/color-ppf/' | relative_url }}" class="aks-mobile-sub-link">改色犀牛皮COLOR PPF</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="aks-mobile-item aks-has-sub">
+            <button class="aks-mobile-link">保固 
+                <svg class="aks-chevron w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="aks-mobile-sub">
+                <div class="aks-mobile-sub-inner">
+                    <a href="{{ '/pages/warranty/info/' | relative_url }}" class="aks-mobile-sub-link">保固資訊</a>
+                    <a href="{{ '/pages/warranty/status/' | relative_url }}" class="aks-mobile-sub-link">保固查詢</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="aks-mobile-item">
+            <a href="{{ '/pages/color-chart/' | relative_url }}" class="aks-mobile-link">線上色卡</a>
+        </div>
+
+        <div class="aks-mobile-item aks-has-sub">
+            <button class="aks-mobile-link">配合店家 
+                <svg class="aks-chevron w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="aks-mobile-sub">
+                <div class="aks-mobile-sub-inner">
+                    <a href="{{ '/pages/dealers/' | relative_url }}" class="aks-mobile-sub-link text-white font-bold mb-2 pb-2 border-b border-white/10 block">查看所有店家 ➔</a>
+                    <a href="{{ '/pages/dealers/ai-preview/' | relative_url }}" class="aks-mobile-sub-link text-[#d31212]">AI 換色特約店家</a>
+                    <a href="{{ '/pages/dealers/taipei/' | relative_url }}" class="aks-mobile-sub-link">台北</a>
+                    <a href="{{ '/pages/dealers/newtaipei/' | relative_url }}" class="aks-mobile-sub-link">新北</a>
+                    <a href="{{ '/pages/dealers/taoyuan/' | relative_url }}" class="aks-mobile-sub-link">桃園</a>
+                    <a href="{{ '/pages/dealers/hsinchu/' | relative_url }}" class="aks-mobile-sub-link">新竹</a>
+                    <a href="{{ '/pages/dealers/miaoli/' | relative_url }}" class="aks-mobile-sub-link">苗栗</a>
+                    <a href="{{ '/pages/dealers/taichung/' | relative_url }}" class="aks-mobile-sub-link">台中</a>
+                    <a href="{{ '/pages/dealers/tainan/' | relative_url }}" class="aks-mobile-sub-link">台南</a>
+                    <a href="{{ '/pages/dealers/kaohsiung/' | relative_url }}" class="aks-mobile-sub-link">高雄</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="aks-mobile-item aks-has-sub">
+            <button class="aks-mobile-link">經銷商專區 
+                <svg class="aks-chevron w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="aks-mobile-sub">
+                <div class="aks-mobile-sub-inner">
+                    <a href="{{ '/pages/distributor/join/' | relative_url }}" class="aks-mobile-sub-link">成為合作店家</a>
+                    <a href="{{ '/pages/distributor/dap/' | relative_url }}" class="aks-mobile-sub-link">電腦版型裁切</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="aks-mobile-item">
+            <a href="{{ '/pages/about/' | relative_url }}" class="aks-mobile-link">關於我們</a>
+        </div>
+
+        <div class="mt-10 mb-8 flex justify-center">
+            <a href="https://lin.ee/OYaZjKO" target="_blank" class="aks-contact-btn w-full text-center py-4">聯絡我們</a>
+        </div>
+    </div>
 
     <main class="flex-grow w-full overflow-x-hidden">
         {{ content }}
@@ -111,20 +250,6 @@
                 
                 // 預設透明判定：只要是滿版 Layout 或網站根目錄，就全透明
                 let isTransparent = isHeroLayout || isRoot;
-
-                // ==========================================
-                // 🔥 特殊特例預留區 (手機/電腦版差異化設定) 🔥
-                // 如果未來有些滿版頁面，在手機版因為太矮會被 Logo 擋住，
-                // 可以將該頁面的網址加在這裡，強制手機版變為實心黑底並下推。
-                // (搬運完成後，若確認需要防卡 Logo，直接解開下方註解即可)
-                // ==========================================
-                /*
-                if (path.includes('/color-ppf')) {
-                    if (window.innerWidth <= 991) {
-                        isTransparent = false; // 手機版強制改回實心，啟動下推閃避
-                    }
-                }
-                */
 
                 // 若最終判定不是透明頁面 (例如 page-flush 或 page-padded)，啟動防護罩與自動下推
                 if (!isTransparent) {
