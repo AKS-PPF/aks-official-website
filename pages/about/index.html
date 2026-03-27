@@ -4,7 +4,9 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
 ---
 
 <style>
-  /* 限定作用域，完全嚴格對齊品牌與視覺規範 */
+  /* =========================================
+     1. 全站底色與毛玻璃質感 
+     ========================================= */
   .aks-about-wrapper {
     --bg: #050505; --panel: rgba(15, 15, 19, 0.7); --text: #f3f4f8; --primary: #c81f2a;
     background: radial-gradient(1100px 560px at 18% 0%, rgba(255,45,63,.15) 0%, transparent 55%), 
@@ -19,72 +21,74 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   
   .aks-about-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
-  /* 字體定義：優設標題黑 (aks-font-youshe) 僅限於 AKS、GL-75 等品牌/產品名標籤 */
+  /* 字體定義：嚴格控管優設標題黑 */
   @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
   .aks-font-youshe { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; font-size: 1.1em; vertical-align: baseline; }
 
-  /* Reveal 互動 */
-  .io-reveal { opacity: 0; transform: translateY(30px); filter: blur(5px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  /* 精品級 Reveal 互動 (加強浮出距離與平滑度) */
+  .io-reveal { opacity: 0; transform: translateY(40px); filter: blur(8px); transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity, filter; }
   .io-reveal.is-in { opacity: 1; transform: translateY(0); filter: blur(0); }
 
   /* =========================================
-     2. 滿版英雄區塊 (Hero Section) - 升級動態呼吸感
+     2. 頂級視差英雄區塊 (Parallax Hero Section)
      ========================================= */
   .aks-about-hero { 
     position: relative; width: 100vw; 
-    height: 100vh; height: 100svh; /* 智慧手機 svh */
+    height: 100vh; height: 100svh; 
     overflow: hidden; 
     display: flex; flex-direction: column; justify-content: center; 
     padding: 0 24px; text-align: left; 
-    background: #050505; /* 預設底色 */
+    background: #050505; 
   }
 
-  /* 🌟 動態呼吸背景圖片引擎 */
-  .aks-hero-bg {
+  /* 🌟 視差外掛容器 (負責滾動往下沉) */
+  .aks-hero-parallax-container {
     position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;
+    will-change: transform;
+  }
+
+  /* 🌟 動態呼吸背景圖片引擎 (負責縮放呼吸) */
+  .aks-hero-bg {
+    width: 100%; height: 100%;
     background-repeat: no-repeat; background-position: center center;
     background-size: cover;
-    opacity: 0; /* 預設隱藏，由 JS 控制淡入 */
-    transition: opacity 1s ease;
-    will-change: transform, opacity;
+    opacity: 0; transition: opacity 1.5s ease;
+    will-change: transform;
   }
 
-  /* RWD 圖片與動畫設定 */
+  /* 電腦版設定 */
   @media (min-width: 992px) {
-    /* 電腦版：使用原有的灰色 Supra 戰神圖 (不動) */
     .aks-hero-bg { 
       background-image: linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,0.9)),
                         url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_657a7762-7c60-4bd5-a161-6d84bbb4679a.png');
-      opacity: 1; /* 電腦版不須淡入 */
+      opacity: 1; 
     }
   }
 
+  /* 手機版設定 */
   @media (max-width: 991px) { 
-    /* ✅ 手機版：使用你挑選的極致細節圖，並啟用 Ken Burns 呼吸動畫 */
     .aks-hero-bg { 
-      background-image: linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,0.9)),
+      background-image: linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,0.85)),
                         url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_6130b77a-77d4-4903-8959-12778d2bc8e2.png');
       animation: kenBurnsBreath 20s infinite alternate cubic-bezier(0.445, 0.05, 0.55, 0.95);
-      animation-delay: 1s; /* 等待 JS 淡入後開始 */
+      animation-delay: 0.5s; 
     }
     
-    /* 手機版排版：重心智慧下移，引導視覺連線 */
-    .aks-about-hero { justify-content: flex-end; padding-bottom: 120px; } 
+    /* ✅ 排版上移：精準定位在你箭頭指的引擎蓋上方 */
+    .aks-about-hero { justify-content: center; padding-bottom: 15vh; } 
   }
 
-  /* 🌟 Ken Burns 呼吸動畫定義 (緩慢且細微) */
   @keyframes kenBurnsBreath {
     0% { transform: scale(1.0); }
-    100% { transform: scale(1.1); }
+    100% { transform: scale(1.15); }
   }
   
-  /* Hero 內容區塊 (需要滾動驅動淡出) */
+  /* Hero 內容區塊 (負責滾動往上飄) */
   .aks-hero-content {
     position: relative; z-index: 5;
     will-change: opacity, transform;
   }
 
-  /* Hero Kicker (We are AKS PPF) */
   .aks-kicker { 
     font-size: clamp(12px, 1.2vw, 14px); letter-spacing: 0.3em; color: rgba(255,255,255,0.6); 
     font-weight: 300; text-transform: uppercase; display: block; margin-bottom: 24px;
@@ -94,7 +98,6 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
 
   .aks-brand-tag { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; color: var(--primary); font-size: 1.25em; }
 
-  /* ✅ 更新中文標題：源自追求完美細節的極致偏執 */
   .aks-hero-title-zh { 
     font-size: clamp(32px, 5vw, 64px); font-weight: 900; letter-spacing: 2px; line-height: 1.1; margin: 0; 
     color: white; font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
@@ -102,7 +105,6 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   }
   @media (max-width: 991px) { .aks-hero-title-zh { padding: 0; } }
   
-  /* 全英文副標題 */
   .aks-hero-subtitle-en { 
     color: rgba(255,255,255,0.7); font-size: clamp(14px, 1.2vw, 18px); letter-spacing: 1px; line-height: 1.8; 
     font-weight: 300; text-transform: uppercase; font-family: 'Montserrat', sans-serif;
@@ -110,49 +112,41 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   }
   @media (max-width: 991px) { .aks-hero-subtitle-en { padding: 0; } }
 
-  /* 🌟 精品級 Scroll 指示器 2.0 (對齊品牌發光呼吸感按鈕) */
+  /* 🌟 精品級 Scroll 指示器 (線條延伸版) */
   .aks-scroll-indicator {
-    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 12px;
-    opacity: 0.6; z-index: 10;
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    opacity: 0.8; z-index: 10;
   }
   .aks-scroll-text {
-    font-size: 10px; letter-spacing: 0.3em; color: white; font-weight: 300;
+    font-size: 10px; letter-spacing: 0.4em; color: white; font-weight: 300;
     text-transform: uppercase; font-family: 'Montserrat', sans-serif;
-  }
-  .aks-scroll-dot-pannel {
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-  }
-  /* 動態落點紅點 */
-  .aks-scroll-dot {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--primary);
-    animation: scrollDotPulsate 2s infinite;
+    margin-bottom: 8px;
   }
   .aks-scroll-line {
-    width: 1px; height: 50px; background: rgba(255,255,255,0.2);
+    width: 1px; height: 80px; background: rgba(255,255,255,0.15);
+    position: relative; overflow: hidden;
+  }
+  .aks-scroll-line::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 30%;
+    background: var(--primary); 
+    animation: scrollLineDrop 2.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
   }
 
-  @keyframes scrollDotPulsate {
-    0% { transform: translateY(0) scale(1); box-shadow: 0 0 0 rgba(200,31,42,0); }
-    50% { transform: translateY(20px) scale(1.1); box-shadow: 0 0 15px rgba(200,31,42,0.6); }
-    100% { transform: translateY(40px) scale(1); box-shadow: 0 0 0 rgba(200,31,42,0); }
+  @keyframes scrollLineDrop {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(350%); }
   }
 
-  /* 手機版專屬：靠左並與大標題連線，更有設計感 */
   @media (max-width: 991px) {
-    .aks-scroll-indicator { left: 24px; transform: none; align-items: flex-start; bottom: 30px; }
-    .aks-scroll-dot-pannel { align-items: flex-start; }
-    @keyframes scrollDotPulsate {
-        0% { transform: translateY(0) scale(1); box-shadow: 0 0 0 rgba(200,31,42,0); }
-        50% { transform: translateY(15px) scale(1.1); box-shadow: 0 0 15px rgba(200,31,42,0.6); }
-        100% { transform: translateY(30px) scale(1); box-shadow: 0 0 0 rgba(200,31,42,0); }
-    }
+    .aks-scroll-indicator { left: 24px; transform: none; align-items: flex-start; }
+    .aks-scroll-line { height: 60px; }
   }
 
   /* =========================================
      3. 品牌哲學 (Split Section)
      ========================================= */
-  .aks-split-wrapper { padding: 160px 0; background: var(--bg); }
+  .aks-split-wrapper { padding: 160px 0; background: var(--bg); position: relative; z-index: 10; }
   .aks-split { display: flex; align-items: center; gap: 80px; margin-bottom: 0; }
   
   .aks-split-img { 
@@ -181,7 +175,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   /* =========================================
      4. 核心價值 (3-Grid Section)
      ========================================= */
-  .aks-values-wrapper { padding: 0 0 160px 0; background: var(--bg); }
+  .aks-values-wrapper { padding: 0 0 160px 0; background: var(--bg); position: relative; z-index: 10;}
   .aks-value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
   
   .aks-value-card { 
@@ -210,9 +204,9 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   }
 
   /* =========================================
-     5. 結語與 CTA (紅色底 + Hover發光呼吸感按鈕)
+     5. 結語與 CTA
      ========================================= */
-  .aks-about-outro-wrapper { padding: 0 0 160px 0; background: var(--bg); }
+  .aks-about-outro-wrapper { padding: 0 0 160px 0; background: var(--bg); position: relative; z-index: 10;}
   .aks-about-outro { text-align: center; max-width: 800px; margin: 0 auto; }
   
   .aks-about-outro h2 { 
@@ -223,16 +217,14 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
 
   .aks-btn-cta { 
     display: inline-flex; align-items: center; justify-content: center; 
-    background-color: var(--primary); 
-    color: #ffffff; 
+    background-color: var(--primary); color: #ffffff; 
     padding: 18px 48px; border-radius: 6px; font-size: 14px; font-weight: 900; 
     letter-spacing: 0.3em; transition: all 0.4s ease-in-out; 
     text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; 
     box-shadow: 0 4px 15px rgba(200,31,42,0.3); 
   }
   .aks-btn-cta:hover { 
-    background-color: #e02431; 
-    color: #ffffff; 
+    background-color: #e02431; color: #ffffff; 
     box-shadow: 0 0 20px rgba(200,31,42,0.6), 0 0 40px rgba(200,31,42,0.3); 
     transform: translateY(-2px) scale(1.02); 
   }
@@ -241,21 +233,20 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
 
 <div class="aks-about-wrapper">
     
-    <header class="aks-about-hero io-reveal">
-      <div class="aks-hero-bg" id="aks-hero-bg"></div>
+    <header class="aks-about-hero">
+      <div class="aks-hero-parallax-container" id="aks-parallax-bg">
+        <div class="aks-hero-bg" id="aks-hero-bg"></div>
+      </div>
 
-      <div class="aks-hero-content" id="aks-hero-content">
+      <div class="aks-hero-content" id="aks-parallax-content">
         <span class="aks-kicker">We are <span class="aks-brand-tag">AKS PPF</span></span>
         <h1 class="aks-hero-title-zh">源自追求完美細節的<br>極致偏執</h1>
         <p class="aks-hero-subtitle-en">The Intersection of Passion & Perfection</p>
       </div>
       
-      <div class="aks-scroll-indicator io-reveal" data-delay="3">
+      <div class="aks-scroll-indicator" id="aks-parallax-indicator">
         <span class="aks-scroll-text">SCROLL</span>
-        <div class="aks-scroll-dot-pannel">
-            <div class="aks-scroll-dot"></div>
-            <div class="aks-scroll-line"></div>
-        </div>
+        <div class="aks-scroll-line"></div>
       </div>
     </header>
 
@@ -289,13 +280,13 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
           <div class="aks-value-card">
             <i class="fa-solid fa-paint-roller aks-value-icon"></i>
             <h3>烤漆級光澤</h3>
-            <p>不僅是改色，更是一份對質感的保證。AKS 改色犀牛皮擁有深邃剔透的真實烤漆光澤，乾淨、耐看，禁得起細節端詳。</p>
+            <p>不僅是改色，更是對質感的一份保障。AKS 改色犀牛皮擁有深邃剔透的真實烤漆光澤，乾淨、耐看，禁得起細節端詳。</p>
           </div>
 
           <div class="aks-value-card">
             <i class="fa-solid fa-shield-halved aks-value-icon"></i>
             <h3>長期安全保障</h3>
-            <p>AKS犀牛皮、改色犀牛皮經的起時間的考驗，全系提供 5～7 年原廠保固，獨家乾貼技術確保撕膜時不掉漆、不殘膠。</p>
+            <p>考慮到使用年限與售後，我們全色系提供 5～7 年原廠保固，獨家乾貼技術確保撕膜時不掉漆、不殘膠。</p>
           </div>
 
         </div>
@@ -318,7 +309,8 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // 1. 動畫Reveal
+    
+    // 1. 動畫Reveal (一般元素浮出)
     const reveals = document.querySelectorAll('.io-reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -328,41 +320,42 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    
     reveals.forEach(el => observer.observe(el));
 
-    // 2. JS 淡入背景圖片引擎 (手機版限定)
+    // 2. JS 淡入背景圖片 (手機版防閃爍)
     const isMobile = window.innerWidth < 992;
     if(isMobile) {
-        const heroBg = document.getElementById('aks-hero-bg');
-        // 等待 500ms 後淡入，產生精品登場感
-        setTimeout(() => {
-            heroBg.style.opacity = '1';
-        }, 500);
+        setTimeout(() => { document.getElementById('aks-hero-bg').style.opacity = '1'; }, 300);
     }
 
-    // 3. 🌟 手機版專屬：滾動驅動文字淡出 (Scroll-driven Opacity)
-    if(isMobile) {
-        const heroContent = document.getElementById('aks-hero-content');
-        const heroScroll = document.querySelector('.aks-scroll-indicator');
-        window.addEventListener('scroll', () => {
-            // 計算滾動百分比 (Hero高度內)
-            const scrollPercent = window.scrollY / window.innerHeight;
-            
-            // 當滾動超過 10%，文字開始淡出
-            if(scrollPercent > 0.1) {
-                // 文字透明度從 1 逐漸降為 0，並微微往下移動
-                let opacity = 1 - (scrollPercent - 0.1) * 3; // 調整 3 係數控制淡出速度
-                let translate = (scrollPercent - 0.1) * 100; // 移動距離
-                heroContent.style.opacity = opacity > 0 ? opacity : 0;
-                heroContent.style.transform = `translateY(${translate}px)`;
-                heroScroll.style.opacity = opacity * 0.6 > 0 ? opacity * 0.6 : 0;
-            } else {
-                heroContent.style.opacity = 1;
-                heroContent.style.transform = 'translateY(0)';
-                heroScroll.style.opacity = 0.6;
+    // 3. 🌟 頂級硬體加速視差引擎 (Hardware Accelerated Parallax)
+    const parallaxBg = document.getElementById('aks-parallax-bg');
+    const parallaxContent = document.getElementById('aks-parallax-content');
+    const parallaxIndicator = document.getElementById('aks-parallax-indicator');
+
+    window.addEventListener('scroll', () => {
+        // 使用 requestAnimationFrame 確保絲滑不掉幀
+        requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            const heroHeight = window.innerHeight;
+
+            // 只有在 Hero 區塊還在畫面中時才計算，節省效能
+            if (scrollY <= heroHeight) {
+                // 背景圖：往下沉 (速度較慢 0.3)
+                parallaxBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+                
+                // 文字內容：往上飄 (速度較快 -0.4) 並迅速淡出
+                parallaxContent.style.transform = `translateY(${scrollY * -0.4}px)`;
+                parallaxContent.style.opacity = 1 - (scrollY / (heroHeight * 0.45)); 
+                
+                // 指示器：往下移動並淡出
+                parallaxIndicator.style.transform = `translateX(-50%) translateY(${scrollY * 0.5}px)`;
+                if(isMobile) {
+                    parallaxIndicator.style.transform = `translateY(${scrollY * 0.5}px)`; // 手機版靠左無 X軸偏移
+                }
+                parallaxIndicator.style.opacity = 1 - (scrollY / (heroHeight * 0.3));
             }
         });
-    }
+    });
   });
 </script>
