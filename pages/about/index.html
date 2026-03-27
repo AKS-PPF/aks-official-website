@@ -1,20 +1,180 @@
 ---
-layout: default
-title: AKS PPF 路徑開通
+layout: page-flush
+title: 關於 AKS PPF | 源自對汽車美學的極致偏執
 ---
 
-<div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-    <div class="mb-8 opacity-20">
-        <svg width="100" height="100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-        </svg>
-    </div>
-    <h1 class="text-3xl font-bold tracking-widest text-[#c81f2a] aks-font-youshe uppercase mb-4">
-        Room Established
-    </h1>
-    <p class="text-gray-400 aks-font-clean tracking-widest mb-10 leading-loose">
-        全站路徑已完美開通。<br>
-        目前的網址位置：<span class="text-white font-bold border-b border-white/20 pb-1">{{ page.url }}</span>
-    </p>
-    <a href="/" class="px-10 py-3 bg-white/5 border border-white/10 text-white/60 text-sm tracking-[0.2em] hover:bg-[#c81f2a] hover:text-white transition-all duration-300">BACK TO HOME</a>
+<style>
+  /* =========================================
+     1. 全站底色與毛玻璃質感 (完全嚴格對齊品牌)
+     ========================================= */
+  .aks-about-wrapper {
+    --bg: #050505; --panel: rgba(15, 15, 19, 0.7); --text: #f3f4f8; --primary: #c81f2a;
+    background: radial-gradient(1100px 560px at 18% 0%, rgba(255,45,63,.12) 0%, transparent 55%), 
+                radial-gradient(900px 520px at 88% 18%, rgba(192,23,42,.08) 0%, transparent 55%), 
+                radial-gradient(720px 520px at 50% 110%, rgba(107,13,24,.10) 0%, transparent 60%),
+                var(--bg);
+    min-height: 100vh;
+    padding: 100px 0 160px 0; /* 智慧留白 */
+    font-family: 'Montserrat', 'PingFang TC', sans-serif;
+    color: var(--text);
+  }
+  .aks-about-wrapper * { box-sizing: border-box; }
+  .aks-about-wrapper a { text-decoration: none; color: inherit; }
+  
+  .aks-about-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+  /* 字體定義 */
+  @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
+  .aks-font-youshe { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; }
+
+  /* Reveal 互動 */
+  .io-reveal { opacity: 0; transform: translateY(30px); filter: blur(5px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .io-reveal.is-in { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+  /* =========================================
+     2. 英雄區塊 (強烈聲明)
+     ========================================= */
+  .aks-about-hero { text-align: center; margin-bottom: 120px; }
+  .aks-kicker { font-size: 11px; letter-spacing: 0.3em; color: var(--primary); font-weight: 800; margin-bottom: 16px; display: block; text-transform: uppercase; }
+  .aks-about-hero h1 { font-size: clamp(48px, 6vw, 86px); font-weight: 900; letter-spacing: 2px; line-height: 1.1; margin: 0 0 20px 0; }
+  .aks-about-hero p { color: rgba(255,255,255,0.7); font-size: 18px; letter-spacing: 1px; max-width: 700px; margin: 0 auto; line-height: 1.8; font-weight: 300; }
+
+  /* =========================================
+     3. 品牌哲學 (Split Section)
+     ========================================= */
+  .aks-split { display: flex; align-items: center; gap: 80px; margin-bottom: 160px; }
+  .aks-split-img { width: 45%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+  .aks-split-img img { width: 100%; display: block; object-fit: cover; }
+  
+  .aks-split-info { width: 55%; }
+  .aks-split-info h2 { font-size: 42px; font-weight: 900; color: white; margin: 0 0 32px 0; letter-spacing: 1px; line-height: 1.2; }
+  .aks-split-info p { font-size: 16px; color: #aaa; line-height: 2; margin: 0 0 24px 0; font-weight: 300; }
+  .aks-split-info p strong { color: white; font-weight: 700; }
+
+  /* RWD */
+  @media (max-width: 991px) {
+    .aks-split { flex-direction: column; gap: 40px; margin-bottom: 100px; }
+    .aks-split-img, .aks-split-info { width: 100%; text-align: center; }
+    .aks-split-info h2 { font-size: 32px; }
+  }
+
+  /* =========================================
+     4. 核心價值 (3-Grid Section)
+     ========================================= */
+  .aks-values { margin-bottom: 160px; }
+  .aks-value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  
+  .aks-value-card { 
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); 
+    border-radius: 20px; padding: 48px; transition: 0.4s; position: relative; overflow: hidden;
+  }
+  .aks-value-card::before {
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle at center, rgba(200,31,42,.08) 0%, transparent 50%);
+    opacity: 0; transition: 0.6s; pointer-events: none;
+  }
+  .aks-value-card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.2); }
+  .aks-value-card:hover::before { opacity: 1; }
+
+  .aks-value-icon { font-size: 36px; color: var(--primary); margin-bottom: 24px; display: block; }
+  .aks-value-card h3 { font-size: 24px; font-weight: 800; color: white; margin: 0 0 16px 0; letter-spacing: 1px; }
+  .aks-value-card p { font-size: 15px; color: #888; line-height: 1.8; margin: 0; font-weight: 300; }
+
+  @media (max-width: 768px) {
+    .aks-value-grid { grid-template-columns: 1fr; gap: 20px; }
+    .aks-value-card { padding: 32px; }
+  }
+
+  /* =========================================
+     5. 結語與 CTA (呼吸感紅色按鈕)
+     ========================================= */
+  .aks-about-outro { text-align: center; max-width: 800px; margin: 0 auto; }
+  .aks-about-outro h2 { font-size: 32px; font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0 0 50px 0; letter-spacing: 1px; }
+  .aks-about-outro h2 strong { color: white; font-weight: 900; }
+
+  .aks-btn-glow { 
+    display: inline-flex; align-items: center; justify-content: center;
+    background-color: var(--primary); color: #ffffff;
+    padding: 18px 48px; border-radius: 6px; font-size: 14px; font-weight: 900; 
+    letter-spacing: 0.3em; transition: all 0.4s ease-in-out; 
+    text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; 
+    box-shadow: 0 4px 15px rgba(200,31,42,0.3);
+  }
+  .aks-btn-glow:hover { 
+    background-color: #e02431; 
+    box-shadow: 0 0 20px rgba(200,31,42,0.6), 0 0 40px rgba(200,31,42,0.3); 
+    transform: scale(1.02); 
+  }
+
+</style>
+
+<div class="aks-about-wrapper">
+  <div class="aks-about-container">
+    
+    <header class="aks-about-hero io-reveal">
+      <span class="aks-kicker">We are AKS PPF</span>
+      <h1 class="aks-font-youshe">The Intersection of<br>Passion & Perfection</h1>
+      <p>源自對汽車美學的極致偏執，我們不只是保護你的車，更是重塑汽車貼膜的最高標準。</p>
+    </header>
+
+    <section class="aks-split io-reveal">
+      <div class="aks-split-img">
+        <img src="https://aks-ppf.github.io/aks-official-website/assets/images/aks-about-craftsmanship.jpg" alt="AKS 極致施工細節">
+      </div>
+      <div class="aks-split-info">
+        <h2 class="aks-font-youshe">源自對傳統<br>貼膜質感的妥協不滿</h2>
+        <p>如果車是你靈魂的延伸，那我們就是讓它閃耀的工匠。</p>
+        <p>AKS 的誕生，純粹源於一份<strong>不甘於傳統 PVC 改色膜「廉價塑膠感」</strong>的偏執。我們無法接受在換上鮮豔色彩的同時，必須犧牲烤漆般的光澤，更無法妥協於幾年後黃化、殘膠的宿命。</p>
+        <p>我們深知，在意細節的車主，要的不只是保護，更是一份<strong>「不與質感妥協」的極致保護</strong>。</p>
+      </div>
+    </section>
+
+    <section class="aks-values io-reveal">
+      <div class="aks-value-grid">
+        
+        <div class="aks-value-card">
+          <i class="fa-solid fa-layer-group aks-value-icon"></i>
+          <h3>航太級基材</h3>
+          <p>嚴選最高標準的 TPU（熱塑性聚氨酯），將極致延展性與耐候性完美融合，具備強大的自體修復與防污特性。</p>
+        </div>
+
+        <div class="aks-value-card">
+          <i class="fa-solid fa-paint-roller aks-value-icon"></i>
+          <h3>烤漆級光澤</h3>
+          <p>不僅是改色，更是對質感的一份保障。AKS 改色犀牛皮擁有深邃剔透的真實烤漆光澤，乾淨、耐看，禁得起細節端詳。</p>
+        </div>
+
+        <div class="aks-value-card">
+          <i class="fa-solid fa-shield-halved aks-value-icon"></i>
+          <h3>長期安全保障</h3>
+          <p>考慮到使用年限與售後，我們全色系提供 5 年原廠保固，獨家底膠技術確保撕膜時不掉漆、不殘膠。</p>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="aks-about-outro io-reveal">
+      <h2><strong>你選的不只是顏色，而是對愛車一份不妥協的精品保障。</strong></h2>
+      <a href="{{ '/pages/color-chart/' | relative_url }}" class="aks-btn-glow">
+        <i class="fa-solid fa-swatchbook" style="margin-right: 12px;"></i>線上色卡總覽
+      </a>
+    </footer>
+
+  </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.io-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    
+    reveals.forEach(el => observer.observe(el));
+  });
+</script>
