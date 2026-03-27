@@ -4,7 +4,7 @@ title: AI 換色特約店家 | AKS PPF
 ---
 
 <style>
-  /* ====== 原本的基礎設定保留 ====== */
+  /* ====== 基礎設定 (保留不變) ====== */
   .aks-ai-preview-partners-wrapper * { box-sizing: border-box !important; }
   .aks-ai-preview-partners-wrapper {
     width: 100%;
@@ -18,84 +18,91 @@ title: AI 換色特約店家 | AKS PPF
     color: #c81f2a;
   }
 
-  /* (已刪除原本的 .hero-header 和 .hero-title，因為我們換新的了) */
-
-  /* ====== [新增] AI Preview Hero 專屬樣式 ====== */
-  .sec--ai-hero {
-    position: relative;
+  /* ====== 全新「左圖右文」Split Hero Section (嚴格比照參考圖) ====== */
+  .aks-split-hero-wrapper {
     width: 100%;
-    min-height: 60vh;
+    background: #000;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 100px 24px 80px;
-    overflow: hidden;
-    background-color: #050505; 
-  }
-  
-  .ai-hero__bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 0;
-  }
-  
-  .ai-hero__bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.8) 75%, #000 100%);
+    align-items: center;
+    min-height: 70vh; /* 加大高度，還原圖中的深邃空間感 */
+    padding: 100px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
-  .ai-hero__inner {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    max-width: 900px;
+  .aks-split-hero-container {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    gap: 80px; /* 拉大圖文間距 */
+    align-items: center;
   }
 
-  .ai-brand-title {
-    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
-    font-size: clamp(24px, 4vw, 36px);
-    letter-spacing: 4px;
-    color: rgba(255,255,255,0.9);
-    margin-bottom: 12px;
+  /* 左側圖片區 */
+  .aks-hero-image-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .aks-hero-image-box img {
+    width: 100%;
+    max-width: 420px; /* 控制手機圖的最大寬度 */
+    height: auto;
+    object-fit: contain;
+  }
+
+  /* 右側文案區 */
+  .aks-hero-text-box {
+    flex: 1.2;
+    text-align: left;
+  }
+
+  /* 標題 (使用圖中俐落的無襯線字體) */
+  .aks-hero-h1 {
+    font-family: 'Montserrat', 'PingFang TC', sans-serif;
+    font-size: clamp(36px, 5vw, 54px);
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 32px 0;
+    letter-spacing: 2px;
+    line-height: 1.3;
+  }
+
+  /* AI 大寫粗體紅字 */
+  .red-bold-ai {
+    color: #c81f2a;
+    font-weight: 900;
     text-transform: uppercase;
   }
-  
-  .ai-h2 {
-    font-family: 'Montserrat', 'PingFang TC', sans-serif;
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin: 0 0 24px 0;
-    color: #fff;
-  }
-  .ai-h2 .red { color: #c81f2a; }
-  
-  .ai-p {
-    font-family: 'Montserrat', 'PingFang TC', sans-serif;
-    font-size: 16px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.8);
+
+  /* 內文描述 (一字不動，增加行距還原圖中質感) */
+  .aks-hero-p {
+    font-size: 18px;
+    line-height: 2.2;
+    color: rgba(255,255,255,0.85);
     margin: 0;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    font-weight: 300;
   }
 
-  .desk-br { display: block; }
-
-  @media (max-width: 768px) {
-    .sec--ai-hero { min-height: 50vh; padding: 80px 20px 40px; }
-    .ai-brand-title { font-size: 20px; margin-bottom: 8px; }
-    .ai-h2 { font-size: 28px; }
-    .ai-p { font-size: 14px; }
-    .desk-br { display: none; }
+  /* ====== RWD 手機版切換成垂直排列 ====== */
+  @media (max-width: 900px) {
+    .aks-split-hero-wrapper { padding: 60px 24px; min-height: auto; }
+    
+    .aks-split-hero-container {
+      flex-direction: column; /* 上圖下文 */
+      gap: 40px;
+    }
+    
+    .aks-hero-image-box img { max-width: 300px; }
+    .aks-hero-text-box { text-align: center; } 
+    .aks-hero-h1 { font-size: 32px; margin-bottom: 24px; }
+    .aks-hero-p { font-size: 15px; text-align: left; line-height: 2; } 
   }
 
 
-  /* ====== 以下保留您原本的店家列表樣式 ====== */
+  /* ====== 以下為原本保留的店家列表樣式 (完全未動) ====== */
   .aks-ai-preview-partners-wrapper .contact-section {
     color: #fff;
     padding: 50px 100px;
@@ -239,22 +246,25 @@ title: AI 換色特約店家 | AKS PPF
 
 <div class="aks-ai-preview-partners-wrapper">
   
-  <section class="sec--ai-hero">
-    <div class="ai-hero__bg" aria-hidden="true"
-      style="background-image:url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_8ad360d8-7286-439f-83d6-45ee52271f93.png');"></div>
-
-    <div class="ai-hero__inner">
-      <div class="ai-brand-title io-reveal" data-delay="0">AKS AI VISION</div>
-      <h2 class="ai-h2 io-reveal" data-delay="1">
-        <span class="red">AI 實車</span> 瞬間改色預覽
-      </h2>
-      <p class="ai-p io-reveal" data-delay="2">
-        選色不再需要憑空想像。預約實車拍攝，<span class="desk-br"></span>
-        透過專利 AI 技術，一張照片瞬間套用改色犀牛皮，<span class="desk-br"></span>
-        100% 呈現改色完工後的真實奢華樣貌。
-      </p>
+  <section class="aks-split-hero-wrapper">
+    <div class="aks-split-hero-container">
+      
+      <div class="aks-hero-image-box">
+        <img src="https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_8ad360d8-7286-439f-83d6-45ee52271f93.png" alt="AKS AI 實車換色預覽">
+      </div>
+      
+      <div class="aks-hero-text-box">
+        <h1 class="aks-hero-h1">
+          <span class="red-bold-ai">AI</span>換色特約店家
+        </h1>
+        <p class="aks-hero-p">
+          選色不再需要憑空想像。預約實車拍攝，透過專利 AI 技術，一張照片瞬間套用改色犀牛皮，100% 呈現改色完工後的真實奢華樣貌。
+        </p>
+      </div>
+      
     </div>
   </section>
+
   <section class="contact-section">
     <div class="contact-info">
       <h2>松山店帥｜旺福車體保護膜 WF.legend</h2>
