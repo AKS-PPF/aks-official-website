@@ -31,27 +31,31 @@ title: 關於 AKS PPF | 源自對汽車美學的極致偏執
      2. 滿版戰神英雄區塊 (Hero Section)
      ========================================= */
   .aks-about-hero { 
-    position: relative; width: 100vw; height: 100vh; overflow: hidden; 
+    position: relative; width: 100vw; 
+    height: 100vh; height: 100svh; /* 使用 svh 確保手機瀏覽器工具列不會吃掉畫面 */
+    overflow: hidden; 
     /* 使用你挑選的灰色 Supra 戰神圖 */
     background: linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,0.9)),
                 url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_657a7762-7c60-4bd5-a161-6d84bbb4679a.png') no-repeat center center; 
     background-size: cover; display: flex; flex-direction: column; justify-content: center; 
-    padding: 0 24px; text-align: left; /* 回歸左對齊精品感 */
+    padding: 0 24px; text-align: left; 
   }
-  @media (max-width: 991px) { .aks-about-hero { padding: 0 20px; } }
+  @media (max-width: 991px) { 
+    /* 手機版將文字重心稍微下移，讓上方背景圖更有呼吸空間 */
+    .aks-about-hero { padding: 10vh 20px 0 20px; justify-content: flex-start; } 
+  }
   
-  /* Hero Kicker (We are AKS PPF) - We use brand font ONLY for the name part */
+  /* Hero Kicker (We are AKS PPF) */
   .aks-kicker { 
     font-size: clamp(12px, 1.2vw, 14px); letter-spacing: 0.3em; color: rgba(255,255,255,0.6); 
     font-weight: 300; text-transform: uppercase; display: block; margin-bottom: 24px;
     max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; padding: 0 24px;
   }
-  @media (max-width: 991px) { .aks-kicker { padding: 0; } }
+  @media (max-width: 991px) { .aks-kicker { padding: 0; margin-top: 15vh; } }
 
-  /*Applying brand font only to the AKS PPF part*/
   .aks-brand-tag { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; color: var(--primary); font-size: 1.25em; }
 
-  /* ✅ 回歸中文為主的大標題 (嚴格不使用 YouShe) - 使用高品質 Montserrat/PingFang TC */
+  /* ✅ 回歸中文為主的大標題 */
   .aks-hero-title-zh { 
     font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: 2px; line-height: 1.1; margin: 0; 
     color: white; font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
@@ -59,13 +63,39 @@ title: 關於 AKS PPF | 源自對汽車美學的極致偏執
   }
   @media (max-width: 991px) { .aks-hero-title-zh { padding: 0; } }
   
-  /* 全英文副標題 (輔助作用，不使用 YouShe) */
+  /* 全英文副標題 */
   .aks-hero-subtitle-en { 
     color: rgba(255,255,255,0.7); font-size: clamp(14px, 1.2vw, 18px); letter-spacing: 1px; line-height: 1.8; 
     font-weight: 300; text-transform: uppercase; font-family: 'Montserrat', sans-serif;
     margin: 24px 0 0 0; max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; padding: 0 24px;
   }
   @media (max-width: 991px) { .aks-hero-subtitle-en { padding: 0; } }
+
+  /* 🌟 精品級 Scroll 滑動指示器 */
+  .aks-scroll-indicator {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    opacity: 0.6; z-index: 10;
+  }
+  .aks-scroll-text {
+    font-size: 10px; letter-spacing: 0.3em; color: white; font-weight: 300;
+    text-transform: uppercase; font-family: 'Montserrat', sans-serif;
+  }
+  .aks-scroll-line {
+    width: 1px; height: 60px; background: rgba(255,255,255,0.2); position: relative; overflow: hidden;
+  }
+  .aks-scroll-line::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%;
+    background: white; animation: scrollDrop 2s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+  }
+  @keyframes scrollDrop {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
+  }
+  /* 手機版專屬靠左對齊，更有排版設計感 */
+  @media (max-width: 991px) {
+    .aks-scroll-indicator { left: 20px; transform: none; align-items: flex-start; bottom: 30px; }
+  }
 
   /* =========================================
      3. 品牌哲學 (Split Section)
@@ -77,25 +107,21 @@ title: 關於 AKS PPF | 源自對汽車美學的極致偏執
     width: 45%; border-radius: 12px; overflow: hidden; 
     border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.6); 
   }
-  /* ✅ 使用你挑選的紅色施工細節圖 */
   .aks-split-img img { 
     width: 100%; display: block; object-fit: cover; 
-    /* 使用 raw GitHub 網址暫時測試 */
     src: url('https://raw.githubusercontent.com/AKS-PPF/images/main/GL-75-Supra-2.jpg');
   }
   
   .aks-split-info { width: 55%; }
-  /* ✅ 修正：Chinese header，不使用 YouShe。 */
   .aks-split-info h2 { 
     font-size: clamp(32px, 3.5vw, 42px); font-weight: 900; color: white; margin: 0 0 32px 0; 
     letter-spacing: 1px; line-height: 1.2; font-family: 'Montserrat', 'PingFang TC', sans-serif !important; 
   }
   .aks-split-info p { font-size: 16px; color: #aaa; line-height: 2; margin: 0 0 24px 0; font-weight: 300; }
   
-  /* RWD */
   @media (max-width: 991px) {
     .aks-split-wrapper { padding: 100px 0; }
-    .aks-split { flex-direction: column; gap: 40px; text-align: center; }
+    .aks-split { flex-direction: column; gap: 40px; text-align: left; }
     .aks-split-img, .aks-split-info { width: 100%; }
     .aks-split-info h2 { font-size: 32px; }
   }
@@ -119,7 +145,6 @@ title: 關於 AKS PPF | 源自對汽車美學的極致偏執
   .aks-value-card:hover::before { opacity: 1; }
 
   .aks-value-icon { font-size: 36px; color: var(--primary); margin-bottom: 24px; display: block; }
-  /* ✅ 修正：Chinese header，不使用 YouShe。 */
   .aks-value-card h3 { 
     font-size: 24px; font-weight: 800; color: white; margin: 0 0 16px 0; letter-spacing: 1px; 
     font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
@@ -138,27 +163,24 @@ title: 關於 AKS PPF | 源自對汽車美學的極致偏執
   .aks-about-outro-wrapper { padding: 0 0 160px 0; background: var(--bg); }
   .aks-about-outro { text-align: center; max-width: 800px; margin: 0 auto; }
   
-  /* ✅ 修正：Chinese text，不使用 YouShe。 */
   .aks-about-outro h2 { 
     font-size: clamp(24px, 3.5vw, 32px); font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0 0 50px 0; letter-spacing: 1px; 
     font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
   }
   .aks-about-outro h2 strong { color: white; font-weight: 900; }
 
-  /* ✅ 按鈕：紅色底 + Hover 發光呼吸感 */
   .aks-btn-cta { 
     display: inline-flex; align-items: center; justify-content: center; 
-    background-color: var(--primary); /* 紅底 */
-    color: #ffffff; /* 白字 */
+    background-color: var(--primary); 
+    color: #ffffff; 
     padding: 18px 48px; border-radius: 6px; font-size: 14px; font-weight: 900; 
     letter-spacing: 0.3em; transition: all 0.4s ease-in-out; 
     text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; 
-    box-shadow: 0 4px 15px rgba(200,31,42,0.3); /* 微微陰影 */
+    box-shadow: 0 4px 15px rgba(200,31,42,0.3); 
   }
   .aks-btn-cta:hover { 
     background-color: #e02431; 
     color: #ffffff; 
-    /* 多層次陰影放大，發光呼吸感 */
     box-shadow: 0 0 20px rgba(200,31,42,0.6), 0 0 40px rgba(200,31,42,0.3); 
     transform: translateY(-2px) scale(1.02); 
   }
@@ -171,6 +193,11 @@ title: 關於 AKS PPF | 源自對汽車美學的極致偏執
       <span class="aks-kicker">We are <span class="aks-brand-tag">AKS PPF</span></span>
       <h1 class="aks-hero-title-zh">源自對汽車美學的<br>極致偏執</h1>
       <p class="aks-hero-subtitle-en">The Intersection of Passion & Perfection</p>
+      
+      <div class="aks-scroll-indicator">
+        <span class="aks-scroll-text">SCROLL</span>
+        <div class="aks-scroll-line"></div>
+      </div>
     </header>
 
   <div class="aks-split-wrapper">
