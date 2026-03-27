@@ -5,9 +5,6 @@ title: AKS COLOR PPF | 400色 在家就能選
 
 <style>
   /* ====== 核心變數與深色環境背景 ====== */
-  /* 強制解除外層可能隱藏捲動條的設定，確保 sticky 完美運作 */
-  html, body { overflow-x: clip; }
-  
   .aks-colorchart-wrapper {
     --bg: #050505; 
     --panel-bg: rgba(20, 20, 25, 0.75); 
@@ -19,15 +16,11 @@ title: AKS COLOR PPF | 400色 在家就能選
     font-family: 'Montserrat', 'PingFang TC', sans-serif;
     color: var(--text);
     -webkit-font-smoothing: antialiased;
-    overflow: visible !important; /* 保證吸頂不失效的關鍵 */
   }
   .aks-colorchart-wrapper * { box-sizing: border-box; }
   .aks-colorchart-wrapper a { text-decoration: none; color: inherit; }
   
-  .aks-container { 
-    max-width: 1320px; margin: 0 auto; padding: 0 24px; 
-    overflow: visible !important; /* 保證吸頂不失效的關鍵 */
-  }
+  .aks-container { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
 
   /* ====== 滿版 Hero 區塊 ====== */
   .sec--colors {
@@ -42,92 +35,69 @@ title: AKS COLOR PPF | 400色 在家就能選
   }
   
   .colors__bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 0;
+    position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 0;
   }
-  /* 深色漸層疊加，確保文字清楚 */
   .colors__bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: linear-gradient(to bottom, rgba(5,5,5,0.4) 0%, rgba(5,5,5,0.8) 80%, var(--bg) 100%);
   }
 
-  .colors__inner {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    max-width: 900px;
-  }
+  .colors__inner { position: relative; z-index: 1; text-align: center; max-width: 900px; }
 
-  /* 標題與內文排版 */
   .hero-brand-title {
     font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
-    font-size: clamp(24px, 4vw, 36px);
-    letter-spacing: 4px;
-    color: rgba(255,255,255,0.9);
-    margin-bottom: 12px;
-    text-transform: uppercase;
+    font-size: clamp(24px, 4vw, 36px); letter-spacing: 4px; color: rgba(255,255,255,0.9);
+    margin-bottom: 12px; text-transform: uppercase;
   }
   
   .font-heading { font-family: 'Montserrat', 'PingFang TC', sans-serif; }
-  .h2--xl {
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin: 0 0 24px 0;
-    color: #fff;
-  }
+  .h2--xl { font-size: clamp(32px, 5vw, 56px); font-weight: 900; letter-spacing: 2px; margin: 0 0 24px 0; color: #fff; }
   .h2--xl .red { color: var(--primary); }
   
-  .p--big {
-    font-size: 16px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.8);
-    margin: 0 0 16px 0;
-    letter-spacing: 1px;
-  }
-  .p--bigger.strong {
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 2px;
-    margin-top: 24px;
+  .p--big { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.8); margin: 0 0 16px 0; letter-spacing: 1px; }
+  .p--bigger.strong { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 2px; margin-top: 24px; }
+
+  /* ====== 防跳動的過濾列佔位容器 ====== */
+  .aks-filter-bar-wrapper {
+    width: 100%;
+    min-height: 68px; /* 預設高度，防跳動 */
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 999;
   }
 
-  /* ====== 1x4 過濾器列 (雙端吸頂設計) ====== */
+  /* ====== 1x4 過濾器列 (預設相對定位) ====== */
   .aks-filter-bar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    display: flex; align-items: center; gap: 12px;
     background: var(--panel-bg);
     backdrop-filter: blur(30px) saturate(160%); -webkit-backdrop-filter: blur(30px) saturate(160%);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 100px; 
-    padding: 10px 16px;
-    margin-bottom: 40px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
-    width: 100%;
-    
-    /* 吸頂核心邏輯 */
-    position: -webkit-sticky;
-    position: sticky;
-    top: 85px; /* 預留給電腦版上方導覽列的高度，可視情況微調 80px~95px */
-    z-index: 999;
+    border: 1px solid rgba(255,255,255,0.08); border-radius: 100px; 
+    padding: 10px 16px; width: 100%;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+    transition: box-shadow 0.3s ease;
+  }
+
+  /* ====== 動態 JS 吸頂 Class ====== */
+  .aks-filter-bar.is-fixed {
+    position: fixed;
+    top: 85px; /* 電腦版選單高度，可自行微調 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 48px);
+    max-width: 1272px;
+    box-shadow: 0 24px 50px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
+    animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes slideDown {
+    from { transform: translate(-50%, -10px); }
+    to { transform: translate(-50%, 0); }
   }
 
   .aks-filter-item { position: relative; display: flex; align-items: center; }
   .aks-filter-search { flex: 1.2; min-width: 200px; }
   .aks-filter-select-wrap { width: 190px; }
 
-  .aks-filter-icon {
-    position: absolute; left: 18px; color: rgba(255,255,255,0.4);
-    font-size: 14px; pointer-events: none; z-index: 2;
-  }
+  .aks-filter-icon { position: absolute; left: 18px; color: rgba(255,255,255,0.4); font-size: 14px; pointer-events: none; z-index: 2; }
 
   .aks-input, .aks-select {
     width: 100%; height: 48px; background: rgba(255,255,255,0.03);
@@ -187,7 +157,7 @@ title: AKS COLOR PPF | 400色 在家就能選
 
   .aks-empty-state { text-align: center; padding: 100px 20px; color: rgba(255,255,255,0.4); font-size: 16px; display: none; grid-column: 1 / -1; }
 
-  /* ====== RWD 手機版：吸頂設定 ====== */
+  /* ====== RWD 手機版 ====== */
   @media (max-width: 768px) {
     .sec--colors { min-height: 50vh; padding: 80px 20px 40px; }
     .hero-brand-title { font-size: 20px; margin-bottom: 8px; }
@@ -195,20 +165,14 @@ title: AKS COLOR PPF | 400色 在家就能選
     .p--big { font-size: 14px; }
     .p--bigger.strong { font-size: 16px; margin-top: 16px; }
 
-    .aks-filter-bar {
-      /* 手機版：維持吸頂，改變高度預留 */
-      position: -webkit-sticky;
-      position: sticky;
-      top: 70px; /* 預留給手機版上方選單的高度 */
-      bottom: auto; 
-      left: auto; 
-      right: auto;
-      margin-bottom: 24px; 
-      padding: 6px; gap: 6px; 
-      border-radius: 100px;
-      width: 100%; 
-      box-shadow: 0 16px 30px rgba(0,0,0,0.6);
+    .aks-filter-bar-wrapper { margin-bottom: 24px; min-height: 52px; }
+    .aks-filter-bar { padding: 6px; gap: 6px; }
+    
+    .aks-filter-bar.is-fixed {
+      top: 65px; /* 手機版選單高度，可微調 */
+      width: calc(100% - 24px);
     }
+
     .aks-filter-search { min-width: 0; flex: 1.4; }
     .aks-filter-select-wrap { width: auto; flex: 1; min-width: 0; }
 
@@ -248,38 +212,38 @@ title: AKS COLOR PPF | 400色 在家就能選
 
   <div class="aks-container">
 
-    <div class="aks-filter-bar" id="filter-dock">
-      
-      <div class="aks-filter-item aks-filter-search">
-        <i class="fa-solid fa-search aks-filter-icon"></i>
-        <input type="text" id="filter-search" class="aks-input" placeholder="色號/關鍵字...">
-      </div>
-      
-      <div class="aks-filter-item aks-filter-select-wrap">
-        <i class="fa-solid fa-layer-group aks-filter-icon"></i>
-        <select id="filter-finish" class="aks-select">
-          <option value="all">材質Finish</option>
-          <option value="gloss">亮面 Gloss</option>
-          <option value="matte">消光 Matte</option>
-          <option value="satin">絲綢 Satin</option>
-        </select>
-        <i class="fa-solid fa-chevron-down aks-select-arrow"></i>
-      </div>
+    <div class="aks-filter-bar-wrapper" id="filter-dock-wrapper">
+      <div class="aks-filter-bar" id="filter-dock">
+        <div class="aks-filter-item aks-filter-search">
+          <i class="fa-solid fa-search aks-filter-icon"></i>
+          <input type="text" id="filter-search" class="aks-input" placeholder="色號/關鍵字...">
+        </div>
+        
+        <div class="aks-filter-item aks-filter-select-wrap">
+          <i class="fa-solid fa-layer-group aks-filter-icon"></i>
+          <select id="filter-finish" class="aks-select">
+            <option value="all">材質Finish</option>
+            <option value="gloss">亮面 Gloss</option>
+            <option value="matte">消光 Matte</option>
+            <option value="satin">絲綢 Satin</option>
+          </select>
+          <i class="fa-solid fa-chevron-down aks-select-arrow"></i>
+        </div>
 
-      <div class="aks-filter-item aks-filter-select-wrap">
-        <i class="fa-solid fa-car-side aks-filter-icon"></i>
-        <select id="filter-series" class="aks-select">
-          <option value="all">系列Series</option>
-          <option value="gt series">GT Series</option>
-          <option value="gl series">GL Series</option>
-        </select>
-        <i class="fa-solid fa-chevron-down aks-select-arrow"></i>
+        <div class="aks-filter-item aks-filter-select-wrap">
+          <i class="fa-solid fa-car-side aks-filter-icon"></i>
+          <select id="filter-series" class="aks-select">
+            <option value="all">系列Series</option>
+            <option value="gt series">GT Series</option>
+            <option value="gl series">GL Series</option>
+          </select>
+          <i class="fa-solid fa-chevron-down aks-select-arrow"></i>
+        </div>
+
+        <button class="aks-reset-btn" id="filter-reset" title="重置">
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
       </div>
-
-      <button class="aks-reset-btn" id="filter-reset" title="重置">
-        <i class="fa-solid fa-rotate-right"></i>
-      </button>
-
     </div>
 
     <div class="aks-status-bar">
@@ -328,6 +292,26 @@ title: AKS COLOR PPF | 400色 在家就能選
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // === JS 吸頂邏輯 (無視 CSS Overflow 限制) ===
+    const dockWrapper = document.getElementById('filter-dock-wrapper');
+    const filterDock = document.getElementById('filter-dock');
+    
+    function handleScroll() {
+      // 獲取 Wrapper 在視窗中的位置
+      const rect = dockWrapper.getBoundingClientRect();
+      // 判斷當前是電腦還是手機版，給予不同的觸發高度
+      const triggerOffset = window.innerWidth > 768 ? 85 : 65;
+      
+      if (rect.top <= triggerOffset) {
+        filterDock.classList.add('is-fixed');
+      } else {
+        filterDock.classList.remove('is-fixed');
+      }
+    }
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // === JS 篩選邏輯 ===
     const searchInput = document.getElementById('filter-search');
     const finishSelect = document.getElementById('filter-finish');
     const seriesSelect = document.getElementById('filter-series');
