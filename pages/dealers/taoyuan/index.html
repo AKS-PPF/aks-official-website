@@ -1,249 +1,291 @@
 ---
-layout: page-flush
-# 強制指定乾淨網址 /about/ (路線 B)
-permalink: /about/
-title: 關於 AKS PPF | 源自對汽車美學的極致偏執
+layout: page-hero
+title: 配合店家 桃園 | AKS PPF
 ---
 
 <style>
-  /* 限定作用域，完全嚴格對齊品牌與視覺規範 */
-  .aks-about-wrapper {
-    --bg: #050505; --panel: rgba(15, 15, 19, 0.7); --text: #f3f4f8; --primary: #c81f2a;
-    background: radial-gradient(1100px 560px at 18% 0%, rgba(255,45,63,.15) 0%, transparent 55%), 
-                radial-gradient(900px 520px at 88% 18%, rgba(192,23,42,.10) 0%, transparent 55%), 
-                var(--bg);
-    min-height: 100vh;
-    font-family: 'Montserrat', 'PingFang TC', sans-serif;
-    color: var(--text);
-  }
-  .aks-about-wrapper * { box-sizing: border-box; }
-  .aks-about-wrapper a { text-decoration: none; color: inherit; }
-  
-  .aks-about-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-
-  /* 字體定義：優設標題黑 (aks-font-youshe) 僅限於 AKS、GL-75 等品牌/產品名標籤 */
-  @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
-  .aks-font-youshe { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; font-size: 1.1em; vertical-align: baseline; }
-
-  /* Reveal 互動 */
-  .io-reveal { opacity: 0; transform: translateY(30px); filter: blur(5px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
-  .io-reveal.is-in { opacity: 1; transform: translateY(0); filter: blur(0); }
-
-  /* =========================================
-     2. 滿版戰神英雄區塊 (Hero Section)
-     ========================================= */
-  .aks-about-hero { 
-    position: relative; width: 100vw; height: 100vh; overflow: hidden; 
-    /* 使用你挑選的灰色 Supra 戰神圖 (移除placeholder防破圖) */
-    background: linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,0.9)),
-                url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_657a7762-7c60-4bd5-a161-6d84bbb4679a.png') no-repeat center center; 
-    background-size: cover; display: flex; flex-direction: column; justify-content: center; 
-    padding: 0 24px; text-align: left; /* 回歸左對齊精品感 */
-  }
-  @media (max-width: 991px) { .aks-about-hero { padding: 0 20px; } }
-  
-  /* Hero Kicker (We are AKS PPF) - We use brand font ONLY for the name part */
-  .aks-kicker { 
-    font-size: clamp(12px, 1.2vw, 14px); letter-spacing: 0.3em; color: rgba(255,255,255,0.6); 
-    font-weight: 300; text-transform: uppercase; display: block; margin-bottom: 24px;
-    max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; padding: 0 24px;
-  }
-  @media (max-width: 991px) { .aks-kicker { padding: 0; } }
-
-  /*Applying brand font only to the AKS PPF part*/
-  .aks-brand-tag { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; color: var(--primary); font-size: 1.25em; }
-
-  /* ✅ 回歸中文為主的大標題 (嚴格不使用 YouShe) - 使用高品質 Montserrat/PingFang TC */
-  .aks-hero-title-zh { 
-    font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: 2px; line-height: 1.1; margin: 0; 
-    color: white; font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
-    max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; padding: 0 24px;
-  }
-  @media (max-width: 991px) { .aks-hero-title-zh { padding: 0; } }
-  
-  /* 全英文副標題 (輔助作用，不使用 YouShe) */
-  .aks-hero-subtitle-en { 
-    color: rgba(255,255,255,0.7); font-size: clamp(14px, 1.2vw, 18px); letter-spacing: 1px; line-height: 1.8; 
-    font-weight: 300; text-transform: uppercase; font-family: 'Montserrat', sans-serif;
-    margin: 24px 0 0 0; max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; padding: 0 24px;
-  }
-  @media (max-width: 991px) { .aks-hero-subtitle-en { padding: 0; } }
-
-  /* =========================================
-     3. 品牌哲學 (Split Section) - 修正圖片與字體
-     ========================================= */
-  .aks-split-wrapper { padding: 160px 0; background: var(--bg); }
-  .aks-split { display: flex; align-items: center; gap: 80px; margin-bottom: 0; }
-  
-  .aks-split-img { 
-    width: 45%; border-radius: 12px; overflow: hidden; 
-    border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.6); 
-  }
-  /* ✅ 使用你挑選的紅色施工細節圖 */
-  .aks-split-img img { 
-    width: 100%; display: block; object-fit: cover; 
-    /* 使用 raw GitHub 網址暫時測試 */
-    src: url('https://raw.githubusercontent.com/AKS-PPF/images/main/GL-75-Supra-2.jpg');
-  }
-  
-  .aks-split-info { width: 55%; }
-  /* ✅ 修正：Chinese header，不使用 YouShe。 */
-  .aks-split-info h2 { 
-    font-size: clamp(32px, 3.5vw, 42px); font-weight: 900; color: white; margin: 0 0 32px 0; 
-    letter-spacing: 1px; line-height: 1.2; font-family: 'Montserrat', 'PingFang TC', sans-serif !important; 
-  }
-  .aks-split-info p { font-size: 16px; color: #aaa; line-height: 2; margin: 0 0 24px 0; font-weight: 300; }
-  
-  /* RWD */
-  @media (max-width: 991px) {
-    .aks-split-wrapper { padding: 100px 0; }
-    .aks-split { flex-direction: column; gap: 40px; text-align: center; }
-    .aks-split-img, .aks-split-info { width: 100%; }
-    .aks-split-info h2 { font-size: 32px; }
+  .aks-dealers-taoyuan-wrapper * { box-sizing: border-box !important; }
+  .aks-dealers-taoyuan-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    background: #000;
+    color: #fff;
+    font-family: 'Montserrat', "PingFang TC", "Microsoft JhengHei", sans-serif;
   }
 
-  /* =========================================
-     4. 核心價值 (3-Grid Section) - 修正標題字體
-     ========================================= */
-  .aks-values-wrapper { padding: 0 0 160px 0; background: var(--bg); }
-  .aks-value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  
-  .aks-value-card { 
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); 
-    border-radius: 20px; padding: 48px; transition: 0.4s; position: relative; overflow: hidden;
-  }
-  .aks-value-card::before {
-    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-    background: radial-gradient(circle at center, rgba(200,31,42,.08) 0%, transparent 50%);
-    opacity: 0; transition: 0.6s; pointer-events: none;
-  }
-  .aks-value-card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.2); }
-  .aks-value-card:hover::before { opacity: 1; }
-
-  .aks-value-icon { font-size: 36px; color: var(--primary); margin-bottom: 24px; display: block; }
-  /* ✅ 修正：Chinese header，不使用 YouShe。 */
-  .aks-value-card h3 { 
-    font-size: 24px; font-weight: 800; color: white; margin: 0 0 16px 0; letter-spacing: 1px; 
-    font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
-  }
-  .aks-value-card p { font-size: 15px; color: #888; line-height: 1.8; margin: 0; font-weight: 300; }
-
-  @media (max-width: 768px) {
-    .aks-values-wrapper { padding: 0 0 100px 0; }
-    .aks-value-grid { grid-template-columns: 1fr; gap: 20px; }
-    .aks-value-card { padding: 32px; }
+  .aks-dealers-taoyuan-wrapper .red {
+    color: #c81f2a;
   }
 
-  /* =========================================
-     5. 結語與 CTA (紅色底 + Hover發光呼吸感按鈕)
-     ========================================= */
-  .aks-about-outro-wrapper { padding: 0 0 160px 0; background: var(--bg); }
-  .aks-about-outro { text-align: center; max-width: 800px; margin: 0 auto; }
-  
-  /* ✅ 修正：Chinese text，不使用 YouShe。 */
-  .aks-about-outro h2 { 
-    font-size: clamp(24px, 3.5vw, 32px); font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0 0 50px 0; letter-spacing: 1px; 
-    font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
-  }
-  .aks-about-outro h2 strong { color: white; font-weight: 900; }
-
-  /* ✅ 按鈕：紅色底 + Hover 發光呼吸感 (對齊品牌規範，不使用 YouShe 在這裡) */
-  .aks-btn-cta { 
-    display: inline-flex; align-items: center; justify-content: center; 
-    background-color: var(--primary); /* 紅底 */
-    color: #ffffff; /* 白字 */
-    padding: 18px 48px; border-radius: 6px; font-size: 14px; font-weight: 900; 
-    letter-spacing: 0.3em; transition: all 0.4s ease-in-out; 
-    text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; 
-    box-shadow: 0 4px 15px rgba(200,31,42,0.3); /* 微微陰影 */
-  }
-  .aks-btn-cta:hover { 
-    background-color: #e02431; 
-    color: #ffffff; 
-    /* 多層次陰影放大，發光呼吸感 */
-    box-shadow: 0 0 20px rgba(200,31,42,0.6), 0 0 40px rgba(200,31,42,0.3); 
-    transform: translateY(-2px) scale(1.02); 
+  .aks-dealers-taoyuan-wrapper .hero-header {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_657a7762-7c60-4bd5-a161-6d84bbb4679a.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 10px;
   }
 
+  .aks-dealers-taoyuan-wrapper .hero-title {
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 700;
+    line-height: 1.4;
+    color: #fff;
+    margin: 0;
+    padding: 10px 20px;
+  }
+
+  .aks-dealers-taoyuan-wrapper .contact-section {
+    color: #fff;
+    padding: 50px 100px;
+  }
+
+  .aks-dealers-taoyuan-wrapper .contact-info {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .aks-dealers-taoyuan-wrapper .contact-info h1 {
+    font-size: clamp(24px, 3vw, 36px);
+    margin: 0 0 20px 0;
+    font-weight: 800;
+  }
+
+  .aks-dealers-taoyuan-wrapper .contact-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+  }
+
+  .aks-dealers-taoyuan-wrapper .contact-info li {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ccc;
+  }
+
+  .aks-dealers-taoyuan-wrapper .contact-info li span {
+    color: #fff;
+  }
+
+  .aks-dealers-taoyuan-wrapper .contact-visual {
+    display: flex;
+    gap: 0;
+    flex-wrap: nowrap;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .aks-dealers-taoyuan-wrapper .logo-box,
+  .aks-dealers-taoyuan-wrapper .map-box {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .aks-dealers-taoyuan-wrapper .logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .aks-dealers-taoyuan-wrapper .map-placeholder {
+    width: 100%;
+  }
+
+  .aks-dealers-taoyuan-wrapper .map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .aks-dealers-taoyuan-wrapper .btn-wrapper {
+    margin-top: 25px;
+  }
+
+  @media (max-width: 900px) {
+    .aks-dealers-taoyuan-wrapper .hero-header {
+      height: 200px;
+    }
+
+    .aks-dealers-taoyuan-wrapper .hero-title {
+      font-size: clamp(28px, 5vw, 48px);
+      padding: 8px 15px;
+    }
+
+    .aks-dealers-taoyuan-wrapper .contact-section {
+      padding: 15px;
+      margin-bottom: 45px;
+    }
+
+    .aks-dealers-taoyuan-wrapper .contact-info li {
+      font-size: 16px;
+    }
+  }
 </style>
 
-<div class="aks-about-wrapper">
-    
-    <header class="aks-about-hero io-reveal">
-      <span class="aks-kicker">We are <span class="aks-brand-tag">AKS PPF</span></span>
-      <h1 class="aks-hero-title-zh">源自對汽車美學的<br>極致偏執</h1>
-      <p class="aks-hero-subtitle-en">The Intersection of Passion & Perfection</p>
-    </header>
+<div class="aks-dealers-taoyuan-wrapper">
+  <div class="hero-header">
+    <h1 class="hero-title">配合店家 桃園</h1>
+  </div>
 
-  <div class="aks-split-wrapper">
-    <div class="aks-about-container">
-      <section class="aks-split io-reveal">
-        <div class="aks-split-img">
-          <img src="https://raw.githubusercontent.com/AKS-PPF/images/main/GL-75-Supra-2.jpg" alt="AKS 極致施工細節">
+  <div class="contact-section">
+    <div class="contact-info">
+      <h1>潔特曼車體美研館</h1>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期日 09:00-20:00</li>
+        <li><span>- 連絡電話：</span>03-495-0204</li>
+        <li><span>- 地址：</span>324桃園市平鎮區延平路二段193號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img
+          src="https://aks-ppf.github.io/images/dealers-taoyuan-1.jpg"
+          alt="潔特曼車體美研館 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7235.102844426585!2d121.210648!3d24.947347!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468238f9e6cad65%3A0x38aeb8dfcde87df5!2z5r2U54m55pu86LuK6auU576O56CU6aSoIC0gVFBV44CB54qA54mb55qu44CB6LK86Iac44CB5YyF6Iac44CB5pS56Imy44CB6Y2N6Iac!5e0!3m2!1szh-TW!2stw!4v1770029741342!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="潔特曼車體美研館 Google 地圖">
+          </iframe>
         </div>
-        <div class="aks-split-info">
-          <h2>源自對傳統<br>貼膜質感的妥協不滿</h2>
-          <p>如果車是你靈魂的延伸，那我們就是讓它閃耀的工匠。</p>
-          <p>AKS 的誕生，純粹源於一份<strong>不甘於傳統改色膜「廉價塑膠感」</strong>的偏執。我們無法接受在換上鮮豔色彩的同時，必須犧牲烤漆般的光澤，更無法妥協於幾年後黃化、殘膠的宿命。</p>
-          <p>我們深知，在意細節的車主，要的不只是保護，更是一份<strong>「不與質感妥協」的極致保護</strong>。</p>
-        </div>
-      </section>
+      </div>
     </div>
   </div>
 
-  <div class="aks-values-wrapper">
-    <div class="aks-about-container">
-      <section class="aks-values io-reveal">
-        <div class="aks-value-grid">
-          
-          <div class="aks-value-card">
-            <i class="fa-solid fa-layer-group aks-value-icon"></i>
-            <h3>航太級基材</h3>
-            <p>嚴選最高標準的 TPU（熱塑性聚氨酯），將極致延展性與耐候性完美融合，具備強大的自體修復與防污特性。</p>
-          </div>
-
-          <div class="aks-value-card">
-            <i class="fa-solid fa-paint-roller aks-value-icon"></i>
-            <h3>烤漆級光澤</h3>
-            <p>不僅是改色，更是對質感的一份保障。AKS 改色犀牛皮擁有深邃剔透的真實烤漆光澤，乾淨、耐看，禁得起細節端詳。</p>
-          </div>
-
-          <div class="aks-value-card">
-            <i class="fa-solid fa-shield-halved aks-value-icon"></i>
-            <h3>長期安全保障</h3>
-            <p>考慮到使用年限與售後，我們全色系提供 5 年原廠保固，獨家底膠技術確保撕膜時不掉漆、不殘膠。</p>
-          </div>
-
+  <div class="contact-section">
+    <div class="contact-info">
+      <h1>克特先生尊爵車膜坊</h1>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期六 10:00-19:00</li>
+        <li><span>- 連絡電話：</span>0976-096-706</li>
+        <li><span>- 地址：</span>330028桃園市桃園區埔新路153號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img
+          src="https://aks-ppf.github.io/images/dealers-taoyuan-2.jpg"
+          alt="克特先生尊爵車膜坊 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7231.852608504669!2d121.305033!3d25.00262!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681f8f2759b171%3A0xb238a806a3a41873!2z5YWL54m55YWI55Sf5bCK54i16LuK6Iac5Z2KLeaxvei7iuWMheiGnCDmoYPlnJLmsb3ou4rpjY3ohpwg6LuK6auU576O5a65IOaUueiJsiDmiZPooJ8g5bCI5qWt6LuK6auU6LK86IacIOeKgOeJm-earuiyvOiGnOaOqOiWpg!5e0!3m2!1szh-TW!2stw!4v1770029594904!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="克特先生尊爵車膜坊 Google 地圖">
+          </iframe>
         </div>
-      </section>
+      </div>
     </div>
   </div>
 
-  <div class="aks-about-outro-wrapper">
-    <div class="aks-about-container">
-      <footer class="aks-about-outro io-reveal">
-        <h2><strong>你選的不只是顏色，而是對愛車一份不妥協的精品保障。</strong></h2>
-        <a href="{{ '/pages/color-chart/' | relative_url }}" class="aks-btn-cta">
-          <i class="fa-solid fa-swatchbook" style="margin-right: 12px;"></i>線上色卡總覽
-        </a>
-      </footer>
+  <div class="contact-section">
+    <div class="contact-info">
+      <h1>奧沃美車工藝</h1>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期四11:00-20:30 | 星期五 11:00-19:30 | 星期六 11:00-20:30</li>
+        <li><span>- 連絡電話：</span>0916-308-399</li>
+        <li><span>- 地址：</span>330桃園市桃園區國際路二段460號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img
+          src="https://aks-ppf.github.io/images/dealers-taoyuan-3.jpg"
+          alt="奧沃美車工藝 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.0225001486906!2d121.28824230000001!3d24.9993514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681bac5935513d%3A0x7c62ba54a50829ed!2z5aWn5rKD576O6LuK5bel6Jed44CQ5rG96LuK5YyF6IacL-axvei7iuiyvOiGnC_nioDniZvnmq7ljIXohpwv5pS56Imy6LK86IacL-aWsOWMl-iyvOiGnC_lj7DljJfosrzohpwv5qGD5ZyS6LK86IacL-ahg-WckumNjeiGnC_moYPlnJLmsb3nvo7jgJE!5e0!3m2!1szh-TW!2stw!4v1773309187762!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="奧沃美車工藝 Google 地圖">
+          </iframe>
+        </div>
+      </div>
     </div>
   </div>
 
+  <div class="contact-section">
+    <div class="contact-info">
+      <h1>采奕CAIYI車體包膜專門店</h1>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期六 12:00-21:00</li>
+        <li><span>- 連絡電話：</span>0938-532-253</li>
+        <li><span>- 地址：</span>330桃園市桃園區寶慶路58號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img
+          src="https://aks-ppf.github.io/images/dealers-taoyuan-4.jpg"
+          alt="采奕CAIYI車體包膜專門店 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.692443186296!2d121.29464449999999!3d25.0105646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468209d1c05940d%3A0xcddcdfcb0f4a2755!2z6YeH5aWVQ0FJWUnou4rpq5TljIXohpzlsIjploDlupc!5e0!3m2!1szh-TW!2stw!4v1773309251781!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="采奕CAIYI車體包膜專門店 Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-section">
+    <div class="contact-info">
+      <h1>TOP1車體工藝</h1>
+      <ul>
+        <li><span>- 營業時間：</span>星期一至星期日 10:00-19:00</li>
+        <li><span>- 連絡電話：</span>0980-39-4427</li>
+        <li><span>- 地址：</span>334桃園市八德區中華路181號</li>
+      </ul>
+    </div>
+    <div class="contact-visual">
+      <div class="logo-box">
+        <img
+          src="https://aks-ppf.github.io/images/dealers-taoyuan-5-top1.png"
+          alt="TOP1車體工藝 店家 Logo">
+      </div>
+      <div class="map-box">
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.4848007365345!2d121.2787574!3d24.983637500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681f418205ffd9%3A0x60f7b05091ebd8c6!2zVE9QMei7iumrlOW3peiXnSDlsIjmpa3pjY3ohpzljIXohpzlnJjpmoo!5e0!3m2!1szh-TW!2stw!4v1773309390867!5m2!1szh-TW!2stw"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="TOP1車體工藝 Google 地圖">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const reveals = document.querySelectorAll('.io-reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    
-    reveals.forEach(el => observer.observe(el));
-  });
-</script>
