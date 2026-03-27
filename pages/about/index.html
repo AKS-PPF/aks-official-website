@@ -4,9 +4,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
 ---
 
 <style>
-  /* =========================================
-     1. 全站底色與毛玻璃質感 
-     ========================================= */
+  /* 限定作用域，完全嚴格對齊品牌與視覺規範 */
   .aks-about-wrapper {
     --bg: #050505; --panel: rgba(15, 15, 19, 0.7); --text: #f3f4f8; --primary: #c81f2a;
     background: radial-gradient(1100px 560px at 18% 0%, rgba(255,45,63,.15) 0%, transparent 55%), 
@@ -21,11 +19,11 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   
   .aks-about-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
-  /* 字體定義：嚴格控管優設標題黑 */
+  /* 字體定義：優設標題黑 (aks-font-youshe) 僅限於 AKS、GL-75 等品牌/產品名標籤 */
   @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
   .aks-font-youshe { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; font-size: 1.1em; vertical-align: baseline; }
 
-  /* 精品級 Reveal 互動 (加強浮出距離與平滑度) */
+  /*精品級 Reveal 互動*/
   .io-reveal { opacity: 0; transform: translateY(40px); filter: blur(8px); transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity, filter; }
   .io-reveal.is-in { opacity: 1; transform: translateY(0); filter: blur(0); }
 
@@ -41,13 +39,13 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
     background: #050505; 
   }
 
-  /* 🌟 視差外掛容器 (負責滾動往下沉) */
+  /* 視差外掛容器 */
   .aks-hero-parallax-container {
     position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;
     will-change: transform;
   }
 
-  /* 🌟 動態呼吸背景圖片引擎 (負責縮放呼吸) */
+  /* 動態呼吸背景圖片引擎 */
   .aks-hero-bg {
     width: 100%; height: 100%;
     background-repeat: no-repeat; background-position: center center;
@@ -56,7 +54,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
     will-change: transform;
   }
 
-  /* 電腦版設定 */
+  /* 電腦版圖片設定 */
   @media (min-width: 992px) {
     .aks-hero-bg { 
       background-image: linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,0.9)),
@@ -65,7 +63,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
     }
   }
 
-  /* 手機版設定 */
+  /* 手機版圖片設定與呼吸動畫 */
   @media (max-width: 991px) { 
     .aks-hero-bg { 
       background-image: linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,0.85)),
@@ -74,8 +72,8 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
       animation-delay: 0.5s; 
     }
     
-    /* ✅ 排版上移：精準定位在你箭頭指的引擎蓋上方 */
-    .aks-about-hero { justify-content: center; padding-bottom: 15vh; } 
+    /* ✅ 手機版 Hero 容器：重心上移 */
+    .aks-about-hero { justify-content: flex-start; padding: 10vh 20px 0 20px; } 
   }
 
   @keyframes kenBurnsBreath {
@@ -83,36 +81,40 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
     100% { transform: scale(1.15); }
   }
   
-  /* Hero 內容區塊 (負責滾動往上飄) */
+  /* Hero 內容區塊 */
   .aks-hero-content {
     position: relative; z-index: 5;
     will-change: opacity, transform;
   }
+  @media (max-width: 991px) {
+    /* ✅ 核心修改：手機版文字內容靠右對齊 */
+    .aks-hero-content { 
+      width: 100%; 
+      display: flex; flex-direction: column; align-items: flex-end; 
+    }
+  }
 
+  /* Kicker (只有 AKS PPF 標籤) */
   .aks-kicker { 
     font-size: clamp(12px, 1.2vw, 14px); letter-spacing: 0.3em; color: rgba(255,255,255,0.6); 
     font-weight: 300; text-transform: uppercase; display: block; margin-bottom: 24px;
     max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; padding: 0 24px;
   }
-  @media (max-width: 991px) { .aks-kicker { padding: 0; margin-bottom: 16px; } }
+  @media (max-width: 991px) { .aks-kicker { padding: 0; margin-bottom: 16px; margin-right: 0; margin-left: auto; } }
 
   .aks-brand-tag { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; color: var(--primary); font-size: 1.25em; }
 
+  /* ✅ 中文標題 (不使用 YouShe) - 電腦左對齊，手機右對齊 */
   .aks-hero-title-zh { 
     font-size: clamp(32px, 5vw, 64px); font-weight: 900; letter-spacing: 2px; line-height: 1.1; margin: 0; 
     color: white; font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
     max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; padding: 0 24px;
   }
-  @media (max-width: 991px) { .aks-hero-title-zh { padding: 0; } }
+  @media (max-width: 991px) { .aks-hero-title-zh { padding: 0; text-align: right; margin-right: 0; margin-left: auto; } }
   
-  .aks-hero-subtitle-en { 
-    color: rgba(255,255,255,0.7); font-size: clamp(14px, 1.2vw, 18px); letter-spacing: 1px; line-height: 1.8; 
-    font-weight: 300; text-transform: uppercase; font-family: 'Montserrat', sans-serif;
-    margin: 24px 0 0 0; max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; padding: 0 24px;
-  }
-  @media (max-width: 991px) { .aks-hero-subtitle-en { padding: 0; } }
+  /* ✅ 英文副標題已彻底移除 */
 
-  /* 🌟 精品級 Scroll 指示器 (線條延伸版) */
+  /* Scroll 指示器 */
   .aks-scroll-indicator {
     position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 16px;
@@ -139,6 +141,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   }
 
   @media (max-width: 991px) {
+    /* ✅ 手機版指示器保持靠左，與文字形成視覺平衡 */
     .aks-scroll-indicator { left: 24px; transform: none; align-items: flex-start; }
     .aks-scroll-line { height: 60px; }
   }
@@ -239,10 +242,11 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
       </div>
 
       <div class="aks-hero-content" id="aks-parallax-content">
-        <span class="aks-kicker">We are <span class="aks-brand-tag">AKS PPF</span></span>
+        <span class="aks-kicker"><span class="aks-brand-tag">AKS PPF</span></span>
+        
         <h1 class="aks-hero-title-zh">源自追求完美細節的<br>極致偏執</h1>
-        <p class="aks-hero-subtitle-en">The Intersection of Passion & Perfection</p>
-      </div>
+        
+        </div>
       
       <div class="aks-scroll-indicator" id="aks-parallax-indicator">
         <span class="aks-scroll-text">SCROLL</span>
@@ -251,7 +255,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
     </header>
 
   <div class="aks-split-wrapper">
-    <div class="aks-about-container">
+    <div class="aks-container">
       <section class="aks-split io-reveal">
         <div class="aks-split-img">
           <img src="https://raw.githubusercontent.com/AKS-PPF/images/main/GL-75-Supra-2.jpg" alt="AKS 極致施工細節">
@@ -267,7 +271,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   </div>
 
   <div class="aks-values-wrapper">
-    <div class="aks-about-container">
+    <div class="aks-container">
       <section class="aks-values io-reveal">
         <div class="aks-value-grid">
           
@@ -295,7 +299,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   </div>
 
   <div class="aks-about-outro-wrapper">
-    <div class="aks-about-container">
+    <div class="aks-container">
       <footer class="aks-about-outro io-reveal">
         <h2><strong>你選的不只是顏色，而是為愛車不妥協的一份保障。</strong></h2>
         <a href="{{ '/pages/color-chart/' | relative_url }}" class="aks-btn-cta">
@@ -328,7 +332,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
         setTimeout(() => { document.getElementById('aks-hero-bg').style.opacity = '1'; }, 300);
     }
 
-    // 3. 🌟 頂級硬體加速視差引擎 (Hardware Accelerated Parallax)
+    // 3. 頂級硬體加速視差引擎 (Hardware Accelerated Parallax)
     const parallaxBg = document.getElementById('aks-parallax-bg');
     const parallaxContent = document.getElementById('aks-parallax-content');
     const parallaxIndicator = document.getElementById('aks-parallax-indicator');
