@@ -4,18 +4,15 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
 ---
 
 <style>
-  /* ====== 核心變數與背景 ====== */
+  /* ====== 核心變數與深色環境背景 ====== */
   .aks-colorchart-wrapper {
     --bg: #050505; 
-    --panel-bg: rgba(20, 20, 25, 0.75); 
+    --panel-bg: rgba(20, 20, 25, 0.7); 
     --text: #f3f4f8; 
     --primary: #c81f2a;
-    background: radial-gradient(1100px 560px at 18% 0%, rgba(255,45,63,.1) 0%, transparent 55%), 
-                radial-gradient(900px 520px at 88% 18%, rgba(192,23,42,.06) 0%, transparent 55%), 
-                var(--bg);
+    background: var(--bg);
     min-height: 100vh;
-    padding-top: 56px;
-    padding-bottom: 120px;
+    padding-bottom: 120px; /* 手機版底部留白 */
     font-family: 'Montserrat', 'PingFang TC', sans-serif;
     color: var(--text);
     -webkit-font-smoothing: antialiased;
@@ -25,40 +22,118 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
   
   .aks-container { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
 
-  /* ====== Hero 標題區塊 ====== */
-  .aks-hero-header { text-align: center; margin-bottom: 40px; }
-  .aks-hero-header h1 { 
-    font-size: clamp(28px, 4vw, 48px); 
-    font-weight: 900; 
-    letter-spacing: 4px; 
-    margin: 0 0 12px 0; 
-    text-transform: uppercase; 
-    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
-    background: linear-gradient(180deg, #ffffff 0%, #999999 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .aks-hero-header p { 
-    color: rgba(255,255,255,0.5); 
-    font-size: 15px; 
-    letter-spacing: 2px; 
-    margin: 0; 
-    font-weight: 300;
+  /* ====== [新增] Premium Hero 區塊 (嚴格還原圖二質感) ====== */
+  .aks-premium-hero {
+    padding: 100px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    /* 背景微光 */
+    background: radial-gradient(circle at 50% 10%, rgba(200, 31, 42, 0.1) 0%, transparent 60%);
   }
 
-  /* ====== 終極 1x4 過濾器列 (桌面版：標題下方水平展開) ====== */
+  /* 1. Logo (圖二最上方的 AKS 文字Logo) */
+  .aks-hero-logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0.9;
+  }
+  /* 如要使用圖片Logo，請更換為：
+  .aks-hero-logo img { height: 30px; width: auto; }
+  */
+
+  /* 2. 橫線 (圖二 Logo 下方的極細線條) */
+  .aks-hero-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+    width: 60%;
+    margin: 0 auto 32px;
+  }
+
+  /* 3. 文字描述 (圖二細字描述) */
+  .aks-hero-subtitle {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px;
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto 48px;
+  }
+  .aks-hero-subtitle b { color: #fff; font-weight: 600; }
+
+  /* 4. 雙按鈕群組 */
+  .aks-hero-btn-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* 按鈕通用樣式 */
+  .aks-btn {
+    padding: 14px 36px;
+    border-radius: 4px; /* 圖二偏方正按鈕 */
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+  }
+
+  /* 主按鈕 (消光黑 / 亮紅色 hover) */
+  .aks-btn-primary {
+    background: #fff;
+    color: #000;
+    border: 1px solid #fff;
+  }
+  .aks-btn-primary:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 8px 20px rgba(200, 31, 42, 0.2);
+  }
+
+  /* 次級按鈕 (探索更多 / 外框線) */
+  .aks-btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .aks-btn-outline:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.6);
+    color: #fff;
+  }
+
+  /* ====== 1x4 過濾器列 (電腦版吸附頂部，手機版底部懸浮) ====== */
   .aks-filter-bar {
     display: flex;
     align-items: center;
     gap: 12px;
     background: var(--panel-bg);
-    backdrop-filter: blur(24px) saturate(150%); -webkit-backdrop-filter: blur(24px) saturate(150%);
+    backdrop-filter: blur(30px) saturate(160%); -webkit-backdrop-filter: blur(30px) saturate(160%);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 100px; /* 全圓角膠囊 */
-    padding: 8px 12px;
+    padding: 10px 16px;
     margin-bottom: 40px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
     width: 100%;
+    /* 電腦版吸附頂部核心邏輯 (圖一效果) */
+    position: sticky;
+    top: 20px;
+    z-index: 999;
   }
 
   /* 輸入框與選擇器容器 */
@@ -69,15 +144,15 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
   }
   
   /* 搜尋區塊佔據主要空間 */
-  .aks-filter-search { flex: 1; min-width: 200px; }
+  .aks-filter-search { flex: 1.2; min-width: 200px; }
   
   /* 選擇器區塊固定適當寬度 */
-  .aks-filter-select-wrap { width: 200px; }
+  .aks-filter-select-wrap { width: 190px; }
 
   .aks-filter-icon {
     position: absolute;
-    left: 16px;
-    color: rgba(255,255,255,0.5);
+    left: 18px;
+    color: rgba(255,255,255,0.4);
     font-size: 14px;
     pointer-events: none;
     z-index: 2;
@@ -85,13 +160,13 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
 
   .aks-input, .aks-select {
     width: 100%;
-    height: 44px;
-    background: rgba(255,255,255,0.04);
+    height: 48px;
+    background: rgba(255,255,255,0.03);
     border: 1px solid transparent;
     border-radius: 40px;
     color: #fff;
     font-size: 14px;
-    padding: 0 16px 0 44px;
+    padding: 0 16px 0 48px;
     appearance: none;
     outline: none;
     transition: all 0.3s ease;
@@ -100,26 +175,26 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
   }
   .aks-input { cursor: text; }
   
-  .aks-input:hover, .aks-select:hover { background: rgba(255,255,255,0.08); }
+  .aks-input:hover, .aks-select:hover { background: rgba(255,255,255,0.07); }
   .aks-input:focus, .aks-select:focus { 
     background: rgba(255,255,255,0.1); 
-    border-color: rgba(255,255,255,0.2); 
+    border-color: rgba(255,255,255,0.15); 
   }
   .aks-input::placeholder { color: rgba(255,255,255,0.3); }
 
   .aks-select { padding-right: 36px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
   .aks-select-arrow {
     position: absolute;
-    right: 16px;
-    color: rgba(255,255,255,0.4);
-    font-size: 12px;
+    right: 18px;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
     pointer-events: none;
   }
 
   /* 重置按鈕 */
   .aks-reset-btn {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     background: var(--primary);
     border: none;
     border-radius: 50%;
@@ -131,28 +206,28 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
     flex-shrink: 0;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .aks-reset-btn:hover { background: #e02431; transform: rotate(180deg); }
+  .aks-reset-btn:hover { background: #e02431; transform: rotate(180deg); box-shadow: 0 0 20px rgba(200, 31, 42, 0.3); }
 
-  /* ====== 狀態列 ====== */
+  /* ====== 狀態列與色卡網格 (維持上一版的高質感) ====== */
   .aks-status-bar { 
     display: flex; justify-content: space-between; align-items: center; 
     border-bottom: 1px solid rgba(255,255,255,0.06); 
     padding-bottom: 16px; margin-bottom: 32px; 
-    font-size: 14px; color: rgba(255,255,255,0.4); 
+    font-size: 13px; color: rgba(255,255,255,0.4); 
+    letter-spacing: 1px;
   }
   .aks-result-count span { color: #fff; font-weight: 700; }
 
-  /* ====== 網格系統與卡片 (維持頂級質感) ====== */
-  .aks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+  .aks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 32px; }
   .aks-card { 
     position: relative; aspect-ratio: 3 / 4; border-radius: 12px; 
     background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); 
     overflow: hidden; cursor: pointer; display: flex; flex-direction: column;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .aks-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+  .aks-card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.15); box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
 
-  .aks-thumb-wrapper { position: absolute; inset: 0; width: 100%; height: 100%; background: #0a0a0d; }
+  .aks-thumb-wrapper { position: absolute; inset: 0; width: 100%; height: 100%; background: #0a0a0d; overflow: hidden; }
   .aks-img-main, .aks-img-hover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease; }
   .aks-img-main { z-index: 1; opacity: 1; transform: scale(1); }
   .aks-img-hover { z-index: 2; opacity: 0; transform: scale(1.05); } 
@@ -163,88 +238,90 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
 
   .aks-card-info { 
     position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
-    padding: 32px 20px 20px; 
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%); 
+    padding: 32px 24px 24px; 
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 50%, transparent 100%); 
     display: flex; flex-direction: column; justify-content: flex-end; pointer-events: none;
   }
-  .aks-card-name { font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 6px 0; }
-  .aks-card-code { font-size: 11px; color: rgba(255,255,255,0.6); margin: 0; display: flex; gap: 8px; align-items: center; letter-spacing: 1px; }
-  .aks-card-dot { width: 4px; height: 4px; background: rgba(255,255,255,0.4); border-radius: 50%; }
+  .aks-card-name { font-size: 18px; font-weight: 700; color: #fff; margin: 0 0 8px 0; }
+  .aks-card-code { font-size: 11px; color: rgba(255,255,255,0.6); margin: 0; display: flex; gap: 8px; align-items: center; letter-spacing: 1px; text-transform: uppercase; }
+  .aks-card-dot { width: 4px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 50%; }
 
-  /* ====== 找不到結果 ====== */
-  .aks-empty-state { text-align: center; padding: 80px 20px; color: rgba(255,255,255,0.4); font-size: 15px; display: none; grid-column: 1 / -1; }
+  .aks-empty-state { text-align: center; padding: 100px 20px; color: rgba(255,255,255,0.4); font-size: 16px; display: none; grid-column: 1 / -1; }
 
-  /* ====== RWD 手機版：極致纖薄 1x4 懸浮列 ====== */
+  /* ====== RWD 手機版：恢復底部懸浮，調整 Hero 尺寸 ====== */
   @media (max-width: 768px) {
-    .aks-colorchart-wrapper { padding-top: 32px; padding-bottom: 100px; }
-    
+    .aks-premium-hero { padding: 80px 20px 60px; }
+    .aks-hero-logo { font-size: 20px; margin-bottom: 20px; }
+    .aks-hero-divider { width: 80%; margin-bottom: 24px; }
+    .aks-hero-subtitle { font-size: 14px; line-height: 1.6; margin-bottom: 40px; }
+    .aks-btn { padding: 12px 24px; font-size: 13px; min-width: calc(50% - 8px); } /* 行內雙按鈕適配 */
+
     .aks-filter-bar {
+      /* 手機版：從頂部吸附變為底部固定 (維持 1x4 極薄版) */
       position: fixed;
+      top: auto;
       bottom: 20px;
       left: 12px;
       right: 12px;
-      width: auto;
       margin-bottom: 0;
       padding: 6px;
-      gap: 6px; /* 極小間距以容納四個元素 */
+      gap: 6px;
       border-radius: 100px;
-      z-index: 999;
-      /* 確保在極限寬度下也能水平排列 */
-      flex-wrap: nowrap; 
+      width: auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
     }
 
-    /* 手機版：搜尋框維持彈性伸展 */
-    .aks-filter-search { min-width: 0; flex: 1.5; }
-    
-    /* 手機版：選擇器壓縮寬度，依賴省略號 */
+    .aks-filter-search { min-width: 0; flex: 1.4; }
     .aks-filter-select-wrap { width: auto; flex: 1; min-width: 0; }
 
-    .aks-input, .aks-select { 
-      height: 40px; 
-      /* iOS Safari 防止縮放的關鍵：字體必須 >= 16px */
-      font-size: 16px; 
-      padding-left: 32px; 
-      padding-right: 12px;
-      border-radius: 40px;
-    }
-    
-    /* 針對選擇器的微調，隱藏右側箭頭省空間，純靠文字 */
-    .aks-select { padding-right: 10px; padding-left: 28px; font-size: 13px; }
-    .aks-select-arrow { display: none; } /* 手機版隱藏下拉箭頭省空間 */
-
-    .aks-filter-icon { left: 10px; font-size: 12px; }
-    
-    /* 按鈕稍微縮小 */
+    .aks-input, .aks-select { height: 40px; font-size: 13px; padding-left: 36px; }
+    .aks-select { padding-right: 10px; font-size: 12px; }
+    .aks-select-arrow { display: none; }
+    .aks-filter-icon { left: 12px; font-size: 13px; }
     .aks-reset-btn { width: 40px; height: 40px; }
 
-    /* 手機版網格與卡片 */
     .aks-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .aks-card { aspect-ratio: 1 / 1.25; }
-    .aks-card-info { padding: 20px 12px 12px; }
-    .aks-card-name { font-size: 14px; margin-bottom: 4px; }
+    .aks-card { aspect-ratio: 1 / 1.25; border-radius: 10px; }
+    .aks-card-info { padding: 24px 12px 12px; }
+    .aks-card-name { font-size: 14px; }
     .aks-card-code { font-size: 10px; }
+    .aks-status-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
 </style>
 
 <div class="aks-colorchart-wrapper">
-  <div class="aks-container">
-    
-    <div class="aks-hero-header">
-      <h1>AKS COLOR PPF</h1>
-      <p>為你的車，找到真正適合的顏色</p>
+  
+  <header class="aks-premium-hero">
+    <div class="aks-container">
+      <div class="aks-hero-logo">AKS</div>
+      
+      <hr class="aks-hero-divider">
+      
+      <p class="aks-hero-subtitle">
+        Explore the <b>AKS GTPU Matte Gray Series</b>, a collection of dynamically tailored paint protection films. 
+        Engineered for unmatched durability and a stunning, velvety finish that redefines automotive sophistication.
+      </p>
+      
+      <div class="aks-hero-btn-group">
+        <a href="/matte-black-series/" class="aks-btn aks-btn-primary">消光黑系列</a>
+        <a href="#color-grid" class="aks-btn aks-btn-outline">探索更多顏色</a>
+      </div>
     </div>
+  </header>
+
+  <div class="aks-container">
 
     <div class="aks-filter-bar" id="filter-dock">
       
       <div class="aks-filter-item aks-filter-search">
         <i class="fa-solid fa-search aks-filter-icon"></i>
-        <input type="text" id="filter-search" class="aks-input" placeholder="色號...">
+        <input type="text" id="filter-search" class="aks-input" placeholder="色號/關鍵字...">
       </div>
       
       <div class="aks-filter-item aks-filter-select-wrap">
         <i class="fa-solid fa-layer-group aks-filter-icon"></i>
         <select id="filter-finish" class="aks-select">
-          <option value="all">材質</option>
+          <option value="all">材質Finish</option>
           <option value="gloss">亮面 Gloss</option>
           <option value="matte">消光 Matte</option>
           <option value="satin">絲綢 Satin</option>
@@ -255,7 +332,7 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
       <div class="aks-filter-item aks-filter-select-wrap">
         <i class="fa-solid fa-car-side aks-filter-icon"></i>
         <select id="filter-series" class="aks-select">
-          <option value="all">系列</option>
+          <option value="all">系列Series</option>
           <option value="gt series">GT Series</option>
           <option value="gl series">GL Series</option>
         </select>
@@ -313,6 +390,7 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
 </div>
 
 <script>
+  // 保留原有的極速 JS 篩選引擎，免除多餘的手機版切換邏輯，因為 DOM 結構已完全統一
   document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('filter-search');
     const finishSelect = document.getElementById('filter-finish');
