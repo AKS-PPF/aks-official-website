@@ -1,6 +1,6 @@
 ---
 layout: page-flush
-title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
+title: AKS COLOR PPF | 400色 在家就能選
 ---
 
 <style>
@@ -22,7 +22,7 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
   
   .aks-container { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
 
-  /* ====== 您提供的滿版 Hero 區塊 ====== */
+  /* ====== 滿版 Hero 區塊 ====== */
   .sec--colors {
     position: relative;
     width: 100%;
@@ -42,7 +42,7 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
     background-repeat: no-repeat;
     z-index: 0;
   }
-  /* 加入深色漸層疊加，確保文字清楚，並與下方背景融合 */
+  /* 深色漸層疊加，確保文字清楚 */
   .colors__bg::after {
     content: '';
     position: absolute;
@@ -58,13 +58,21 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
   }
 
   /* 標題與內文排版 */
-  .font-heading { font-family: 'Montserrat', sans-serif; }
+  .hero-brand-title {
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    font-size: clamp(24px, 4vw, 36px);
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  
+  .font-heading { font-family: 'Montserrat', 'PingFang TC', sans-serif; }
   .h2--xl {
     font-size: clamp(32px, 5vw, 56px);
     font-weight: 900;
     letter-spacing: 2px;
     margin: 0 0 24px 0;
-    text-transform: uppercase;
     color: #fff;
   }
   .h2--xl .red { color: var(--primary); }
@@ -172,6 +180,7 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
   /* ====== RWD 手機版：恢復底部懸浮 ====== */
   @media (max-width: 768px) {
     .sec--colors { min-height: 50vh; padding: 60px 20px 40px; }
+    .hero-brand-title { font-size: 20px; margin-bottom: 8px; }
     .h2--xl { font-size: 28px; }
     .p--big { font-size: 14px; }
     .p--bigger.strong { font-size: 16px; margin-top: 16px; }
@@ -206,15 +215,15 @@ title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
       style="background-image:url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_3c81facc-759c-4182-9bc2-085602807f59.png');"></div>
 
     <div class="colors__inner">
+      <div class="hero-brand-title io-reveal" data-delay="0">AKS COLOR PPF</div>
       <h2 class="h2 h2--xl h2--center font-heading io-reveal" data-delay="1">
-        Over <span class="red">400+</span> Colors to Choose From
+        <span class="red">400色</span> 在家就能選
       </h2>
       <p class="p p--center p--big io-reveal" data-delay="2">
-        AKS Color PPF，收錄全台最齊全的車色資料庫<br />
-        從 Porsche、Lamborghini、Ferrari、Mercedes-Benz、BMW、Tesla<br />
-        到消光、碳纖維、金屬砂感、幻彩變色龍、液態電鍍色系
+        AKS Color PPF，收錄全台最齊全的車色資料庫，從Tesla到Lamborghini，<br />
+        400種顏色，在家輕鬆挑選。
       </p>
-      <p class="p p--center strong p--bigger io-reveal" data-delay="3">每一種顏色，都是一種態度。</p>
+      <p class="p p--center strong p--bigger io-reveal" data-delay="3">為愛車找到真正適合的顏色。</p>
     </div>
   </section>
 
