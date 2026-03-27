@@ -1,21 +1,22 @@
 ---
 layout: page-flush
-title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
+title: AKS COLOR PPF | 為你的車，找到真正適合的顏色
 ---
 
 <style>
-  /* ====== 核心變數與背景 ====== */
+  /* ====== 核心變數與背景 (優化環境光與質感) ====== */
   .aks-colorchart-wrapper {
     --bg: #050505; 
     --panel: rgba(15, 15, 19, 0.7); 
     --text: #f3f4f8; 
     --primary: #c81f2a;
+    /* 優化深色背景的光暈層次 */
     background: radial-gradient(1100px 560px at 18% 0%, rgba(255,45,63,.12) 0%, transparent 55%), 
                 radial-gradient(900px 520px at 88% 18%, rgba(192,23,42,.08) 0%, transparent 55%), 
                 var(--bg);
     min-height: 100vh;
     padding-top: 56px;
-    padding-bottom: 160px;
+    padding-bottom: 160px; /* 留給底部懸浮控制列 */
     font-family: 'Montserrat', 'PingFang TC', sans-serif;
     color: var(--text);
     -webkit-font-smoothing: antialiased;
@@ -25,9 +26,10 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
   
   .aks-container { max-width: 1320px; margin: 0 auto; padding: 0 24px; }
 
-  /* ====== Hero 標題區塊 ====== */
+  /* ====== Hero 標題區塊 (圖片 0 -> 新文字與大氣排版) ====== */
   .aks-hero-header { text-align: center; margin-bottom: 56px; }
   .aks-hero-header h1 { 
+    /* 大氣排版與現代字體 */
     font-size: clamp(32px, 5vw, 56px); 
     font-weight: 900; 
     letter-spacing: 4px; 
@@ -64,10 +66,11 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
     gap: 32px; 
   }
   
-  /* ====== 奢華卡片設計 ====== */
+  /* ====== 奢華卡片設計 (精品比例與內膩度提升) ====== */
   .aks-card { 
     position: relative; 
-    aspect-ratio: 3 / 4; /* 精品直式比例 */
+    /* 沉浸式卡片比例 (3 / 4 精品直式比例) */
+    aspect-ratio: 3 / 4; 
     border-radius: 16px; 
     background: rgba(255,255,255,0.02); 
     border: 1px solid rgba(255,255,255,0.04); 
@@ -75,16 +78,18 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
     cursor: pointer; 
     display: flex; /* 保留以兼容原 JS 邏輯 */
     flex-direction: column;
+    /* 電影級轉場預設 */
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 4px 24px rgba(0,0,0,0.2);
   }
   .aks-card:hover { 
     transform: translateY(-8px); 
     border-color: rgba(255,255,255,0.15); 
+    /* 微光暈層次與更細膩陰影 */
     box-shadow: 0 24px 48px rgba(0,0,0,0.6), 0 0 40px rgba(200, 31, 42, 0.1); 
   }
 
-  /* ====== Hover Swap 電影級轉場 ====== */
+  /* ====== Hover Swap 電影級轉場 (Push/Pull 呼吸感) ====== */
   .aks-thumb-wrapper { 
     position: absolute; inset: 0; width: 100%; height: 100%; 
     background: #0a0a0d; overflow: hidden; 
@@ -93,6 +98,7 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
     position: absolute; inset: 0; 
     width: 100%; height: 100%; 
     object-fit: cover; object-position: center; 
+    /* 電影級轉場 cubic-bezier */
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease; 
   }
   .aks-img-main { z-index: 1; opacity: 1; transform: scale(1); }
@@ -101,9 +107,10 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
   /* 觸發轉場：推拉效應 (Push/Pull) */
   .aks-card:hover .aks-img-main { opacity: 0; transform: scale(0.95); }
   .aks-card:hover .aks-img-hover { opacity: 1; transform: scale(1); }
+  /* 如果沒有 hover 圖，原本的圖就微微放大 */
   .aks-card.no-hover-img:hover .aks-img-main { opacity: 1; transform: scale(1.05); }
 
-  /* ====== 資訊區塊 (絕對定位覆蓋) ====== */
+  /* ====== 資訊區塊 (絕對定位覆蓋以最大化視覺) ====== */
   .aks-card-info { 
     position: absolute; bottom: 0; left: 0; right: 0; z-index: 10;
     padding: 32px 24px 24px; 
@@ -123,9 +130,10 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
   }
   .aks-card-dot { width: 4px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 50%; }
 
-  /* ====== 懸浮式過濾膠囊 (Glassmorphism Dock) ====== */
+  /* ====== 底部懸浮式過濾膠囊 (極致毛玻璃 Glassmorphism Dock) ====== */
   .aks-filter-dock {
     position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 999;
+    /* 極致毛玻璃：增加 saturity 150% 與內陰影 */
     background: rgba(18, 18, 22, 0.65); 
     backdrop-filter: blur(24px) saturate(150%); -webkit-backdrop-filter: blur(24px) saturate(150%);
     border: 1px solid rgba(255,255,255,0.08); 
@@ -138,6 +146,7 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
   .aks-filter-item { position: relative; flex: 1; display: flex; align-items: center; }
   .aks-filter-icon { position: absolute; left: 20px; color: rgba(255,255,255,0.4); font-size: 14px; pointer-events: none; }
   
+  /* 搜尋輸入框與選擇器 (優化聚焦回饋) */
   .aks-filter-input, .aks-filter-select {
     width: 100%; background: rgba(255,255,255,0.03); border: 1px solid transparent; border-radius: 40px;
     color: #fff; font-size: 14px; padding: 14px 20px 14px 48px; 
@@ -155,7 +164,7 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
   .aks-select-arrow { position: absolute; right: 20px; color: rgba(255,255,255,0.4); font-size: 12px; pointer-events: none; transition: transform 0.3s ease; }
   .aks-filter-select:focus + .aks-select-arrow { transform: rotate(180deg); }
 
-  /* ====== 重置按鈕微互動 ====== */
+  /* 重置按鈕 (優化 Hover/Active 微互動) */
   .aks-filter-reset {
     background: var(--primary); border: none; border-radius: 40px; color: #fff; width: 48px; height: 48px;
     display: flex; align-items: center; justify-content: center; cursor: pointer; 
@@ -164,16 +173,81 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
   .aks-filter-reset:hover { background: #e02431; transform: rotate(180deg); box-shadow: 0 0 20px rgba(200, 31, 42, 0.4); }
   .aks-filter-reset:active { transform: rotate(180deg) scale(0.9); }
 
-  /* ====== RWD 完美適應 ====== */
+  /* 手機版專用搜尋按鈕 (初始可見) */
+  .aks-mobile-search-toggle { display: none; }
+
+  /* ====== RWD 完美適應 & 手機版過濾器重構 ====== */
   @media (max-width: 768px) {
     .aks-colorchart-wrapper { padding-top: 32px; padding-bottom: 240px; }
     .aks-hero-header { margin-bottom: 32px; }
+    
+    /* 重構為簡潔底部懸浮膠囊 (圖片 2 Style) */
     .aks-filter-dock { 
-      flex-direction: column; border-radius: 24px; padding: 16px; bottom: 24px; gap: 12px;
-      background: rgba(18, 18, 22, 0.85); /* 手機版加深背景確保閱讀性 */
+      flex-direction: row; /* 恢復水平排列 */
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 40px; /* 緊湊膠囊形狀 */
+      padding: 6px 10px; /* 緊湊內邊距 */
+      bottom: 24px;
+      width: calc(100% - 48px); /* 兩側留白 */
+      max-width: 360px; /* 手機上更窄 */
+      background: rgba(18, 18, 22, 0.85); /* 加深背景確保閱讀性 */
     }
-    .aks-filter-input, .aks-filter-select { border-radius: 12px; height: 50px; }
-    .aks-filter-reset { width: 100%; border-radius: 12px; height: 50px; }
+    
+    /* 左側搜尋按鈕 */
+    .aks-mobile-search-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      font-size: 16px;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.3s ease;
+    }
+    .aks-mobile-search-toggle:hover {
+      color: #fff;
+    }
+    
+    /* 全寬搜尋輸入框 (激活後彈出) */
+    .aks-filter-search-input-wrapper {
+      position: relative;
+      flex: 1; /* 填滿大部分空間 */
+      display: none; /* 初始隱藏 */
+      margin: 0 10px;
+    }
+    
+    /* 當過濾列被激活時，顯示搜尋輸入框 */
+    .aks-filter-dock.is-searching .aks-filter-search-input-wrapper {
+      display: block;
+    }
+    
+    .aks-filter-input {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 8px 12px;
+      height: 36px;
+      font-size: 13px;
+      border-radius: 0;
+    }
+    .aks-filter-input::placeholder {
+      color: rgba(255,255,255,0.2);
+    }
+    
+    /* 右側重置按鈕 */
+    .aks-filter-reset {
+      width: 36px;
+      height: 36px;
+      font-size: 14px;
+      border-radius: 20px;
+    }
+    
+    /* 選擇器在手機上隱藏 */
+    .desk-only { display: none !important; }
+
     .aks-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .aks-card { aspect-ratio: 1 / 1.3; border-radius: 12px; }
     .aks-card-info { padding: 24px 16px 16px; }
@@ -190,8 +264,8 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
   <div class="aks-container">
     
     <div class="aks-hero-header">
-      <h1>Dynamic PPF Series</h1>
-      <p>探索 AKS GTPU 系列消光灰</p>
+      <h1>AKS COLOR PPF</h1>
+      <p>為你的車，找到真正適合的顏色</p>
     </div>
 
     <div class="aks-status-bar">
@@ -238,30 +312,33 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
   </div>
 
   <div class="aks-filter-dock" id="filter-dock">
-    <div class="aks-filter-item">
-      <i class="fa-solid fa-search aks-filter-icon"></i>
+    <button class="aks-mobile-search-toggle" id="mobile-search-toggle" title="搜尋">
+      <i class="fa-solid fa-search"></i>
+    </button>
+    
+    <div class="aks-filter-search-input-wrapper">
       <input type="text" id="filter-search" class="aks-filter-input" placeholder="搜尋顏色、色號...">
     </div>
     
-    <div class="aks-filter-item">
-      <i class="fa-solid fa-layer-group aks-filter-icon"></i>
-      <select id="filter-finish" class="aks-filter-select">
+    <div class="aks-filter-item desk-only">
+      <i class="fa-solid fa-layer-group aks-filter-icon desk-only"></i>
+      <select id="filter-finish" class="aks-filter-select desk-only">
         <option value="all">所有材質 (Finish)</option>
         <option value="gloss">亮面 Gloss</option>
         <option value="matte">消光 Matte</option>
         <option value="satin">絲綢 Satin</option>
       </select>
-      <i class="fa-solid fa-chevron-down aks-select-arrow"></i>
+      <i class="fa-solid fa-chevron-down aks-select-arrow desk-only"></i>
     </div>
 
-    <div class="aks-filter-item">
-      <i class="fa-solid fa-car-side aks-filter-icon"></i>
-      <select id="filter-series" class="aks-filter-select">
+    <div class="aks-filter-item desk-only">
+      <i class="fa-solid fa-car-side aks-filter-icon desk-only"></i>
+      <select id="filter-series" class="aks-filter-select desk-only">
         <option value="all">所有系列 (Series)</option>
         <option value="gt series">GT Series</option>
         <option value="gl series">GL Series</option>
       </select>
-      <i class="fa-solid fa-chevron-down aks-select-arrow"></i>
+      <i class="fa-solid fa-chevron-down aks-select-arrow desk-only"></i>
     </div>
 
     <button class="aks-filter-reset" id="filter-reset" title="重置過濾器">
@@ -272,7 +349,47 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // 獲取手機版互動所需的元素
+    const filterDock = document.getElementById('filter-dock');
+    const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+    const searchInputWrapper = document.querySelector('.aks-filter-search-input-wrapper');
     const searchInput = document.getElementById('filter-search');
+
+    // 手機版過濾器互動：點擊圖標顯示輸入框，並聚焦
+    function toggleMobileSearch() {
+      if (window.innerWidth <= 768) {
+        filterDock.classList.toggle('is-searching');
+        if (filterDock.classList.contains('is-searching')) {
+          searchInputWrapper.style.display = 'block';
+          searchInput.focus(); // 輸入框聚焦
+        } else {
+          searchInputWrapper.style.display = 'none';
+        }
+      }
+    }
+
+    // 監聽手機版搜尋圖標點擊事件
+    mobileSearchToggle.addEventListener('click', toggleMobileSearch);
+
+    // 當輸入框失去焦點或按下 Enter 時，隱藏輸入框
+    searchInput.addEventListener('blur', () => {
+      if (window.innerWidth <= 768) {
+        // 只有當輸入框為空時才隱藏，否則用戶可能只是暫時失去焦點
+        if (!searchInput.value.trim()) {
+          filterDock.classList.remove('is-searching');
+          searchInputWrapper.style.display = 'none';
+        }
+      }
+    });
+    searchInput.addEventListener('keypress', (e) => {
+      if (window.innerWidth <= 768 && e.key === 'Enter') {
+        // 在手機上按 Enter 不僅觸發搜尋，也隱藏輸入框以展示結果
+        filterDock.classList.remove('is-searching');
+        searchInputWrapper.style.display = 'none';
+      }
+    });
+
+    // ====== 保留原 JS 篩選邏輯與核心引擎 ======
     const finishSelect = document.getElementById('filter-finish');
     const seriesSelect = document.getElementById('filter-series');
     const resetButton = document.getElementById('filter-reset');
@@ -284,15 +401,15 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
 
     function filterCards() {
       const query = searchInput.value.toLowerCase().trim();
-      const finish = finishSelect.value.toLowerCase();
-      const series = seriesSelect.value.toLowerCase();
+      const finish = finishSelect ? finishSelect.value.toLowerCase() : 'all'; // 桌面版才存在
+      const series = seriesSelect ? seriesSelect.value.toLowerCase() : 'all'; // 桌面版才存在
       
       let visibleCount = 0;
       let activeFilters = [];
 
       if (query) activeFilters.push(`"${query}"`);
-      if (finish !== 'all') activeFilters.push(finishSelect.options[finishSelect.selectedIndex].text);
-      if (series !== 'all') activeFilters.push(seriesSelect.options[seriesSelect.selectedIndex].text);
+      if (finishSelect && finish !== 'all') activeFilters.push(finishSelect.options[finishSelect.selectedIndex].text);
+      if (seriesSelect && series !== 'all') activeFilters.push(seriesSelect.options[seriesSelect.selectedIndex].text);
 
       filterTextDisplay.textContent = activeFilters.length > 0 ? activeFilters.join(' + ') : '全部顯示';
 
@@ -301,12 +418,13 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
         const cardFinish = card.getAttribute('data-finish') || '';
         const cardSeries = card.getAttribute('data-series') || '';
 
+        // 邏輯判斷 (保留核心邏輯)
         const matchQuery = query === '' || cardSearch.includes(query);
         const matchFinish = finish === 'all' || cardFinish === finish;
         const matchSeries = series === 'all' || cardSeries === series;
 
         if (matchQuery && matchFinish && matchSeries) {
-          card.style.display = 'flex'; 
+          card.style.display = 'flex'; // 恢復 flex 佈局
           visibleCount++;
         } else {
           card.style.display = 'none';
@@ -317,17 +435,27 @@ title: AKS Color PPF 線上色卡 | GTPU 系列消光灰
       emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
     }
 
+    // 綁定即時事件
     searchInput.addEventListener('input', filterCards);
-    finishSelect.addEventListener('change', filterCards);
-    seriesSelect.addEventListener('change', filterCards);
+    if (finishSelect) finishSelect.addEventListener('change', filterCards);
+    if (seriesSelect) seriesSelect.addEventListener('change', filterCards);
 
+    // 重置按鈕
     resetButton.addEventListener('click', () => {
       searchInput.value = '';
-      finishSelect.value = 'all';
-      seriesSelect.value = 'all';
+      if (finishSelect) finishSelect.value = 'all';
+      if (seriesSelect) seriesSelect.value = 'all';
+      
+      // 手機版：重置時，隱藏搜尋輸入框
+      if (window.innerWidth <= 768) {
+        filterDock.classList.remove('is-searching');
+        searchInputWrapper.style.display = 'none';
+      }
+      
       filterCards();
     });
 
+    // 初始化筆數顯示
     filterCards(); 
   });
 </script>
