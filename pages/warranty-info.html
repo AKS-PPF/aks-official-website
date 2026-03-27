@@ -1,0 +1,330 @@
+---
+layout: page-padded
+title: 保固資訊 | AKS PPF
+---
+
+<style>
+  /* 1. 強制修正：杜絕所有超出 100vw 的橫向跑版問題 */
+  .aks-warranty-wrapper * { box-sizing: border-box !important; }
+  .aks-warranty-wrapper { width: 100%; overflow-x: hidden; }
+
+  /* 2. 舊 CSS 隔離區 (所有選擇器前面都要加上 .aks-[page-name]-wrapper) */
+  .aks-warranty-wrapper .aks-w-section {
+    color: #ffffff;
+    font-family: 'Montserrat', Arial, 'Noto Sans TC', sans-serif;
+    padding: 10px 20px 60px; /* 強制縮減原 padding-top 60px 至 10px，避免雙重留白 */
+    box-sizing: border-box;
+    width: 100%;
+    line-height: 1.5;
+  }
+
+  .aks-warranty-wrapper .aks-w-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* --- 頂部三欄區塊 --- */
+  .aks-warranty-wrapper .aks-w-top-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  .aks-warranty-wrapper .aks-w-feature {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .aks-warranty-wrapper .aks-w-icon {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .aks-warranty-wrapper .aks-w-badge {
+    background-color: #c1272d;
+    color: #fff;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .aks-warranty-wrapper .aks-w-feature p {
+    margin: 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #eeeeee;
+  }
+
+  /* --- 網格表格區塊 --- */
+  .aks-warranty-wrapper .aks-w-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 30px;
+    padding-bottom: 10px; /* 預留捲軸空間 */
+  }
+
+  .aks-warranty-wrapper .aks-w-grid {
+    display: grid;
+    grid-template-columns: max-content repeat(5, 1fr);
+    gap: 8px;
+    min-width: 800px; /* 確保在小螢幕上可以用捲動取代擠壓變形 */
+  }
+
+  .aks-warranty-wrapper .aks-w-cell {
+    padding: 10px 8px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.5px;
+  }
+
+  .aks-warranty-wrapper .aks-w-cell.bg-red {
+    background-color: #c1272d;
+    color: #ffffff;
+  }
+
+  .aks-warranty-wrapper .aks-w-cell.bg-white {
+    background-color: #ffffff;
+    color: #c1272d;
+  }
+
+  .aks-warranty-wrapper .aks-w-span-2 {
+    grid-column: span 2;
+  }
+
+  /* --- 按鈕區塊 --- */
+  .aks-warranty-wrapper .aks-w-btn-wrap {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .aks-warranty-wrapper .aks-w-btn {
+    display: inline-block;
+    background-color: #c1272d;
+    color: #ffffff;
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: all 0.3s ease; 
+  }
+
+  .aks-warranty-wrapper .aks-w-btn:hover {
+    background-color: #db2b32;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(165, 28, 34, 0.5);
+  }
+
+  /* --- 注意事項區塊 --- */
+  .aks-warranty-wrapper .aks-w-notice-box {
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 30px 40px;
+    position: relative;
+  }
+
+  .aks-warranty-wrapper .aks-w-notice-title {
+    background-color: #555555;
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 4px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+  }
+
+  .aks-warranty-wrapper .aks-w-list-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .aks-warranty-wrapper .aks-w-list-num {
+    background-color: #c1272d;
+    color: #ffffff;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 12px;
+    margin-top: 3px;
+  }
+
+  .aks-warranty-wrapper .aks-w-list-text {
+    font-size: 0.95rem;
+    color: #dddddd;
+    letter-spacing: 0.5px;
+  }
+
+  .aks-warranty-wrapper .aks-w-sub-list {
+    margin: 10px 0 15px 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .aks-warranty-wrapper .aks-w-sub-list li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: #cccccc;
+  }
+
+  .aks-warranty-wrapper .aks-w-sub-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #ffffff;
+  }
+
+  .aks-warranty-wrapper .aks-w-note-text {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #cccccc;
+  }
+
+  /* --- RWD 手機版設定 --- */
+  @media (max-width: 768px) {
+    .aks-warranty-wrapper .aks-w-section {
+      padding: 10px 15px 40px; /* 手機版同樣縮減 padding-top 至 10px */
+    }
+
+    .aks-warranty-wrapper .aks-w-top-row {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .aks-warranty-wrapper .aks-w-notice-box {
+      padding: 25px 20px;
+    }
+
+    .aks-warranty-wrapper .aks-w-list-item {
+      flex-direction: row;
+    }
+  }
+</style>
+
+<div class="aks-warranty-wrapper">
+  <section class="aks-w-section">
+    <div class="aks-w-container">
+      
+      <div class="aks-w-top-row">
+        <div class="aks-w-feature">
+          <div class="aks-w-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="4" width="12" height="16" rx="2" ry="2"></rect>
+              <path d="M8 2h8v4H8z"></path>
+              <line x1="9" y1="11" x2="15" y2="11"></line>
+              <line x1="9" y1="15" x2="15" y2="15"></line>
+            </svg>
+          </div>
+          <div class="aks-w-badge">保固條件</div>
+          <p>AKS車漆保護膜產品在正常保養維護使用下<br>憑保固卡，均提供原廠5-7年品質保固<br>一切保固僅適用「原廠原漆」</p>
+        </div>
+
+        <div class="aks-w-feature">
+          <div class="aks-w-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 11 12 14 22 4"></polyline>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+          </div>
+          <div class="aks-w-badge">保固範圍</div>
+          <p>正常使用狀況下，出現下列情況：<br>起泡、龜裂、脫膠<br>(保固僅限原廠原漆)</p>
+        </div>
+
+        <div class="aks-w-feature">
+          <div class="aks-w-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </div>
+          <div class="aks-w-badge">非保固範圍</div>
+          <p>非正常使用、天災意外、惡意破壞<br>施工不良、使用不當化學藥劑<br>膜面正常磨損、光澤度損失<br>非定期清潔導致髒污侵蝕、染色</p>
+        </div>
+      </div>
+
+      <div class="aks-w-table-wrapper">
+        <div class="aks-w-grid">
+          <div class="aks-w-cell bg-red">產品</div>
+          <div class="aks-w-cell bg-red aks-w-span-2">亮面犀牛皮</div>
+          <div class="aks-w-cell bg-red">消光犀牛皮</div>
+          <div class="aks-w-cell bg-red">改色犀牛皮</div>
+          <div class="aks-w-cell bg-red">天窗隔熱膜</div>
+
+          <div class="aks-w-cell bg-red">型號</div>
+          <div class="aks-w-cell bg-white">TPU GL-75</div>
+          <div class="aks-w-cell bg-white">TPU GL-75PRO</div>
+          <div class="aks-w-cell bg-white">TPU MA-75</div>
+          <div class="aks-w-cell bg-white">TPU COLOR PPF</div>
+          <div class="aks-w-cell bg-white">TPU SR-75</div>
+
+          <div class="aks-w-cell bg-red">保固年限</div>
+          <div class="aks-w-cell bg-white">5年</div>
+          <div class="aks-w-cell bg-white">7年</div>
+          <div class="aks-w-cell bg-white">5年</div>
+          <div class="aks-w-cell bg-white">5年</div>
+          <div class="aks-w-cell bg-white">3年</div>
+        </div>
+      </div>
+
+      <div class="aks-w-btn-wrap">
+        <a href="{{ '/pages/warranty/status/' | relative_url }}" class="aks-w-btn">查詢保固</a>
+      </div>
+
+      <div class="aks-w-notice-box">
+        <div class="aks-w-notice-title">注意事項</div>
+        
+        <div class="aks-w-list-item">
+          <div class="aks-w-list-num">1</div>
+          <div class="aks-w-list-text">請依照店家建議於完工後3-7天回廠檢查。</div>
+        </div>
+
+        <div class="aks-w-list-item">
+          <div class="aks-w-list-num">2</div>
+          <div class="aks-w-list-text">1-3天若有輕微氣泡及翹邊皆屬正常現象。</div>
+        </div>
+
+        <div class="aks-w-list-item">
+          <div class="aks-w-list-num">3</div>
+          <div class="aks-w-list-text">
+            後續保養也請遵照店家建議，若有非正常使用損壞皆不在保固範圍內。
+            <ul class="aks-w-sub-list">
+              <li>請勿接觸強酸強鹼及腐蝕性物質</li>
+              <li>請勿以尖銳物蓄意劃傷或穿刺表面</li>
+              <li>請勿研磨表面</li>
+            </ul>
+            <div class="aks-w-note-text">以上行為皆有可能傷及膜料塗層。</div>
+          </div>
+        </div>
+
+        <div class="aks-w-list-item">
+          <div class="aks-w-list-num">4</div>
+          <div class="aks-w-list-text">請至少於每半年回到店家檢查及保養維護膜料，若長時間未回到店家進行膜料檢查、維護作業， 店家可視情況調整、取消保固內容。</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>

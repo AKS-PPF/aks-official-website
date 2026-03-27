@@ -1,0 +1,264 @@
+---
+layout: page-padded
+title: 犀牛皮線上保固登錄 | AKS PPF
+---
+
+<style>
+  /* 1. 強制修正：杜絕所有超出 100vw 的橫向跑版問題 */
+  .aks-warranty-reg-wrapper * { box-sizing: border-box !important; }
+  .aks-warranty-reg-wrapper { width: 100%; overflow-x: hidden; padding-top: 10px; }
+
+  /* 2. 舊 CSS 隔離區 (所有選擇器前面都要加上 .aks-warranty-reg-wrapper) */
+  .aks-warranty-reg-wrapper #warrantyForm {
+    max-width: 500px;
+    margin: 10px auto 40px; /* 原 40px auto 縮減上方間距至 10px，避免雙重留白 */
+    padding: 30px 25px;
+    border-radius: 16px;
+    background: #f8f8f8;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-family: "Noto Sans TC", sans-serif;
+  }
+  .aks-warranty-reg-wrapper #warrantyForm h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #111;
+    font-weight: 700;
+  }
+  .aks-warranty-reg-wrapper #warrantyForm label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+    color: #222;
+  }
+  .aks-warranty-reg-wrapper #warrantyForm input,
+  .aks-warranty-reg-wrapper #warrantyForm select,
+  .aks-warranty-reg-wrapper #warrantyForm textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+  }
+  .aks-warranty-reg-wrapper #warrantyForm textarea {
+    min-height: 42px;
+    resize: vertical;
+  }
+  .aks-warranty-reg-wrapper #warrantyForm button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .aks-warranty-reg-wrapper #result {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+  }
+</style>
+
+<div class="aks-warranty-reg-wrapper">
+  <form id="warrantyForm">
+    <h2>犀牛皮線上保固登錄</h2>
+
+    <label>姓名</label>
+    <input type="text" name="name" placeholder="請輸入姓名" required>
+
+    <label>Email</label>
+    <input type="email" name="email" placeholder="請輸入 Email（用於通知）" required>
+
+    <label>電話</label>
+    <input type="tel" name="phone" placeholder="請輸入聯絡電話" required>
+
+    <label>施工店家</label>
+    <input type="text" name="store" placeholder="請輸入施工店家名稱" required>
+
+    <label>車款</label>
+    <input type="text" name="carModel" placeholder="例如：Tesla Model 3" required>
+
+    <label>車牌</label>
+    <input id="license" type="text" name="license" placeholder="請輸入完整車牌 ABC-1234" required>
+
+    <label>施工日期</label>
+    <input type="date" name="date" required>
+
+    <label>產品型號</label>
+    <select name="product" required>
+      <option value="">請選擇產品型號</option>
+      <option value="亮面 GL-70">亮面 GL-70（5年保固）</option>
+      <option value="亮面 GL-75 PRO">亮面 GL-75 PRO（7年保固）</option>
+      <option value="消光 MA-70">消光 MA-70（5年保固）</option>
+      <option value="天窗隔熱膜 SR-75">天窗隔熱膜 SR-75（3年保固）</option>
+      <option value="改色犀牛皮">改色犀牛皮（5年保固）</option>
+    </select>
+
+    <label>施工項目</label>
+    <select name="installItem" required>
+      <option value="">請選擇施工項目</option>
+      <option value="全車">全車</option>
+      <option value="迎風面">迎風面</option>
+      <option value="內裝">內裝</option>
+      <option value="局部改色">局部改色</option>
+      <option value="其他">其他</option>
+    </select>
+
+    <label>備註（選填）</label>
+    <textarea name="note" placeholder="如有特殊說明可填寫（選填）"></textarea>
+
+    <label>保固序號（查詢用）</label>
+
+    <div style="display:flex; align-items:center; margin-top:6px;">
+      <div style="
+        width:64px;
+        height:42px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:#e9e9e9;
+        border:1px solid #ccc;
+        border-right:none;
+        border-radius:8px 0 0 8px;
+        font-weight:600;
+        font-size:15px;
+        box-sizing:border-box;
+        margin:0;
+        padding:0;
+        color:#111;
+      ">
+        AKS
+      </div>
+
+      <input
+        id="warrantyDigits"
+        type="text"
+        inputmode="numeric"
+        maxlength="6"
+        placeholder="請輸入 6 位數字"
+        style="
+          height:42px;
+          flex:1;
+          border:1px solid #ccc;
+          border-radius:0 8px 8px 0;
+          font-size:15px;
+          box-sizing:border-box;
+          margin:0;
+          padding:0 10px;     /* ✅ 改成左右 padding，避免垂直 padding 影響基準線 */
+          line-height:normal; /* ✅ 避免 Safari input line-height 干擾 */
+        "
+        required
+      >
+    </div>
+
+    <input type="hidden" name="warrantyNo" id="warrantyNo">
+
+    <label>產品序號 / 材料批號</label>
+    <input type="text" name="serial" placeholder="請輸入膜料管心序號">
+
+    <button type="submit">送出登錄</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+  const REG_API = "https://script.google.com/macros/s/AKfycbzeoqvEIhCed_5CBtu7kAQYQ7nA9WekvwTXU2-K9zrqqOZe03PXsX2X2ODg3Q6qk2dD/exec";
+
+  /** 車牌正規化：去雜字元 + 大寫 */
+  function normalizeLicense(v) {
+    return String(v || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+  }
+
+  const form = document.getElementById("warrantyForm");
+  const result = document.getElementById("result");
+  const licenseEl = document.getElementById("license");
+
+  // warrantyNo：使用者輸入 6 位數字，送出前組成 AKS123456
+  const digitsEl = document.getElementById("warrantyDigits");
+  const warrantyEl = document.getElementById("warrantyNo");
+
+  // 即時只留數字、最多 6 碼
+  digitsEl.addEventListener("input", () => {
+    digitsEl.value = digitsEl.value.replace(/\D/g, "").slice(0, 6);
+  });
+
+  // blur 時也順便清洗車牌
+  licenseEl.addEventListener("blur", (e) => {
+    e.target.value = normalizeLicense(e.target.value);
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // ✅ 送出前強制正規化一次（避免使用者沒 blur 就送出）
+    licenseEl.value = normalizeLicense(licenseEl.value);
+
+    // ✅ 保固序號：檢查 6 位數字
+    const digits = digitsEl.value.replace(/\D/g, "");
+    if (digits.length !== 6) {
+      alert("請輸入 6 位數字的保固序號");
+      digitsEl.focus();
+      return;
+    }
+
+    // ✅ 組成最終主鍵（後端永遠收到 AKS+6位數字）
+    warrantyEl.value = "AKS" + digits;
+
+    // ✅ 防呆：車牌至少 5 碼英數
+    const l = licenseEl.value;
+    if (!/^[A-Z0-9]{5,}$/.test(l)) {
+      alert("車牌格式可能不正確，請確認後再送出（例：EBC3558）");
+      licenseEl.focus();
+      return;
+    }
+
+    const formData = new FormData(form);
+    result.innerText = "資料送出中，請稍候...";
+
+    try {
+      const response = await fetch(REG_API, {
+        method: "POST",
+        body: formData,
+        mode: "cors",
+        redirect: "follow",
+      });
+
+      const respText = await response.text();
+      console.log("REGISTER API response:", respText, "HTTP:", response.status);
+
+      if (respText.includes("SUCCESS")) {
+        result.innerText = "✅ 登錄成功！請查收 E-Mail。";
+        return;
+      }
+
+      if (respText.includes("DUPLICATE")) {
+        result.innerText = "⚠️ 此保固序號已登錄過，請確認是否重複輸入或聯繫我們協助處理。";
+        digitsEl.focus();
+        return;
+      }
+
+      if (respText.includes("no warrantyNo")) {
+        result.innerText = "⚠️ 請輸入保固序號後再送出。";
+        digitsEl.focus();
+        return;
+      }
+
+      // 其他錯誤：把後端訊息帶出來（方便你除錯）
+      const msg = respText.replace(/^ERROR:\s*/i, "").trim();
+      result.innerText = "❌ 登錄失敗：" + (msg || "請稍後再試。");
+
+    } catch (err) {
+      console.error("REGISTER API error:", err);
+      result.innerText = "⚠️ 無法連線伺服器，請稍後再試。";
+    }
+  });
+  </script>
+</div>

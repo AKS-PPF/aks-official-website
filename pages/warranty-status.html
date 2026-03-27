@@ -1,0 +1,427 @@
+---
+layout: page-padded
+title: 保固查詢 | AKS PPF
+---
+
+<style>
+  .aks-warranty-query-wrapper * { box-sizing: border-box !important; }
+  .aks-warranty-query-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    color: #000;
+    font-family: "Noto Sans TC", "Montserrat", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  }
+
+  .aks-warranty-query-wrapper .warranty-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px 20px 40px;
+  }
+
+  .aks-warranty-query-wrapper .warranty-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+  }
+
+  .aks-warranty-query-wrapper .warranty-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+  }
+
+  .aks-warranty-query-wrapper .mode-select {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+
+  .aks-warranty-query-wrapper .mode-select label {
+    font-size: 16px;
+    color: #000;
+  }
+
+  .aks-warranty-query-wrapper .mode-select label + label {
+    margin-left: 25px;
+  }
+
+  .aks-warranty-query-wrapper .mode-select input[type="radio"] {
+    margin-right: 6px;
+  }
+
+  .aks-warranty-query-wrapper .form-area {
+    margin-top: 25px;
+  }
+
+  .aks-warranty-query-wrapper .serial-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .aks-warranty-query-wrapper .serial-prefix {
+    width: 64px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9e9e9;
+    border: 1px solid #000;
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .aks-warranty-query-wrapper input[type="text"] {
+    color: #000;
+  }
+
+  .aks-warranty-query-wrapper .serial-input {
+    height: 42px;
+    flex: 1;
+    margin: 0;
+    border: 1px solid #000;
+    border-radius: 0 6px 6px 0;
+    padding: 0 12px;
+    font-size: 15px;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  .aks-warranty-query-wrapper .full-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #000;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #000;
+    box-sizing: border-box;
+  }
+
+  .aks-warranty-query-wrapper .full-input + .full-input {
+    margin-top: 12px;
+  }
+
+  .aks-warranty-query-wrapper .query-btn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .aks-warranty-query-wrapper .result {
+    margin-top: 35px;
+    line-height: 1.8;
+    color: #000;
+    text-align: center;
+  }
+
+  .aks-warranty-query-wrapper .result-card {
+    background: #fff;
+    padding: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    text-align: left;
+  }
+
+  .aks-warranty-query-wrapper .result-card.single {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .aks-warranty-query-wrapper .reset-btn {
+    margin-top: 25px;
+    padding: 10px 25px;
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  .aks-warranty-query-wrapper .reset-btn.small {
+    margin-top: 20px;
+    padding: 8px 20px;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 640px) {
+    .aks-warranty-query-wrapper .warranty-section {
+      padding: 10px 15px 35px;
+    }
+
+    .aks-warranty-query-wrapper .warranty-card {
+      padding: 22px 18px;
+    }
+
+    .aks-warranty-query-wrapper .warranty-title {
+      font-size: 22px;
+    }
+
+    .aks-warranty-query-wrapper .mode-select {
+      padding: 14px 10px;
+    }
+
+    .aks-warranty-query-wrapper .mode-select label {
+      font-size: 15px;
+    }
+
+    .aks-warranty-query-wrapper .mode-select label + label {
+      margin-left: 18px;
+    }
+  }
+</style>
+
+<div class="aks-warranty-query-wrapper">
+  <section class="warranty-section">
+    <div class="warranty-card" id="queryCard">
+      <h2 class="warranty-title">保固查詢</h2>
+
+      <div id="mode-select" class="mode-select">
+        <label>
+          <input type="radio" name="mode" value="serial" checked>
+          保固序號查詢
+        </label>
+        <label>
+          <input type="radio" name="mode" value="car">
+          車主＆車牌查詢
+        </label>
+      </div>
+
+      <div id="form-area" class="form-area">
+        <div id="serial-form">
+          <div class="serial-row">
+            <div class="serial-prefix">AKS</div>
+            <input
+              id="warrantyDigits"
+              class="serial-input"
+              type="text"
+              inputmode="numeric"
+              maxlength="6"
+              placeholder="輸入 6 位數字">
+          </div>
+        </div>
+
+        <div id="car-form" style="display:none;">
+          <input
+            id="name"
+            class="full-input"
+            type="text"
+            placeholder="請輸入車主姓名">
+          <input
+            id="license"
+            class="full-input"
+            type="text"
+            placeholder="請輸入車牌號碼">
+        </div>
+
+        <button id="check" class="query-btn">查詢</button>
+      </div>
+    </div>
+
+    <div id="result" class="result"></div>
+  </section>
+</div>
+
+<script>
+  const QUERY_API = "https://script.google.com/macros/s/AKfycbzeoqvEIhCed_5CBtu7kAQYQ7nA9WekvwTXU2-K9zrqqOZe03PXsX2X2ODg3Q6qk2dD/exec";
+
+  const serialForm = document.getElementById("serial-form");
+  const carForm = document.getElementById("car-form");
+  const resultEl = document.getElementById("result");
+  const queryCard = document.getElementById("queryCard");
+
+  function norm(v) {
+    return String(v || "").replace(/\u3000/g, " ").replace(/\s+/g, " ").trim();
+  }
+
+  function normLicense(v) {
+    return norm(v).toUpperCase().replace(/[^A-Z0-9]/g, "");
+  }
+
+  function normDigits6(v) {
+    return String(v || "").replace(/\D/g, "").slice(0, 6);
+  }
+
+  function buildWarrantyNo(d6) {
+    return (d6 && d6.length === 6) ? ("AKS" + d6) : "";
+  }
+
+  function escapeHtml(str) {
+    return String(str || "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function renderNote(note) {
+    const n = norm(note);
+    if (!n) return "";
+    return `<br><b>備註：</b>${escapeHtml(n)}`;
+  }
+
+  const digitsEl = document.getElementById("warrantyDigits");
+  digitsEl.addEventListener("input", () => {
+    const next = normDigits6(digitsEl.value);
+    if (next !== digitsEl.value) digitsEl.value = next;
+  });
+  digitsEl.addEventListener("blur", () => {
+    digitsEl.value = normDigits6(digitsEl.value);
+  });
+
+  const licenseEl = document.getElementById("license");
+  licenseEl.addEventListener("blur", () => {
+    licenseEl.value = normLicense(licenseEl.value);
+  });
+
+  document.querySelectorAll("input[name='mode']").forEach((radio) => {
+    radio.addEventListener("change", () => {
+      if (radio.value === "serial") {
+        serialForm.style.display = "block";
+        carForm.style.display = "none";
+      } else {
+        serialForm.style.display = "none";
+        carForm.style.display = "block";
+      }
+      resultEl.innerHTML = "";
+      queryCard.style.display = "block";
+    });
+  });
+
+  document.getElementById("check").addEventListener("click", async () => {
+    const mode = document.querySelector("input[name='mode']:checked").value;
+    resultEl.innerHTML = "<div style='text-align:center;color:#555;'>⏳ 查詢中...</div>";
+
+    let url = "";
+
+    if (mode === "serial") {
+      const d6 = normDigits6(digitsEl.value);
+      const warrantyNo = buildWarrantyNo(d6);
+
+      if (!warrantyNo) {
+        alert("請輸入 6 位數字保固序號");
+        resultEl.innerHTML = "";
+        digitsEl.focus();
+        return;
+      }
+
+      url = `${QUERY_API}?warrantyNo=${encodeURIComponent(warrantyNo)}`;
+    } else {
+      const name = norm(document.getElementById("name").value);
+      const license = normLicense(licenseEl.value);
+
+      if (!name || !license) {
+        alert("請輸入姓名與車牌號碼");
+        resultEl.innerHTML = "";
+        return;
+      }
+
+      licenseEl.value = license;
+      url = `${QUERY_API}?name=${encodeURIComponent(name)}&license=${encodeURIComponent(license)}`;
+    }
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (data.status === "success") {
+        let html = "";
+
+        if (Array.isArray(data.data)) {
+          html = data.data.map((d) => {
+            const product = escapeHtml(d.產品型號 || "");
+            const installDate = escapeHtml(d.施工日期 || "");
+            const expiry = escapeHtml(d.保固到期 || "");
+            const store = escapeHtml(d.施工店家 || "");
+            const installItem = escapeHtml(d.施工項目 || "");
+            const wno = escapeHtml(d.保固序號 || "");
+            const noteHtml = renderNote(d.備註);
+
+            return `
+              <div class="result-card">
+                <b>產品型號：</b>${product}<br>
+                <b>施工日期：</b>${installDate}<br>
+                <b>施工項目：</b>${installItem || "—"}<br>
+                <b>保固到期：</b>${expiry || "—"}<br>
+                <b>施工店家：</b>${store}<br>
+                <b>保固序號：</b>${wno || "—"}${noteHtml}
+              </div>
+            `;
+          }).join("");
+        } else {
+          const d = data.data || {};
+          const product = escapeHtml(d.產品型號 || "");
+          const store = escapeHtml(d.施工店家 || "");
+          const installDate = escapeHtml(d.施工日期 || "");
+          const expiry = escapeHtml(d.保固到期 || "");
+          const carModel = escapeHtml(d.車款 || "");
+          const plate = escapeHtml(d.車牌 || "");
+          const installItem = escapeHtml(d.施工項目 || "");
+          const noteHtml = renderNote(d.備註);
+
+          html = `
+            <div class="result-card single">
+              <b>產品型號：</b>${product}<br>
+              <b>施工店家：</b>${store}<br>
+              <b>施工日期：</b>${installDate}<br>
+              <b>施工項目：</b>${installItem || "—"}<br>
+              <b>保固到期：</b>${expiry || "—"}<br>
+              <b>車款：</b>${carModel}<br>
+              <b>車牌：</b>${plate}${noteHtml}
+            </div>
+          `;
+        }
+
+        html += `
+          <button id="reset" class="reset-btn">🔁 重新查詢</button>
+        `;
+
+        resultEl.innerHTML = html;
+
+        document.getElementById("reset").addEventListener("click", () => {
+          resultEl.innerHTML = "";
+          queryCard.style.display = "block";
+          digitsEl.value = "";
+          document.getElementById("name").value = "";
+          licenseEl.value = "";
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        queryCard.style.display = "none";
+      } else {
+        resultEl.innerHTML = `
+          <div style="color:#a00;font-weight:500;">${escapeHtml(data.message || "查詢失敗")}</div>
+          <button id="reset" class="reset-btn small">🔁 重新查詢</button>
+        `;
+
+        document.getElementById("reset").addEventListener("click", () => location.reload());
+      }
+    } catch (err) {
+      console.error(err);
+      resultEl.innerHTML = `
+        <div style="color:#a00;">❌ 查詢時發生錯誤，請稍後再試。</div>
+        <button id="reset" class="reset-btn small">🔁 重新查詢</button>
+      `;
+
+      document.getElementById("reset").addEventListener("click", () => location.reload());
+    }
+  });
+</script>
