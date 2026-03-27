@@ -4,6 +4,7 @@ title: AI 換色特約店家 | AKS PPF
 ---
 
 <style>
+  /* ====== 原本的基礎設定保留 ====== */
   .aks-ai-preview-partners-wrapper * { box-sizing: border-box !important; }
   .aks-ai-preview-partners-wrapper {
     width: 100%;
@@ -17,32 +18,84 @@ title: AI 換色特約店家 | AKS PPF
     color: #c81f2a;
   }
 
-  .aks-ai-preview-partners-wrapper .hero-header {
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-      url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_e2818f83-22eb-4290-9a46-aff7d322620d.png');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: 450px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  /* (已刪除原本的 .hero-header 和 .hero-title，因為我們換新的了) */
+
+  /* ====== [新增] AI Preview Hero 專屬樣式 ====== */
+  .sec--ai-hero {
     position: relative;
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 24px 80px;
     overflow: hidden;
-    padding-top: 10px;
+    background-color: #050505; 
+  }
+  
+  .ai-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  
+  .ai-hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.8) 75%, #000 100%);
   }
 
-  .aks-ai-preview-partners-wrapper .hero-title {
-    font-size: clamp(28px, 6vw, 48px);
-    font-weight: 700;
-    line-height: 1.4;
+  .ai-hero__inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 900px;
+  }
+
+  .ai-brand-title {
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    font-size: clamp(24px, 4vw, 36px);
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  
+  .ai-h2 {
+    font-family: 'Montserrat', 'PingFang TC', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin: 0 0 24px 0;
     color: #fff;
+  }
+  .ai-h2 .red { color: #c81f2a; }
+  
+  .ai-p {
+    font-family: 'Montserrat', 'PingFang TC', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.8);
     margin: 0;
-    padding: 10px 20px;
+    letter-spacing: 1px;
   }
 
+  .desk-br { display: block; }
+
+  @media (max-width: 768px) {
+    .sec--ai-hero { min-height: 50vh; padding: 80px 20px 40px; }
+    .ai-brand-title { font-size: 20px; margin-bottom: 8px; }
+    .ai-h2 { font-size: 28px; }
+    .ai-p { font-size: 14px; }
+    .desk-br { display: none; }
+  }
+
+
+  /* ====== 以下保留您原本的店家列表樣式 ====== */
   .aks-ai-preview-partners-wrapper .contact-section {
     color: #fff;
     padding: 50px 100px;
@@ -164,15 +217,6 @@ title: AI 換色特約店家 | AKS PPF
   }
 
   @media (max-width: 900px) {
-    .aks-ai-preview-partners-wrapper .hero-header {
-      height: 200px;
-    }
-
-    .aks-ai-preview-partners-wrapper .hero-title {
-      font-size: clamp(28px, 5vw, 48px);
-      padding: 8px 15px;
-    }
-
     .aks-ai-preview-partners-wrapper .contact-section {
       padding: 15px;
       margin-bottom: 45px;
@@ -194,12 +238,23 @@ title: AI 換色特約店家 | AKS PPF
 </style>
 
 <div class="aks-ai-preview-partners-wrapper">
-  <div class="hero-header">
-    <h1 class="hero-title">
-      AI Real-Time <span class="red">Preview</span><br>特約店家
-    </h1>
-  </div>
+  
+  <section class="sec--ai-hero">
+    <div class="ai-hero__bg" aria-hidden="true"
+      style="background-image:url('https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_8ad360d8-7286-439f-83d6-45ee52271f93.png');"></div>
 
+    <div class="ai-hero__inner">
+      <div class="ai-brand-title io-reveal" data-delay="0">AKS AI VISION</div>
+      <h2 class="ai-h2 io-reveal" data-delay="1">
+        <span class="red">AI 實車</span> 瞬間改色預覽
+      </h2>
+      <p class="ai-p io-reveal" data-delay="2">
+        選色不再需要憑空想像。預約實車拍攝，<span class="desk-br"></span>
+        透過專利 AI 技術，一張照片瞬間套用改色犀牛皮，<span class="desk-br"></span>
+        100% 呈現改色完工後的真實奢華樣貌。
+      </p>
+    </div>
+  </section>
   <section class="contact-section">
     <div class="contact-info">
       <h2>松山店帥｜旺福車體保護膜 WF.legend</h2>
