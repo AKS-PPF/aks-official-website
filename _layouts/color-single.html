@@ -28,13 +28,11 @@ layout: default
     .aks-main-swatch-img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: right center; transition: transform 0.5s ease; cursor: zoom-in; }
 
     /* 文字排版 */
-    /* ✅ 3. 黃圈：Kicker 預設改為 COLOR PPF */
     .aks-kicker { font-size: 11px; letter-spacing: 0.25em; color: #c81f2a; font-weight: 800; margin-bottom: 16px; display: block; text-transform: uppercase; }
     
     .aks-tags-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
     .aks-tag { border: 1px solid rgba(255,255,255,0.25); color: white; padding: 4px 14px; border-radius: 4px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
 
-    /* ✅ 2. 紅圈字體調整 */
     .aks-title-zh { 
         font-size: clamp(36px, 4vw, 56px); 
         font-weight: 900; 
@@ -42,7 +40,6 @@ layout: default
         line-height: 1.1; 
         margin: 0 0 8px 0; 
         letter-spacing: 0.05em; 
-        /* 中文標題用 Montserrat (跟按鈕一致)，不帶優設類 */
         font-family: 'Montserrat', 'PingFang TC', sans-serif !important; 
     }
     .aks-title-en { 
@@ -52,16 +49,29 @@ layout: default
         margin: 0 0 16px 0; 
         letter-spacing: 0.05em; 
         text-transform: uppercase;
-        /* 英文用優設標題黑 */
         font-family: 'YouSheBiaoTiHei', sans-serif !important; 
     }
     
     .aks-sku { font-size: 13px; color: #666; letter-spacing: 0.15em; margin: 0 0 32px 0; font-weight: 600; }
     .aks-desc { font-size: 15px; color: #aaa; line-height: 1.8; margin: 0 0 40px 0; font-weight: 300; }
 
-    /* 按鈕與 FAQ */
-    .aks-btn-cta { display: flex; align-items: center; justify-content: center; width: 100%; background-color: #ffffff; color: #000000; padding: 18px 32px; border-radius: 6px; font-size: 14px; font-weight: 900; letter-spacing: 0.2em; transition: 0.3s; margin-bottom: 40px; text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; }
-    .aks-btn-cta:hover { background-color: #c81f2a; color: #ffffff; box-shadow: 0 15px 30px rgba(200,31,42,0.4); transform: translateY(-2px); }
+    /* ✅ 修改後的 CTA 按鈕：紅色底 + Hover 發光呼吸感 */
+    .aks-btn-cta { 
+        display: flex; align-items: center; justify-content: center; width: 100%; 
+        background-color: #c81f2a; /* 預設紅底 */
+        color: #ffffff; /* 白字 */
+        padding: 18px 32px; border-radius: 6px; font-size: 14px; font-weight: 900; 
+        letter-spacing: 0.2em; transition: all 0.4s ease-in-out; margin-bottom: 40px; 
+        text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; 
+        box-shadow: 0 4px 15px rgba(200,31,42,0.3); /* 預設微微陰影 */
+    }
+    .aks-btn-cta:hover { 
+        background-color: #e02431; 
+        color: #ffffff; 
+        /* 發光呼吸感：多層次陰影放大 */
+        box-shadow: 0 0 20px rgba(200,31,42,0.6), 0 0 40px rgba(200,31,42,0.3); 
+        transform: translateY(-2px) scale(1.01); 
+    }
     
     .aks-faq-wrapper { border-top: 1px solid rgba(255,255,255,0.1); }
     .aks-faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -78,14 +88,12 @@ layout: default
     @media (min-width: 992px) {
         .aks-split-container { max-width: 1440px; margin: 0 auto; display: flex; flex-direction: row; align-items: flex-start; gap: 60px; padding: 0 40px; }
         .aks-media-col { width: 45%; }
-        /* 乾淨環境 Sticky 智慧距離 */
         .aks-info-col { width: 55%; position: sticky; top: 120px; }
         .aks-gallery-slider { flex-direction: column; gap: 32px; } 
         .aks-slider-dots { display: none; } 
         .aks-main-swatch-container:hover .aks-main-swatch-img { transform: scale(1.02); }
     }
     @media (max-width: 991px) {
-        /* 乾淨環境 手機版智慧 Padding */
         #aks-color-product-root { padding-top: 10px; padding-bottom: 80px; } 
         .aks-split-container { display: flex; flex-direction: column; gap: 24px; }
         .aks-info-col { padding: 0 20px; } 
@@ -113,7 +121,7 @@ layout: default
             <div id="aks-gallery-slider" class="aks-gallery-slider">
                 <div class="aks-slide">
                     <div class="aks-main-swatch-container">
-                        <img src="https://cdn.jsdelivr.net/gh/AKS-PPF/color-ppf-images@main/{{ page.code }}.jpg?v={{ site.time | date: '%s' }}" class="aks-main-swatch-img" alt="{{ page.title_zh }}">
+                        <img src="https://cdn.jsdelivr.net/gh/AKS-PPF/color-ppf-images@main/aks_colorppf_{{ page.code }}.jpg?v={{ site.time | date: '%s' }}" class="aks-main-swatch-img" alt="{{ page.title_zh }}">
                     </div>
                 </div>
                 {% if page.gallery %}
