@@ -38,6 +38,6 @@ exclude:
   - vendor/ruby/
   - README.md
 
-# 6.
-  plugins:
+# 6. 外掛設定
+plugins:
   - jekyll-sitemap
