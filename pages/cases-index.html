@@ -1,0 +1,15 @@
+---
+layout: default
+title: "店家作品集 | AKS PPF"
+permalink: /cases/
+---
+<div class="cases-container">
+  <h1>實車改色案例</h1>
+  <ul>
+    {% for case in site.cases %}
+      <li>
+        <a href="{{ case.url | relative_url }}">{{ case.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
