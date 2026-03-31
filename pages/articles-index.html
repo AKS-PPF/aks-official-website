@@ -1,0 +1,15 @@
+---
+layout: default
+title: "知識庫 | AKS PPF"
+permalink: /articles/
+---
+<div class="articles-container">
+  <h1>AKS 知識庫與指南</h1>
+  <ul>
+    {% for post in site.articles %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
