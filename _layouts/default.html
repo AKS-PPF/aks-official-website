@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | default: "AKS PPF 艾鎧斯車漆保護膜" }}</title>
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: "AKS PPF 艾鎧斯車漆保護膜" }}</title>
 
-    <!-- 網站小圖示 -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon-32x32.png' | relative_url }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicon-16x16.png' | relative_url }}">
@@ -94,6 +93,8 @@
         .io-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1); }
         .io-reveal.is-in { opacity: 1; transform: translateY(0); }
     </style>
+
+    {% include schema.html %}
 </head>
 
 <body class="flex flex-col min-h-screen layout-{{ page.layout | default: 'default' }}">
