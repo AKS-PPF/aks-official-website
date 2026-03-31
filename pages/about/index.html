@@ -19,7 +19,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   
   .aks-about-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
-  /* 字體定義：優設標題黑 (aks-font-youshe) 僅限於 AKS 等品牌/產品名標籤 */
+  /* 字體定義：優設標題黑 (aks-font-youshe) 僅限於 AKS、GL-75 等品牌/產品名標籤 */
   @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
   .aks-font-youshe { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; font-size: 1.1em; vertical-align: baseline; }
 
@@ -72,8 +72,8 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
       animation-delay: 0.5s; 
     }
     
-    /* ✅ 手機版鎖定高度：精準降落在引擎蓋上方 (約畫面 22% 處) */
-    .aks-about-hero { justify-content: flex-start; padding: 22vh 24px 0 24px; } 
+    /* ✅ 這次來真的！手機版 Hero 容器：重心上移至紅框位置 (置中) */
+    .aks-about-hero { justify-content: center; padding: 0 24px; } 
   }
 
   @keyframes kenBurnsBreath {
@@ -83,68 +83,67 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
   
   /* Hero 內容區塊 */
   .aks-hero-content {
-    position: relative; z-index: 5; width: 100%;
+    position: relative; z-index: 5;
     will-change: opacity, transform;
-    max-width: 1280px; margin: 0 auto;
   }
   @media (max-width: 991px) {
-    .aks-hero-content { display: flex; flex-direction: column; }
+    /* 手機版文字內容靠左對齊 (user preferred) */
+    .aks-hero-content { 
+      width: 100%; 
+      display: flex; flex-direction: column; align-items: flex-start; 
+    }
   }
 
-  /* ✅ Kicker (WE ARE AKS PPF) - 手機版強制靠左 */
+  /* Kicker (We are AKS PPF) */
   .aks-kicker { 
     font-size: clamp(12px, 1.2vw, 14px); letter-spacing: 0.3em; color: rgba(255,255,255,0.6); 
     font-weight: 300; text-transform: uppercase; display: block; margin-bottom: 24px;
-    width: 100%; 
+    max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; padding: 0 24px;
   }
-  @media (max-width: 991px) { 
-    .aks-kicker { margin-right: auto; margin-left: 0; text-align: left; margin-bottom: 16px; } 
-  }
+  @media (max-width: 991px) { .aks-kicker { padding: 0; margin-bottom: 16px; margin-right: auto; margin-left: 0; } }
 
   .aks-brand-tag { font-family: 'YouSheBiaoTiHei', sans-serif !important; text-transform: uppercase; color: var(--primary); font-size: 1.25em; }
 
-  /* ✅ 中文標題 (不使用 YouShe) - 手機版強制靠右 */
+  /* ✅ 中文標題 (不使用 YouShe) - 電腦和手機版皆靠左對齊 */
   .aks-hero-title-zh { 
     font-size: clamp(32px, 5vw, 64px); font-weight: 900; letter-spacing: 2px; line-height: 1.1; margin: 0; 
     color: white; font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
-    width: 100%; 
+    max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; padding: 0 24px;
   }
-  @media (max-width: 991px) { 
-    .aks-hero-title-zh { margin-left: auto; margin-right: 0; text-align: right; } 
-  }
+  @media (max-width: 991px) { .aks-hero-title-zh { padding: 0; text-align: left; margin-right: auto; margin-left: 0; } }
+  
+  /* ✅ 英文副標題彻底移除 */
 
-  /* 🌟 恢復：帶有發光呼吸感的 Scroll 指示器 */
+  /* Scroll 指示器 */
   .aks-scroll-indicator {
-    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
     opacity: 0.8; z-index: 10;
   }
   .aks-scroll-text {
     font-size: 10px; letter-spacing: 0.4em; color: white; font-weight: 300;
     text-transform: uppercase; font-family: 'Montserrat', sans-serif;
-  }
-  .aks-scroll-dot-pannel {
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-  }
-  /* 靈動跳躍的紅點 */
-  .aks-scroll-dot {
-    width: 6px; height: 6px; border-radius: 50%; background: var(--primary);
-    animation: scrollDotPulsate 2.5s infinite;
+    margin-bottom: 8px;
   }
   .aks-scroll-line {
-    width: 1px; height: 50px; background: rgba(255,255,255,0.2);
+    width: 1px; height: 80px; background: rgba(255,255,255,0.15);
+    position: relative; overflow: hidden;
+  }
+  .aks-scroll-line::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 30%;
+    background: var(--primary); 
+    animation: scrollLineDrop 2.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
   }
 
-  @keyframes scrollDotPulsate {
-    0% { transform: translateY(0) scale(1); box-shadow: 0 0 0 rgba(200,31,42,0); }
-    50% { transform: translateY(15px) scale(1.2); box-shadow: 0 0 15px rgba(200,31,42,0.8); }
-    100% { transform: translateY(30px) scale(1); box-shadow: 0 0 0 rgba(200,31,42,0); }
+  @keyframes scrollLineDrop {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(350%); }
   }
 
   @media (max-width: 991px) {
-    /* 手機版指示器保持靠左 */
-    .aks-scroll-indicator { left: 24px; transform: none; align-items: flex-start; bottom: 30px; }
-    .aks-scroll-dot-pannel { align-items: flex-start; padding-left: 2px; }
+    /* ✅ 手機版指示器保持靠左，與靠左的文字形成視覺平衡 */
+    .aks-scroll-indicator { left: 24px; transform: none; align-items: flex-start; }
+    .aks-scroll-line { height: 60px; }
   }
 
   /* =========================================
@@ -250,10 +249,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
       
       <div class="aks-scroll-indicator" id="aks-parallax-indicator">
         <span class="aks-scroll-text">SCROLL</span>
-        <div class="aks-scroll-dot-pannel">
-            <div class="aks-scroll-dot"></div>
-            <div class="aks-scroll-line"></div>
-        </div>
+        <div class="aks-scroll-line"></div>
       </div>
     </header>
 
@@ -317,7 +313,7 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. 動畫Reveal
+    // 1. 動畫Reveal (一般元素浮出)
     const reveals = document.querySelectorAll('.io-reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -329,36 +325,38 @@ title: 關於 AKS PPF | 源自追求完美細節的極致偏執
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     reveals.forEach(el => observer.observe(el));
 
-    // 2. JS 淡入背景圖片
+    // 2. JS 淡入背景圖片 (手機版防閃爍)
     const isMobile = window.innerWidth < 992;
     if(isMobile) {
         setTimeout(() => { document.getElementById('aks-hero-bg').style.opacity = '1'; }, 300);
     }
 
-    // 3. 頂級硬體加速視差引擎
+    // 3. 頂級硬體加速視差引擎 (Hardware Accelerated Parallax)
     const parallaxBg = document.getElementById('aks-parallax-bg');
     const parallaxContent = document.getElementById('aks-parallax-content');
     const parallaxIndicator = document.getElementById('aks-parallax-indicator');
 
     window.addEventListener('scroll', () => {
+        // 使用 requestAnimationFrame 確保絲滑不掉幀
         requestAnimationFrame(() => {
             const scrollY = window.scrollY;
             const heroHeight = window.innerHeight;
 
+            // 只有在 Hero 區塊還在畫面中時才計算，節省效能
             if (scrollY <= heroHeight) {
-                // 背景圖：往下沉
+                // 背景圖：往下沉 (速度較慢 0.3)
                 parallaxBg.style.transform = `translateY(${scrollY * 0.3}px)`;
                 
-                // 文字內容：往上飄並淡出
+                // 文字內容：往上飄 (速度較快 -0.4) 並迅速淡出
                 parallaxContent.style.transform = `translateY(${scrollY * -0.4}px)`;
                 parallaxContent.style.opacity = 1 - (scrollY / (heroHeight * 0.45)); 
                 
                 // 指示器：往下移動並淡出
                 parallaxIndicator.style.transform = `translateX(-50%) translateY(${scrollY * 0.5}px)`;
                 if(isMobile) {
-                    parallaxIndicator.style.transform = `translateY(${scrollY * 0.5}px)`; // 手機版靠左
+                    parallaxIndicator.style.transform = `translateY(${scrollY * 0.5}px)`; // 手機版靠左無 X軸偏移
                 }
-                parallaxIndicator.style.opacity = 1 - (scrollY / (heroHeight * 0.3));
+                parallaxIndicator.style.opacity = 1 - (scrollY / (heroHeight * 0.3)); // Fades out by 30% scroll height
             }
         });
     });
