@@ -1,20 +1,218 @@
 ---
-layout: default
-title: AKS PPF 路徑開通
+layout: page-hero
+title: 電腦版型裁切 | AKS PPF
 ---
 
-<div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-    <div class="mb-8 opacity-20">
-        <svg width="100" height="100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
-        </svg>
+<style>
+  /* 1. 強制修正：杜絕所有超出 100vw 的橫向跑版問題 */
+  .aks-dap-wrapper * { box-sizing: border-box !important; }
+  .aks-dap-wrapper { width: 100%; overflow-x: hidden; }
+
+  /* 2. 舊 CSS 隔離區 (所有選擇器前面都要加上 .aks-dap-wrapper) */
+  .aks-dap-wrapper .aks-dap-section {
+    --primary-red: #af111c;
+    --bg-dark: #000000;
+    --text-white: #ffffff;
+    --line-green: #00b900;
+    
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: 'Montserrat', "PingFang TC", "Microsoft JhengHei", sans-serif;
+    width: 100%;
+  }
+
+  /* 繼承已由全域 * { box-sizing: border-box !important; } 處理，此處保留原意即可 */
+  .aks-dap-wrapper .aks-dap-section *,
+  .aks-dap-wrapper .aks-dap-section *::before,
+  .aks-dap-wrapper .aks-dap-section *::after {
+    box-sizing: inherit;
+  }
+
+  /* ====== 橫幅區塊 ====== */
+  .aks-dap-wrapper .aks-dap-hero {
+    height: 450px;
+    width: 100%;
+    /* 請替換為您的實際背景圖網址 */
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
+                      url('請替換為您的圖片網址.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    animation: aksSlideInDown 1s ease-out;
+  }
+
+  .aks-dap-wrapper .aks-dap-hero h1 {
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .aks-dap-wrapper .aks-dap-hero {
+      height: 200px;
+    }
+  }
+
+  /* ====== 內容區塊 ====== */
+  .aks-dap-wrapper .aks-dap-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  /* 上方長條框 */
+  .aks-dap-wrapper .aks-dap-top-bar {
+    width: 100%;
+    border: 2px solid var(--primary-red);
+    border-radius: 8px;
+    padding: 25px 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.6em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: aksFadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+  }
+
+  .aks-dap-wrapper .aks-dap-top-bar i {
+    font-size: 1.2em;
+    color: var(--text-white);
+  }
+
+  @media (max-width: 768px) {
+    .aks-dap-wrapper .aks-dap-top-bar {
+      font-size: 1.2em;
+      padding: 20px 15px;
+      gap: 12px;
+      flex-direction: row; /* 手機版依然保持橫向 */
+    }
+  }
+
+  /* 下方特色卡片網格 */
+  .aks-dap-wrapper .aks-dap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  @media (max-width: 768px) {
+    .aks-dap-wrapper .aks-dap-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .aks-dap-wrapper .aks-dap-card {
+    border: 2px solid var(--primary-red);
+    border-radius: 8px;
+    background-color: rgba(0,0,0,0.3);
+    padding: 40px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: aksFadeInUp 0.8s ease-out forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .aks-dap-wrapper .aks-dap-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(175, 17, 28, 0.2);
+  }
+
+  /* 卡片動畫延遲 */
+  .aks-dap-wrapper .aks-dap-card:nth-child(1) { animation-delay: 0.4s; }
+  .aks-dap-wrapper .aks-dap-card:nth-child(2) { animation-delay: 0.6s; }
+  .aks-dap-wrapper .aks-dap-card:nth-child(3) { animation-delay: 0.8s; }
+
+  /* 數字與右上角紅點設計 */
+  .aks-dap-wrapper .aks-dap-num {
+    font-size: 5rem;
+    font-weight: 900;
+    font-family: Arial, sans-serif;
+    line-height: 1;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+  }
+
+  .aks-dap-wrapper .aks-dap-num::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    right: -8px;
+    width: 22px;
+    height: 22px;
+    background-color: var(--primary-red);
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  .aks-dap-wrapper .aks-dap-card p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+
+  /* ====== 動畫定義 ====== */
+  @keyframes aksSlideInDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes aksFadeInUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+</style>
+
+<div class="aks-dap-wrapper">
+  <div class="aks-dap-section">
+    
+    <div class="aks-dap-hero">
+      <h1>電腦版型裁切</h1>
     </div>
-    <h1 class="text-3xl font-bold tracking-widest text-[#c81f2a] aks-font-youshe uppercase mb-4">
-        Room Established
-    </h1>
-    <p class="text-gray-400 aks-font-clean tracking-widest mb-10 leading-loose">
-        全站路徑已完美開通。<br>
-        目前的網址位置：<span class="text-white font-bold border-b border-white/20 pb-1">{{ page.url }}</span>
-    </p>
-    <a href="/" class="px-10 py-3 bg-white/5 border border-white/10 text-white/60 text-sm tracking-[0.2em] hover:bg-[#c81f2a] hover:text-white transition-all duration-300">BACK TO HOME</a>
+
+    <div class="aks-dap-content">
+      
+      <div class="aks-dap-top-bar">
+        <i class="fa-solid fa-car-side"></i>
+        <span>提供全台最齊全 2-4輪版型數據庫</span>
+        <i class="fa-solid fa-motorcycle"></i>
+      </div>
+
+      <div class="aks-dap-grid">
+        <div class="aks-dap-card">
+          <div class="aks-dap-num">1</div>
+          <p>可代客裁切自備膜料<br>(可到府取/送件)</p>
+        </div>
+
+        <div class="aks-dap-card">
+          <div class="aks-dap-num">2</div>
+          <p>可依客戶需求擴邊調整</p>
+        </div>
+
+        <div class="aks-dap-card">
+          <div class="aks-dap-num">3</div>
+          <p>可連底紙裁斷<br>為您省下撥紙的寶貴工時<br>提高店家施工效率</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
