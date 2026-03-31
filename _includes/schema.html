@@ -35,23 +35,22 @@
       "description": "{{ page.description }}"
     }
 
-    {% comment %} 2. 獨立色卡頁面 (最高優先級 Product) {% endcomment %}
+    {% comment %} 2. 獨立色卡頁面 (To B 產品展示) {% endcomment %}
     {%- elsif current_path contains '/pages/color-chart/' and current_path != '/pages/color-chart/' -%}
     ,{
       "@type": "Product",
       "@id": "{{ site.url }}{{ page.url }}#product",
       "name": "{{ page.title }}",
-      "image": ["{{ page.image }}"],
-      "description": "{{ page.description }}",
+      "image": [
+        "{{ page.image | default: site.url | append: '/assets/images/default-color.jpg' }}"
+      ],
+      "description": "{{ page.description | default: 'AKS PPF 頂級改色犀牛皮' }}",
       "sku": "{{ page.sku | default: 'AKS-COLOR' }}",
-      "color": "{{ page.color_name }}",
+      "color": "{{ page.title_zh }}",
       "material": "{{ page.material | default: 'TPU' }}",
-      "brand": { "@id": "{{ site.url }}/#organization" },
-      "offers": {
-        "@type": "Offer",
-        "url": "{{ site.url }}{{ page.url }}",
-        "priceCurrency": "TWD",
-        "availability": "https://schema.org/InStock"
+      "brand": {
+        "@type": "Brand",
+        "name": "AKS PPF"
       }
     }
 
