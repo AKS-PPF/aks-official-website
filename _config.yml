@@ -7,23 +7,27 @@ title: AKS PPF 艾鎧斯車漆保護膜
 email: info@aks-ppf.com
 description: "AKS PPF 頂級車漆保護膜，提供改色犀牛皮、亮面、消光及天窗隔熱膜等全方位防護解決方案。"
 
-# 2. 網址設定 (這對 GitHub Pages 子目錄專案極度重要！)
-# 你的主網域
+# 2. 網址設定
 url: "https://aks-ppf.github.io"
-# 你的專案子目錄名稱 (這會讓系統的 relative_url 自動幫你補上這段)
 baseurl: "/aks-official-website"
 
 # 3. 編譯環境設定
 markdown: kramdown
 theme: minima
 
-# 4. 宣告 Collections (色卡資料庫設定)
+# 4. 宣告 Collections (全站三大動態資料庫設定)
 collections:
   colors:
-    output: true                             # 告訴系統要為每個顏色自動生成獨立網頁
-    permalink: /pages/color-chart/:title/    # 獨立色卡頁的網址層級格式
+    output: true
+    permalink: /pages/color-chart/:name/
+  cases:
+    output: true
+    permalink: /cases/:name/
+  articles:
+    output: true
+    permalink: /articles/:name/
 
-# 5. 排除不需要編譯的檔案 (加快編譯速度)
+# 5. 排除不需要編譯的檔案
 exclude:
   - Gemfile
   - Gemfile.lock
