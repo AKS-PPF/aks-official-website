@@ -1,0 +1,142 @@
+{%- assign current_path = page.url | downcase -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}",
+      "name": "{{ site.title | default: 'AKS PPF' }}",
+      "publisher": { "@id": "{{ site.url }}/#organization" },
+      "inLanguage": "zh-TW"
+    },
+    {
+      "@type": "Organization",
+      "@id": "{{ site.url }}/#organization",
+      "name": "AKS PPF",
+      "url": "{{ site.url }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/assets/images/logo.png"
+      },
+      "description": "{{ site.description | default: '源自追求完美細節的極致偏執，頂級 TPU 改色犀牛皮品牌。' }}"
+    }
+
+    {% comment %} 1. 首頁與關於品牌 {% endcomment %}
+    {%- if current_path == '/' or current_path == '/index.html' or current_path contains '/pages/about/' -%}
+    ,{
+      "@type": "WebPage",
+      "@id": "{{ site.url }}{{ page.url }}#webpage",
+      "url": "{{ site.url }}{{ page.url }}",
+      "name": "{{ page.title }}",
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "description": "{{ page.description }}"
+    }
+
+    {% comment %} 2. 獨立色卡頁面 (最高優先級 Product) {% endcomment %}
+    {%- elsif current_path contains '/pages/color-chart/' and current_path != '/pages/color-chart/' -%}
+    ,{
+      "@type": "Product",
+      "@id": "{{ site.url }}{{ page.url }}#product",
+      "name": "{{ page.title }}",
+      "image": ["{{ page.image }}"],
+      "description": "{{ page.description }}",
+      "sku": "{{ page.sku | default: 'AKS-COLOR' }}",
+      "color": "{{ page.color_name }}",
+      "material": "{{ page.material | default: 'TPU' }}",
+      "brand": { "@id": "{{ site.url }}/#organization" },
+      "offers": {
+        "@type": "Offer",
+        "url": "{{ site.url }}{{ page.url }}",
+        "priceCurrency": "TWD",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+
+    {% comment %} 3. 線上色卡、作品集、知識庫「總覽頁面」 (CollectionPage) {% endcomment %}
+    {%- elsif current_path == '/pages/color-chart/' or current_path == '/cases/' or current_path == '/articles/' -%}
+    ,{
+      "@type": "CollectionPage",
+      "@id": "{{ site.url }}{{ page.url }}#collection",
+      "name": "{{ page.title }}",
+      "description": "{{ page.description | default: 'AKS PPF 頂級改色犀牛皮與施工案例總覽。' }}",
+      "isPartOf": { "@id": "{{ site.url }}/#website" }
+    }
+
+    {% comment %} 4. 店家作品集獨立頁面 (Article + Vehicle 屬性) {% endcomment %}
+    {%- elsif current_path contains '/cases/' and current_path != '/cases/' -%}
+    ,{
+      "@type": "Article",
+      "@id": "{{ site.url }}{{ page.url }}#case",
+      "headline": "{{ page.title }}",
+      "description": "{{ page.description }}",
+      "image": ["{{ page.image }}"],
+      "author": { "@id": "{{ site.url }}/#organization" },
+      "about": {
+        "@type": "Vehicle",
+        "name": "{{ page.car_model | default: '汽車' }}"
+      }
+    }
+
+    {% comment %} 5. SEO 知識文章獨立頁面 (Article) {% endcomment %}
+    {%- elsif current_path contains '/articles/' and current_path != '/articles/' -%}
+    ,{
+      "@type": "Article",
+      "@id": "{{ site.url }}{{ page.url }}#article",
+      "headline": "{{ page.title }}",
+      "description": "{{ page.description }}",
+      "image": ["{{ page.image }}"],
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "author": { "@id": "{{ site.url }}/#organization" }
+    }
+
+    {% comment %} 6. 一般商品頁 {% endcomment %}
+    {%- elsif current_path contains '/pages/products/' -%}
+    ,{
+      "@type": "Product",
+      "@id": "{{ site.url }}{{ page.url }}#product",
+      "name": "{{ page.title }}",
+      "image": ["{{ page.image }}"],
+      "description": "{{ page.description }}",
+      "brand": { "@id": "{{ site.url }}/#organization" }
+    }
+
+    {% comment %} 7. 經銷商頁面 {% endcomment %}
+    {%- elsif current_path contains '/pages/dealers/' -%}
+    ,{
+      "@type": "LocalBusiness",
+      "@id": "{{ site.url }}{{ page.url }}#localbusiness",
+      "name": "{{ page.title }}",
+      "image": ["{{ page.image }}"],
+      "telephone": "{{ page.phone }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{ page.address }}"
+      }
+    }
+    {%- endif -%}
+
+    {% comment %} 8. 動態 FAQ 注入 (全站適用，只要 MD 有 faq 欄位即觸發) {% endcomment %}
+    {%- if page.faq -%}
+    ,{
+      "@type": "FAQPage",
+      "@id": "{{ site.url }}{{ page.url }}#faq",
+      "mainEntity": [
+        {%- for item in page.faq -%}
+        {
+          "@type": "Question",
+          "name": {{ item.question | jsonify }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ item.answer | jsonify }}
+          }
+        }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+    {%- endif -%}
+  ]
+}
+</script>
