@@ -37,3 +37,7 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
+
+# 6.
+  plugins:
+  - jekyll-sitemap
