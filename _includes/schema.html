@@ -115,6 +115,17 @@
         "streetAddress": "{{ page.address }}"
       }
     }
+
+    {% comment %} 9. 一般通用網頁 (防漏網之魚，如保固、招商頁面等) {% endcomment %}
+    {%- else -%}
+    ,{
+      "@type": "WebPage",
+      "@id": "{{ site.url }}{{ page.url }}#webpage",
+      "url": "{{ site.url }}{{ page.url }}",
+      "name": "{{ page.title }}",
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "description": "{{ page.description | default: site.description }}"
+    }
     {%- endif -%}
 
     {% comment %} 8. 動態 FAQ 注入 (全站適用，只要 MD 有 faq 欄位即觸發) {% endcomment %}
