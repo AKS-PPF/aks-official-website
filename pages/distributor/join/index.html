@@ -6,8 +6,14 @@ description: "成為 AKS PPF 合作店家！我們誠摯邀請全台優質汽車
 
 <style>
   /* 1. 強制修正：杜絕所有超出 100vw 的橫向跑版問題 */
-  .aks-benefits-wrapper * { box-sizing: border-box !important; }
-  .aks-benefits-wrapper { width: 100%; overflow-x: hidden; }
+  .aks-benefits-wrapper * {
+    box-sizing: border-box !important;
+  }
+
+  .aks-benefits-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+  }
 
   /* 2. 舊 CSS 隔離區 (所有選擇器前面都要加上 .aks-benefits-wrapper) */
   .aks-benefits-wrapper .aks-benefits-section {
@@ -15,7 +21,7 @@ description: "成為 AKS PPF 合作店家！我們誠摯邀請全台優質汽車
     --bg-dark: #000000;
     --text-white: #ffffff;
     --line-green: #00b900;
-    
+
     background-color: var(--bg-dark);
     color: var(--text-white);
     font-family: 'Montserrat', "PingFang TC", "Microsoft JhengHei", sans-serif;
@@ -33,9 +39,9 @@ description: "成為 AKS PPF 合作店家！我們誠摯邀請全台優質汽車
   .aks-benefits-wrapper .aks-benefits-hero {
     height: 450px;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
-                      url('https://aks-ppf.github.io/images/ui/distributor/join-bn.png');
-    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+      url('https://aks-ppf.github.io/images/ui/distributor/join-bn.png');
+    background-size: 101% 101%;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
@@ -83,7 +89,7 @@ description: "成為 AKS PPF 合作店家！我們誠摯邀請全台優質汽車
   .aks-benefits-wrapper .aks-benefit-card {
     border: 2px solid var(--primary-red);
     border-radius: 8px;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 40px;
     text-align: center;
     display: flex;
@@ -93,15 +99,23 @@ description: "成為 AKS PPF 合作店家！我們誠摯邀請全台優質汽車
     animation: aksFadeInUp 0.8s ease-out forwards;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
   .aks-benefits-wrapper .aks-benefit-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(175, 17, 28, 0.2);
   }
 
-  .aks-benefits-wrapper .aks-benefit-card:nth-child(1) { animation-delay: 0.2s; }
-  .aks-benefits-wrapper .aks-benefit-card:nth-child(2) { animation-delay: 0.4s; }
-  .aks-benefits-wrapper .aks-benefit-card:nth-child(3) { animation-delay: 0.6s; }
+  .aks-benefits-wrapper .aks-benefit-card:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+
+  .aks-benefits-wrapper .aks-benefit-card:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .aks-benefits-wrapper .aks-benefit-card:nth-child(3) {
+    animation-delay: 0.6s;
+  }
 
   /* Font Awesome 卡片圖示樣式 */
   .aks-benefits-wrapper .aks-fa-icon {
@@ -139,7 +153,7 @@ description: "成為 AKS PPF 合作店家！我們誠摯邀請全台優質汽車
     margin-bottom: 50px;
     display: flex;
     justify-content: center;
-    gap: 10px; 
+    gap: 10px;
     align-items: center;
     opacity: 0;
     animation: aksFadeInUp 0.8s ease-out forwards;
@@ -172,7 +186,7 @@ description: "成為 AKS PPF 合作店家！我們誠摯邀請全台優質汽車
     align-items: center;
     gap: 10px;
   }
-  
+
   @media (max-width: 600px) {
     .aks-benefits-wrapper .aks-cta-right {
       flex-direction: column;
@@ -194,7 +208,7 @@ description: "成為 AKS PPF 合作店家！我們誠摯邀請全台優質汽車
     border: 2px solid transparent;
     transition: all 0.3s ease;
   }
-  
+
   .aks-benefits-wrapper .aks-line-btn:hover {
     background-color: var(--text-white);
     color: var(--line-green);
@@ -207,7 +221,7 @@ description: "成為 AKS PPF 合作店家！我們誠摯邀請全台優質汽車
     color: var(--text-white);
     transition: color 0.3s ease;
   }
-  
+
   .aks-benefits-wrapper .aks-line-btn:hover .aks-fa-line {
     color: var(--line-green);
   }
@@ -219,25 +233,39 @@ description: "成為 AKS PPF 合作店家！我們誠摯邀請全台優質汽車
 
   /* ====== 動畫定義 ====== */
   @keyframes aksSlideInDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
   @keyframes aksFadeInUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 </style>
 
 <div class="aks-benefits-wrapper">
   <div class="aks-benefits-section">
-    
+
     <div class="aks-benefits-hero">
       <h1>合作店家福利</h1>
     </div>
 
     <div class="aks-benefits-content">
-      
+
       <div class="aks-benefits-grid">
         <div class="aks-benefit-card">
           <i class="fa-solid fa-truck-fast aks-fa-icon"></i>

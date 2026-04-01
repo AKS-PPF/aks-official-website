@@ -5,8 +5,14 @@ title: 電腦版型裁切
 
 <style>
   /* 1. 強制修正：杜絕所有超出 100vw 的橫向跑版問題 */
-  .aks-dap-wrapper * { box-sizing: border-box !important; }
-  .aks-dap-wrapper { width: 100%; overflow-x: hidden; }
+  .aks-dap-wrapper * {
+    box-sizing: border-box !important;
+  }
+
+  .aks-dap-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+  }
 
   /* 2. 舊 CSS 隔離區 (所有選擇器前面都要加上 .aks-dap-wrapper) */
   .aks-dap-wrapper .aks-dap-section {
@@ -14,7 +20,7 @@ title: 電腦版型裁切
     --bg-dark: #000000;
     --text-white: #ffffff;
     --line-green: #00b900;
-    
+
     background-color: var(--bg-dark);
     color: var(--text-white);
     font-family: 'Montserrat', "PingFang TC", "Microsoft JhengHei", sans-serif;
@@ -32,9 +38,9 @@ title: 電腦版型裁切
   .aks-dap-wrapper .aks-dap-hero {
     height: 450px;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), 
-                      url('https://aks-ppf.github.io/images/ui/distributor/dap-bn.png');
-    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+      url('https://aks-ppf.github.io/images/ui/distributor/dap-bn.png');
+    background-size: 101% 101%;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
@@ -76,7 +82,8 @@ title: 電腦版型裁切
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px; /* 電腦版模擬文字間的空白距離 */
+    gap: 8px;
+    /* 電腦版模擬文字間的空白距離 */
     font-size: 1.6em;
     font-weight: bold;
     letter-spacing: 2px;
@@ -94,18 +101,23 @@ title: 電腦版型裁切
   .aks-dap-wrapper .aks-dap-bar-group {
     display: flex;
     align-items: center;
-    gap: 20px; /* 電腦版 icon 與文字的間距，與原本相同 */
+    gap: 20px;
+    /* 電腦版 icon 與文字的間距，與原本相同 */
   }
 
   @media (max-width: 768px) {
     .aks-dap-wrapper .aks-dap-top-bar {
       font-size: 1.2em;
       padding: 20px 15px;
-      flex-direction: column; /* 手機版改為垂直折行 */
-      gap: 10px; /* 上下兩行的間距 */
+      flex-direction: column;
+      /* 手機版改為垂直折行 */
+      gap: 10px;
+      /* 上下兩行的間距 */
     }
+
     .aks-dap-wrapper .aks-dap-bar-group {
-      gap: 12px; /* 手機版 icon 與文字的間距 */
+      gap: 12px;
+      /* 手機版 icon 與文字的間距 */
     }
   }
 
@@ -125,7 +137,7 @@ title: 電腦版型裁切
   .aks-dap-wrapper .aks-dap-card {
     border: 2px solid var(--primary-red);
     border-radius: 8px;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 40px 20px;
     text-align: center;
     display: flex;
@@ -136,16 +148,24 @@ title: 電腦版型裁切
     animation: aksFadeInUp 0.8s ease-out forwards;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
   .aks-dap-wrapper .aks-dap-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(175, 17, 28, 0.2);
   }
 
   /* 卡片動畫延遲 */
-  .aks-dap-wrapper .aks-dap-card:nth-child(1) { animation-delay: 0.4s; }
-  .aks-dap-wrapper .aks-dap-card:nth-child(2) { animation-delay: 0.6s; }
-  .aks-dap-wrapper .aks-dap-card:nth-child(3) { animation-delay: 0.8s; }
+  .aks-dap-wrapper .aks-dap-card:nth-child(1) {
+    animation-delay: 0.4s;
+  }
+
+  .aks-dap-wrapper .aks-dap-card:nth-child(2) {
+    animation-delay: 0.6s;
+  }
+
+  .aks-dap-wrapper .aks-dap-card:nth-child(3) {
+    animation-delay: 0.8s;
+  }
 
   /* 數字與右上角紅點設計 */
   .aks-dap-wrapper .aks-dap-num {
@@ -180,25 +200,39 @@ title: 電腦版型裁切
 
   /* ====== 動畫定義 ====== */
   @keyframes aksSlideInDown {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
   @keyframes aksFadeInUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 </style>
 
 <div class="aks-dap-wrapper">
   <div class="aks-dap-section">
-    
+
     <div class="aks-dap-hero">
       <h1>電腦版型裁切</h1>
     </div>
 
     <div class="aks-dap-content">
-      
+
       <div class="aks-dap-top-bar">
         <div class="aks-dap-bar-group">
           <i class="fa-solid fa-car-side"></i>
