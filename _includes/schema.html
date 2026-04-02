@@ -35,16 +35,16 @@
       "description": "{{ page.description }}"
     }
 
-    {% comment %} 2. 獨立色卡頁面 (To B 產品展示，已升級智慧抓取與專屬文案) {% endcomment %}
+    {% comment %} 2. 獨立色卡頁面 (To B 產品展示，全動態 SEO 優化版) {% endcomment %}
     {%- elsif current_path contains '/pages/color-chart/' and current_path != '/pages/color-chart/' -%}
     ,{
       "@type": "Product",
       "@id": "{{ site.url }}{{ page.url }}#product",
-      "name": "{{ page.title_zh | default: page.title }}",
+      "name": "AKS {{ page.title_zh | default: page.title }} 改色犀牛皮",
       "image": [
         "https://cdn.jsdelivr.net/gh/AKS-PPF/color-ppf-images@main/aks_colorppf_{{ page.code }}.jpg"
       ],
-      "description": "AKS 改色犀牛皮，收錄全台最齊全的車色資料庫。從 Lamborghini 到 Tesla 消光、碳纖維、金屬砂感、幻彩變色龍、液態電鍍色系，每一種顏色，都是一種態度。",
+      "description": "AKS {{ page.title_zh | default: page.title }} ({{ page.code }}) 頂級改色犀牛皮。收錄全台最齊全的車色資料庫，從 Lamborghini 到 Tesla 消光、碳纖維、金屬砂感、幻彩變色龍、液態電鍍色系，每一種顏色，都是一種態度。",
       "sku": "{{ page.code }}",
       "color": "{{ page.title_zh }}",
       "material": "{{ page.material | default: 'TPU' }}",
