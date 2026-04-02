@@ -10,67 +10,107 @@ layout: default
     }
     #aks-article-root * { box-sizing: border-box !important; }
 
-    /* ✅ 2. 英雄式純淨橫幅 (恢復高級漸層暗化過渡) */
+    /* ✅ 2. 英雄式純淨橫幅 (Fade to Black 高級漸層) */
     .aks-article-hero {
         position: relative; width: 100%; height: 55vh; min-height: 300px;
         background-size: cover; background-position: center; background-repeat: no-repeat;
     }
-    /* 全版面暗化漸層：上方微透，下方完美融入 #050505 黑色背景 */
     .aks-article-hero::before {
         content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background: linear-gradient(180deg, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.7) 60%, #050505 100%);
         z-index: 1;
     }
 
-    /* ✅ 3. 文章標題與 Meta 資訊區塊 (置於圖片下方) */
-    .aks-article-header { max-width: 900px; margin: 0 auto; padding: 40px 25px 20px; text-align: center; }
+    /* ✅ 3. 文章標題與 Meta 資訊區塊 (縮減下距) */
+    .aks-article-header { max-width: 900px; margin: 0 auto; padding: 40px 25px 0px; text-align: center; } /* 縮減 padding-bottom 到 0 */
     
     .aks-article-title { 
         font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
         font-size: clamp(28px, 4vw, 46px); 
         font-weight: 900;
-        color: white; line-height: 1.3; margin: 0 0 20px 0; letter-spacing: 0.05em;
+        color: white; line-height: 1.3; margin: 0 0 15px 0; letter-spacing: 0.05em; /* 縮減 margin-bottom */
     }
     .aks-article-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 13px; color: #888; letter-spacing: 0.1em; font-weight: 300; }
     .aks-meta-item { display: flex; align-items: center; gap: 8px; }
     .aks-meta-item i { color: #c81f2a; font-size: 12px; }
 
-    /* ✅ 4. Markdown 文章內容渲染區 */
+    /* ✅ 4. Markdown 文章內容渲染區 (基礎排版優化) */
     .aks-article-body-wrapper { max-width: 900px; margin: 0 auto; padding: 0 25px; }
     
     .aks-prose { font-size: 17px; line-height: 2; color: #d1d5db; font-weight: 300; letter-spacing: 0.03em; margin-top: 20px; }
-    .aks-prose * { margin-bottom: 2rem; }
+    
+    /* 針對 FAQ 的 Markdown 結構優化：縮減常見問答下方過多的空隙 */
+    .aks-prose details { margin-bottom: 1rem; } /* 縮減每個 FAQ 的下距 */
+    .aks-prose details * { margin-bottom: 0 !important; } /* 針對 details 內部所有標籤強制拔掉基礎 margin */
+    
+    /* 核心優化 2：修正 FAQ 回答下方空太多的問題 */
+    .aks-prose summary {
+        font-size: 18px; font-weight: 700; color: white; cursor: pointer; list-style: none;
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 10px 15px; /* 改用 Padding 控制上下間距，視覺更緊湊 */
+        margin: 0 !important; /* 強制移除 Margin 避免推擠 */
+        border-bottom: 1px solid rgba(255,255,255,0.05); /* 加入極淡的底線區分問題 */
+    }
+    .aks-prose summary::-webkit-details-marker { display: none; }
+    .aks-prose summary::after {
+        content: '\f107'; font-family: 'Font Awesome 5 Free'; font-weight: 900; color: #c81f2a;
+        font-size: 18px; transition: 0.3s;
+    }
+    .aks-prose details[open] summary { border-bottom: 1px solid transparent; } /* 打開時拔掉底線 */
+    .aks-prose details[open] summary::after { transform: rotate(180deg); }
+    
+    /* 打開回答後的文字排版 */
+    .aks-prose details[open] > summary + * { margin-top: 10px !important; } /* 問題與回答緊密貼合 */
+    .aks-prose details p { color: #aaa; margin-top: 0; margin-bottom: 15px !important; padding: 0 15px; } /* 回答內文縮減間距與加入左右 padding */
+    .aks-prose details p:last-child { margin-bottom: 15px !important; } /* 最後一個內文下距 */
+
+    /* 通用內容間距 (縮減為基礎間距，不再推擠 FAQ) */
+    .aks-prose p, .aks-prose ul, .aks-prose ol, .aks-prose blockquote, .aks-prose img, .aks-prose table { margin-bottom: 1.5rem; } 
     
     .aks-prose h2 { 
-        font-size: 28px; font-weight: 800; color: white; margin-top: 4rem; margin-bottom: 1.5rem;
+        font-size: 28px; font-weight: 800; color: white; margin-top: 3.5rem; margin-bottom: 1rem; /* 縮減 margin-bottom 與 margin-top */
         border-left: 4px solid #c81f2a; padding-left: 15px; letter-spacing: 0.05em;
     }
-    .aks-prose h3 { font-size: 22px; font-weight: 700; color: #eee; margin-top: 3rem; margin-bottom: 1rem; }
-    .aks-prose p { margin-bottom: 1.8rem; }
+    .aks-prose h3 { font-size: 22px; font-weight: 700; color: #eee; margin-top: 2.5rem; margin-bottom: 0.8rem; }
     .aks-prose strong { color: white; font-weight: 700; background-color: rgba(200,31,42,0.1); padding: 0 2px; }
     
-    .aks-prose ul, .aks-prose ol { padding-left: 20px; margin-bottom: 2.5rem; }
-    .aks-prose li { margin-bottom: 1rem; position: relative; list-style: none;}
+    .aks-prose ul, .aks-prose ol { padding-left: 20px; }
+    .aks-prose li { margin-bottom: 0.8rem; position: relative; list-style: none;}
     .aks-prose ul li::before { 
         content: ''; position: absolute; left: -20px; top: 14px; width: 6px; height: 6px; 
         background-color: #c81f2a; border-radius: 50%; 
     }
 
-    /* 完美的 RWD 響應式表格 */
-    .aks-prose table { display: block; overflow-x: auto; width: 100%; border-collapse: collapse; margin: 3rem 0; white-space: nowrap; }
-    .aks-prose th { background-color: rgba(200,31,42,0.15); color: white; padding: 16px 24px; text-align: left; border-bottom: 2px solid #c81f2a; font-weight: 700; letter-spacing: 0.05em; }
-    .aks-prose td { padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; }
-    .aks-prose table::-webkit-scrollbar { height: 6px; }
-    .aks-prose table::-webkit-scrollbar-thumb { background: #c81f2a; border-radius: 4px; }
+    /* 核心優化 1：完美的直式 RWD 表格 (文字自動換行，提升直觀對比性，手機才顯示滑動) */
+    .table-container { width: 100%; overflow-x: auto; margin-bottom: 2rem; -webkit-overflow-scrolling: touch; } /* 移除了白底，保留滑動容器供手機用 */
+    .table-container::-webkit-scrollbar { height: 6px; }
+    .table-container::-webkit-scrollbar-thumb { background: #c81f2a; border-radius: 4px; }
 
-    .aks-prose img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); display: block; margin: 3rem auto; }
-    .aks-prose blockquote { border-left: 3px solid #444; padding-left: 20px; color: #999; font-style: italic; margin: 3rem 0; }
+    .aks-prose table { width: 100%; border-collapse: collapse; margin: 0; display: table !important; } /* 恢復表格直式排列，禁止滑動破壞對比 */
+    
+    /* 表頭：縮小字體 (16px) 以適應換行，文字置中 */
+    .aks-prose th { 
+        background-color: rgba(200,31,42,0.15); color: white; padding: 12px 10px; 
+        text-align: center; vertical-align: middle;
+        border-bottom: 2px solid #c81f2a; font-weight: 700; font-size: 16px; letter-spacing: 0.05em; 
+        white-space: normal !important; /* 強制文字自動換行，禁止水平滑動 */
+    }
+    /* 表身：調整 padding 提升閱讀舒適度 */
+    .aks-prose td { 
+        padding: 15px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; 
+        font-size: 15px; text-align: center; vertical-align: middle;
+        white-space: normal !important; /* 強制文字自動換行 */
+    }
+    .aks-prose tr:hover td { background-color: rgba(255,255,255,0.01); } /* 微弱的懸停效果 */
+
+    .aks-prose img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); display: block; margin: 2rem auto; }
+    .aks-prose blockquote { border-left: 3px solid #444; padding-left: 20px; color: #999; font-style: italic; margin: 2rem 0; }
     .aks-prose a { color: white; text-decoration: underline; text-underline-offset: 4px; transition: 0.3s; }
     .aks-prose a:hover { color: #c81f2a; }
 
     /* ✅ 5. 文章末尾 B2B 轉換 CTA 區塊 */
     .aks-article-footer-cta { 
-        max-width: 900px; margin: 80px auto 0; padding: 60px 40px; 
+        max-width: 900px; margin: 60px auto 0; padding: 60px 40px; 
         background: linear-gradient(145deg, #111111 0%, #050505 100%);
         border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;
         box-shadow: 0 20px 50px rgba(0,0,0,0.5);
@@ -101,7 +141,9 @@ layout: default
         .aks-article-meta { gap: 10px; font-size: 12px; }
         .aks-article-body-wrapper { padding: 0 20px; }
         .aks-prose { font-size: 16px; line-height: 1.9; }
-        .aks-prose h2 { font-size: 24px; margin-top: 3rem; }
+        .aks-prose h2 { font-size: 24px; margin-top: 2.5rem; }
+        /* 針對 FAQ 的手機版調整 */
+        .aks-prose summary { font-size: 16px; }
         .aks-article-footer-cta { padding: 40px 20px; margin-top: 60px; }
         .aks-btn-accent, .aks-btn-secondary { width: 100%; text-align: center; }
     }
@@ -114,7 +156,10 @@ layout: default
         <div class="aks-article-header io-reveal" data-delay="1">
             <h1 class="aks-article-title">{{ page.title }}</h1>
             <div class="aks-article-meta aks-font-clean">
-                <span class="aks-meta-item"><i class="fas fa-calendar-alt"></i> {{ page.date | date: "%Y-%m-%d" }}</span>
+                <span class="aks-meta-item">
+                    <i class="fas fa-calendar-alt"></i> 
+                    {{ page.last_modified_at | default: page.date | date: "%Y-%m-%d" }}
+                </span>
                 <span class="aks-meta-item"><i class="fas fa-user"></i> {{ page.author | default: "AKS PPF 官方編輯" }}</span>
                 {% if page.tags %}
                 <span class="aks-meta-item"><i class="fas fa-tags"></i> {{ page.tags | join: ", " }}</span>
