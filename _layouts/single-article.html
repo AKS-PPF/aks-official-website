@@ -10,19 +10,19 @@ layout: default
     }
     #aks-article-root * { box-sizing: border-box !important; }
 
-    /* ✅ 2. 英雄式純淨橫幅 (Clean Banner) */
+    /* ✅ 2. 英雄式純淨橫幅 (恢復高級漸層暗化過渡) */
     .aks-article-hero {
         position: relative; width: 100%; height: 55vh; min-height: 300px;
         background-size: cover; background-position: center; background-repeat: no-repeat;
-        /* 移除 flex 內容對齊，因為文字移到下方了 */
     }
-    /* 底部微漸層過渡到黑底 */
-    .aks-article-hero::after {
-        content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 30%;
-        background: linear-gradient(0deg, #050505 0%, transparent 100%);
+    /* 全版面暗化漸層：上方微透，下方完美融入 #050505 黑色背景 */
+    .aks-article-hero::before {
+        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(180deg, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.7) 60%, #050505 100%);
+        z-index: 1;
     }
 
-    /* ✅ 3. 文章標題與 Meta 資訊區塊 (移至圖片下方) */
+    /* ✅ 3. 文章標題與 Meta 資訊區塊 (置於圖片下方) */
     .aks-article-header { max-width: 900px; margin: 0 auto; padding: 40px 25px 20px; text-align: center; }
     
     .aks-article-title { 
