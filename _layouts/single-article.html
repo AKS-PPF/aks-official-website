@@ -5,7 +5,6 @@ layout: default
     /* ✅ 1. AKS 知識庫專用 UI 樣式 (極致黑 100% 復刻) */
     #aks-article-root {
         width: 100%; background-color: #050505; color: #f3f3f5;
-        /* 智慧下推由父 Layout 控制，這裡負責內距 */
         padding-bottom: 120px;
         font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
     }
@@ -18,7 +17,6 @@ layout: default
         display: flex; align-items: flex-end; padding: 5% 5%;
         margin-bottom: 60px;
     }
-    /* 圖片光暈遮罩 (上透明、下黑) 確保文字清晰 */
     .aks-article-hero::before {
         content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background: linear-gradient(180deg, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.95) 100%);
@@ -26,44 +24,46 @@ layout: default
     }
     .aks-hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; }
     
-    /* 超霸氣文章標題 (優設標題黑) */
+    /* 修正 2：改用無襯線乾淨字體，解決繁體破圖問題 */
     .aks-article-title { 
-        font-family: 'YouSheBiaoTiHei', sans-serif !important;
-        font-size: clamp(32px, 5vw, 64px); 
-        color: white; line-height: 1.1; margin: 0 0 20px 0; letter-spacing: 0.05em;
-        text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
+        font-size: clamp(32px, 4vw, 54px); 
+        font-weight: 900;
+        color: white; line-height: 1.2; margin: 0 0 20px 0; letter-spacing: 0.05em;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.8);
     }
     .aks-article-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; color: #aaa; letter-spacing: 0.1em; font-weight: 300; }
     .aks-meta-item { display: flex; align-items: center; gap: 8px; }
-    .aks-meta-item i { color: #c81f2a; font-size: 12px; } /* 紅點綴 */
+    .aks-meta-item i { color: #c81f2a; font-size: 12px; }
 
-    /* ✅ 3. Markdown 文章內容渲染區 (核心閱讀優化) */
+    /* ✅ 3. Markdown 文章內容渲染區 */
     .aks-article-body-wrapper { max-width: 900px; margin: 0 auto; padding: 0 25px; }
     
-    /* 專用 Markdown 樣式類別 (aks-prose) */
     .aks-prose { font-size: 17px; line-height: 2; color: #d1d5db; font-weight: 300; letter-spacing: 0.03em; }
-    .aks-prose * { margin-bottom: 2rem; } /* 基礎下間距 */
+    .aks-prose * { margin-bottom: 2rem; }
     
-    /* h2 段落標題：左側紅線 + 質感放大 */
     .aks-prose h2 { 
         font-size: 28px; font-weight: 800; color: white; margin-top: 4rem; margin-bottom: 1.5rem;
         border-left: 4px solid #c81f2a; padding-left: 15px; letter-spacing: 0.05em;
     }
     .aks-prose h3 { font-size: 22px; font-weight: 700; color: #eee; margin-top: 3rem; margin-bottom: 1rem; }
-    
     .aks-prose p { margin-bottom: 1.8rem; }
-    .aks-prose strong { color: white; font-weight: 700; background-color: rgba(200,31,42,0.1); padding: 0 2px; } /* 紅底強調 */
+    .aks-prose strong { color: white; font-weight: 700; background-color: rgba(200,31,42,0.1); padding: 0 2px; }
     
-    /* 條列式排版優化：Cyberbiz 舊版最缺這個 */
     .aks-prose ul, .aks-prose ol { padding-left: 20px; margin-bottom: 2.5rem; }
     .aks-prose li { margin-bottom: 1rem; position: relative; list-style: none;}
-    /* 自定義紅色項目符號 */
     .aks-prose ul li::before { 
         content: ''; position: absolute; left: -20px; top: 14px; width: 6px; height: 6px; 
         background-color: #c81f2a; border-radius: 50%; 
     }
 
-    /* 文章內圖片：光暈陰影 + 圓角 */
+    /* 修正 4：完美的 RWD 響應式表格 */
+    .aks-prose table { display: block; overflow-x: auto; width: 100%; border-collapse: collapse; margin: 3rem 0; white-space: nowrap; }
+    .aks-prose th { background-color: rgba(200,31,42,0.15); color: white; padding: 16px 24px; text-align: left; border-bottom: 2px solid #c81f2a; font-weight: 700; letter-spacing: 0.05em; }
+    .aks-prose td { padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; }
+    .aks-prose table::-webkit-scrollbar { height: 6px; }
+    .aks-prose table::-webkit-scrollbar-thumb { background: #c81f2a; border-radius: 4px; }
+
     .aks-prose img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); display: block; margin: 3rem auto; }
     .aks-prose blockquote { border-left: 3px solid #444; padding-left: 20px; color: #999; font-style: italic; margin: 3rem 0; }
     .aks-prose a { color: white; text-decoration: underline; text-underline-offset: 4px; transition: 0.3s; }
@@ -94,7 +94,7 @@ layout: default
     }
     .aks-btn-secondary:hover { background-color: rgba(255,255,255,0.05); color: white; border-color: rgba(255,255,255,0.5); }
 
-    /* ✅ RWD 回應式設定 */
+    /* ✅ RWD */
     @media (max-width: 991px) {
         .aks-article-hero { height: 50vh; padding: 10% 20px; }
         .aks-article-meta { gap: 10px; font-size: 12px; }
@@ -109,7 +109,9 @@ layout: default
 <div id="aks-article-root">
     <header class="aks-article-hero" style="background-image: url('{% if page.image %}{{ page.image }}{% else %}{{ '/assets/images/og-image.png' | relative_url }}{% endif %}');">
         <div class="aks-hero-content io-reveal">
+            {% unless page.hide_title %}
             <h1 class="aks-article-title">{{ page.title }}</h1>
+            {% endunless %}
             <div class="aks-article-meta aks-font-clean">
                 <span class="aks-meta-item"><i class="fas fa-calendar-alt"></i> {{ page.date | date: "%Y-%m-%d" }}</span>
                 <span class="aks-meta-item"><i class="fas fa-user"></i> {{ page.author | default: "AKS PPF 官方編輯" }}</span>
@@ -139,7 +141,6 @@ layout: default
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // 簡單的進場動畫
         const reveals = document.querySelectorAll('.io-reveal');
         reveals.forEach((el, i) => {
             const delay = el.getAttribute('data-delay') * 300 || 0;
