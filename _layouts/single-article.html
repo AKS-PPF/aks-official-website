@@ -1,0 +1,152 @@
+---
+layout: default
+---
+<style>
+    /* ✅ 1. AKS 知識庫專用 UI 樣式 (極致黑 100% 復刻) */
+    #aks-article-root {
+        width: 100%; background-color: #050505; color: #f3f3f5;
+        /* 智慧下推由父 Layout 控制，這裡負責內距 */
+        padding-bottom: 120px;
+        font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
+    }
+    #aks-article-root * { box-sizing: border-box !important; }
+
+    /* ✅ 2. 英雄式文章開場 (Hero) */
+    .aks-article-hero {
+        position: relative; width: 100%; height: 70vh; min-height: 400px;
+        background-size: cover; background-position: center; background-repeat: no-repeat;
+        display: flex; align-items: flex-end; padding: 5% 5%;
+        margin-bottom: 60px;
+    }
+    /* 圖片光暈遮罩 (上透明、下黑) 確保文字清晰 */
+    .aks-article-hero::before {
+        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(180deg, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.95) 100%);
+        z-index: 1;
+    }
+    .aks-hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; }
+    
+    /* 超霸氣文章標題 (優設標題黑) */
+    .aks-article-title { 
+        font-family: 'YouSheBiaoTiHei', sans-serif !important;
+        font-size: clamp(32px, 5vw, 64px); 
+        color: white; line-height: 1.1; margin: 0 0 20px 0; letter-spacing: 0.05em;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .aks-article-meta { display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; color: #aaa; letter-spacing: 0.1em; font-weight: 300; }
+    .aks-meta-item { display: flex; align-items: center; gap: 8px; }
+    .aks-meta-item i { color: #c81f2a; font-size: 12px; } /* 紅點綴 */
+
+    /* ✅ 3. Markdown 文章內容渲染區 (核心閱讀優化) */
+    .aks-article-body-wrapper { max-width: 900px; margin: 0 auto; padding: 0 25px; }
+    
+    /* 專用 Markdown 樣式類別 (aks-prose) */
+    .aks-prose { font-size: 17px; line-height: 2; color: #d1d5db; font-weight: 300; letter-spacing: 0.03em; }
+    .aks-prose * { margin-bottom: 2rem; } /* 基礎下間距 */
+    
+    /* h2 段落標題：左側紅線 + 質感放大 */
+    .aks-prose h2 { 
+        font-size: 28px; font-weight: 800; color: white; margin-top: 4rem; margin-bottom: 1.5rem;
+        border-left: 4px solid #c81f2a; padding-left: 15px; letter-spacing: 0.05em;
+    }
+    .aks-prose h3 { font-size: 22px; font-weight: 700; color: #eee; margin-top: 3rem; margin-bottom: 1rem; }
+    
+    .aks-prose p { margin-bottom: 1.8rem; }
+    .aks-prose strong { color: white; font-weight: 700; background-color: rgba(200,31,42,0.1); padding: 0 2px; } /* 紅底強調 */
+    
+    /* 條列式排版優化：Cyberbiz 舊版最缺這個 */
+    .aks-prose ul, .aks-prose ol { padding-left: 20px; margin-bottom: 2.5rem; }
+    .aks-prose li { margin-bottom: 1rem; position: relative; list-style: none;}
+    /* 自定義紅色項目符號 */
+    .aks-prose ul li::before { 
+        content: ''; position: absolute; left: -20px; top: 14px; width: 6px; height: 6px; 
+        background-color: #c81f2a; border-radius: 50%; 
+    }
+
+    /* 文章內圖片：光暈陰影 + 圓角 */
+    .aks-prose img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); display: block; margin: 3rem auto; }
+    .aks-prose blockquote { border-left: 3px solid #444; padding-left: 20px; color: #999; font-style: italic; margin: 3rem 0; }
+    .aks-prose a { color: white; text-decoration: underline; text-underline-offset: 4px; transition: 0.3s; }
+    .aks-prose a:hover { color: #c81f2a; }
+
+    /* ✅ 4. 文章末尾 B2B 轉換 CTA 區塊 */
+    .aks-article-footer-cta { 
+        max-width: 900px; margin: 80px auto 0; padding: 60px 40px; 
+        background: linear-gradient(145deg, #111111 0%, #050505 100%);
+        border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .aks-cta-icon { font-size: 40px; color: #c81f2a; margin-bottom: 20px; display: block; }
+    .aks-cta-title { font-size: 24px; font-weight: 800; color: white; margin-bottom: 15px; letter-spacing: 0.1em; }
+    .aks-cta-desc { font-size: 15px; color: #999; margin-bottom: 35px; line-height: 1.6; font-weight: 300; max-width: 600px; margin-left: auto; margin-right: auto; }
+    
+    .aks-cta-btn-group { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .aks-btn-accent { 
+        background-color: #c81f2a; color: white; padding: 15px 30px; border-radius: 6px; 
+        font-size: 14px; font-weight: 700; text-decoration: none; letter-spacing: 0.15em; 
+        transition: 0.3s; box-shadow: 0 4px 15px rgba(200,31,42,0.3);
+    }
+    .aks-btn-accent:hover { background-color: #e02431; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(200,31,42,0.5); }
+    .aks-btn-secondary { 
+        background-color: transparent; color: #eee; padding: 15px 30px; border-radius: 6px; 
+        font-size: 14px; font-weight: 700; text-decoration: none; letter-spacing: 0.15em; 
+        border: 1px solid rgba(255,255,255,0.2); transition: 0.3s;
+    }
+    .aks-btn-secondary:hover { background-color: rgba(255,255,255,0.05); color: white; border-color: rgba(255,255,255,0.5); }
+
+    /* ✅ RWD 回應式設定 */
+    @media (max-width: 991px) {
+        .aks-article-hero { height: 50vh; padding: 10% 20px; }
+        .aks-article-meta { gap: 10px; font-size: 12px; }
+        .aks-article-body-wrapper { padding: 0 20px; }
+        .aks-prose { font-size: 16px; line-height: 1.9; }
+        .aks-prose h2 { font-size: 24px; margin-top: 3rem; }
+        .aks-article-footer-cta { padding: 40px 20px; margin-top: 60px; }
+        .aks-btn-accent, .aks-btn-secondary { width: 100%; text-align: center; }
+    }
+</style>
+
+<div id="aks-article-root">
+        <header class="aks-article-hero" style="background-image: url('{{ page.image | default: '/assets/images/og-image.png' | relative_url }}');">
+        <div class="aks-hero-content io-reveal">
+            <h1 class="aks-article-title">{{ page.title }}</h1>
+            <div class="aks-article-meta aks-font-clean">
+                <span class="aks-meta-item"><i class="fas fa-calendar-alt"></i> {{ page.date | date: "%Y-%m-%d" }}</span>
+                <span class="aks-meta-item"><i class="fas fa-user"></i> {{ page.author | default: "AKS PPF 官方編輯" }}</span>
+                {% if page.tags %}
+                <span class="aks-meta-item"><i class="fas fa-tags"></i> {{ page.tags | join: ", " }}</span>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+        <article class="aks-article-body-wrapper io-reveal" data-delay="1">
+        <div class="aks-prose aks-font-clean">
+            {{ content }}
+        </div>
+
+                <footer class="aks-article-footer-cta aks-font-clean io-reveal" data-delay="2">
+            <i class="fas fa-car-crash aks-cta-icon"></i>
+            <h3 class="aks-cta-title">在意細節的你，值得最高標準的保護</h3>
+            <p class="aks-cta-desc">看完這篇分析，是否對犀牛皮有更深的了解？AKS PPF 致力於提供「不與質感妥協」的極致防護方案。無論是個性改色還是隱形防護，我們都能滿足你對完美的偏執。</p>
+            <div class="aks-cta-btn-group">
+                <a href="{{ '/pages/color-chart/' | relative_url }}" class="aks-btn-accent">瀏覽線上色卡 ➔</a>
+                <a href="{{ '/pages/dealers/ai-preview/' | relative_url }}" class="aks-btn-secondary">預約 AI 換色預覽</a>
+            </div>
+        </footer>
+    </article>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 簡單的進場動畫
+        const reveals = document.querySelectorAll('.io-reveal');
+        reveals.forEach((el, i) => {
+            const delay = el.getAttribute('data-delay') * 300 || 0;
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 100 + delay);
+        });
+    });
+</script>
