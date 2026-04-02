@@ -2,16 +2,15 @@
 layout: default
 ---
 <style>
-    /* ✅ 1. 舊版 UI 保留：所有質感、光暈、毛玻璃樣式 100% 復刻，移除 Cyberbiz 補丁 */
+    /* 1. 舊版 UI 保留：所有質感、光暈、毛玻璃樣式 100% 復刻 */
     #aks-color-product-root {
         width: 100%; background-color: #050505; color: #f3f3f5;
-        /* Jekyll 乾淨環境：移除硬寫的 padding-top 補丁，靠 Layout 智慧控制 */
         padding-top: 40px; 
         padding-bottom: 120px;
     }
     #aks-color-product-root * { box-sizing: border-box !important; }
 
-    /* 全域字體防跑版，確保繼承 default */
+    /* 全域字體防跑版 */
     #aks-color-product-root { font-family: 'Montserrat', 'PingFang TC', sans-serif !important; }
     @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
     .aks-font-youshe { font-family: 'YouSheBiaoTiHei', sans-serif !important; }
@@ -55,20 +54,19 @@ layout: default
     .aks-sku { font-size: 13px; color: #666; letter-spacing: 0.15em; margin: 0 0 32px 0; font-weight: 600; }
     .aks-desc { font-size: 15px; color: #aaa; line-height: 1.8; margin: 0 0 40px 0; font-weight: 300; }
 
-    /* ✅ 修改後的 CTA 按鈕：紅色底 + Hover 發光呼吸感 */
+    /* CTA 按鈕 */
     .aks-btn-cta { 
         display: flex; align-items: center; justify-content: center; width: 100%; 
-        background-color: #c81f2a; /* 預設紅底 */
-        color: #ffffff; /* 白字 */
+        background-color: #c81f2a; 
+        color: #ffffff; 
         padding: 18px 32px; border-radius: 6px; font-size: 14px; font-weight: 900; 
         letter-spacing: 0.2em; transition: all 0.4s ease-in-out; margin-bottom: 40px; 
         text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; 
-        box-shadow: 0 4px 15px rgba(200,31,42,0.3); /* 預設微微陰影 */
+        box-shadow: 0 4px 15px rgba(200,31,42,0.3);
     }
     .aks-btn-cta:hover { 
         background-color: #e02431; 
         color: #ffffff; 
-        /* 發光呼吸感：多層次陰影放大 */
         box-shadow: 0 0 20px rgba(200,31,42,0.6), 0 0 40px rgba(200,31,42,0.3); 
         transform: translateY(-2px) scale(1.01); 
     }
@@ -154,7 +152,7 @@ layout: default
             <p class="aks-desc">{{ page.description }}</p>
             {% endif %}
             
-            <a href="{{ '/pages/ai-preview-partners/' | relative_url }}" class="aks-btn-cta">預約 AI 換色預覽</a>
+            <a href="{{ '/pages/dealers/ai-preview/' | relative_url }}" class="aks-btn-cta">預約 AI 換色預覽</a>
 
             <div class="aks-faq-wrapper">
                 <div class="aks-faq-item">
