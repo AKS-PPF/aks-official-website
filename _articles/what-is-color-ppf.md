@@ -4,6 +4,7 @@ title: "什麼是改色犀牛皮？優缺點全面解析"
 description: "用最清楚的方式說明改色犀牛皮（Color PPF）是什麼、材料構造與原理、優缺點與注意事項，並協助你判斷是否適合你的愛車與使用需求。"
 image: "https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_f60b1397-08b0-45e7-a51d-01c38356d215.png"
 date: 2025-04-26
+last_modified_at: 2025-11-30
 author: "AKS PPF 官方編輯"
 tags: [改色犀牛皮, Color PPF, 車漆保護膜]
 faq:
