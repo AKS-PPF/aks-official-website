@@ -30,6 +30,7 @@ faq:
 
 **改色犀牛皮是一種結合了色料的 TPU 車漆保護膜（PPF）**。不同於傳統透明 PPF 及改色膜，改色犀牛皮不只提供抗刮、耐候等防護性能，膜材本身就具備顏色或特殊光澤效果，因此能同時達到 **外觀改色** 與 **車漆防護**。
 
+![施工細節](https://cdn.cybassets.com/s/files/26096/ckeditor/pictures/content_29ecab3d-a28d-4f6b-b1df-79306d4518e0.png)
 
 ## 改色犀牛皮的材料構造與原理
 
