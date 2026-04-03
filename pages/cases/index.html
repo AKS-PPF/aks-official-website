@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "AKS 作品集｜改色犀牛皮與車漆防護完工案例"
-description: "AKS PPF 全台配合店家完工作品集。收錄 AKS TPU 犀牛皮與改色犀牛皮完工案例，提供您最真實的完工案例、收邊細節與車色選擇參考。"
+title: "AKS 作品集｜頂級改色犀牛皮與車漆防護施工案例"
+description: "AKS PPF 全台各系實車施工案例。收錄 Tesla、Porsche、BMW 等豪華車款的頂級 TPU 犀牛皮與改色膜施工紀錄，提供您最真實的完工光澤、細節收邊與車色選擇參考。"
 hero_image: "https://aks-ppf.github.io/images/ui/products/COLOR-PPF-BOTTOM%20CTA.png"
 ---
 <style>
@@ -17,7 +17,12 @@ hero_image: "https://aks-ppf.github.io/images/ui/products/COLOR-PPF-BOTTOM%20CTA
         z-index: 1;
     }
     .aks-hero-content { position: relative; z-index: 2; padding: 0 20px; max-width: 900px; }
+    
     .aks-index-title { font-size: clamp(36px, 6vw, 64px); font-weight: 900; color: white; margin-bottom: 20px; letter-spacing: 0.1em; }
+    /* 🔥 專屬 AKS 品牌字體設定 */
+    .aks-brand-font { font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif; font-weight: normal; letter-spacing: 2px; }
+    .aks-text-red { color: #c81f2a; }
+    
     .aks-index-subtitle { font-size: clamp(15px, 2vw, 17px); color: rgba(255,255,255,0.8); font-weight: 300; line-height: 1.8; letter-spacing: 0.05em; }
 
     .aks-grid-container { max-width: 1300px; margin: 0 auto; padding: 40px 25px 120px; }
@@ -41,7 +46,9 @@ hero_image: "https://aks-ppf.github.io/images/ui/products/COLOR-PPF-BOTTOM%20CTA
 <div id="aks-cases-index">
     <header class="aks-magazine-hero io-reveal" style="background-image: url('{{ page.hero_image }}');">
         <div class="aks-hero-content">
-            <h1 class="aks-index-title">AKS 作品集</h1>
+            <h1 class="aks-index-title">
+                <span class="aks-brand-font"><span class="aks-text-red">A</span>KS</span> 作品集
+            </h1>
             <p class="aks-index-subtitle">{{ page.description }}</p>
         </div>
     </header>
