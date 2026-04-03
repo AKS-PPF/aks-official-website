@@ -21,54 +21,51 @@ layout: default
         z-index: 1;
     }
 
-    /* ✅ 3. 文章標題與 Meta 資訊區塊 (縮減下距) */
-    .aks-article-header { max-width: 900px; margin: 0 auto; padding: 40px 25px 0px; text-align: center; } /* 縮減 padding-bottom 到 0 */
+    /* ✅ 3. 文章標題與 Meta 資訊區塊 */
+    .aks-article-header { max-width: 900px; margin: 0 auto; padding: 40px 25px 0px; text-align: center; }
     
     .aks-article-title { 
         font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
         font-size: clamp(28px, 4vw, 46px); 
         font-weight: 900;
-        color: white; line-height: 1.3; margin: 0 0 15px 0; letter-spacing: 0.05em; /* 縮減 margin-bottom */
+        color: white; line-height: 1.3; margin: 0 0 15px 0; letter-spacing: 0.05em;
     }
     .aks-article-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 13px; color: #888; letter-spacing: 0.1em; font-weight: 300; }
     .aks-meta-item { display: flex; align-items: center; gap: 8px; }
     .aks-meta-item i { color: #c81f2a; font-size: 12px; }
 
-    /* ✅ 4. Markdown 文章內容渲染區 (基礎排版優化) */
+    /* ✅ 4. Markdown 文章內容渲染區 */
     .aks-article-body-wrapper { max-width: 900px; margin: 0 auto; padding: 0 25px; }
     
     .aks-prose { font-size: 17px; line-height: 2; color: #d1d5db; font-weight: 300; letter-spacing: 0.03em; margin-top: 20px; }
     
-    /* 針對 FAQ 的 Markdown 結構優化：縮減常見問答下方過多的空隙 */
-    .aks-prose details { margin-bottom: 1rem; } /* 縮減每個 FAQ 的下距 */
-    .aks-prose details * { margin-bottom: 0 !important; } /* 針對 details 內部所有標籤強制拔掉基礎 margin */
+    /* FAQ 手風琴結構優化 */
+    .aks-prose details { margin-bottom: 1rem; } 
+    .aks-prose details * { margin-bottom: 0 !important; } 
     
-    /* 核心優化 2：修正 FAQ 回答下方空太多的問題 */
     .aks-prose summary {
         font-size: 18px; font-weight: 700; color: white; cursor: pointer; list-style: none;
         display: flex; justify-content: space-between; align-items: center;
-        padding: 10px 15px; /* 改用 Padding 控制上下間距，視覺更緊湊 */
-        margin: 0 !important; /* 強制移除 Margin 避免推擠 */
-        border-bottom: 1px solid rgba(255,255,255,0.05); /* 加入極淡的底線區分問題 */
+        padding: 10px 15px; margin: 0 !important; 
+        border-bottom: 1px solid rgba(255,255,255,0.05); 
     }
     .aks-prose summary::-webkit-details-marker { display: none; }
     .aks-prose summary::after {
         content: '\f107'; font-family: 'Font Awesome 5 Free'; font-weight: 900; color: #c81f2a;
         font-size: 18px; transition: 0.3s;
     }
-    .aks-prose details[open] summary { border-bottom: 1px solid transparent; } /* 打開時拔掉底線 */
+    .aks-prose details[open] summary { border-bottom: 1px solid transparent; } 
     .aks-prose details[open] summary::after { transform: rotate(180deg); }
     
-    /* 打開回答後的文字排版 */
-    .aks-prose details[open] > summary + * { margin-top: 10px !important; } /* 問題與回答緊密貼合 */
-    .aks-prose details p { color: #aaa; margin-top: 0; margin-bottom: 15px !important; padding: 0 15px; } /* 回答內文縮減間距與加入左右 padding */
-    .aks-prose details p:last-child { margin-bottom: 15px !important; } /* 最後一個內文下距 */
+    .aks-prose details[open] > summary + * { margin-top: 10px !important; } 
+    .aks-prose details p { color: #aaa; margin-top: 0; margin-bottom: 15px !important; padding: 0 15px; } 
+    .aks-prose details p:last-child { margin-bottom: 15px !important; } 
 
-    /* 通用內容間距 (縮減為基礎間距，不再推擠 FAQ) */
+    /* 通用內容間距 */
     .aks-prose p, .aks-prose ul, .aks-prose ol, .aks-prose blockquote, .aks-prose img, .aks-prose table { margin-bottom: 1.5rem; } 
     
     .aks-prose h2 { 
-        font-size: 28px; font-weight: 800; color: white; margin-top: 3.5rem; margin-bottom: 1rem; /* 縮減 margin-bottom 與 margin-top */
+        font-size: 28px; font-weight: 800; color: white; margin-top: 3.5rem; margin-bottom: 1rem; 
         border-left: 4px solid #c81f2a; padding-left: 15px; letter-spacing: 0.05em;
     }
     .aks-prose h3 { font-size: 22px; font-weight: 700; color: #eee; margin-top: 2.5rem; margin-bottom: 0.8rem; }
@@ -81,34 +78,51 @@ layout: default
         background-color: #c81f2a; border-radius: 50%; 
     }
 
-    /* 核心優化 1：完美的直式 RWD 表格 (文字自動換行，提升直觀對比性，手機才顯示滑動) */
-    .table-container { width: 100%; overflow-x: auto; margin-bottom: 2rem; -webkit-overflow-scrolling: touch; } /* 移除了白底，保留滑動容器供手機用 */
+    /* 完美的 RWD 響應式表格 (共用基礎) */
+    .table-container { width: 100%; overflow-x: auto; margin-bottom: 2rem; -webkit-overflow-scrolling: touch; } 
     .table-container::-webkit-scrollbar { height: 6px; }
     .table-container::-webkit-scrollbar-thumb { background: #c81f2a; border-radius: 4px; }
 
-    .aks-prose table { width: 100%; border-collapse: collapse; margin: 0; display: table !important; } /* 恢復表格直式排列，禁止滑動破壞對比 */
+    .aks-prose table { width: 100%; border-collapse: collapse; margin: 0; display: table !important; } 
     
-    /* 表頭：縮小字體 (16px) 以適應換行，文字置中 */
     .aks-prose th { 
         background-color: rgba(200,31,42,0.15); color: white; padding: 12px 10px; 
         text-align: center; vertical-align: middle;
         border-bottom: 2px solid #c81f2a; font-weight: 700; font-size: 16px; letter-spacing: 0.05em; 
-        white-space: normal !important; /* 強制文字自動換行，禁止水平滑動 */
+        white-space: normal !important; 
     }
-    /* 表身：調整 padding 提升閱讀舒適度 */
     .aks-prose td { 
         padding: 15px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); color: #ccc; 
         font-size: 15px; text-align: center; vertical-align: middle;
-        white-space: normal !important; /* 強制文字自動換行 */
+        white-space: normal !important; 
     }
-    .aks-prose tr:hover td { background-color: rgba(255,255,255,0.01); } /* 微弱的懸停效果 */
+    .aks-prose tr:hover td { background-color: rgba(255,255,255,0.01); } 
 
     .aks-prose img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); display: block; margin: 2rem auto; }
     .aks-prose blockquote { border-left: 3px solid #444; padding-left: 20px; color: #999; font-style: italic; margin: 2rem 0; }
     .aks-prose a { color: white; text-decoration: underline; text-underline-offset: 4px; transition: 0.3s; }
     .aks-prose a:hover { color: #c81f2a; }
 
-    /* ✅ 5. 文章末尾 B2B 轉換 CTA 區塊 */
+    /* ✅ 5. 專屬電腦版表格微調 (紅圈優化) */
+    @media (min-width: 992px) {
+        /* 第一欄縮小字體並限制寬度，逼迫 2x2 換行，釋放橫向空間 */
+        .aks-prose table th:first-child,
+        .aks-prose table td:first-child {
+            width: 75px; 
+            min-width: 75px;
+            font-size: 14px; 
+            padding: 15px 8px;
+            line-height: 1.6;
+            letter-spacing: 0.05em;
+        }
+        /* 搭配 Markdown 的 <br> 標籤，讓表頭行高更舒適 */
+        .aks-prose table th {
+            line-height: 1.5;
+            padding: 16px 15px;
+        }
+    }
+
+    /* ✅ 6. 文章末尾 B2B 轉換 CTA 區塊 */
     .aks-article-footer-cta { 
         max-width: 900px; margin: 60px auto 0; padding: 60px 40px; 
         background: linear-gradient(145deg, #111111 0%, #050505 100%);
@@ -142,7 +156,6 @@ layout: default
         .aks-article-body-wrapper { padding: 0 20px; }
         .aks-prose { font-size: 16px; line-height: 1.9; }
         .aks-prose h2 { font-size: 24px; margin-top: 2.5rem; }
-        /* 針對 FAQ 的手機版調整 */
         .aks-prose summary { font-size: 16px; }
         .aks-article-footer-cta { padding: 40px 20px; margin-top: 60px; }
         .aks-btn-accent, .aks-btn-secondary { width: 100%; text-align: center; }
