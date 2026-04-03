@@ -1,15 +1,160 @@
 ---
 layout: default
-title: "知識庫"
-permalink: /articles/
+title: "知識庫｜改色犀牛皮與防護指南 - AKS PPF"
+description: "AKS PPF 最專業的改色犀牛皮知識庫。從材質分析、優缺點比較到施工保養，提供你最全面的愛車防護指南。"
 ---
-<div class="articles-container">
-  <h1>AKS 知識庫與指南</h1>
-  <ul>
-    {% for post in site.articles %}
-      <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+<style>
+    /* ✅ 1. 列表頁專用 UI 樣式 (極致黑底) */
+    #aks-blog-index {
+        width: 100%; background-color: #050505; color: #f3f3f5;
+        padding-bottom: 120px; font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
+    }
+    #aks-blog-index * { box-sizing: border-box !important; }
+
+    /* ✅ 2. 列表頁純淨橫幅 (Hero Banner) */
+    .aks-index-hero {
+        position: relative; width: 100%; padding: 120px 20px 60px; text-align: center;
+        background: radial-gradient(circle at center, #1a1a1a 0%, #050505 70%);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        margin-bottom: 60px;
+    }
+    .aks-index-title {
+        font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
+        font-size: clamp(32px, 5vw, 56px); font-weight: 900; color: white;
+        margin: 0 0 15px 0; letter-spacing: 0.1em;
+    }
+    .aks-index-subtitle { font-size: 16px; color: #aaa; font-weight: 300; letter-spacing: 0.05em; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+    .aks-title-accent { color: #c81f2a; } /* 紅色點綴字 */
+
+    /* ✅ 3. 雜誌級網格佈局 (CSS Grid) */
+    .aks-grid-container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+    
+    .aks-article-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 40px;
+    }
+
+    /* ✅ 4. 文章卡片設計 (Card) */
+    .aks-card {
+        background: #111111; border-radius: 12px; overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.03);
+        text-decoration: none; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        display: flex; flex-direction: column; height: 100%;
+        position: relative;
+    }
+    /* 懸停：向上浮動 + 紅色底線光暈 */
+    .aks-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.8), 0 0 0 1px rgba(200,31,42,0.5);
+        border-bottom: 3px solid #c81f2a;
+    }
+
+    /* 卡片圖片區塊 */
+    .aks-card-img-wrap { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; position: relative; }
+    .aks-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
+    .aks-card:hover .aks-card-img-wrap img { transform: scale(1.08); } /* 圖片微放大特效 */
+    
+    /* 圖片上方的半透明遮罩 */
+    .aks-card-img-wrap::after {
+        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(180deg, transparent 50%, rgba(17,17,17,1) 100%);
+    }
+
+    /* 卡片文字區塊 */
+    .aks-card-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+    
+    /* 標籤與日期 */
+    .aks-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 12px; letter-spacing: 0.05em; }
+    .aks-card-tag { color: #c81f2a; font-weight: 700; background: rgba(200,31,42,0.1); padding: 4px 10px; border-radius: 4px; }
+    .aks-card-date { color: #777; font-weight: 300; }
+
+    /* 卡片標題：限制最多兩行 */
+    .aks-card-title {
+        font-size: 20px; font-weight: 800; color: white; margin: 0 0 12px 0; line-height: 1.4;
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    /* 卡片摘要：限制最多三行 */
+    .aks-card-excerpt {
+        font-size: 14px; color: #999; font-weight: 300; line-height: 1.7; margin: 0 0 20px 0; flex-grow: 1;
+        display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+
+    /* 閱讀更多按鈕 */
+    .aks-card-readmore { font-size: 13px; font-weight: 700; color: white; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+    .aks-card-readmore i { color: #c81f2a; transition: 0.3s; }
+    .aks-card:hover .aks-card-readmore { color: #c81f2a; }
+    .aks-card:hover .aks-card-readmore i { transform: translateX(5px); } /* 箭頭向右推特效 */
+
+    /* ✅ 無文章時的空狀態 */
+    .aks-empty-state { text-align: center; padding: 80px 20px; color: #666; font-size: 16px; width: 100%; grid-column: 1 / -1; }
+    .aks-empty-state i { font-size: 40px; margin-bottom: 15px; opacity: 0.5; }
+
+    /* ✅ RWD 回應式設計 */
+    @media (max-width: 768px) {
+        .aks-index-hero { padding: 80px 20px 40px; margin-bottom: 40px; }
+        .aks-index-title { font-size: 28px; }
+        .aks-article-grid { grid-template-columns: 1fr; gap: 30px; }
+        .aks-card-img-wrap { aspect-ratio: 16 / 9; }
+    }
+</style>
+
+<div id="aks-blog-index">
+    <header class="aks-index-hero io-reveal">
+        <h1 class="aks-index-title">INSIGHTS <span class="aks-title-accent">知識庫</span></h1>
+        <p class="aks-index-subtitle">深度解析改色犀牛皮技術與防護觀念，給你最專業的選購與保養指南。</p>
+    </header>
+
+    <main class="aks-grid-container">
+        <div class="aks-article-grid">
+            
+            {% comment %} 
+            聰明的迴圈邏輯：優先抓取 _articles 集合，如果沒有則抓取一般的 _posts 
+            {% endcomment %}
+            {% assign article_list = site.articles %}
+            {% if article_list.size == 0 or article_list == nil %}
+                {% assign article_list = site.posts %}
+            {% endif %}
+
+            {% if article_list.size > 0 %}
+                {% for article in article_list %}
+                <a href="{{ article.url | relative_url }}" class="aks-card io-reveal" data-delay="{{ forloop.index | modulo: 3 }}">
+                    <div class="aks-card-img-wrap">
+                        <img src="{{ article.image | default: '/assets/images/og-image.png' | relative_url }}" alt="{{ article.title }}">
+                    </div>
+                    <div class="aks-card-content">
+                        <div class="aks-card-meta">
+                            <span class="aks-card-tag">{{ article.tags.first | default: '最新文章' }}</span>
+                            <span class="aks-card-date">{{ article.last_modified_at | default: article.date | date: "%Y-%m-%d" }}</span>
+                        </div>
+                        <h2 class="aks-card-title">{{ article.title }}</h2>
+                        <p class="aks-card-excerpt">{{ article.description | default: article.excerpt | strip_html | truncate: 70 }}</p>
+                        <div class="aks-card-readmore">閱讀全文 <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                {% endfor %}
+            {% else %}
+                <div class="aks-empty-state io-reveal">
+                    <i class="fas fa-file-signature"></i>
+                    <p>目前知識庫還在建置中，敬請期待更多專業文章！</p>
+                </div>
+            {% endif %}
+
+        </div>
+    </main>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 卡片交錯進場動畫
+        const reveals = document.querySelectorAll('.io-reveal');
+        reveals.forEach((el, i) => {
+            const delay = el.getAttribute('data-delay') * 150 || 0;
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+                el.style.transition = 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)';
+            }, 100 + delay);
+        });
+    });
+</script>
