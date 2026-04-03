@@ -4,9 +4,9 @@ layout: default
 <style>
     #aks-case-root { width: 100%; background-color: #050505; color: #f3f3f5; padding-bottom: 120px; font-family: 'Montserrat', 'PingFang TC', sans-serif !important; }
     
-    /* 1. 英雄橫幅 (展示最帥的完工角度) */
+    /* 1. 英雄橫幅 (高度縮減，解決空一大截的問題) */
     .aks-case-hero {
-        position: relative; width: 100%; height: 65vh; min-height: 400px;
+        position: relative; width: 100%; height: 45vh; min-height: 350px;
         background-size: cover; background-position: center;
     }
     .aks-case-hero::before {
@@ -14,7 +14,7 @@ layout: default
         background: linear-gradient(180deg, rgba(5,5,5,0.2) 0%, rgba(5,5,5,0.7) 70%, #050505 100%);
     }
 
-    /* 2. 車型規格區塊 (浮動資訊卡) */
+    /* 2. 車型規格區塊 */
     .aks-case-spec-wrap { max-width: 1000px; margin: -60px auto 40px; position: relative; z-index: 10; padding: 0 25px; }
     .aks-case-spec-card {
         background: rgba(20, 20, 20, 0.95); backdrop-filter: blur(10px);
@@ -23,22 +23,40 @@ layout: default
         box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
     .aks-spec-item { border-left: 2px solid #c81f2a; padding-left: 15px; }
-    .aks-spec-label { font-size: 12px; color: #777; text-transform: uppercase; margin-bottom: 5px; }
+    .aks-spec-label { font-size: 12px; color: #777; text-transform: uppercase; margin-bottom: 5px; letter-spacing: 0.05em; }
     .aks-spec-value { font-size: 18px; font-weight: 800; color: white; }
 
-    /* 3. 內容排版 */
+    /* 3. 內容排版 (導入文章等級的高級閱讀排版) */
     .aks-case-body { max-width: 900px; margin: 0 auto; padding: 0 25px; }
-    .aks-case-title { font-size: clamp(28px, 4vw, 42px); font-weight: 900; color: white; margin-bottom: 20px; text-align: center; }
-    .aks-case-desc { font-size: 17px; line-height: 1.8; color: #aaa; margin-bottom: 50px; font-weight: 300; }
+    .aks-case-title { font-size: clamp(28px, 4vw, 42px); font-weight: 900; color: white; margin-bottom: 40px; text-align: center; line-height: 1.3;}
     
-    /* 讓 Markdown 圖片自動變成精美畫廊 */
-    .aks-case-content img { width: 100%; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .aks-case-content { font-size: 17px; line-height: 2.2; color: #d1d5db; font-weight: 300; letter-spacing: 0.05em; }
+    .aks-case-content p { margin-bottom: 2rem; }
+    .aks-case-content strong { color: white; font-weight: 700; background-color: rgba(200,31,42,0.1); padding: 0 4px; }
+    
+    /* 內文標題樣式 (如：施工及成品照) */
+    .aks-case-content h2 { 
+        font-size: 26px; font-weight: 800; color: white; margin: 4rem 0 2.5rem; 
+        border-left: 4px solid #c81f2a; padding-left: 15px; 
+    }
+
+    /* 讓 Markdown 圖片自動變成精美畫廊，增加陰影與間距 */
+    .aks-case-content img { width: 100%; border-radius: 8px; margin-bottom: 3.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.6); display: block; }
+    
+    /* 4. 底部 CTA */
+    .aks-case-footer { margin-top: 80px; text-align: center; }
+    .aks-case-footer a { 
+        display: inline-block; background: #c81f2a; color: white; padding: 18px 40px; 
+        border-radius: 6px; text-decoration: none; font-weight: 800; letter-spacing: 0.1em;
+        transition: 0.3s; box-shadow: 0 4px 15px rgba(200,31,42,0.3);
+    }
+    .aks-case-footer a:hover { background: #e02431; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(200,31,42,0.5); }
 </style>
 
 <div id="aks-case-root">
-    <header class="aks-case-hero" style="background-image: url('{{ page.image }}');"></header>
+    <header class="aks-case-hero io-reveal" style="background-image: url('{% if page.hero_image %}{{ page.hero_image }}{% elsif page.image %}{{ page.image }}{% else %}{{ '/assets/images/og-image.png' | relative_url }}{% endif %}');"></header>
 
-    <div class="aks-case-spec-wrap io-reveal">
+    <div class="aks-case-spec-wrap io-reveal" data-delay="1">
         <div class="aks-case-spec-card">
             <div class="aks-spec-item">
                 <div class="aks-spec-label">Car Model</div>
@@ -56,13 +74,26 @@ layout: default
     </div>
 
     <article class="aks-case-body">
-        <h1 class="aks-case-title io-reveal" data-delay="1">{{ page.title }}</h1>
-        <div class="aks-case-content aks-font-clean io-reveal" data-delay="2">
+        <h1 class="aks-case-title io-reveal" data-delay="2">{{ page.title }}</h1>
+        <div class="aks-case-content aks-font-clean io-reveal" data-delay="3">
             {{ content }}
         </div>
         
-        <footer style="margin-top: 80px; text-align: center;">
-            <a href="{{ '/pages/color-chart/' | relative_url }}" style="background:#c81f2a; color:white; padding:18px 40px; border-radius:6px; text-decoration:none; font-weight:800; letter-spacing:1px;">我也要這款配色 ➔</a>
+        <footer class="aks-case-footer io-reveal" data-delay="4">
+            <a href="{{ '/pages/color-chart/' | relative_url }}">我也要這款配色 ➔</a>
         </footer>
     </article>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const reveals = document.querySelectorAll('.io-reveal');
+        reveals.forEach((el, i) => {
+            const delay = el.getAttribute('data-delay') * 150 || 0;
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 100 + delay);
+        });
+    });
+</script>
