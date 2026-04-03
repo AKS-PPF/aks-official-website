@@ -2,7 +2,7 @@
 layout: single-case
 title: "施工車輛分享 - BMW M4 Competition"
 description: "BMW M4 Competition 貼膜全紀錄。由羅柏汽車貼膜施作，外觀與內裝全面使用 AKS GL-70 亮面犀牛皮，電腦版型搭配手工裁切，完美保護碳纖維飾板與原車漆。"
-image: "https://cdn.cybassets.com/media/W1siZiIsIjI2MDk2L2Jsb2dzLzUzOTk1L0xJTkVfQUxCVU1fTTQg56S-576k6LK85paHXzI1MDYyNV8xXzdkYWFjODA4ZWEzYTJlNGMyNjNmLmpwZWciXSxbInAiLCJ0aHVtYiIsIjUwMHg1MDAiXV0.jpeg"
+image: "[https://cdn.cybassets.com/media/W1siZiIsIjI2MDk2L2Jsb2dzLzUzOTk1L0xJTkVfQUxCVU1fTTQg56S-576k6LK85paHXzI1MDYyNV8xXzdkYWFjODA4ZWEzYTJlNGMyNjNmLmpwZWciXSxbInAiLCJ0aHVtYiIsIjUwMHg1MDAiXV0.jpeg](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_855945f6-1f41-4f99-8b86-26ea8cc43b2d.jpg)"
 date: 2025-06-26
 car_model: "BMW M4 Competition"
 film_color: "GL-70 亮面犀牛皮"
