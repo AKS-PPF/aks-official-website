@@ -35,7 +35,7 @@
       "description": "{{ page.description }}"
     }
 
-    {% comment %} 2. 獨立色卡頁面 (To B 產品展示，全動態 SEO 優化版) {% endcomment %}
+    {% comment %} 2. 獨立色卡頁面 {% endcomment %}
     {%- elsif current_path contains '/pages/color-chart/' and current_path != '/pages/color-chart/' -%}
     ,{
       "@type": "Product",
@@ -54,24 +54,29 @@
       }
     }
 
-    {% comment %} 3. 線上色卡、作品集、知識庫「總覽頁面」 (CollectionPage) {% endcomment %}
-    {%- elsif current_path == '/pages/color-chart/' or current_path == '/cases/' or current_path == '/articles/' -%}
+    {% comment %} 3. 總覽頁面 (CollectionPage) - 🚀 修正路徑與補上圖片屬性 {% endcomment %}
+    {%- elsif current_path == '/pages/color-chart/' or current_path == '/cases/' or current_path == '/pages/cases/' or current_path == '/articles/' or current_path == '/pages/articles/' -%}
     ,{
       "@type": "CollectionPage",
       "@id": "{{ site.url }}{{ page.url }}#collection",
       "name": "{{ page.title }}",
       "description": "{{ page.description | default: 'AKS PPF 頂級改色犀牛皮與施工案例總覽。' }}",
+      "image": [
+        "{% if page.hero_image %}{{ page.hero_image }}{% elsif page.image %}{{ page.image }}{% else %}{{ site.url }}/assets/images/og-image.png{% endif %}"
+      ],
       "isPartOf": { "@id": "{{ site.url }}/#website" }
     }
 
-    {% comment %} 4. 店家作品集獨立頁面 (Article + Vehicle 屬性) {% endcomment %}
-    {%- elsif current_path contains '/cases/' and current_path != '/cases/' -%}
+    {% comment %} 4. 店家作品集獨立頁面 (Article + Vehicle) {% endcomment %}
+    {%- elsif current_path contains '/cases/' and current_path != '/cases/' and current_path != '/pages/cases/' -%}
     ,{
       "@type": "Article",
       "@id": "{{ site.url }}{{ page.url }}#case",
       "headline": "{{ page.title }}",
       "description": "{{ page.description }}",
-      "image": ["{{ page.image }}"],
+      "image": [
+        "{% if page.image %}{{ page.image }}{% else %}{{ site.url }}/assets/images/og-image.png{% endif %}"
+      ],
       "author": { "@id": "{{ site.url }}/#organization" },
       "about": {
         "@type": "Vehicle",
@@ -79,14 +84,16 @@
       }
     }
 
-    {% comment %} 5. SEO 知識文章獨立頁面 (Article) {% endcomment %}
-    {%- elsif current_path contains '/articles/' and current_path != '/articles/' -%}
+    {% comment %} 5. SEO 知識文章獨立頁面 (Article) - 🚀 排除總覽頁路徑與補上圖片防呆 {% endcomment %}
+    {%- elsif current_path contains '/articles/' and current_path != '/articles/' and current_path != '/pages/articles/' -%}
     ,{
       "@type": "Article",
       "@id": "{{ site.url }}{{ page.url }}#article",
       "headline": "{{ page.title }}",
       "description": "{{ page.description }}",
-      "image": ["{{ page.image }}"],
+      "image": [
+        "{% if page.image %}{{ page.image }}{% else %}{{ site.url }}/assets/images/og-image.png{% endif %}"
+      ],
       "datePublished": "{{ page.date | date_to_xmlschema }}",
       "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
       "author": { "@id": "{{ site.url }}/#organization" }
@@ -98,7 +105,9 @@
       "@type": "Product",
       "@id": "{{ site.url }}{{ page.url }}#product",
       "name": "{{ page.title }}",
-      "image": ["{{ page.image }}"],
+      "image": [
+        "{% if page.image %}{{ page.image }}{% else %}{{ site.url }}/assets/images/og-image.png{% endif %}"
+      ],
       "description": "{{ page.description }}",
       "brand": { "@id": "{{ site.url }}/#organization" }
     }
@@ -109,7 +118,9 @@
       "@type": "LocalBusiness",
       "@id": "{{ site.url }}{{ page.url }}#localbusiness",
       "name": "{{ page.title }}",
-      "image": ["{{ page.image }}"],
+      "image": [
+        "{% if page.image %}{{ page.image }}{% else %}{{ site.url }}/assets/images/og-image.png{% endif %}"
+      ],
       "telephone": "{{ page.phone }}",
       "address": {
         "@type": "PostalAddress",
@@ -117,7 +128,7 @@
       }
     }
 
-    {% comment %} 9. 一般通用網頁 (防漏網之魚，如保固、招商頁面等) {% endcomment %}
+    {% comment %} 9. 一般通用網頁 {% endcomment %}
     {%- else -%}
     ,{
       "@type": "WebPage",
@@ -129,7 +140,7 @@
     }
     {%- endif -%}
 
-    {% comment %} 8. 動態 FAQ 注入 (全站適用，只要 MD 有 faq 欄位即觸發) {% endcomment %}
+    {% comment %} 8. 動態 FAQ 注入 {% endcomment %}
     {%- if page.faq -%}
     ,{
       "@type": "FAQPage",
