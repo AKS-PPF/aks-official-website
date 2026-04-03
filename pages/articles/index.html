@@ -1,24 +1,23 @@
 ---
 layout: default
-title: "AKS PPF 官方知識庫｜全台最齊全改色犀牛皮與車漆防護指南"
-description: "AKS PPF 最專業的改色犀牛皮 Insights。深度解析改色犀牛皮（Color PPF）與車漆保護膜技術。涵蓋優缺點比較、價格行情與保養建議，給你最專業的貼膜選購指南。"
+title: "AKS 貼膜FAQ"
+description: "深度解析改色犀牛皮（Color PPF）與犀牛皮（PPF）車漆保護膜技術。涵蓋優缺點比較、價格行情與保養建議，給你最專業的貼膜選購指南。"
 hero_image: "https://aks-ppf.github.io/images/ui/products/COLOR-PPF-BOTTOM%20CTA.png"
 ---
 <style>
-    /* ✅ 1. 總覽頁專用 UI 樣式 (極致黑底) */
+    /* ✅ 1. 知識庫總覽 UI 樣式 */
     #aks-insights-index {
         width: 100%; background-color: #050505; color: #f3f3f5;
         font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
     }
     #aks-insights-index * { box-sizing: border-box !important; }
 
-    /* ✅ 2. 完美比例橫幅 (約一半螢幕高度 + 底部漸層融入) */
+    /* ✅ 2. 優化比例橫幅 (50vh) */
     .aks-magazine-hero {
         position: relative; width: 100%; height: 50vh; min-height: 380px; 
         background-size: cover; background-position: center; background-repeat: no-repeat;
         display: flex; align-items: center; justify-content: center; text-align: center;
     }
-    /* 暗化漸層：上方微透，下方完美融入 #050505 黑色背景 */
     .aks-magazine-hero::before {
         content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background: linear-gradient(180deg, rgba(5,5,5,0.4) 0%, rgba(5,5,5,0.7) 60%, #050505 100%);
@@ -26,28 +25,23 @@ hero_image: "https://aks-ppf.github.io/images/ui/products/COLOR-PPF-BOTTOM%20CTA
     }
     .aks-hero-content { position: relative; z-index: 2; padding: 0 20px; max-width: 900px; }
     
+    /* 配合你的需求：H1 標題與內文 */
     .aks-index-title {
         font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
-        font-size: clamp(40px, 6vw, 72px); font-weight: 900; color: white;
-        margin: 0 0 15px 0; letter-spacing: 0.15em; line-height: 1.1;
+        font-size: clamp(36px, 6vw, 64px); font-weight: 900; color: white;
+        margin: 0 0 20px 0; letter-spacing: 0.1em; line-height: 1.2;
         text-shadow: 0 4px 20px rgba(0,0,0,0.6);
     }
-    .aks-title-accent { color: #c81f2a; } 
     .aks-index-subtitle { 
-        font-size: clamp(15px, 2vw, 18px); color: rgba(255,255,255,0.8); 
-        font-weight: 300; letter-spacing: 0.08em; line-height: 1.8; 
+        font-size: clamp(15px, 2vw, 17px); color: rgba(255,255,255,0.8); 
+        font-weight: 300; letter-spacing: 0.05em; line-height: 1.8; 
     }
 
-    /* ✅ 3. 下方文章網格區塊 */
+    /* ✅ 3. 文章網格佈局 */
     .aks-grid-container { max-width: 1200px; margin: 0 auto; padding: 40px 25px 120px; }
-    
-    .aks-article-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 40px;
-    }
+    .aks-article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 40px; }
 
-    /* ✅ 4. 文章卡片設計 (Card) */
+    /* ✅ 4. 文章卡片 (維持超跑質感) */
     .aks-card {
         background: #111111; border-radius: 12px; overflow: hidden;
         border: 1px solid rgba(255,255,255,0.03);
@@ -55,26 +49,23 @@ hero_image: "https://aks-ppf.github.io/images/ui/products/COLOR-PPF-BOTTOM%20CTA
         display: flex; flex-direction: column; height: 100%; position: relative;
     }
     .aks-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.8), 0 0 0 1px rgba(200,31,42,0.5); border-bottom: 3px solid #c81f2a; }
+    
     .aks-card-img-wrap { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; position: relative; }
     .aks-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
     .aks-card:hover .aks-card-img-wrap img { transform: scale(1.08); } 
     .aks-card-img-wrap::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, transparent 50%, rgba(17,17,17,1) 100%); }
+    
     .aks-card-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
-    .aks-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 12px; letter-spacing: 0.05em; }
+    .aks-card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 12px; color: #777; }
     .aks-card-tag { color: #c81f2a; font-weight: 700; background: rgba(200,31,42,0.1); padding: 4px 10px; border-radius: 4px; }
-    .aks-card-date { color: #777; font-weight: 300; }
+    
     .aks-card-title { font-size: 20px; font-weight: 800; color: white; margin: 0 0 12px 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .aks-card-excerpt { font-size: 14px; color: #999; font-weight: 300; line-height: 1.7; margin: 0 0 20px 0; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    
     .aks-card-readmore { font-size: 13px; font-weight: 700; color: white; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
-    .aks-card-readmore i { color: #c81f2a; transition: 0.3s; }
     .aks-card:hover .aks-card-readmore { color: #c81f2a; }
-    .aks-card:hover .aks-card-readmore i { transform: translateX(5px); } 
-    .aks-empty-state { text-align: center; padding: 80px 20px; color: #666; font-size: 16px; grid-column: 1 / -1; }
-    .aks-empty-state i { font-size: 40px; margin-bottom: 15px; opacity: 0.5; }
 
-    /* ✅ RWD */
     @media (max-width: 768px) {
-        .aks-index-title { font-size: 32px; }
         .aks-article-grid { grid-template-columns: 1fr; gap: 30px; }
     }
 </style>
@@ -82,43 +73,32 @@ hero_image: "https://aks-ppf.github.io/images/ui/products/COLOR-PPF-BOTTOM%20CTA
 <div id="aks-insights-index">
     <header class="aks-magazine-hero io-reveal" style="background-image: url('{{ page.hero_image }}');">
         <div class="aks-hero-content">
-            <h1 class="aks-index-title">INSIGHTS<br><span class="aks-title-accent">知識庫</span></h1>
-            <p class="aks-index-subtitle">深度解析改色犀牛皮（Color PPF）與車漆保護膜技術。涵蓋優缺點比較、價格行情與保養建議，給你最專業的貼膜選購指南。</p>
+            <h1 class="aks-index-title">貼膜前必看 FAQ</h1>
+            <p class="aks-index-subtitle">{{ page.description }}</p>
         </div>
     </header>
 
     <main class="aks-grid-container">
         <div class="aks-article-grid">
-            
             {% assign article_list = site.articles | sort: 'date' | reverse %}
-            {% if article_list.size == 0 or article_list == nil %}
-                {% assign article_list = site.posts | sort: 'date' | reverse %}
-            {% endif %}
+            {% if article_list.size == 0 %}{% assign article_list = site.posts | sort: 'date' | reverse %}{% endif %}
 
-            {% if article_list.size > 0 %}
-                {% for article in article_list %}
-                <a href="{{ article.url | relative_url }}" class="aks-card io-reveal" data-delay="{{ forloop.index | modulo: 3 }}">
-                    <div class="aks-card-img-wrap">
-                        <img src="{{ article.image | default: '/assets/images/og-image.png' | relative_url }}" alt="{{ article.title }}">
-                    </div>
-                    <div class="aks-card-content">
-                        <div class="aks-card-meta">
-                            <span class="aks-card-tag">{{ article.tags.first | default: '最新文章' }}</span>
-                            <span class="aks-card-date">{{ article.last_modified_at | default: article.date | date: "%Y-%m-%d" }}</span>
-                        </div>
-                        <h2 class="aks-card-title">{{ article.title }}</h2>
-                        <p class="aks-card-excerpt">{{ article.description | default: article.excerpt | strip_html | truncate: 70 }}</p>
-                        <div class="aks-card-readmore">閱讀全文 <i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </a>
-                {% endfor %}
-            {% else %}
-                <div class="aks-empty-state io-reveal">
-                    <i class="fas fa-file-signature"></i>
-                    <p>專業文章建置中，敬請期待！</p>
+            {% for article in article_list %}
+            <a href="{{ article.url | relative_url }}" class="aks-card io-reveal" data-delay="{{ forloop.index | modulo: 3 }}">
+                <div class="aks-card-img-wrap">
+                    <img src="{{ article.image | default: '/assets/images/og-image.png' | relative_url }}" alt="{{ article.title }}">
                 </div>
-            {% endif %}
-
+                <div class="aks-card-content">
+                    <div class="aks-card-meta">
+                        <span class="aks-card-tag">{{ article.tags.first | default: '最新文章' }}</span>
+                        <span class="aks-card-date">{{ article.last_modified_at | default: article.date | date: "%Y-%m-%d" }}</span>
+                    </div>
+                    <h2 class="aks-card-title">{{ article.title }}</h2>
+                    <p class="aks-card-excerpt">{{ article.description | default: article.excerpt | strip_html | truncate: 80 }}</p>
+                    <div class="aks-card-readmore">閱讀全文 <i class="fas fa-arrow-right"></i></div>
+                </div>
+            </a>
+            {% endfor %}
         </div>
     </main>
 </div>
