@@ -103,22 +103,20 @@ layout: default
     .aks-prose a { color: white; text-decoration: underline; text-underline-offset: 4px; transition: 0.3s; }
     .aks-prose a:hover { color: #c81f2a; }
 
-    /* ✅ 5. 專屬電腦版表格微調 (紅圈優化) */
+/* ✅ 5. 專屬電腦版表格微調 (讓第一欄保持 4 個字一排，絕對不換行) */
     @media (min-width: 992px) {
-        /* 第一欄縮小字體並限制寬度，逼迫 2x2 換行，釋放橫向空間 */
         .aks-prose table th:first-child,
         .aks-prose table td:first-child {
-            width: 75px; 
-            min-width: 75px;
-            font-size: 14px; 
-            padding: 15px 8px;
-            line-height: 1.6;
+            width: auto; /* 取消原本太窄的限制，讓它自然伸展 */
+            min-width: 100px; /* 給它剛好夠放四個中文字+左右 padding 的空間 */
+            font-size: 15px; 
+            padding: 15px 15px !important;
             letter-spacing: 0.05em;
+            white-space: nowrap !important; /* 🔥 核心魔法：強制這欄無論如何都不准換行！ */
         }
         /* 搭配 Markdown 的 <br> 標籤，讓表頭行高更舒適 */
         .aks-prose table th {
             line-height: 1.5;
-            padding: 16px 15px;
         }
     }
 
