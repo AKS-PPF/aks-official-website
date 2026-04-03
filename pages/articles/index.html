@@ -1,10 +1,8 @@
 ---
 layout: default
-# 🔥 SEO 頂級大神推薦標題 (權威感 + 核心關鍵字)
 title: "AKS PPF 官方知識庫｜全台最齊全改色犀牛皮與車漆防護指南"
-description: "AKS PPF 最專業的改色犀牛皮 Insights。從材質分析、優缺點比較、價格行情到施工保養，提供你最全面的愛車防護指南與 FAQ。"
-# 🔥 在此設定滿版大底圖的網址 (你可以換成你們帥氣的完工大圖)
-hero_image: "https://aks-ppf.github.io/images/ui/distributor/join-bn.png"
+description: "AKS PPF 最專業的改色犀牛皮 Insights。深度解析改色犀牛皮（Color PPF）與車漆保護膜技術。涵蓋優缺點比較、價格行情與保養建議，給你最專業的貼膜選購指南。"
+hero_image: "https://aks-ppf.github.io/images/ui/products/COLOR-PPF-BOTTOM%20CTA.png"
 ---
 <style>
     /* ✅ 1. 總覽頁專用 UI 樣式 (極致黑底) */
@@ -14,42 +12,34 @@ hero_image: "https://aks-ppf.github.io/images/ui/distributor/join-bn.png"
     }
     #aks-insights-index * { box-sizing: border-box !important; }
 
-    /* ✅ 2. 雜誌封面級滿版大底圖 (Pillar Page Banner) */
+    /* ✅ 2. 完美比例橫幅 (約一半螢幕高度 + 底部漸層融入) */
     .aks-magazine-hero {
-        position: relative; width: 100%; height: 100vh; /* 🔥 強制滿版全螢幕 */
+        position: relative; width: 100%; height: 50vh; min-height: 380px; 
         background-size: cover; background-position: center; background-repeat: no-repeat;
         display: flex; align-items: center; justify-content: center; text-align: center;
     }
-    /* 雙重遮罩：上方黑(對齊導覽列)，下方漸層(對齊內容)，中間暗化確保文字清晰 */
+    /* 暗化漸層：上方微透，下方完美融入 #050505 黑色背景 */
     .aks-magazine-hero::before {
         content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        background: 
-            linear-gradient(180deg, rgba(5,5,5,0.8) 0%, rgba(5,5,5,0.3) 15%, transparent 40%),
-            linear-gradient(180deg, transparent 50%, rgba(5,5,5,0.8) 80%, #050505 100%),
-            rgba(0,0,0,0.4); /* 中間暗化 */
+        background: linear-gradient(180deg, rgba(5,5,5,0.4) 0%, rgba(5,5,5,0.7) 60%, #050505 100%);
         z-index: 1;
     }
-    .aks-hero-content { position: relative; z-index: 2; padding: 0 20px; max-width: 800px; }
+    .aks-hero-content { position: relative; z-index: 2; padding: 0 20px; max-width: 900px; }
     
     .aks-index-title {
         font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
-        font-size: clamp(48px, 8vw, 96px); font-weight: 900; color: white;
-        margin: 0 0 20px 0; letter-spacing: 0.15em; line-height: 1.1;
-        text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        font-size: clamp(40px, 6vw, 72px); font-weight: 900; color: white;
+        margin: 0 0 15px 0; letter-spacing: 0.15em; line-height: 1.1;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.6);
     }
-    .aks-title-accent { color: #c81f2a; } /* 紅色點綴字 */
-    .aks-index-subtitle { font-size: clamp(16px, 2vw, 20px); color: rgba(255,255,255,0.8); font-weight: 300; letter-spacing: 0.1em; line-height: 1.6; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-    
-    /* 下滑指示器 (捲動視覺引導) */
-    .aks-scroll-down {
-        position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-        z-index: 3; color: white; opacity: 0.6; animation: aksBounce 2s infinite;
-        font-size: 24px; text-decoration: none;
+    .aks-title-accent { color: #c81f2a; } 
+    .aks-index-subtitle { 
+        font-size: clamp(15px, 2vw, 18px); color: rgba(255,255,255,0.8); 
+        font-weight: 300; letter-spacing: 0.08em; line-height: 1.8; 
     }
-    @keyframes aksBounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-10px) translateX(-50%); } 60% { transform: translateY(-5px) translateX(-50%); } }
 
-    /* ✅ 3. 下方文章網格區塊 (與內容頁同樣的閱讀寬度 1200px) */
-    .aks-grid-container { max-width: 1200px; margin: 0 auto; padding: 100px 25px 120px; }
+    /* ✅ 3. 下方文章網格區塊 */
+    .aks-grid-container { max-width: 1200px; margin: 0 auto; padding: 40px 25px 120px; }
     
     .aks-article-grid {
         display: grid;
@@ -84,28 +74,22 @@ hero_image: "https://aks-ppf.github.io/images/ui/distributor/join-bn.png"
 
     /* ✅ RWD */
     @media (max-width: 768px) {
-        .aks-index-title { font-size: 36px; }
+        .aks-index-title { font-size: 32px; }
         .aks-article-grid { grid-template-columns: 1fr; gap: 30px; }
     }
 </style>
 
 <div id="aks-insights-index">
-    <header class="aks-magazine-hero io-reveal" style="background-image: url('{{ page.hero_image | default: '/assets/images/og-image.png' | relative_url }}');">
+    <header class="aks-magazine-hero io-reveal" style="background-image: url('{{ page.hero_image }}');">
         <div class="aks-hero-content">
             <h1 class="aks-index-title">INSIGHTS<br><span class="aks-title-accent">知識庫</span></h1>
-            <p class="aks-index-subtitle">深度解析改色犀牛皮技術與防護觀念，給你最專業的選購指南。</p>
+            <p class="aks-index-subtitle">深度解析改色犀牛皮（Color PPF）與車漆保護膜技術。涵蓋優缺點比較、價格行情與保養建議，給你最專業的貼膜選購指南。</p>
         </div>
-        <a href="#aks-content" class="aks-scroll-down"><i class="fas fa-angle-down"></i></a>
     </header>
-
-    <div id="aks-content"></div>
 
     <main class="aks-grid-container">
         <div class="aks-article-grid">
             
-            {% comment %} 
-            聰明的迴圈邏輯：我們這是在 articles/index.html，所以 site.articles 就會抓到檔案放在 _articles 集合裡的文章
-            {% endcomment %}
             {% assign article_list = site.articles | sort: 'date' | reverse %}
             {% if article_list.size == 0 or article_list == nil %}
                 {% assign article_list = site.posts | sort: 'date' | reverse %}
@@ -141,7 +125,6 @@ hero_image: "https://aks-ppf.github.io/images/ui/distributor/join-bn.png"
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // 卡片交錯進場動畫
         const reveals = document.querySelectorAll('.io-reveal');
         reveals.forEach((el, i) => {
             const delay = el.getAttribute('data-delay') * 150 || 0;
