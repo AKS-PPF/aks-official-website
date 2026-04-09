@@ -11,7 +11,6 @@ tags: [McLaren 720S包膜, 汽車包膜, 亮面犀牛皮]
 cta_link: "/pages/dealers/taipei/"
 ---
 
-【施工車輛分享】
 本次施工車輛為 McLaren 720S
 由北投專業超跑貼膜名店 [DW22專業車體防護](https://www.instagram.com/dw22_lifestyle/?next=%2F) 施工完成✨
 採用精準版型裁切，全程無需拆卸任何零件，保障愛車完整性💪
