@@ -6,9 +6,9 @@ image: "https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_85594
 date: 2025-06-26
 car_model: "BMW M4 Competition"
 film_color: "GL-70 亮面犀牛皮"
-location: "台北 - 羅柏汽車貼膜"
+location: "新北蘆洲 - 羅柏汽車貼膜"
 tags: [BMW M4 Competition包膜, 汽車包膜, 亮面犀牛皮]
-cta_link: "{{ '/pages/dealers/' | relative_url }}"
+cta_link: "/pages/dealers/newtaipei/"
 ---
 
 這次分享的是性能與美感兼具的 BMW M4 Competition，由專業店家 **羅柏汽車貼膜** 施作。外觀與內裝全面使用「AKS GL-70 亮面犀牛皮」，打造極致保護與質感。

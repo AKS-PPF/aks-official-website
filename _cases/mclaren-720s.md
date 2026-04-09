@@ -8,7 +8,7 @@ car_model: "McLaren 720S"
 film_color: "AKS GL-70 亮面犀牛皮"
 location: "台北北投 - DW22專業車體防護"
 tags: [McLaren 720S包膜, 汽車包膜, 亮面犀牛皮]
-cta_link: "{{ '/pages/dealers/' | relative_url }}"
+cta_link: "/pages/dealers/taipei/"
 ---
 
 【施工車輛分享】
