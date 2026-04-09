@@ -3,7 +3,7 @@ layout: single-case
 title: "施工車輛分享 - Tesla Model 3"
 description: "由羅柏汽車貼膜操刀，為 Tesla Model 3 亮黑原漆升級 AKS MA-70 消光犀牛皮。精準電腦版型擴版結合手工裁切完美貼合，有效掩蓋漆面瑕疵，展現霸氣消光黑質感，並提供 5 年保固。"
 image: "https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_51d176be-b7b6-4b9c-bc90-1c0a34bcb95e.jpg"
-date: 2026-04-09
+date: 2025-04-25
 car_model: "Tesla Model 3"
 film_color: "AKS MA-70 消光犀牛皮"
 location: "新北蘆洲 - 羅柏汽車貼膜"
