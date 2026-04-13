@@ -368,25 +368,6 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
     margin:38px 0;
   }
 
-  .aks-home-wrapper #aksHomeBlocks .aks-skeleton{
-    border-radius:22px;
-    overflow:hidden;
-    background:rgba(255,255,255,.04);
-    min-height:340px;
-    position:relative;
-  }
-  .aks-home-wrapper #aksHomeBlocks .aks-skeleton:before{
-    content:"";
-    position:absolute; inset:0;
-    background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
-    transform:translateX(-100%);
-    animation: aksHomeShimmer 1.2s infinite;
-  }
-  @keyframes aksHomeShimmer{
-    0%{ transform:translateX(-100%); }
-    100%{ transform:translateX(100%); }
-  }
-
   @media (prefers-reduced-motion: reduce){
     .aks-home-wrapper #aksHomeBlocks .aks-card,
     .aks-home-wrapper #aksHomeBlocks .aks-btn,
@@ -395,15 +376,11 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
     .aks-home-wrapper .io-reveal{
       transition:none !important;
     }
-    .aks-home-wrapper #aksHomeBlocks .aks-skeleton:before{
-      animation:none !important;
-    }
   }
 </style>
 
 <div class="aks-home-wrapper">
 
-  <!-- 區塊 1：滿版主視覺 -->
   <section class="aks-porsche-hero relative h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505]">
     <div class="absolute inset-0 z-0 bg-black">
       <img
@@ -490,7 +467,6 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
     </div>
   </section>
 
-  <!-- 區塊 2：三張功能卡 -->
   <section class="relative py-16 md:py-32 bg-[#050505] font-sans overflow-hidden">
     <div class="max-w-7xl mx-auto px-8 md:px-6 mb-10 md:mb-16 text-center io-reveal" data-delay="1">
       <h2 class="text-[18px] md:text-[28px] font-bold text-white tracking-[0.15em] mb-3 md:mb-4 leading-[1.6] md:leading-snug" style="font-family: 'Montserrat', 'PingFang TC', sans-serif;">
@@ -629,7 +605,6 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
     </div>
   </section>
 
-  <!-- 區塊 3：旗艦產品輪播 -->
   <section class="text-white py-20 md:py-32 overflow-hidden bg-[#050505]" id="aks-flagship-products">
     <div class="container mx-auto md:px-[5%] relative">
       <div class="mb-12 md:mb-20 text-center io-reveal px-2 md:px-0">
@@ -872,7 +847,6 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
     </div>
   </section>
 
-  <!-- 區塊 4：施工作品 / FAQ -->
   <section class="aks-homeblocks" id="aksHomeBlocks">
     <div class="aks-wrap">
 
@@ -897,9 +871,15 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
         </button>
 
         <div class="aks-track" data-track="works" role="list" aria-label="授權店家施工作品卡片列表">
-          <div class="aks-skeleton"></div>
-          <div class="aks-skeleton"></div>
-          <div class="aks-skeleton"></div>
+          {% for case in site.cases limit:8 %}
+          <a class="aks-card" role="listitem" href="{{ case.url | relative_url }}">
+            <div class="aks-media">
+              <div class="aks-corner" aria-hidden="true">↗</div>
+              <img src="{% if case.image %}{{ case.image }}{% else %}{{ '/assets/images/og-image.png' | relative_url }}{% endif %}" alt="{{ case.title }}">
+              <div class="aks-overlay" aria-hidden="true"></div>
+            </div>
+          </a>
+          {% endfor %}
         </div>
 
         <button class="aks-nav right" type="button" aria-label="下一個">
@@ -931,9 +911,15 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
         </button>
 
         <div class="aks-track" data-track="faq" role="list" aria-label="貼膜小知識卡片列表">
-          <div class="aks-skeleton"></div>
-          <div class="aks-skeleton"></div>
-          <div class="aks-skeleton"></div>
+          {% for article in site.articles limit:8 %}
+          <a class="aks-card" role="listitem" href="{{ article.url | relative_url }}">
+            <div class="aks-media">
+              <div class="aks-corner" aria-hidden="true">↗</div>
+              <img src="{% if article.image %}{{ article.image }}{% else %}{{ '/assets/images/og-image.png' | relative_url }}{% endif %}" alt="{{ article.title }}">
+              <div class="aks-overlay" aria-hidden="true"></div>
+            </div>
+          </a>
+          {% endfor %}
         </div>
 
         <button class="aks-nav right" type="button" aria-label="下一個">
@@ -1151,23 +1137,14 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
     })();
 
     /* =========================
-       區塊 4：Works / FAQ 動態卡片
+       區塊 4：Works / FAQ 輪播按鈕 (Liquid 版本)
     ========================= */
-    (function homeBlocks() {
+    (function homeBlocksCarousel() {
       const homeBlocks = root.querySelector('#aksHomeBlocks');
       if (!homeBlocks) return;
 
-      const CFG = {
-        worksIndex: "https://www.aks-ppf.com/blogs/aks-%E9%85%8D%E5%90%88%E5%BA%97%E5%AE%B6%E6%96%BD%E5%B7%A5%E4%BD%9C%E5%93%81",
-        faqIndex: "https://www.aks-ppf.com/blogs/%E7%8A%80%E7%89%9B%E7%9A%AE%E5%B8%B8%E8%A6%8B%E5%95%8F%E7%AD%94",
-        maxPostsPerSection: 60,
-        concurrency: 6
-      };
-
-      const $$ = (sel, scope = document) => Array.from(scope.querySelectorAll(sel));
-      const $ = (sel, scope = document) => scope.querySelector(sel);
-
-      function setupCarousel(block) {
+      const carousels = homeBlocks.querySelectorAll(".aks-carousel");
+      carousels.forEach(block => {
         const track = block.querySelector(".aks-track");
         const btnL = block.querySelector(".aks-nav.left");
         const btnR = block.querySelector(".aks-nav.right");
@@ -1183,136 +1160,7 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
 
         btnL.addEventListener("click", () => track.scrollBy({ left: -getStep(), behavior: "smooth" }));
         btnR.addEventListener("click", () => track.scrollBy({ left:  getStep(), behavior: "smooth" }));
-      }
-
-      async function fetchText(url) {
-        const res = await fetch(url, { credentials: "omit" });
-        if (!res.ok) throw new Error("Fetch failed: " + res.status + " " + url);
-        return await res.text();
-      }
-
-      function parseHTML(html) {
-        return new DOMParser().parseFromString(html, "text/html");
-      }
-
-      function extractPostLinksFromIndexDoc(doc) {
-        const anchors = $$('a[href*="/blogs/"]', doc);
-        const links = anchors
-          .map(a => a.getAttribute("href") || "")
-          .filter(href => /\/blogs\/[^\/]+\/\d+/.test(href));
-
-        return Array.from(new Set(links)).map(href =>
-          href.startsWith("http") ? href : ("https://www.aks-ppf.com" + href)
-        );
-      }
-
-      function extractThumbFromPostDoc(doc) {
-        const og = doc.querySelector('meta[property="og:image"], meta[name="og:image"]');
-        const ogUrl = og && og.getAttribute("content");
-        if (ogUrl) return ogUrl;
-
-        const article =
-          doc.querySelector(".article-content") ||
-          doc.querySelector(".rte") ||
-          doc.querySelector("article") ||
-          doc.body;
-
-        const img = article ? article.querySelector("img") : null;
-        return img ? (img.getAttribute("src") || img.src) : "";
-      }
-
-      function extractTitleFromPostDoc(doc) {
-        const h1 = doc.querySelector("h1");
-        return (h1 ? h1.textContent : doc.title || "").trim();
-      }
-
-      function carNameOnly(originalTitle) {
-        const t = (originalTitle || "").trim();
-        const m = t.match(/施工車輛分享\s*[-｜–—]\s*(.+)$/);
-        if (m && m[1]) return m[1].trim();
-        return t.replace(/^施工車輛分享\s*/, "").replace(/^[-｜–—]\s*/, "").trim();
-      }
-
-      function makeCardHTML({ href, img }) {
-        const safeImg = img || "https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_cfb35f85-4b38-4ba8-ae3f-2f16c20ba147.jpg";
-        return `
-          <a class="aks-card" role="listitem" href="${href}">
-            <div class="aks-media">
-              <div class="aks-corner" aria-hidden="true">↗</div>
-              <img src="${safeImg}" alt="">
-              <div class="aks-overlay" aria-hidden="true"></div>
-            </div>
-          </a>
-        `;
-      }
-
-      async function mapLimit(items, limit, worker) {
-        const ret = [];
-        let i = 0;
-        const executing = new Set();
-
-        async function enqueue() {
-          if (i >= items.length) return;
-          const idx = i++;
-          const p = Promise.resolve()
-            .then(() => worker(items[idx], idx))
-            .then(v => { ret[idx] = v; })
-            .catch(() => { ret[idx] = null; })
-            .finally(() => executing.delete(p));
-
-          executing.add(p);
-          if (executing.size >= limit) await Promise.race(executing);
-          return enqueue();
-        }
-
-        await enqueue();
-        await Promise.all(executing);
-        return ret.filter(Boolean);
-      }
-
-      async function buildSection({ indexUrl, trackEl, type }) {
-        const indexHtml = await fetchText(indexUrl);
-        const indexDoc = parseHTML(indexHtml);
-
-        let links = extractPostLinksFromIndexDoc(indexDoc);
-        links = links.slice(0, CFG.maxPostsPerSection);
-
-        const posts = await mapLimit(links, CFG.concurrency, async (url) => {
-          const html = await fetchText(url);
-          const doc = parseHTML(html);
-          const img = extractThumbFromPostDoc(doc);
-          const rawTitle = extractTitleFromPostDoc(doc);
-          const title = type === "works" ? carNameOnly(rawTitle) : rawTitle;
-          return { href: url, img, title };
-        });
-
-        trackEl.innerHTML = posts.map(p => makeCardHTML(p)).join("");
-      }
-
-      async function init() {
-        $$(".aks-carousel", homeBlocks).forEach(setupCarousel);
-
-        const worksTrack = $('[data-track="works"]', homeBlocks);
-        const faqTrack = $('[data-track="faq"]', homeBlocks);
-
-        if (worksTrack) {
-          try {
-            await buildSection({ indexUrl: CFG.worksIndex, trackEl: worksTrack, type: "works" });
-          } catch (e) {
-            worksTrack.innerHTML = '<div style="color:var(--muted);padding:10px 2px;">施工作品載入失敗（可能被瀏覽器阻擋跨頁抓取）。</div>';
-          }
-        }
-
-        if (faqTrack) {
-          try {
-            await buildSection({ indexUrl: CFG.faqIndex, trackEl: faqTrack, type: "faq" });
-          } catch (e) {
-            faqTrack.innerHTML = '<div style="color:var(--muted);padding:10px 2px;">貼膜小知識載入失敗（可能被瀏覽器阻擋跨頁抓取）。</div>';
-          }
-        }
-      }
-
-      init();
+      });
     })();
   });
 </script>
