@@ -43,6 +43,32 @@ layout: default
         transition: 0.3s; box-shadow: 0 4px 15px rgba(200,31,42,0.3);
     }
     .aks-case-footer a:hover { background: #e02431; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(200,31,42,0.5); }
+
+    /* 6. 返回總頁按鈕 */
+    .aks-back-to-list {
+        text-align: center;
+        margin-top: 50px;
+    }
+    .aks-btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #FFF;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none !important;
+        letter-spacing: 0.1em;
+        transition: all 0.3s ease;
+        padding: 10px 20px;
+        border-radius: 6px;
+        border: 1px solid transparent;
+    }
+    .aks-btn-back:hover {
+        color: white;
+        background-color: rgba(255,255,255,0.05);
+        border-color: rgba(255,255,255,0.2);
+        transform: translateX(-5px); /* 微妙的向左滑動提示「返回」 */
+    }
 </style>
 
 <div id="aks-case-root">
@@ -74,9 +100,14 @@ layout: default
         </div>
         
         <footer class="aks-case-footer io-reveal" data-delay="4">
-            <a href="{{ page.cta_link | default: '/pages/color-chart/' | relative_url }}">我也要這款配色 ➔</a>
+            <a href="{{ page.cta_link | default: '/pages/color-chart/' | relative_url }}">我要貼同款 ➔</a>
         </footer>
 
+        <div class="aks-back-to-list io-reveal" data-delay="4">
+            <a href="{{ '/pages/cases/' | relative_url }}" class="aks-btn-back">
+                <i class="fas fa-arrow-left"></i> 返回作品集列表
+            </a>
+        </div>
     </article>
 </div>
 

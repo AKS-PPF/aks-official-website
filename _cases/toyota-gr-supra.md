@@ -8,7 +8,7 @@ car_model: "Toyota GR Supra"
 film_color: "AKS GL-70 亮面犀牛皮 & MA-70 消光犀牛皮"
 location: "台北北投 - DW22專業車體防護"
 tags: [Toyota GR Supra包膜, 汽車包膜, 亮面犀牛皮]
-cta_link: "/pages/dealers/taipei/"
+cta_link: "/pages/dealers/"
 ---
 
 這次施工的車輛是 Toyota GR Supra

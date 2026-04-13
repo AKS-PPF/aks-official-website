@@ -8,7 +8,7 @@ car_model: "Audi Q5 Sportback"
 film_color: "AKS GL-70 亮面犀牛皮"
 location: "新北蘆洲 - 羅柏汽車貼膜"
 tags: [Audi Q5 Sportback包膜, 汽車包膜, 亮面犀牛皮]
-cta_link: "/pages/dealers/newtaipei/"
+cta_link: "/pages/dealers/"
 ---
 
 這次的施工車輛是 Audi Q5 Sportback，由專業店家 [羅柏汽車貼膜](https://www.instagram.com/robertcarwrap/?next=%2F) 施工 🛠️

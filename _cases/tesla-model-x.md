@@ -8,7 +8,7 @@ car_model: "Tesla Model X"
 film_color: "AKS MA-70 消光犀牛皮 & GL-70 亮面犀牛皮"
 location: "新北蘆洲 - 羅柏汽車貼膜"
 tags: [Tesla Model X包膜, 汽車包膜, 消光犀牛皮]
-cta_link: "/pages/dealers/newtaipei/"
+cta_link: "/pages/dealers/"
 ---
 
 本次施工車輛為 Tesla Model X

@@ -8,7 +8,7 @@ car_model: "2025 BMW X3"
 film_color: "AKS GL-70 亮面犀牛皮"
 location: "新北蘆洲 - 羅柏汽車貼膜"
 tags: [2025 BMW X3包膜, 汽車包膜, 亮面犀牛皮]
-cta_link: "/pages/dealers/newtaipei/"
+cta_link: "/pages/dealers/"
 ---
 
 本次施工車輛為 最新款 2025 BMW X3

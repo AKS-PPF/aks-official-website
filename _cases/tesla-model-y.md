@@ -8,7 +8,7 @@ car_model: "Tesla Model Y"
 film_color: "AKS MA-70 消光犀牛皮"
 location: "苗栗頭份 - ACME | Carwrap"
 tags: [Tesla Model Y包膜, 汽車包膜, 消光犀牛皮]
-cta_link: "/pages/dealers/miaoli/"
+cta_link: "/pages/dealers/"
 ---
 
 本次施工車輛為 Tesla Model Y

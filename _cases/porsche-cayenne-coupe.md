@@ -8,7 +8,7 @@ car_model: "Porsche Cayenne Coupe"
 film_color: "AKS GL-70 亮面犀牛皮"
 location: "新北蘆洲 - 羅柏汽車貼膜"
 tags: [Porsche Cayenne Coupe包膜, 汽車包膜, 亮面犀牛皮]
-cta_link: "/pages/dealers/newtaipei/"
+cta_link: "/pages/dealers/"
 ---
 
 這次施工的車輛是 Porsche Cayenne Coupe

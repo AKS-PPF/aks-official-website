@@ -8,7 +8,7 @@ car_model: "Tesla Model 3"
 film_color: "AKS MA-70 消光犀牛皮"
 location: "新北蘆洲 - 羅柏汽車貼膜"
 tags: [Tesla Model 3包膜, 汽車包膜, 消光犀牛皮]
-cta_link: "/pages/dealers/newtaipei/"
+cta_link: "/pages/dealers/"
 ---
 
 本次施工車輛為 Tesla Model 3
