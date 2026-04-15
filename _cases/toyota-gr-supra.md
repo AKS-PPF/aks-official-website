@@ -1,7 +1,8 @@
 ---
 layout: single-case
 title: "施工車輛分享 - Toyota GR Supra"
-description: "由北投知名店家 DW22專業車體防護 操刀，為 Toyota GR Supra 特殊銀藍色車漆施工 AKS GL-70 亮面與 MA-70 消光犀牛皮。電腦精準切割完https://aks-ppf.github.io/images/cases/Toyota-GR-Supra/01.jpg
+description: "由北投知名店家 DW22專業車體防護 操刀，為 Toyota GR Supra 特殊銀藍色車漆施工 AKS GL-70 亮面與 MA-70 消光犀牛皮。電腦精準切割完美貼合空力套件，展現耀眼金粉光澤並維持原廠消光質感，提供 5 年保固。"
+image: "https://aks-ppf.github.io/images/cases/Toyota-GR-Supra/01.jpg"
 date: 2025-04-25
 car_model: "Toyota GR Supra"
 film_color: "AKS GL-70 亮面犀牛皮 & MA-70 消光犀牛皮"

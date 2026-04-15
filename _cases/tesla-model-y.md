@@ -1,7 +1,8 @@
 ---
 layout: single-case
 title: "施工車輛分享 - Tesla Model Y"
-description: "由苗栗頭份知名店家 ACME | Carwrap 操刀，為全新 Tesla Model Y 全車包覆 AKS MA-70 消光犀牛皮。採https://aks-ppf.github.io/images/cases/Tesla-Model-Y/01.jpg
+description: "由苗栗頭份知名店家 ACME | Carwrap 操刀，為全新 Tesla Model Y 全車包覆 AKS MA-70 消光犀牛皮。採全手工裁切極致收邊，完美升級絲綢消光質感與超強抗汙力，並享有 5 年保固。"
+image: "https://aks-ppf.github.io/images/cases/Tesla-Model-Y/01.jpg"
 date: 2025-04-25
 car_model: "Tesla Model Y"
 film_color: "AKS MA-70 消光犀牛皮"
