@@ -2,7 +2,7 @@
 layout: single-article
 title: "汽車犀牛皮貼膜選電腦版型還是手工裁切？完整優缺點分析！"
 description: "剛買新車想貼犀牛皮，卻不知道該選電腦版型還是手工裁切嗎？本文以消費者角度出發，為您詳細解析「電腦版型」、「手工裁切」與最新「電腦版型擴邊」技術的優缺點。帶您一次看懂各種汽車貼膜施工方式的差異，幫助您評估最適合愛車的犀牛皮防護方案，避免踩雷！"
-image: "https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_4b589ce0-6292-4d22-8904-87ffe04ecf80.png"
+image: "https://aks-ppf.github.io/images/articles/precut-vs-hand-cut-ppf/precut-vs-hand-cut-ppf-1.png"
 date: 2025-04-26
 last_modified_at: 2025-04-26
 tags: [犀牛皮, 汽車貼膜, 電腦版型擴邊]
@@ -36,7 +36,7 @@ tags: [犀牛皮, 汽車貼膜, 電腦版型擴邊]
 
 簡單來說，電腦版型是「機器先裁好」基本上無需下刀，手工裁切是整片貼合後「師傅現場切」。
 
-![電腦版型裁切示意圖](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_f9cf5f16-4493-4d27-8115-30c9ee45e2a7.jpg)
+![電腦版型裁切示意圖](https://aks-ppf.github.io/images/articles/precut-vs-hand-cut-ppf/precut-vs-hand-cut-ppf-2.jpg)
 
 ### 電腦版型裁切的優點
 
@@ -57,7 +57,7 @@ tags: [犀牛皮, 汽車貼膜, 電腦版型擴邊]
 ⚠️ **特殊改裝車型不一定有版型**
 如果你的車有改套件、外觀改裝，可能要再手工微調。
 
-![手工裁切犀牛皮示意圖](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_4de6dfaa-5dbe-4dc3-9588-7df8e3a1d0b9.jpg)
+![手工裁切犀牛皮示意圖](https://aks-ppf.github.io/images/articles/precut-vs-hand-cut-ppf/precut-vs-hand-cut-ppf-3.jpg)
 
 ### 手工裁切的優點
 
@@ -75,7 +75,7 @@ tags: [犀牛皮, 汽車貼膜, 電腦版型擴邊]
 ⚠️ **施工時間比較久**
 每個部位都要現場量、現場剪，時間較長。
 
-![電腦版型擴邊施工示意圖](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_cae0b0f4-4a49-4a2f-b103-9b935e4e2545.jpg)
+![電腦版型擴邊施工示意圖](https://aks-ppf.github.io/images/articles/precut-vs-hand-cut-ppf/precut-vs-hand-cut-ppf-4.jpg)
 
 ### 電腦版型擴邊的優點
 

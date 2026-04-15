@@ -2,7 +2,7 @@
 layout: single-article
 title: "犀牛皮怎麼選？價差怎麼這麼大？品牌篇"
 description: "市面上犀牛皮品牌五花八門，價格懸殊讓人難以抉擇。本文帶您深入解析一線大廠與二線高性價比品牌的差異，並從膜料厚度與塗層（潑水 vs. 疏水）兩大數據規格，教您如何挑選最適合愛車的犀牛皮，把錢花在刀口上！"
-image: "https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_f94ab3f7-6630-434c-a797-cf761054e653.png"
+image: "https://aks-ppf.github.io/images/articles/how-to-choose-ppf/how-to-choose-ppf-1.png"
 date: 2025-01-21
 last_modified_at: 2025-01-21
 tags: [犀牛皮選擇, 汽車包膜, TPU膜]
@@ -20,7 +20,7 @@ tags: [犀牛皮選擇, 汽車包膜, TPU膜]
 
 ## **膜料品牌**
 
-![一線與二線犀牛皮品牌差異](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_f5ddd44b-61a4-4105-832f-1dc6cbc6fd27.png)
+![一線與二線犀牛皮品牌差異](https://aks-ppf.github.io/images/articles/how-to-choose-ppf/how-to-choose-ppf-2.png)
 ＊示意圖取自網路
 
 品牌我們可以粗略的分為：
@@ -53,7 +53,7 @@ tags: [犀牛皮選擇, 汽車包膜, TPU膜]
 
 ### **FAQ**
 
-![犀牛皮品牌常見問題](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_763de95c-d390-4c43-aa93-3305706380d8.png)
+![犀牛皮品牌常見問題](https://aks-ppf.github.io/images/articles/how-to-choose-ppf/how-to-choose-ppf-3.png)
 
 **Q:大陸膜可以用嗎？ A:能省下可觀的預算，但需要細心挑選**
 
@@ -77,7 +77,7 @@ tags: [犀牛皮選擇, 汽車包膜, TPU膜]
 
 ### **厚度怎麼挑？**
 
-![犀牛皮厚度挑選建議](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_53d939d3-6558-401a-bcbf-c38c6cea53bb.jpg)
+![犀牛皮厚度挑選建議](https://aks-ppf.github.io/images/articles/how-to-choose-ppf/how-to-choose-ppf-4.jpg)
 
 在討論厚度的問題前，我們先來做一個簡單的單位換算，讓大家可以更直觀的理解厚度的差異
 
@@ -87,7 +87,7 @@ tags: [犀牛皮選擇, 汽車包膜, TPU膜]
 
 這樣的厚度差距在跳石、樹枝或其他細微刮蹭的保護力上其實不會有過多的差別。
 
-![犀牛皮厚度與施工難度](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_b3e111a9-2c5c-4441-ba80-57ca83bf36d3.jpg)
+![犀牛皮厚度與施工難度](https://aks-ppf.github.io/images/articles/how-to-choose-ppf/how-to-choose-ppf-5.jpg)
 
 厚度所帶來最主要得差別在於**施工難度**及**漆面增亮效果**。
 
@@ -99,19 +99,19 @@ tags: [犀牛皮選擇, 汽車包膜, TPU膜]
 
 ### **塗層怎麼選？**
 
-![車漆水斑形成示意圖](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_30c46abb-4576-4fb4-a930-b8d4087db7e6.jpg)
+![車漆水斑形成示意圖](https://aks-ppf.github.io/images/articles/how-to-choose-ppf/how-to-choose-ppf-6.jpg)
 ＊水斑示意圖取自網路
 
 選擇塗層前，我們就必須先瞭解 - 水斑是怎麼形成的？
 
 水斑是一種礦物質沈積，雨水中的礦物質隨著雨滴落下，在車漆最上層清漆層（也就是俗稱的金油）上面停留，隨著引擎蓋的熱度、日照而乾掉，沿著水珠一圈形成白色的、不規則的圓形或者點狀殘留，輕微的洗車就可以除掉，嚴重一點的必須跑黏土或者拋光處理，太嚴重的水斑，甚至要拿水砂紙甚至重新烤漆。因為礦物質沈積會隨著時間不斷向下蔓延，累積太久的結果就是水斑咬入過深，基本上除了把金油拋掉一大層，否則很難處理。
 
-![潑水塗層效果](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_3f6035fc-f73e-4327-b283-ca4406715814.jpg)
+![潑水塗層效果](https://aks-ppf.github.io/images/articles/how-to-choose-ppf/how-to-choose-ppf-7.jpg)
 ＊潑水塗層示意圖取自網路
 
 潑水塗層是透過會讓碰到車身的液體快速變成一顆顆水珠，在行駛途中很容易就能被吹飛，或用不簡單擦就能達到全乾的效果，來讓車主日後洗車打理起來更方便，車子即便是淋過雨看起來也不會出現整台濕漉漉的狀態
 
-![疏水塗層效果](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_1a0575f4-bdd8-4444-b04d-0a9eeb22c165.jpg)
+![疏水塗層效果](https://aks-ppf.github.io/images/articles/how-to-choose-ppf/how-to-choose-ppf-8.jpg)
 
 而疏水塗層碰到液體時則是呈現與原車漆較相似效果，
 水滴匯集成水流覆蓋整個區塊，但比起原漆在排水的表現還是會略微加分

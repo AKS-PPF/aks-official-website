@@ -65,7 +65,7 @@ tags: [汽車包膜, 汽車鍍膜, 犀牛皮]
 
 ## 鍍膜 vs 貼膜，怎麼選？
 
-![鍍膜與貼膜選擇指南](https://aks-ppf.github.io/images/articles/coating-vs-ppf/coating-vs-ppf-4.jpg)
+![鍍膜與貼膜選擇指南](https://aks-ppf.github.io/images/articles/why-ppf/why-ppf-3.jpg)
 
 選擇鍍膜或貼膜，主要取決於個人需求與預算。
 
