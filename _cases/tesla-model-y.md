@@ -1,8 +1,7 @@
 ---
 layout: single-case
 title: "施工車輛分享 - Tesla Model Y"
-description: "由苗栗頭份知名店家 ACME | Carwrap 操刀，為全新 Tesla Model Y 全車包覆 AKS MA-70 消光犀牛皮。採全手工裁切極致收邊，完美升級絲綢消光質感與超強抗汙力，並享有 5 年保固。"
-image: "https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_3874232d-96fd-4fb8-9ea6-450f3a302c86.jpg"
+description: "由苗栗頭份知名店家 ACME | Carwrap 操刀，為全新 Tesla Model Y 全車包覆 AKS MA-70 消光犀牛皮。採https://aks-ppf.github.io/images/cases/Tesla-Model-Y/01.jpg
 date: 2025-04-25
 car_model: "Tesla Model Y"
 film_color: "AKS MA-70 消光犀牛皮"
@@ -33,14 +32,14 @@ AKS 全品項皆享有 5 年保固✅
 
 【施工及成品照】
 
-![Tesla Model Y 消光犀牛皮施工照 1](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_3f5b3c72-072a-478f-9848-c54ccfdf4d1b.jpg)
+![Tesla Model Y 消光犀牛皮施工照 1](https://aks-ppf.github.io/images/cases/Tesla-Model-Y/02.jpg)
 
-![Tesla Model Y 消光犀牛皮施工照 2](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_c97c8631-83e7-4304-bc1a-5ad543f66506.jpg)
+![Tesla Model Y 消光犀牛皮施工照 2](https://aks-ppf.github.io/images/cases/Tesla-Model-Y/03.jpg)
 
-![Tesla Model Y 消光犀牛皮完工側視圖](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_fdcf9332-8599-4771-bef6-04dfb0f1ee9d.jpg)
+![Tesla Model Y 消光犀牛皮完工側視圖](https://aks-ppf.github.io/images/cases/Tesla-Model-Y/04.jpg)
 
-![Tesla Model Y 消光犀牛皮車尾完工照](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_ba4fb766-edfd-45ab-a81a-9c9c72b033ce.jpg)
+![Tesla Model Y 消光犀牛皮車尾完工照](https://aks-ppf.github.io/images/cases/Tesla-Model-Y/05.jpg)
 
-![Tesla Model Y 消光犀牛皮車尾側邊完工照](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_d54a870c-b588-489f-8fc4-124d27e06e74.jpg)
+![Tesla Model Y 消光犀牛皮車尾側邊完工照](https://aks-ppf.github.io/images/cases/Tesla-Model-Y/06.jpg)
 
-![Tesla Model Y 消光犀牛皮車頭完工照](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_57606ca8-87d2-45c5-bc44-594309161a3d.jpg)
+![Tesla Model Y 消光犀牛皮車頭完工照](https://aks-ppf.github.io/images/cases/Tesla-Model-Y/07.jpg)
