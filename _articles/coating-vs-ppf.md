@@ -2,7 +2,7 @@
 layout: single-article
 title: "牽新車該選包膜還是鍍膜？全面比較優缺點！"
 description: "牽新車後，應該選擇包膜還是鍍膜？本文為您詳細比較汽車包膜（PPF犀牛皮）與鍍膜的關鍵差異，從防護效果、抗刮能力、耐久度到價格進行全面分析。無論是想防跳石刮傷還是提升車漆光澤，5分鐘教您挑選最適合愛車的車漆保護方案！"
-image: "https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_e84d17e8-5c09-4f0e-a95d-3198e58e4904.png"
+image: "https://aks-ppf.github.io/images/articles/coating-vs-ppf/coating-vs-ppf-1.png"
 date: 2025-03-15
 last_modified_at: 2025-03-15
 tags: [汽車包膜, 汽車鍍膜, 犀牛皮]
@@ -14,7 +14,7 @@ tags: [汽車包膜, 汽車鍍膜, 犀牛皮]
 
 ## 什麼是鍍膜？
 
-![汽車鍍膜效果示意圖](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_d7c6b569-ebe9-4126-8e17-e918ca5268ac.jpg)
+![汽車鍍膜效果示意圖](https://aks-ppf.github.io/images/articles/coating-vs-ppf/coating-vs-ppf-2.png)
 
 鍍膜（Coating）是透過塗抹一層化學藥劑在車身上，透過納米級的鍍膜液塗抹在車漆表面，形成一層透明結晶保護層，以提升車漆的光澤度與防護效果。
 
@@ -38,7 +38,7 @@ tags: [汽車包膜, 汽車鍍膜, 犀牛皮]
 
 ## 什麼是貼膜？
 
-![汽車貼膜犀牛皮施工示意圖](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_af05abe4-32da-4754-be28-453bd390141f.png)
+![汽車貼膜犀牛皮施工示意圖](https://aks-ppf.github.io/images/articles/coating-vs-ppf/coating-vs-ppf-3.png)
 
 貼膜（PPF, Paint Protection Film），也稱為犀牛皮，是一種透明的TPU（熱塑性聚氨酯）材質膜料，透過貼合方式覆蓋於車漆表面，提供實體防護。
 
@@ -65,7 +65,7 @@ tags: [汽車包膜, 汽車鍍膜, 犀牛皮]
 
 ## 鍍膜 vs 貼膜，怎麼選？
 
-![鍍膜與貼膜選擇指南](https://cdn1.cybassets.com/s/files/26096/ckeditor/pictures/content_9c345256-d555-4911-9272-4f92effc2009.png)
+![鍍膜與貼膜選擇指南](https://aks-ppf.github.io/images/articles/coating-vs-ppf/coating-vs-ppf-4.jpg)
 
 選擇鍍膜或貼膜，主要取決於個人需求與預算。
 
