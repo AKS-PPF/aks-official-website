@@ -252,25 +252,50 @@
             }, { root: null, rootMargin: '0px', threshold: 0.15 });
             setTimeout(() => { document.querySelectorAll('.io-reveal').forEach(el => observer.observe(el)); }, 500);
 
-            // 2. 導覽列滾動與智慧判斷邏輯
+            // ==========================================
+            // 2. 導覽列滾動與智慧判斷邏輯 (含雙型態特例)
+            // ==========================================
             const header = document.querySelector('.aks-header');
             if (header) {
                 const path = window.location.pathname;
                 
-                // 檢查是否為滿版 Layout (包含 hero 或未來首頁的 home)
+                // 基礎佈局判斷：是否為需要透明懸浮的滿版頁面
                 const isHeroLayout = document.body.classList.contains('layout-page-hero') || document.body.classList.contains('layout-home');
                 const isRoot = path === '/' || path.endsWith('aks-official-website/') || path.endsWith('index.html');
                 
-                // 預設透明判定：只要是滿版 Layout 或網站根目錄，就全透明
-                let isTransparent = isHeroLayout || isRoot;
+                // 💡 【特例白名單設定區】💡
+                // 若未來有新增頁面需要「電腦懸浮、手機下推」，可在此新增條件
+                const isColorPPF = path.includes('color-ppf');
 
-                // 若最終判定不是透明頁面 (例如 page-flush 或 page-padded)，啟動防護罩與自動下推
-                if (!isTransparent) {
-                    header.classList.add('force-solid');
-                    document.body.classList.add('has-solid-header'); 
+                // 建立樣式更新函數，確保視窗縮放時能即時響應
+                function updateHeaderStyle() {
+                    // 預設：滿足基礎滿版條件，或是身處白名單中，皆給予透明懸浮
+                    let isTransparent = isHeroLayout || isRoot || isColorPPF;
+
+                    // 💡 【手機版特例覆寫】💡
+                    // 如果身處改色犀牛皮頁面，且螢幕寬度為手機尺寸 (<992px)
+                    // 則強制取消透明懸浮，改為實心黑底並下推內容
+                    if (isColorPPF && window.innerWidth < 992) {
+                        isTransparent = false;
+                    }
+
+                    // 執行最終 UI 變更
+                    if (!isTransparent) {
+                        header.classList.add('force-solid');
+                        document.body.classList.add('has-solid-header'); 
+                    } else {
+                        header.classList.remove('force-solid');
+                        document.body.classList.remove('has-solid-header'); 
+                    }
                 }
 
-                // 滾動收起與變色
+                // 網頁初次載入時執行判斷
+                updateHeaderStyle();
+
+                // 監聽視窗縮放事件 (即時處理電腦/手機的排版切換)
+                window.addEventListener('resize', updateHeaderStyle);
+
+                // 滾動收起與變色動畫
                 let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 window.addEventListener('scroll', function() {
                     let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
