@@ -4,102 +4,432 @@ layout: default
 <style>
     /* 1. 原始樣式：嚴格保留，不作任何變動 */
     #aks-color-product-root {
-        width: 100%; background-color: #050505; color: #f3f3f5;
-        padding-top: 40px; 
+        width: 100%;
+        background-color: #050505;
+        color: #f3f3f5;
+        padding-top: 40px;
         padding-bottom: 120px;
     }
-    #aks-color-product-root * { box-sizing: border-box !important; }
+
+    #aks-color-product-root * {
+        box-sizing: border-box !important;
+    }
 
     /* 全域字體 */
-    #aks-color-product-root { font-family: 'Montserrat', 'PingFang TC', sans-serif !important; }
-    @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
-    .aks-font-youshe { font-family: 'YouSheBiaoTiHei', sans-serif !important; }
-    .aks-font-clean { font-family: 'Montserrat', 'PingFang TC', sans-serif !important; }
+    #aks-color-product-root {
+        font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
+    }
+
+    @font-face {
+        font-family: 'YouSheBiaoTiHei';
+        src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    .aks-font-youshe {
+        font-family: 'YouSheBiaoTiHei', sans-serif !important;
+    }
+
+    .aks-font-clean {
+        font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
+    }
 
     /* 動畫Reveal */
-    .io-reveal { opacity: 0; transform: translateY(20px); filter: blur(5px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease; }
-    .io-reveal.is-in { opacity: 1; transform: translateY(0); filter: blur(0); }
+    .io-reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(5px);
+        transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    }
+
+    .io-reveal.is-in {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
 
     /* 佈局與圖片 */
-    .aks-gallery-slider { display: flex; scroll-behavior: auto; } /* 關閉預設平滑滾動以利邏輯控制 */
-    .aks-slide { width: 100%; flex-shrink: 0; }
-    .aks-main-swatch-container { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); background-color: #0f0f13; }
-    .aks-main-swatch-img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center center; transition: transform 0.5s ease; cursor: zoom-in; }
+    .aks-gallery-slider {
+        display: flex;
+        scroll-behavior: auto;
+    }
+
+    /* 關閉預設平滑滾動以利邏輯控制 */
+    .aks-slide {
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    .aks-main-swatch-container {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        border-radius: 12px;
+        background-color: #0f0f13;
+    }
+
+    .aks-main-swatch-img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center center;
+        transition: transform 0.5s ease;
+        cursor: zoom-in;
+    }
 
     /* 【新增】按鈕樣式 - 完全不影響原先樣式 */
-    .aks-slider-wrapper { position: relative; width: 100%; overflow: hidden; }
-    .aks-nav-btn {
-        position: absolute; top: 50%; transform: translateY(-50%);
-        width: 44px; height: 44px; background: rgba(0,0,0,0.4); border: none;
-        color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        cursor: pointer; z-index: 10; backdrop-filter: blur(8px); transition: 0.3s;
+    .aks-slider-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
     }
-    .aks-nav-btn:hover { background: #c81f2a; }
-    .aks-prev { left: 15px; }
-    .aks-next { right: 15px; }
-    @media (max-width: 991px) { .aks-nav-btn { display: none; } }
+
+    .aks-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        background: rgba(0, 0, 0, 0.4);
+        border: none;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        backdrop-filter: blur(8px);
+        transition: 0.3s;
+    }
+
+    .aks-nav-btn:hover {
+        background: #c81f2a;
+    }
+
+    .aks-prev {
+        left: 15px;
+    }
+
+    .aks-next {
+        right: 15px;
+    }
+
+    @media (max-width: 991px) {
+        .aks-nav-btn {
+            display: none;
+        }
+    }
 
     /* 文字排版 */
-    .aks-kicker { font-size: 11px; letter-spacing: 0.25em; color: #c81f2a; font-weight: 800; margin-bottom: 16px; display: block; text-transform: uppercase; }
-    .aks-tags-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .aks-tag { border: 1px solid rgba(255,255,255,0.25); color: white; padding: 4px 14px; border-radius: 4px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+    .aks-kicker {
+        font-size: 11px;
+        letter-spacing: 0.25em;
+        color: #c81f2a;
+        font-weight: 800;
+        margin-bottom: 16px;
+        display: block;
+        text-transform: uppercase;
+    }
 
-    .aks-title-zh { font-size: clamp(36px, 4vw, 56px); font-weight: 900; color: white; line-height: 1.1; margin: 0 0 8px 0; letter-spacing: 0.05em; font-family: 'Montserrat', 'PingFang TC', sans-serif !important; }
-    .aks-title-en { font-size: clamp(16px, 2vw, 24px); font-weight: 300; color: rgba(255,255,255,0.6); margin: 0 0 16px 0; letter-spacing: 0.05em; text-transform: uppercase; font-family: 'YouSheBiaoTiHei', sans-serif !important; }
-    
-    .aks-sku { font-size: 13px; color: #666; letter-spacing: 0.15em; margin: 0 0 32px 0; font-weight: 600; }
+    .aks-tags-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 24px;
+    }
+
+    .aks-tag {
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: white;
+        padding: 4px 14px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .aks-title-zh {
+        font-size: clamp(36px, 4vw, 56px);
+        font-weight: 900;
+        color: white;
+        line-height: 1.1;
+        margin: 0 0 8px 0;
+        letter-spacing: 0.05em;
+        font-family: 'Montserrat', 'PingFang TC', sans-serif !important;
+    }
+
+    .aks-title-en {
+        font-size: clamp(16px, 2vw, 24px);
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0 16px 0;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-family: 'YouSheBiaoTiHei', sans-serif !important;
+    }
+
+    .aks-sku {
+        font-size: 13px;
+        color: #666;
+        letter-spacing: 0.15em;
+        margin: 0 0 32px 0;
+        font-weight: 600;
+    }
 
     /* 【修正】描述區塊樣式：左側裝飾線 */
-    .aks-desc { font-size: 15px; color: #aaa; line-height: 1.8; margin: 40px 0 0 0; font-weight: 300; border-left: 2px solid #c81f2a; padding-left: 15px; }
+    .aks-desc {
+        font-size: 15px;
+        color: #aaa;
+        line-height: 1.8;
+        margin: 40px 0 0 0;
+        font-weight: 300;
+        border-left: 2px solid #c81f2a;
+        padding-left: 15px;
+    }
 
-    .aks-btn-cta { display: flex; align-items: center; justify-content: center; width: 100%; background-color: #c81f2a; color: #ffffff; padding: 18px 32px; border-radius: 6px; font-size: 14px; font-weight: 900; letter-spacing: 0.2em; transition: all 0.4s ease-in-out; margin-bottom: 40px; text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 15px rgba(200,31,42,0.3); }
-    .aks-btn-cta:hover { background-color: #e02431; color: #ffffff; box-shadow: 0 0 20px rgba(200,31,42,0.6), 0 0 40px rgba(200,31,42,0.3); transform: translateY(-2px) scale(1.01); }
-    
-    .aks-faq-wrapper { border-top: 1px solid rgba(255,255,255,0.1); }
-    .aks-faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .aks-faq-item details { width: 100%; }
-    .aks-faq-item summary { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; font-size: 15px; font-weight: 800; color: white; letter-spacing: 0.05em; cursor: pointer; list-style: none; }
-    .aks-faq-item summary::-webkit-details-marker { display: none; }
-    .aks-faq-item summary::after { content: '+'; font-size: 20px; font-weight: 300; color: #c81f2a; transition: 0.3s; }
-    .aks-faq-item details[open] summary::after { content: '−'; }
-    .aks-faq-content { padding-bottom: 24px; font-size: 14px; color: #999; line-height: 1.8; font-weight: 300; }
-    .aks-faq-content a { color: white; text-decoration: underline; text-underline-offset: 4px; transition: 0.3s; }
-    .aks-faq-content a:hover { color: #c81f2a; }
+    .aks-btn-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background-color: #c81f2a;
+        color: #ffffff;
+        padding: 18px 32px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        transition: all 0.4s ease-in-out;
+        margin-bottom: 40px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+        box-shadow: 0 4px 15px rgba(200, 31, 42, 0.3);
+    }
+
+    .aks-btn-cta:hover {
+        background-color: #e02431;
+        color: #ffffff;
+        box-shadow: 0 0 20px rgba(200, 31, 42, 0.6), 0 0 40px rgba(200, 31, 42, 0.3);
+        transform: translateY(-2px) scale(1.01);
+    }
+
+    .aks-faq-wrapper {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .aks-faq-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .aks-faq-item details {
+        width: 100%;
+    }
+
+    .aks-faq-item summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 0;
+        font-size: 15px;
+        font-weight: 800;
+        color: white;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    .aks-faq-item summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .aks-faq-item summary::after {
+        content: '+';
+        font-size: 20px;
+        font-weight: 300;
+        color: #c81f2a;
+        transition: 0.3s;
+    }
+
+    .aks-faq-item details[open] summary::after {
+        content: '−';
+    }
+
+    .aks-faq-content {
+        padding-bottom: 24px;
+        font-size: 14px;
+        color: #999;
+        line-height: 1.8;
+        font-weight: 300;
+    }
+
+    .aks-faq-content a {
+        color: white;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        transition: 0.3s;
+    }
+
+    .aks-faq-content a:hover {
+        color: #c81f2a;
+    }
 
     /* RWD 設定 */
     @media (min-width: 992px) {
-        .aks-split-container { max-width: 1440px; margin: 0 auto; display: flex; flex-direction: row; align-items: flex-start; gap: 60px; padding: 0 40px; }
-        .aks-media-col { width: 45%; }
-        .aks-info-col { width: 55%; position: sticky; top: 120px; }
-        .aks-gallery-slider { overflow-x: hidden; scroll-snap-type: none; } /* 電腦版隱藏滾動條 */
-        .aks-main-swatch-container:hover .aks-main-swatch-img { transform: scale(1.02); }
+        .aks-split-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 60px;
+            padding: 0 40px;
+        }
+
+        .aks-media-col {
+            width: 45%;
+        }
+
+        .aks-info-col {
+            width: 55%;
+            position: sticky;
+            top: 120px;
+        }
+
+        .aks-gallery-slider {
+            overflow-x: hidden;
+            scroll-snap-type: none;
+        }
+
+        /* 電腦版隱藏滾動條 */
+        .aks-main-swatch-container:hover .aks-main-swatch-img {
+            transform: scale(1.02);
+        }
     }
+
     @media (max-width: 991px) {
-        #aks-color-product-root { padding-top: 10px; padding-bottom: 80px; } 
-        .aks-split-container { display: flex; flex-direction: column; gap: 24px; }
-        .aks-info-col { padding: 0 20px; } 
-        .aks-gallery-slider { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 0; padding-bottom: 10px; }
-        .aks-gallery-slider::-webkit-scrollbar { display: none; }
-        .aks-slide { width: 100vw; scroll-snap-align: start; padding: 0; }
-        .aks-main-swatch-container { border-radius: 0; box-shadow: none; aspect-ratio: 1 / 1; } 
+        #aks-color-product-root {
+            padding-top: 10px;
+            padding-bottom: 80px;
+        }
+
+        .aks-split-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .aks-info-col {
+            padding: 0 20px;
+        }
+
+        .aks-gallery-slider {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            gap: 0;
+            padding-bottom: 10px;
+        }
+
+        .aks-gallery-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .aks-slide {
+            width: 100vw;
+            scroll-snap-align: start;
+            padding: 0;
+        }
+
+        .aks-main-swatch-container {
+            border-radius: 0;
+            box-shadow: none;
+            aspect-ratio: 1 / 1;
+        }
     }
 
     /* 圓點樣式 */
-    .aks-slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; margin-bottom: 10px; }
-    .aks-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: 0.3s; cursor: pointer; }
-    .aks-dot.active { background: #c81f2a; width: 16px; border-radius: 4px; }
+    .aks-slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .aks-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .aks-dot.active {
+        background: #c81f2a;
+        width: 16px;
+        border-radius: 4px;
+    }
 
     /* Lightbox */
-    .aks-lightbox { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 999999; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s ease; }
-    .aks-lightbox.show { display: flex; opacity: 1; }
-    .aks-lightbox img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); user-select: none; }
-    .aks-lightbox-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: 300; cursor: pointer; z-index: 1000000; transition: 0.3s; padding: 10px; }
-    .aks-lightbox-close:hover { color: #c81f2a; transform: scale(1.1); }
+    .aks-lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 999999;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .aks-lightbox.show {
+        display: flex;
+        opacity: 1;
+    }
+
+    .aks-lightbox img {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        user-select: none;
+    }
+
+    .aks-lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 40px;
+        font-weight: 300;
+        cursor: pointer;
+        z-index: 1000000;
+        transition: 0.3s;
+        padding: 10px;
+    }
+
+    .aks-lightbox-close:hover {
+        color: #c81f2a;
+        transform: scale(1.1);
+    }
 </style>
 
 <div id="aks-color-product-root" class="aks-font-clean">
     <div class="aks-split-container">
-        
+
         <div class="aks-media-col io-reveal" data-delay="1">
             <div class="aks-slider-wrapper">
                 <button class="aks-nav-btn aks-prev" id="btnPrev"><i class="fa-solid fa-chevron-left"></i></button>
@@ -108,24 +438,27 @@ layout: default
                 <div id="aks-gallery-slider" class="aks-gallery-slider">
                     <div class="aks-slide">
                         <div class="aks-main-swatch-container">
-                            <img src="https://cdn.jsdelivr.net/gh/AKS-PPF/color-ppf-images@main/aks_colorppf_{{ page.code }}.jpg?v={{ site.time | date: '%s' }}" class="aks-main-swatch-img" alt="{{ page.title_zh }}">
+                            <img src="https://cdn.jsdelivr.net/gh/AKS-PPF/color-ppf-images@main/aks_colorppf_{{ page.code }}.jpg?v={{ site.time | date: '%s' }}"
+                                class="aks-main-swatch-img" alt="{{ page.title_zh }}">
                         </div>
                     </div>
                     {% if page.image_car and page.image_car != "" %}
                     <div class="aks-slide">
                         <div class="aks-main-swatch-container">
-                            <img src="{{ page.image_car }}" class="aks-main-swatch-img" loading="lazy" alt="{{ page.title_zh }} 實車展示">
+                            <img src="{{ page.image_car }}" class="aks-main-swatch-img" loading="lazy"
+                                alt="{{ page.title_zh }} 實車展示">
                         </div>
                     </div>
                     {% endif %}
                     {% if page.gallery %}
-                        {% for img in page.gallery %}
-                        <div class="aks-slide">
-                            <div class="aks-main-swatch-container">
-                                <img src="{{ img | relative_url }}" class="aks-main-swatch-img" loading="lazy" alt="{{ page.title_zh }} 完工照">
-                            </div>
+                    {% for img in page.gallery %}
+                    <div class="aks-slide">
+                        <div class="aks-main-swatch-container">
+                            <img src="{{ img | relative_url }}" class="aks-main-swatch-img" loading="lazy"
+                                alt="{{ page.title_zh }} 完工照">
                         </div>
-                        {% endfor %}
+                    </div>
+                    {% endfor %}
                     {% endif %}
                 </div>
             </div>
@@ -134,7 +467,7 @@ layout: default
 
         <div class="aks-info-col io-reveal" data-delay="2">
             <span class="aks-kicker">COLOR PPF</span>
-            
+
             <div class="aks-tags-group">
                 {% if page.finish %}<span class="aks-tag">{{ page.finish }}</span>{% endif %}
                 {% if page.series %}<span class="aks-tag">{{ page.series }}</span>{% endif %}
@@ -144,7 +477,7 @@ layout: default
             <h1 class="aks-title-zh">{{ page.title_zh }}</h1>
             <h2 class="aks-title-en">{{ page.title_en }}</h2>
             <p class="aks-sku">色號: {{ page.code }}</p>
-            
+
             <a href="{{ '/pages/dealers/ai-preview/' | relative_url }}" class="aks-btn-cta">預約 AI 換色預覽</a>
 
             <div class="aks-faq-wrapper">
@@ -153,7 +486,8 @@ layout: default
                         <summary>為什麼選擇改色犀牛皮，而非傳統改色膜？</summary>
                         <div class="aks-faq-content">
                             傳統改色膜多為 PVC 材質，僅改變外觀無保護力。AKS 改色犀牛皮採用航太級 TPU 基材，不僅擁有真實烤漆般的頂級光澤，更具備抗刮、自體修復與防污耐候特性。<br>
-                            <a href="{{ '/articles/color-ppf-vs-vinyl-wrap/' | relative_url }}" target="_blank">深入了解差異 ➔</a>
+                            <a href="{{ '/articles/color-ppf-vs-vinyl-wrap/' | relative_url }}" target="_blank">深入了解差異
+                                ➔</a>
                         </div>
                     </details>
                 </div>
@@ -189,7 +523,7 @@ layout: default
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const reveals = document.querySelectorAll('.io-reveal');
         setTimeout(() => { reveals.forEach(el => el.classList.add('is-in')); }, 100);
 
@@ -197,7 +531,7 @@ layout: default
         const dotsContainer = document.getElementById('aks-slider-dots');
         let slides = Array.from(slider.querySelectorAll('.aks-slide'));
         const originalCount = slides.length;
-        
+
         if (originalCount <= 1) {
             document.getElementById('btnPrev').style.display = 'none';
             document.getElementById('btnNext').style.display = 'none';
@@ -228,7 +562,7 @@ layout: default
         function goToSlide(index, animate = true) {
             if (isTransitioning) return;
             isTransitioning = true;
-            
+
             currentIndex = index;
             slider.scrollTo({
                 left: slider.offsetWidth * currentIndex,
@@ -277,14 +611,14 @@ layout: default
         const lightbox = document.getElementById('aks-lightbox');
         const lightboxImg = document.getElementById('aks-lightbox-img');
         document.querySelectorAll('.aks-main-swatch-img').forEach(img => {
-            img.addEventListener('click', function() {
+            img.addEventListener('click', function () {
                 lightboxImg.src = this.src;
                 lightbox.classList.add('show');
                 document.body.style.overflow = 'hidden';
             });
         });
         lightbox.addEventListener('click', (e) => {
-            if(e.target !== lightboxImg) {
+            if (e.target !== lightboxImg) {
                 lightbox.classList.remove('show');
                 document.body.style.overflow = '';
             }
