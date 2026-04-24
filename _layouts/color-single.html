@@ -125,6 +125,15 @@ layout: default
                         <img src="https://cdn.jsdelivr.net/gh/AKS-PPF/color-ppf-images@main/aks_colorppf_{{ page.code }}.jpg?v={{ site.time | date: '%s' }}" class="aks-main-swatch-img" alt="{{ page.title_zh }}">
                     </div>
                 </div>
+
+                {% if page.image_car and page.image_car != "" %}
+                <div class="aks-slide">
+                    <div class="aks-main-swatch-container">
+                        <img src="{{ page.image_car }}" class="aks-main-swatch-img" loading="lazy" alt="{{ page.title_zh }} 實車展示">
+                    </div>
+                </div>
+                {% endif %}
+
                 {% if page.gallery %}
                     {% for img in page.gallery %}
                     <div class="aks-slide">
