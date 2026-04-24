@@ -2,7 +2,7 @@
 layout: default
 ---
 <style>
-    /* 1. 舊版 UI 保留：100% 復刻 */
+    /* 1. 原始樣式：嚴格保留，不作任何變動 */
     #aks-color-product-root {
         width: 100%; background-color: #050505; color: #f3f3f5;
         padding-top: 40px; 
@@ -10,7 +10,7 @@ layout: default
     }
     #aks-color-product-root * { box-sizing: border-box !important; }
 
-    /* 全域字體防跑版 */
+    /* 全域字體 */
     #aks-color-product-root { font-family: 'Montserrat', 'PingFang TC', sans-serif !important; }
     @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
     .aks-font-youshe { font-family: 'YouSheBiaoTiHei', sans-serif !important; }
@@ -21,81 +21,80 @@ layout: default
     .io-reveal.is-in { opacity: 1; transform: translateY(0); filter: blur(0); }
 
     /* 佈局與圖片 */
-    .aks-gallery-slider { display: flex; }
+    .aks-gallery-slider { display: flex; scroll-behavior: auto; } /* 關閉預設平滑滾動以利邏輯控制 */
     .aks-slide { width: 100%; flex-shrink: 0; }
     .aks-main-swatch-container { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); background-color: #0f0f13; }
     .aks-main-swatch-img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center center; transition: transform 0.5s ease; cursor: zoom-in; }
 
-    /* Slider 容器與按鈕 */
-    .aks-slider-wrapper { position: relative; width: 100%; }
+    /* 【新增】按鈕樣式 - 完全不影響原先樣式 */
+    .aks-slider-wrapper { position: relative; width: 100%; overflow: hidden; }
     .aks-nav-btn {
         position: absolute; top: 50%; transform: translateY(-50%);
-        width: 44px; height: 44px; background: rgba(0,0,0,0.5); border: none;
+        width: 44px; height: 44px; background: rgba(0,0,0,0.4); border: none;
         color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        cursor: pointer; z-index: 10; backdrop-filter: blur(5px); transition: 0.3s;
+        cursor: pointer; z-index: 10; backdrop-filter: blur(8px); transition: 0.3s;
     }
     .aks-nav-btn:hover { background: #c81f2a; }
     .aks-prev { left: 15px; }
     .aks-next { right: 15px; }
+    @media (max-width: 991px) { .aks-nav-btn { display: none; } }
 
     /* 文字排版 */
     .aks-kicker { font-size: 11px; letter-spacing: 0.25em; color: #c81f2a; font-weight: 800; margin-bottom: 16px; display: block; text-transform: uppercase; }
     .aks-tags-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
     .aks-tag { border: 1px solid rgba(255,255,255,0.25); color: white; padding: 4px 14px; border-radius: 4px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
 
-    .aks-title-zh { font-size: clamp(36px, 4vw, 56px); font-weight: 900; color: white; line-height: 1.1; margin: 0 0 8px 0; letter-spacing: 0.05em; }
-    .aks-title-en { font-size: clamp(16px, 2vw, 24px); font-weight: 300; color: rgba(255,255,255,0.6); margin: 0 0 16px 0; text-transform: uppercase; }
+    .aks-title-zh { font-size: clamp(36px, 4vw, 56px); font-weight: 900; color: white; line-height: 1.1; margin: 0 0 8px 0; letter-spacing: 0.05em; font-family: 'Montserrat', 'PingFang TC', sans-serif !important; }
+    .aks-title-en { font-size: clamp(16px, 2vw, 24px); font-weight: 300; color: rgba(255,255,255,0.6); margin: 0 0 16px 0; letter-spacing: 0.05em; text-transform: uppercase; font-family: 'YouSheBiaoTiHei', sans-serif !important; }
+    
     .aks-sku { font-size: 13px; color: #666; letter-spacing: 0.15em; margin: 0 0 32px 0; font-weight: 600; }
 
-    /* 【修正】描述區塊改為左側紅線裝飾 */
-    .aks-desc { 
-        font-size: 15px; color: #aaa; line-height: 1.8; margin: 40px 0 0 0; font-weight: 300; 
-        border-left: 3px solid #c81f2a; padding-left: 20px; 
-    }
+    /* 【修正】描述區塊樣式：左側裝飾線 */
+    .aks-desc { font-size: 15px; color: #aaa; line-height: 1.8; margin: 40px 0 0 0; font-weight: 300; border-left: 2px solid #c81f2a; padding-left: 15px; }
 
-    /* CTA 按鈕 */
-    .aks-btn-cta { 
-        display: flex; align-items: center; justify-content: center; width: 100%; 
-        background-color: #c81f2a; color: white; padding: 18px 32px; border-radius: 6px; 
-        font-size: 14px; font-weight: 900; letter-spacing: 0.2em; transition: 0.4s; 
-        margin-bottom: 40px; text-transform: uppercase; text-decoration: none; 
-        box-shadow: 0 4px 15px rgba(200,31,42,0.3);
-    }
-    .aks-btn-cta:hover { background-color: #e02431; transform: translateY(-2px); box-shadow: 0 0 30px rgba(200,31,42,0.4); }
+    .aks-btn-cta { display: flex; align-items: center; justify-content: center; width: 100%; background-color: #c81f2a; color: #ffffff; padding: 18px 32px; border-radius: 6px; font-size: 14px; font-weight: 900; letter-spacing: 0.2em; transition: all 0.4s ease-in-out; margin-bottom: 40px; text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 15px rgba(200,31,42,0.3); }
+    .aks-btn-cta:hover { background-color: #e02431; color: #ffffff; box-shadow: 0 0 20px rgba(200,31,42,0.6), 0 0 40px rgba(200,31,42,0.3); transform: translateY(-2px) scale(1.01); }
     
     .aks-faq-wrapper { border-top: 1px solid rgba(255,255,255,0.1); }
     .aks-faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .aks-faq-item summary { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; font-size: 15px; font-weight: 800; color: white; cursor: pointer; list-style: none; }
-    .aks-faq-item summary::after { content: '+'; color: #c81f2a; transition: 0.3s; }
+    .aks-faq-item details { width: 100%; }
+    .aks-faq-item summary { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; font-size: 15px; font-weight: 800; color: white; letter-spacing: 0.05em; cursor: pointer; list-style: none; }
+    .aks-faq-item summary::-webkit-details-marker { display: none; }
+    .aks-faq-item summary::after { content: '+'; font-size: 20px; font-weight: 300; color: #c81f2a; transition: 0.3s; }
     .aks-faq-item details[open] summary::after { content: '−'; }
-    .aks-faq-content { padding-bottom: 24px; font-size: 14px; color: #999; line-height: 1.8; }
+    .aks-faq-content { padding-bottom: 24px; font-size: 14px; color: #999; line-height: 1.8; font-weight: 300; }
+    .aks-faq-content a { color: white; text-decoration: underline; text-underline-offset: 4px; transition: 0.3s; }
+    .aks-faq-content a:hover { color: #c81f2a; }
 
     /* RWD 設定 */
     @media (min-width: 992px) {
-        .aks-split-container { max-width: 1440px; margin: 0 auto; display: flex; flex-direction: row; gap: 60px; padding: 0 40px; }
+        .aks-split-container { max-width: 1440px; margin: 0 auto; display: flex; flex-direction: row; align-items: flex-start; gap: 60px; padding: 0 40px; }
         .aks-media-col { width: 45%; }
         .aks-info-col { width: 55%; position: sticky; top: 120px; }
-        .aks-gallery-slider { overflow-x: hidden; } /* 電腦版隱藏滾動條 */
+        .aks-gallery-slider { overflow-x: hidden; scroll-snap-type: none; } /* 電腦版隱藏滾動條 */
         .aks-main-swatch-container:hover .aks-main-swatch-img { transform: scale(1.02); }
     }
     @media (max-width: 991px) {
+        #aks-color-product-root { padding-top: 10px; padding-bottom: 80px; } 
         .aks-split-container { display: flex; flex-direction: column; gap: 24px; }
-        .aks-gallery-slider { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+        .aks-info-col { padding: 0 20px; } 
+        .aks-gallery-slider { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 0; padding-bottom: 10px; }
         .aks-gallery-slider::-webkit-scrollbar { display: none; }
-        .aks-slide { width: 100vw; }
-        .aks-main-swatch-container { border-radius: 0; box-shadow: none; }
-        .aks-nav-btn { display: none; } /* 手機版依賴手勢滑動，隱藏按鈕 */
+        .aks-slide { width: 100vw; scroll-snap-align: start; padding: 0; }
+        .aks-main-swatch-container { border-radius: 0; box-shadow: none; aspect-ratio: 1 / 1; } 
     }
 
-    /* 圓點樣式 (電腦手機通用的顯示) */
-    .aks-slider-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+    /* 圓點樣式 */
+    .aks-slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; margin-bottom: 10px; }
     .aks-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: 0.3s; cursor: pointer; }
-    .aks-dot.active { background: #c81f2a; width: 18px; border-radius: 4px; }
+    .aks-dot.active { background: #c81f2a; width: 16px; border-radius: 4px; }
 
     /* Lightbox */
-    .aks-lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 999999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+    .aks-lightbox { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 999999; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s ease; }
     .aks-lightbox.show { display: flex; opacity: 1; }
-    .aks-lightbox img { max-width: 90%; max-height: 85vh; object-fit: contain; }
+    .aks-lightbox img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); user-select: none; }
+    .aks-lightbox-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: 300; cursor: pointer; z-index: 1000000; transition: 0.3s; padding: 10px; }
+    .aks-lightbox-close:hover { color: #c81f2a; transform: scale(1.1); }
 </style>
 
 <div id="aks-color-product-root" class="aks-font-clean">
@@ -103,8 +102,8 @@ layout: default
         
         <div class="aks-media-col io-reveal" data-delay="1">
             <div class="aks-slider-wrapper">
-                <button class="aks-nav-btn aks-prev" id="slidePrev"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="aks-nav-btn aks-next" id="slideNext"><i class="fa-solid fa-chevron-right"></i></button>
+                <button class="aks-nav-btn aks-prev" id="btnPrev"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="aks-nav-btn aks-next" id="btnNext"><i class="fa-solid fa-chevron-right"></i></button>
 
                 <div id="aks-gallery-slider" class="aks-gallery-slider">
                     <div class="aks-slide">
@@ -112,7 +111,6 @@ layout: default
                             <img src="https://cdn.jsdelivr.net/gh/AKS-PPF/color-ppf-images@main/aks_colorppf_{{ page.code }}.jpg?v={{ site.time | date: '%s' }}" class="aks-main-swatch-img" alt="{{ page.title_zh }}">
                         </div>
                     </div>
-                    
                     {% if page.image_car and page.image_car != "" %}
                     <div class="aks-slide">
                         <div class="aks-main-swatch-container">
@@ -120,7 +118,6 @@ layout: default
                         </div>
                     </div>
                     {% endif %}
-
                     {% if page.gallery %}
                         {% for img in page.gallery %}
                         <div class="aks-slide">
@@ -155,11 +152,21 @@ layout: default
                     <details>
                         <summary>為什麼選擇改色犀牛皮，而非傳統改色膜？</summary>
                         <div class="aks-faq-content">
-                            傳統改色膜多為 PVC 材質，僅改變外觀無保護力。AKS 改色犀牛皮採用航太級 TPU 基材，不僅擁有真實烤漆般的頂級光澤，更具備抗刮、自體修復與防污耐候特性。
+                            傳統改色膜多為 PVC 材質，僅改變外觀無保護力。AKS 改色犀牛皮採用航太級 TPU 基材，不僅擁有真實烤漆般的頂級光澤，更具備抗刮、自體修復與防污耐候特性。<br>
+                            <a href="{{ '/articles/color-ppf-vs-vinyl-wrap/' | relative_url }}" target="_blank">深入了解差異 ➔</a>
                         </div>
                     </details>
                 </div>
+                <div class="aks-faq-item">
+                    <details>
+                        <summary>改色犀牛皮的優缺點分析？</summary>
+                        <div class="aks-faq-content">
+                            最大優勢在於「改色即防護」，一次施工獲得雙重價值，且使用壽命遠超傳統膜料。<br>
+                            <a href="{{ '/articles/what-is-color-ppf/' | relative_url }}" target="_blank">完整優缺點解析 ➔</a>
+                        </div>
+                    </details>
                 </div>
+            </div>
 
             {% if page.description %}
             <div class="aks-desc">{{ page.description }}</div>
@@ -169,6 +176,7 @@ layout: default
 </div>
 
 <div id="aks-lightbox" class="aks-lightbox">
+    <div class="aks-lightbox-close">×</div>
     <img id="aks-lightbox-img" src="" alt="Full Screen">
 </div>
 
@@ -179,62 +187,99 @@ layout: default
 
         const slider = document.getElementById('aks-gallery-slider');
         const dotsContainer = document.getElementById('aks-slider-dots');
-        const allSlides = slider.querySelectorAll('.aks-slide');
+        let slides = Array.from(slider.querySelectorAll('.aks-slide'));
+        const originalCount = slides.length;
         
-        // 1. 初始化圓點
-        allSlides.forEach((_, i) => {
-            let dot = document.createElement('div');
-            dot.className = 'aks-dot' + (i === 0 ? ' active' : '');
-            dot.addEventListener('click', () => {
-                slider.scrollTo({ left: slider.offsetWidth * i, behavior: 'smooth' });
-            });
-            dotsContainer.appendChild(dot);
-        });
-        const dots = dotsContainer.querySelectorAll('.aks-dot');
-
-        // 2. 滾動更新圓點狀態
-        slider.addEventListener('scroll', () => {
-            let index = Math.round(slider.scrollLeft / slider.offsetWidth);
-            dots.forEach((d, i) => d.classList.toggle('active', i === index));
-        });
-
-        // 3. 【修正】無限循環切換邏輯
-        const slideNext = document.getElementById('slideNext');
-        const slidePrev = document.getElementById('slidePrev');
-
-        if (allSlides.length > 1) {
-            slideNext.addEventListener('click', () => {
-                const isLastSlide = slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10;
-                if (isLastSlide) {
-                    slider.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    slider.scrollBy({ left: slider.offsetWidth, behavior: 'smooth' });
-                }
-            });
-
-            slidePrev.addEventListener('click', () => {
-                const isFirstSlide = slider.scrollLeft <= 10;
-                if (isFirstSlide) {
-                    slider.scrollTo({ left: slider.scrollWidth, behavior: 'smooth' });
-                } else {
-                    slider.scrollBy({ left: -slider.offsetWidth, behavior: 'smooth' });
-                }
-            });
-        } else {
-            slideNext.style.display = 'none';
-            slidePrev.style.display = 'none';
-            dotsContainer.style.display = 'none';
+        if (originalCount <= 1) {
+            document.getElementById('btnPrev').style.display = 'none';
+            document.getElementById('btnNext').style.display = 'none';
+            return;
         }
 
-        // 4. Lightbox 邏輯 (略...)
+        // 1. 無縫循環核心：複製第一張到最後，複製最後一張到最前
+        const firstClone = slides[0].cloneNode(true);
+        const lastClone = slides[originalCount - 1].cloneNode(true);
+        slider.appendChild(firstClone);
+        slider.insertBefore(lastClone, slides[0]);
+
+        // 2. 初始化圓點 (只生成原有的數量)
+        for (let i = 0; i < originalCount; i++) {
+            let dot = document.createElement('div');
+            dot.className = 'aks-dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToSlide(i + 1));
+            dotsContainer.appendChild(dot);
+        }
+        const dots = dotsContainer.querySelectorAll('.aks-dot');
+
+        let currentIndex = 1; // 因為前面塞了一張，所以初始是 1
+        let isTransitioning = false;
+
+        // 初始位置
+        slider.scrollLeft = slider.offsetWidth;
+
+        function goToSlide(index, animate = true) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            
+            currentIndex = index;
+            slider.scrollTo({
+                left: slider.offsetWidth * currentIndex,
+                behavior: animate ? 'smooth' : 'auto'
+            });
+
+            // 更新圓點
+            let dotIndex = index - 1;
+            if (index > originalCount) dotIndex = 0;
+            if (index < 1) dotIndex = originalCount - 1;
+            dots.forEach((d, i) => d.classList.toggle('active', i === dotIndex));
+        }
+
+        // 監聽滾動完成，處理瞬間切換
+        slider.addEventListener('scroll', () => {
+            // 電腦版 behavior smooth 結束後檢查
+            const currentLeft = slider.scrollLeft;
+            const width = slider.offsetWidth;
+
+            if (currentLeft >= width * (originalCount + 1)) {
+                // 滑到最後一張（複製的第一張）後，瞬間跳回真正的第一張
+                slider.scrollTo({ left: width, behavior: 'auto' });
+                currentIndex = 1;
+            } else if (currentLeft <= 0) {
+                // 滑到第零張（複製的最後一張）後，瞬間跳回真正的最後一張
+                slider.scrollTo({ left: width * originalCount, behavior: 'auto' });
+                currentIndex = originalCount;
+            }
+            isTransitioning = false;
+        });
+
+        document.getElementById('btnNext').addEventListener('click', () => {
+            goToSlide(currentIndex + 1);
+        });
+
+        document.getElementById('btnPrev').addEventListener('click', () => {
+            goToSlide(currentIndex - 1);
+        });
+
+        // 監窗大小改變修正位置
+        window.addEventListener('resize', () => {
+            slider.scrollTo({ left: slider.offsetWidth * currentIndex, behavior: 'auto' });
+        });
+
+        // Lightbox 邏輯
         const lightbox = document.getElementById('aks-lightbox');
         const lightboxImg = document.getElementById('aks-lightbox-img');
         document.querySelectorAll('.aks-main-swatch-img').forEach(img => {
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
                 lightbox.classList.add('show');
+                document.body.style.overflow = 'hidden';
             });
         });
-        lightbox.addEventListener('click', () => lightbox.classList.remove('show'));
+        lightbox.addEventListener('click', (e) => {
+            if(e.target !== lightboxImg) {
+                lightbox.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
     });
 </script>
