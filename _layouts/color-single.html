@@ -2,147 +2,133 @@
 layout: default
 ---
 <style>
-    /* 1. 舊版 UI 保留：所有質感、光暈、毛玻璃樣式 100% 復刻 */
+    /* ====== 1. 核心樣式復刻與優化 ====== */
     #aks-color-product-root {
         width: 100%; background-color: #050505; color: #f3f3f5;
-        padding-top: 40px; 
-        padding-bottom: 120px;
+        padding-top: 40px; padding-bottom: 120px;
     }
     #aks-color-product-root * { box-sizing: border-box !important; }
 
-    /* 全域字體防跑版 */
     #aks-color-product-root { font-family: 'Montserrat', 'PingFang TC', sans-serif !important; }
-    @font-face { font-family: 'YouSheBiaoTiHei'; src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype'); font-weight: normal; font-style: normal; font-display: swap; }
     .aks-font-youshe { font-family: 'YouSheBiaoTiHei', sans-serif !important; }
-    .aks-font-clean { font-family: 'Montserrat', 'PingFang TC', sans-serif !important; }
-
-    /* 動畫Reveal */
-    .io-reveal { opacity: 0; transform: translateY(20px); filter: blur(5px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease; }
+    
+    .io-reveal { opacity: 0; transform: translateY(20px); filter: blur(5px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
     .io-reveal.is-in { opacity: 1; transform: translateY(0); filter: blur(0); }
 
-    /* 佈局與圖片 */
-    .aks-gallery-slider { display: flex; }
-    .aks-slide { width: 100%; flex-shrink: 0; }
-    .aks-main-swatch-container { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); background-color: #0f0f13; }
-    .aks-main-swatch-img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center center; transition: transform 0.5s ease; cursor: zoom-in; }
+    /* ====== 2. 左右切換滑動器 (Slider) ====== */
+    .aks-slider-wrapper { position: relative; width: 100%; }
+    
+    .aks-gallery-slider { 
+        display: flex; overflow-x: auto; scroll-snap-type: x mandatory; 
+        scrollbar-width: none; -ms-overflow-style: none; gap: 0;
+    }
+    .aks-gallery-slider::-webkit-scrollbar { display: none; }
 
-    /* 文字排版 */
+    .aks-slide { width: 100%; flex: 0 0 100%; scroll-snap-align: start; padding: 0; }
+    
+    .aks-main-swatch-container { 
+        width: 100%; aspect-ratio: 1 / 1; overflow: hidden; 
+        border-radius: 12px; background-color: #0f0f13; position: relative;
+    }
+    .aks-main-swatch-img { 
+        width: 100%; height: 100%; display: block; object-fit: cover; 
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); cursor: zoom-in; 
+    }
+    /* 保留縮放效果 */
+    .aks-main-swatch-container:hover .aks-main-swatch-img { transform: scale(1.05); }
+
+    /* 切換按鈕 */
+    .aks-nav-btn {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        width: 44px; height: 44px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+        color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        cursor: pointer; z-index: 10; backdrop-filter: blur(10px); transition: 0.3s;
+    }
+    .aks-nav-btn:hover { background: var(--primary, #c81f2a); border-color: transparent; }
+    .aks-prev { left: 15px; }
+    .aks-next { right: 15px; }
+    
+    .aks-slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 15px; }
+    .aks-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: 0.3s; }
+    .aks-dot.active { background: #c81f2a; width: 16px; border-radius: 4px; }
+
+    /* ====== 3. 文字與排版 ====== */
     .aks-kicker { font-size: 11px; letter-spacing: 0.25em; color: #c81f2a; font-weight: 800; margin-bottom: 16px; display: block; text-transform: uppercase; }
-    
     .aks-tags-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .aks-tag { border: 1px solid rgba(255,255,255,0.25); color: white; padding: 4px 14px; border-radius: 4px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+    .aks-tag { border: 1px solid rgba(255,255,255,0.2); color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
 
-    .aks-title-zh { 
-        font-size: clamp(36px, 4vw, 56px); 
-        font-weight: 900; 
-        color: white; 
-        line-height: 1.1; 
-        margin: 0 0 8px 0; 
-        letter-spacing: 0.05em; 
-        font-family: 'Montserrat', 'PingFang TC', sans-serif !important; 
-    }
-    .aks-title-en { 
-        font-size: clamp(16px, 2vw, 24px); 
-        font-weight: 300; 
-        color: rgba(255,255,255,0.6); 
-        margin: 0 0 16px 0; 
-        letter-spacing: 0.05em; 
-        text-transform: uppercase;
-        font-family: 'YouSheBiaoTiHei', sans-serif !important; 
-    }
-    
-    .aks-sku { font-size: 13px; color: #666; letter-spacing: 0.15em; margin: 0 0 32px 0; font-weight: 600; }
-    .aks-desc { font-size: 15px; color: #aaa; line-height: 1.8; margin: 0 0 40px 0; font-weight: 300; }
+    .aks-title-zh { font-size: clamp(32px, 4vw, 52px); font-weight: 900; color: white; margin: 0 0 8px 0; }
+    .aks-title-en { font-size: clamp(16px, 2vw, 22px); font-weight: 300; color: rgba(255,255,255,0.5); margin: 0 0 16px 0; text-transform: uppercase; }
+    .aks-sku { font-size: 13px; color: #666; margin-bottom: 32px; font-weight: 600; }
 
-    /* CTA 按鈕 */
     .aks-btn-cta { 
         display: flex; align-items: center; justify-content: center; width: 100%; 
-        background-color: #c81f2a; 
-        color: #ffffff; 
-        padding: 18px 32px; border-radius: 6px; font-size: 14px; font-weight: 900; 
-        letter-spacing: 0.2em; transition: all 0.4s ease-in-out; margin-bottom: 40px; 
-        text-transform: uppercase; text-decoration: none; font-family: 'Montserrat', sans-serif; 
-        box-shadow: 0 4px 15px rgba(200,31,42,0.3);
+        background-color: #c81f2a; color: white; padding: 18px; border-radius: 6px; 
+        font-size: 14px; font-weight: 900; letter-spacing: 0.2em; text-decoration: none; 
+        transition: 0.4s; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(200,31,42,0.3);
     }
-    .aks-btn-cta:hover { 
-        background-color: #e02431; 
-        color: #ffffff; 
-        box-shadow: 0 0 20px rgba(200,31,42,0.6), 0 0 40px rgba(200,31,42,0.3); 
-        transform: translateY(-2px) scale(1.01); 
-    }
-    
-    .aks-faq-wrapper { border-top: 1px solid rgba(255,255,255,0.1); }
-    .aks-faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .aks-faq-item details { width: 100%; }
-    .aks-faq-item summary { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; font-size: 15px; font-weight: 800; color: white; letter-spacing: 0.05em; cursor: pointer; list-style: none; }
-    .aks-faq-item summary::-webkit-details-marker { display: none; }
-    .aks-faq-item summary::after { content: '+'; font-size: 20px; font-weight: 300; color: #c81f2a; transition: 0.3s; }
-    .aks-faq-item details[open] summary::after { content: '−'; }
-    .aks-faq-content { padding-bottom: 24px; font-size: 14px; color: #999; line-height: 1.8; font-weight: 300; }
-    .aks-faq-content a { color: white; text-decoration: underline; text-underline-offset: 4px; transition: 0.3s; }
-    .aks-faq-content a:hover { color: #c81f2a; }
+    .aks-btn-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(200,31,42,0.5); background-color: #e02431; }
 
-    /* RWD 設定 */
+    /* FAQ 與下方 Description */
+    .aks-faq-wrapper { border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px; }
+    .aks-faq-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .aks-faq-item summary { display: flex; justify-content: space-between; padding: 20px 0; color: white; cursor: pointer; list-style: none; font-weight: 700; }
+    .aks-faq-item summary::after { content: '+'; color: #c81f2a; }
+    .aks-faq-content { padding-bottom: 20px; font-size: 14px; color: #999; line-height: 1.6; }
+    
+    .aks-bottom-desc { font-size: 14px; color: #555; line-height: 1.8; margin-top: 20px; font-weight: 300; border-left: 2px solid #222; padding-left: 15px; }
+
+    /* RWD */
     @media (min-width: 992px) {
-        .aks-split-container { max-width: 1440px; margin: 0 auto; display: flex; flex-direction: row; align-items: flex-start; gap: 60px; padding: 0 40px; }
-        .aks-media-col { width: 45%; }
-        .aks-info-col { width: 55%; position: sticky; top: 120px; }
-        .aks-gallery-slider { flex-direction: column; gap: 32px; } 
-        .aks-slider-dots { display: none; } 
-        .aks-main-swatch-container:hover .aks-main-swatch-img { transform: scale(1.02); }
+        .aks-split-container { max-width: 1440px; margin: 0 auto; display: flex; gap: 80px; padding: 0 60px; }
+        .aks-media-col { width: 48%; position: sticky; top: 120px; }
+        .aks-info-col { width: 52%; }
     }
     @media (max-width: 991px) {
-        #aks-color-product-root { padding-top: 10px; padding-bottom: 80px; } 
-        .aks-split-container { display: flex; flex-direction: column; gap: 24px; }
-        .aks-info-col { padding: 0 20px; } 
-        .aks-gallery-slider { flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 0; padding-bottom: 10px; }
-        .aks-gallery-slider::-webkit-scrollbar { display: none; }
-        .aks-slide { width: 100vw; scroll-snap-align: start; padding: 0; }
-        
-        /* 解決手機版長方形裁切問題：改回 1:1 完美比例 */
-        .aks-main-swatch-container { border-radius: 0; box-shadow: none; aspect-ratio: 1 / 1; } 
-        
-        .aks-slider-dots { display: flex; justify-content: center; gap: 8px; margin-top: 10px; margin-bottom: 10px; }
-        .aks-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: 0.3s; }
-        .aks-dot.active { background: #c81f2a; width: 16px; border-radius: 4px; }
+        .aks-split-container { display: flex; flex-direction: column; }
+        .aks-main-swatch-container { border-radius: 0; }
+        .aks-info-col { padding: 30px 24px; }
     }
 
     /* Lightbox */
-    .aks-lightbox { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 999999; align-items: center; justify-content: center; padding: 20px; opacity: 0; transition: opacity 0.3s ease; }
-    .aks-lightbox.show { display: flex; opacity: 1; }
-    .aks-lightbox img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); user-select: none; }
-    .aks-lightbox-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: 300; cursor: pointer; z-index: 1000000; transition: 0.3s; padding: 10px; }
-    .aks-lightbox-close:hover { color: #c81f2a; transform: scale(1.1); }
+    .aks-lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; }
+    .aks-lightbox.show { display: flex; }
+    .aks-lightbox img { max-width: 90%; max-height: 85vh; object-fit: contain; }
 </style>
 
-<div id="aks-color-product-root" class="aks-font-clean">
+<div id="aks-color-product-root">
     <div class="aks-split-container">
         
         <div class="aks-media-col io-reveal" data-delay="1">
-            <div id="aks-gallery-slider" class="aks-gallery-slider">
-                <div class="aks-slide">
-                    <div class="aks-main-swatch-container">
-                        <img src="https://cdn.jsdelivr.net/gh/AKS-PPF/color-ppf-images@main/aks_colorppf_{{ page.code }}.jpg?v={{ site.time | date: '%s' }}" class="aks-main-swatch-img" alt="{{ page.title_zh }}">
-                    </div>
-                </div>
+            <div class="aks-slider-wrapper">
+                <button class="aks-nav-btn aks-prev" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="aks-nav-btn aks-next" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
 
-                {% if page.image_car and page.image_car != "" %}
-                <div class="aks-slide">
-                    <div class="aks-main-swatch-container">
-                        <img src="{{ page.image_car }}" class="aks-main-swatch-img" loading="lazy" alt="{{ page.title_zh }} 實車展示">
-                    </div>
-                </div>
-                {% endif %}
-
-                {% if page.gallery %}
-                    {% for img in page.gallery %}
+                <div id="aks-gallery-slider" class="aks-gallery-slider">
                     <div class="aks-slide">
                         <div class="aks-main-swatch-container">
-                            <img src="{{ img | relative_url }}" class="aks-main-swatch-img" loading="lazy" alt="{{ page.title_zh }} 完工照">
+                            <img src="https://cdn.jsdelivr.net/gh/AKS-PPF/color-ppf-images@main/aks_colorppf_{{ page.code }}.jpg?v={{ site.time | date: '%s' }}" class="aks-main-swatch-img" alt="{{ page.title_zh }}">
                         </div>
                     </div>
-                    {% endfor %}
-                {% endif %}
+
+                    {% if page.image_car and page.image_car != "" %}
+                    <div class="aks-slide">
+                        <div class="aks-main-swatch-container">
+                            <img src="{{ page.image_car }}" class="aks-main-swatch-img" loading="lazy" alt="{{ page.title_zh }} 實車展示">
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if page.gallery %}
+                        {% for img in page.gallery %}
+                        <div class="aks-slide">
+                            <div class="aks-main-swatch-container">
+                                <img src="{{ img | relative_url }}" class="aks-main-swatch-img" loading="lazy" alt="{{ page.title_zh }} 完工照">
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
             <div id="aks-slider-dots" class="aks-slider-dots"></div>
         </div>
@@ -151,56 +137,47 @@ layout: default
             <span class="aks-kicker">COLOR PPF</span>
             
             <div class="aks-tags-group">
-                {% if page.finish %}<span class="aks-tag">{{ page.finish }}</span>{% endif %}
                 {% if page.series %}<span class="aks-tag">{{ page.series }}</span>{% endif %}
-                {% if page.brand %}<span class="aks-tag">{{ page.brand }}</span>{% endif %}
+                <span class="aks-tag">TPU MATERIAL</span>
+                <span class="aks-tag">SELF-HEALING</span>
             </div>
 
             <h1 class="aks-title-zh">{{ page.title_zh }}</h1>
             <h2 class="aks-title-en">{{ page.title_en }}</h2>
             <p class="aks-sku">色號: {{ page.code }}</p>
             
-            {% if page.description %}
-            <p class="aks-desc">{{ page.description }}</p>
-            {% endif %}
-            
             <a href="{{ '/pages/dealers/ai-preview/' | relative_url }}" class="aks-btn-cta">預約 AI 換色預覽</a>
 
             <div class="aks-faq-wrapper">
                 <div class="aks-faq-item">
                     <details>
-                        <summary>為什麼選擇改色犀牛皮，而非傳統改色膜？</summary>
+                        <summary>為什麼選擇改色犀牛皮？</summary>
                         <div class="aks-faq-content">
-                            傳統改色膜多為 PVC 材質，僅改變外觀無保護力。AKS 改色犀牛皮採用航太級 TPU 基材，不僅擁有真實烤漆般的頂級光澤，更具備抗刮、自體修復與防污耐候特性。<br>
-                            <a href="{{ '/articles/color-ppf-vs-vinyl-wrap/' | relative_url }}" target="_blank">深入了解差異 ➔</a>
+                            採用航太級 TPU 基材，不僅改變顏色，更提供抗刮、自體修復與防污特性。
                         </div>
                     </details>
                 </div>
                 <div class="aks-faq-item">
                     <details>
-                        <summary>改色犀牛皮的優缺點分析？</summary>
+                        <summary>關於純乾貼施工技術</summary>
                         <div class="aks-faq-content">
-                            最大優勢在於「改色即防護」，一次施工獲得雙重價值，且使用壽命遠超傳統膜料。缺點則是初期建置成本較高，但從長期保護原車漆與保值角度來看，絕對是更劃算的投資。<br>
-                            <a href="{{ '/articles/what-is-color-ppf/' | relative_url }}" target="_blank">完整優缺點解析 ➔</a>
-                        </div>
-                    </details>
-                </div>
-                <div class="aks-faq-item">
-                    <details>
-                        <summary>什麼是純乾貼施工技術？</summary>
-                        <div class="aks-faq-content">
-                            AKS 專屬底膠技術，施工過程不需大量噴水，不僅能避免水氣殘留導致的起泡問題，更能完美貼合複雜曲面，確保包膜邊緣不翘邊，耐用度與美觀度大幅提升。
+                            AKS 專屬底膠技術，施工不需大量噴水，避免水氣殘留，邊緣不翹邊。
                         </div>
                     </details>
                 </div>
             </div>
+
+            {% if page.description %}
+            <div class="aks-bottom-desc">
+                {{ page.description }}
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
 
 <div id="aks-lightbox" class="aks-lightbox">
-    <div class="aks-lightbox-close">×</div>
-    <img id="aks-lightbox-img" src="" alt="Full Screen">
+    <img id="aks-lightbox-img" src="">
 </div>
 
 <script>
@@ -208,42 +185,44 @@ layout: default
         const reveals = document.querySelectorAll('.io-reveal');
         setTimeout(() => { reveals.forEach(el => el.classList.add('is-in')); }, 100);
 
-        const lightbox = document.getElementById('aks-lightbox');
-        const lightboxImg = document.getElementById('aks-lightbox-img');
-        const mainImgs = document.querySelectorAll('.aks-main-swatch-img');
+        // Slider 邏輯
+        const slider = document.getElementById('aks-gallery-slider');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('aks-slider-dots');
+        const slides = document.querySelectorAll('.aks-slide');
 
-        mainImgs.forEach(img => {
-            img.addEventListener('click', function() {
-                lightboxImg.src = this.src;
-                lightbox.classList.add('show');
-                document.body.style.overflow = 'hidden';
-            });
+        // 初始化圓點
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'aks-dot' + (i === 0 ? ' active' : '');
+            dotsContainer.appendChild(dot);
+        });
+        const dots = document.querySelectorAll('.aks-dot');
+
+        // 按鈕點擊事件
+        nextBtn.addEventListener('click', () => {
+            slider.scrollBy({ left: slider.offsetWidth, behavior: 'smooth' });
+        });
+        prevBtn.addEventListener('click', () => {
+            slider.scrollBy({ left: -slider.offsetWidth, behavior: 'smooth' });
         });
 
-        if(lightbox) {
-            lightbox.addEventListener('click', function(e) {
-                if(e.target !== lightboxImg) {
-                    lightbox.classList.remove('show');
-                    document.body.style.overflow = ''; 
-                }
-            });
-        }
+        // 滾動偵測更新圓點
+        slider.addEventListener('scroll', () => {
+            let index = Math.round(slider.scrollLeft / slider.offsetWidth);
+            dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        });
 
-        const slider = document.getElementById('aks-gallery-slider');
-        const dotsContainer = document.getElementById('aks-slider-dots');
-        const allSlides = slider ? slider.querySelectorAll('.aks-slide') : [];
-        
-        if (slider && window.innerWidth < 992 && allSlides.length > 1) {
-            allSlides.forEach((_, i) => {
-                let dot = document.createElement('div');
-                dot.className = 'aks-dot' + (i === 0 ? ' active' : '');
-                dotsContainer.appendChild(dot);
+        // Lightbox 點擊放大
+        const lightbox = document.getElementById('aks-lightbox');
+        const lightboxImg = document.getElementById('aks-lightbox-img');
+        document.querySelectorAll('.aks-main-swatch-img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('show');
             });
-            const dots = dotsContainer.querySelectorAll('.aks-dot');
-            slider.addEventListener('scroll', () => {
-                let index = Math.round(slider.scrollLeft / window.innerWidth);
-                dots.forEach((d, i) => d.classList.toggle('active', i === index));
-            });
-        }
+        });
+        lightbox.addEventListener('click', () => lightbox.classList.remove('show'));
     });
 </script>
