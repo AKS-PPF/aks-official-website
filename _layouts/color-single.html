@@ -67,6 +67,7 @@ layout: default
         aspect-ratio: 1 / 1;
         overflow: hidden;
         border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         background-color: #0f0f13;
     }
 
@@ -527,6 +528,24 @@ layout: default
         const reveals = document.querySelectorAll('.io-reveal');
         setTimeout(() => { reveals.forEach(el => el.classList.add('is-in')); }, 100);
 
+        // --- Lightbox 邏輯 (移至判斷式之前，確保圖片不論張數點擊都有反應) ---
+        const lightbox = document.getElementById('aks-lightbox');
+        const lightboxImg = document.getElementById('aks-lightbox-img');
+        document.querySelectorAll('.aks-main-swatch-img').forEach(img => {
+            img.addEventListener('click', function () {
+                lightboxImg.src = this.src;
+                lightbox.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // --- Slider 邏輯 ---
         const slider = document.getElementById('aks-gallery-slider');
         const dotsContainer = document.getElementById('aks-slider-dots');
         let slides = Array.from(slider.querySelectorAll('.aks-slide'));
@@ -535,7 +554,7 @@ layout: default
         if (originalCount <= 1) {
             document.getElementById('btnPrev').style.display = 'none';
             document.getElementById('btnNext').style.display = 'none';
-            return;
+            return; // 只有一張圖時，下方的循環邏輯不需要執行
         }
 
         // 1. 無縫循環核心：複製第一張到最後，複製最後一張到最前
@@ -578,16 +597,13 @@ layout: default
 
         // 監聽滾動完成，處理瞬間切換
         slider.addEventListener('scroll', () => {
-            // 電腦版 behavior smooth 結束後檢查
             const currentLeft = slider.scrollLeft;
             const width = slider.offsetWidth;
 
             if (currentLeft >= width * (originalCount + 1)) {
-                // 滑到最後一張（複製的第一張）後，瞬間跳回真正的第一張
                 slider.scrollTo({ left: width, behavior: 'auto' });
                 currentIndex = 1;
             } else if (currentLeft <= 0) {
-                // 滑到第零張（複製的最後一張）後，瞬間跳回真正的最後一張
                 slider.scrollTo({ left: width * originalCount, behavior: 'auto' });
                 currentIndex = originalCount;
             }
@@ -605,23 +621,6 @@ layout: default
         // 監窗大小改變修正位置
         window.addEventListener('resize', () => {
             slider.scrollTo({ left: slider.offsetWidth * currentIndex, behavior: 'auto' });
-        });
-
-        // Lightbox 邏輯
-        const lightbox = document.getElementById('aks-lightbox');
-        const lightboxImg = document.getElementById('aks-lightbox-img');
-        document.querySelectorAll('.aks-main-swatch-img').forEach(img => {
-            img.addEventListener('click', function () {
-                lightboxImg.src = this.src;
-                lightbox.classList.add('show');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-        lightbox.addEventListener('click', (e) => {
-            if (e.target !== lightboxImg) {
-                lightbox.classList.remove('show');
-                document.body.style.overflow = '';
-            }
         });
     });
 </script>
