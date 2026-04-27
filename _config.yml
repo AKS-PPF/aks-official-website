@@ -8,8 +8,8 @@ email: info@aks-ppf.com
 description: "AKS PPF 頂級車漆保護膜，提供改色犀牛皮、亮面、消光及天窗隔熱膜等全方位防護解決方案。"
 
 # 2. 網址設定
-url: "https://aks-ppf.github.io"
-baseurl: "/aks-official-website"
+url: "https://www.aks-ppf.com"
+baseurl: ""
 
 # 3. 編譯環境設定
 markdown: kramdown
