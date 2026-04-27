@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 找不到網頁 | AKS PPF</title>
+  
+  <!-- <meta http-equiv="refresh" content="6;url=https://www.aks-ppf.com/"> -->
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-red: #c81f2a;
+      --bg-dark: #050505;
+      --text-white: #ffffff;
+      --text-gray: #aaaaaa;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Montserrat', "PingFang TC", "Microsoft JhengHei", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* 1. Logo 區塊 */
+    .aks-404-logo {
+      margin-bottom: 5vh;
+      animation: fadeInDown 0.8s ease forwards;
+    }
+    .aks-404-logo img {
+      height: 45px; /* 可根據實際 Logo 比例微調 */
+      width: auto;
+      display: block;
+    }
+
+    /* 404 視覺大字 */
+    .aks-404-glitch {
+      font-size: clamp(80px, 15vw, 150px);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 10px;
+      color: var(--text-white);
+      text-shadow: 4px 4px 0px rgba(200, 31, 42, 0.4);
+      animation: fadeInUp 0.8s ease forwards 0.2s;
+      opacity: 0;
+    }
+
+    /* 2. 醒目的標題與圖示 */
+    .aks-404-title {
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      animation: fadeInUp 0.8s ease forwards 0.4s;
+      opacity: 0;
+      letter-spacing: 0.05em;
+    }
+    .aks-404-title i {
+      color: var(--primary-red);
+    }
+
+    /* 說明文字與倒數計時 */
+    .aks-404-desc {
+      font-size: clamp(14px, 3vw, 16px);
+      color: var(--text-gray);
+      margin-bottom: 40px;
+      animation: fadeInUp 0.8s ease forwards 0.6s;
+      opacity: 0;
+      line-height: 1.8;
+      letter-spacing: 0.05em;
+    }
+    .countdown {
+      font-variant-numeric: tabular-nums;
+      font-weight: bold;
+      color: var(--primary-red);
+      font-size: 1.1em;
+    }
+
+    /* 3. 回到首頁按鈕 */
+    .aks-404-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: var(--primary-red);
+      color: var(--text-white);
+      text-decoration: none;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(200, 31, 42, 0.3);
+      animation: fadeInUp 0.8s ease forwards 0.8s;
+      opacity: 0;
+    }
+    .aks-404-btn:hover {
+      background-color: #a81a23;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(200, 31, 42, 0.5);
+    }
+
+    /* 進場動畫 */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aks-404-logo">
+    <a href="https://www.aks-ppf.com/">
+      <img src="https://aks-ppf.github.io/images/ui/logo.png" alt="AKS PPF Logo">
+    </a>
+  </div>
+
+  <div class="aks-404-glitch">404</div>
+
+  <h1 class="aks-404-title">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    哎呀！找不到網頁
+  </h1>
+
+  <p class="aks-404-desc">
+    您所尋找的頁面可能已被移除、重新命名或暫時無法使用。<br>
+    系統將在 <span class="countdown" id="timer">6</span> 秒後自動為您導向首頁。
+  </p>
+
+  <a href="https://www.aks-ppf.com/" class="aks-404-btn">
+    <i class="fa-solid fa-house"></i> 回到首頁
+  </a>
+
+  <script>
+    let timeLeft = 6;
+    const timerElement = document.getElementById('timer');
+    const countdown = setInterval(() => {
+      timeLeft--;
+      if (timerElement) {
+        timerElement.textContent = timeLeft;
+      }
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
