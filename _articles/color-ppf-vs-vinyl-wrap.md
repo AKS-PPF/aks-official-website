@@ -87,4 +87,4 @@ tags: [改色犀牛皮, 汽車貼膜, TPU膜]
 
 AKS 犀牛皮為台灣專業汽車膜料品牌，提供高品質 TPU 改色膜、施工諮詢與保固註冊服務。每張膜料皆具正品驗證，讓車主享有長效光澤與安心保障。
 
-📍 **了解更多改色犀牛皮資訊**｜歡迎造訪 [AKS 官方網站](https://www.aks-ppf.com) 或 [追蹤我們 IG](https://www.instagram.com/aks.ppf/) 獲取最新改色案例。
+📍 **了解更多改色犀牛皮資訊**｜歡迎造訪 [AKS 改色犀牛皮](https://www.aks-ppf.com/pages/products/color-ppf) 或 [追蹤我們 IG](https://www.instagram.com/aks.ppf/) 獲取最新改色案例。
