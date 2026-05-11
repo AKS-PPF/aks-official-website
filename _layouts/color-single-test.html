@@ -122,6 +122,12 @@ robots: noindex
         right: 15px;
     }
 
+    @media (max-width: 991px) {
+        .aks-nav-btn {
+            display: none;
+        }
+    }
+
     /* 文字排版 */
     .aks-kicker {
         font-size: 11px;
@@ -190,13 +196,19 @@ robots: noindex
         padding-left: 15px;
     }
 
-    /* 行動呼籲按鈕群組 - 電腦版並排 */
+    /* 行動呼籲按鈕群組 */
     .aks-btn-group {
         display: flex;
         flex-direction: row;
         gap: 16px;
-        margin-bottom: 40px;
+        margin: 60px 0 40px;
         width: 100%;
+    }
+
+    @media (min-width: 992px) {
+        .aks-btn-group {
+        margin: 40px 0;
+        }
     }
 
     .aks-btn-cta {
@@ -322,16 +334,6 @@ robots: noindex
             border-radius: 0;
             box-shadow: none;
             aspect-ratio: 1 / 1;
-        }
-        
-        .aks-nav-btn {
-            display: none;
-        }
-
-        /* 手機版按鈕改為上下排列 */
-        .aks-btn-group {
-            flex-direction: column;
-            gap: 12px;
         }
     }
 
@@ -463,7 +465,7 @@ robots: noindex
             <!-- 按鈕群組 -->
             <div class="aks-btn-group">
                 <a href="{{ '/pages/dealers/ai-preview/' | relative_url }}" class="aks-btn-cta">預約 AI 換色預覽</a>
-                <a href="{{ '/pages/color-chart/' | relative_url }}" class="aks-btn-secondary">返回色卡總頁</a>
+                <a href="/pages/color-chart/" class="aks-btn-secondary">返回色卡總頁</a>
             </div>
 
             {% if page.description %}
