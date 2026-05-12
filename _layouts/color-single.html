@@ -2,7 +2,6 @@
 layout: default
 ---
 <style>
-    /* 1. 原始樣式：嚴格保留，不作任何變動 */
     #aks-color-product-root {
         width: 100%;
         background-color: #050505;
@@ -81,7 +80,7 @@ layout: default
         cursor: zoom-in;
     }
 
-    /* 【新增】按鈕樣式 - 完全不影響原先樣式 */
+    /* 按鈕樣式 */
     .aks-slider-wrapper {
         position: relative;
         width: 100%;
@@ -182,7 +181,7 @@ layout: default
         font-weight: 600;
     }
 
-    /* 【修正】描述區塊樣式：左側裝飾線 */
+    /* 描述區塊樣式：左側裝飾線 */
     .aks-desc {
         font-size: 15px;
         color: #aaa;
@@ -193,24 +192,33 @@ layout: default
         padding-left: 15px;
     }
 
+    /* 行動呼籲按鈕群組 */
+    .aks-btn-group {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        margin: 80px 0 40px;
+        width: 100%;
+    }
+
     .aks-btn-cta {
         display: flex;
+        flex: 1;
         align-items: center;
         justify-content: center;
-        width: 100%;
         background-color: #c81f2a;
         color: #ffffff;
-        padding: 18px 32px;
+        padding: 16px 20px;
         border-radius: 6px;
         font-size: 14px;
         font-weight: 900;
-        letter-spacing: 0.2em;
+        letter-spacing: 0.1em;
         transition: all 0.4s ease-in-out;
-        margin-bottom: 40px;
         text-transform: uppercase;
         text-decoration: none;
         font-family: 'Montserrat', sans-serif;
         box-shadow: 0 4px 15px rgba(200, 31, 42, 0.3);
+        text-align: center;
     }
 
     .aks-btn-cta:hover {
@@ -220,64 +228,29 @@ layout: default
         transform: translateY(-2px) scale(1.01);
     }
 
-    .aks-faq-wrapper {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .aks-faq-item {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .aks-faq-item details {
-        width: 100%;
-    }
-
-    .aks-faq-item summary {
+    .aks-btn-secondary {
         display: flex;
-        justify-content: space-between;
+        flex: 1;
         align-items: center;
-        padding: 24px 0;
-        font-size: 15px;
-        font-weight: 800;
-        color: white;
-        letter-spacing: 0.05em;
-        cursor: pointer;
-        list-style: none;
-    }
-
-    .aks-faq-item summary::-webkit-details-marker {
-        display: none;
-    }
-
-    .aks-faq-item summary::after {
-        content: '+';
-        font-size: 20px;
-        font-weight: 300;
-        color: #c81f2a;
-        transition: 0.3s;
-    }
-
-    .aks-faq-item details[open] summary::after {
-        content: '−';
-    }
-
-    .aks-faq-content {
-        padding-bottom: 24px;
+        justify-content: center;
+        background-color: transparent;
+        color: #ffffff;
+        padding: 16px 20px;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
         font-size: 14px;
-        color: #999;
-        line-height: 1.8;
-        font-weight: 300;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        transition: all 0.3s ease-in-out;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: 'Montserrat', 'PingFang TC', sans-serif;
+        text-align: center;
     }
 
-    .aks-faq-content a {
-        color: white;
-        text-decoration: underline;
-        text-underline-offset: 4px;
-        transition: 0.3s;
-    }
-
-    .aks-faq-content a:hover {
-        color: #c81f2a;
+    .aks-btn-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.5);
     }
 
     /* RWD 設定 */
@@ -287,7 +260,7 @@ layout: default
             margin: 0 auto;
             display: flex;
             flex-direction: row;
-            align-items: flex-start;
+            align-items: center;
             gap: 60px;
             padding: 0 40px;
         }
@@ -298,8 +271,6 @@ layout: default
 
         .aks-info-col {
             width: 55%;
-            position: sticky;
-            top: 120px;
         }
 
         .aks-gallery-slider {
@@ -327,6 +298,10 @@ layout: default
 
         .aks-info-col {
             padding: 0 20px;
+        }
+
+        .aks-btn-group {
+        margin: 40px 0;
         }
 
         .aks-gallery-slider {
@@ -479,36 +454,10 @@ layout: default
             <h2 class="aks-title-en">{{ page.title_en }}</h2>
             <p class="aks-sku">色號: {{ page.code }}</p>
 
-            <a href="{{ '/pages/dealers/ai-preview/' | relative_url }}" class="aks-btn-cta">預約 AI 換色預覽</a>
-
-            <div class="aks-faq-wrapper">
-                <div class="aks-faq-item">
-                    <details>
-                        <summary>為什麼選擇改色犀牛皮，而非傳統改色膜？</summary>
-                        <div class="aks-faq-content">
-                            傳統改色膜多為 PVC 材質，僅改變外觀無保護力。AKS 改色犀牛皮採用航太級 TPU 基材，不僅擁有真實烤漆般的頂級光澤，更具備抗刮、自體修復與防污耐候特性。<br>
-                            <a href="{{ '/articles/color-ppf-vs-vinyl-wrap/' | relative_url }}" target="_blank">深入了解差異
-                                ➔</a>
-                        </div>
-                    </details>
-                </div>
-                <div class="aks-faq-item">
-                    <details>
-                        <summary>改色犀牛皮的優缺點分析？</summary>
-                        <div class="aks-faq-content">
-                            最大優勢在於「改色即防護」，一次施工獲得雙重價值，且使用壽命遠超傳統膜料。缺點則是初期建置成本較高，但從長期保護原車漆與保值角度來看，絕對是更劃算的投資。<br>
-                            <a href="{{ '/articles/what-is-color-ppf/' | relative_url }}" target="_blank">完整優缺點解析 ➔</a>
-                        </div>
-                    </details>
-                </div>
-                <div class="aks-faq-item">
-                    <details>
-                        <summary>什麼是純乾貼施工技術？</summary>
-                        <div class="aks-faq-content">
-                            AKS 專屬底膠技術，施工過程不需大量噴水，不僅能避免水氣殘留導致的起泡問題，更能完美貼合複雜曲面，確保包膜邊緣不翘邊，耐用度與美觀度大幅提升。
-                        </div>
-                    </details>
-                </div>
+            <!-- 按鈕群組 -->
+            <div class="aks-btn-group">
+                <a href="{{ '/pages/dealers/ai-preview/' | relative_url }}" class="aks-btn-cta">預約 AI 換色預覽</a>
+                <a href="/pages/color-chart/" class="aks-btn-secondary">返回線上色卡</a>
             </div>
 
             {% if page.description %}
@@ -528,7 +477,7 @@ layout: default
         const reveals = document.querySelectorAll('.io-reveal');
         setTimeout(() => { reveals.forEach(el => el.classList.add('is-in')); }, 100);
 
-        // --- Lightbox 邏輯 (移至判斷式之前，確保圖片不論張數點擊都有反應) ---
+        // --- Lightbox 邏輯 ---
         const lightbox = document.getElementById('aks-lightbox');
         const lightboxImg = document.getElementById('aks-lightbox-img');
         document.querySelectorAll('.aks-main-swatch-img').forEach(img => {
@@ -554,16 +503,14 @@ layout: default
         if (originalCount <= 1) {
             document.getElementById('btnPrev').style.display = 'none';
             document.getElementById('btnNext').style.display = 'none';
-            return; // 只有一張圖時，下方的循環邏輯不需要執行
+            return;
         }
 
-        // 1. 無縫循環核心：複製第一張到最後，複製最後一張到最前
         const firstClone = slides[0].cloneNode(true);
         const lastClone = slides[originalCount - 1].cloneNode(true);
         slider.appendChild(firstClone);
         slider.insertBefore(lastClone, slides[0]);
 
-        // 2. 初始化圓點 (只生成原有的數量)
         for (let i = 0; i < originalCount; i++) {
             let dot = document.createElement('div');
             dot.className = 'aks-dot' + (i === 0 ? ' active' : '');
@@ -572,10 +519,9 @@ layout: default
         }
         const dots = dotsContainer.querySelectorAll('.aks-dot');
 
-        let currentIndex = 1; // 因為前面塞了一張，所以初始是 1
+        let currentIndex = 1; 
         let isTransitioning = false;
 
-        // 初始位置
         slider.scrollLeft = slider.offsetWidth;
 
         function goToSlide(index, animate = true) {
@@ -588,14 +534,12 @@ layout: default
                 behavior: animate ? 'smooth' : 'auto'
             });
 
-            // 更新圓點
             let dotIndex = index - 1;
             if (index > originalCount) dotIndex = 0;
             if (index < 1) dotIndex = originalCount - 1;
             dots.forEach((d, i) => d.classList.toggle('active', i === dotIndex));
         }
 
-        // 監聽滾動完成，處理瞬間切換
         slider.addEventListener('scroll', () => {
             const currentLeft = slider.scrollLeft;
             const width = slider.offsetWidth;
@@ -618,7 +562,6 @@ layout: default
             goToSlide(currentIndex - 1);
         });
 
-        // 監窗大小改變修正位置
         window.addEventListener('resize', () => {
             slider.scrollTo({ left: slider.offsetWidth * currentIndex, behavior: 'auto' });
         });
