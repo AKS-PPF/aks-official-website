@@ -35,23 +35,13 @@
       "description": "{{ page.description }}"
     }
 
-    {% comment %} 2. 獨立色卡頁面 (🚀 終極升級版：支援多圖與精準 SEO) {% endcomment %}
+    {% comment %} 2. 獨立色卡頁面 (🚀 終極升級版：單一視覺重心，實車優先) {% endcomment %}
     {%- elsif current_path contains '/pages/color-chart/' and current_path != '/pages/color-chart/' -%}
     ,{
       "@type": "Product",
       "@id": "{{ site.url }}{{ page.url }}#product",
-      "name": "{{ page.title }}",
-      "image": [
-        "https://cdn.jsdelivr.net/gh/AKS-PPF/color-ppf-images@main/aks_colorppf_{{ page.code }}.jpg"
-        {%- if page.image_car and page.image_car != "" -%}
-        ,"{{ page.image_car | absolute_url }}"
-        {%- endif -%}
-        {%- if page.gallery -%}
-          {%- for img in page.gallery -%}
-          ,"{{ img | absolute_url }}"
-          {%- endfor -%}
-        {%- endif -%}
-      ],
+      "name": "AKS {{ page.title_zh }} - 改色犀牛皮 Color PPF",
+      "image": "{% if page.image_car and page.image_car != '' %}{{ page.image_car | absolute_url }}{% else %}{{ page.image | absolute_url }}{% endif %}",
       "description": "{{ page.description | escape }}",
       "sku": "{{ page.code }}",
       "color": "{{ page.title_zh }}",
