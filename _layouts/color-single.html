@@ -496,23 +496,26 @@ layout: default
             }
         });
 
-        // --- Slider 邏輯 ---
+        // --- Slider 邏輯 (修復無限輪播) ---
         const slider = document.getElementById('aks-gallery-slider');
         const dotsContainer = document.getElementById('aks-slider-dots');
-        let slides = Array.from(slider.querySelectorAll('.aks-slide'));
+        const slides = Array.from(slider.querySelectorAll('.aks-slide'));
         const originalCount = slides.length;
 
+        // 如果圖片只有 1 張或沒有，隱藏按鈕並不執行輪播
         if (originalCount <= 1) {
             document.getElementById('btnPrev').style.display = 'none';
             document.getElementById('btnNext').style.display = 'none';
             return;
         }
 
+        // 為了達到無限輪播，複製第一張與最後一張
         const firstClone = slides[0].cloneNode(true);
         const lastClone = slides[originalCount - 1].cloneNode(true);
         slider.appendChild(firstClone);
         slider.insertBefore(lastClone, slides[0]);
 
+        // 產生下方的圓點點
         for (let i = 0; i < originalCount; i++) {
             let dot = document.createElement('div');
             dot.className = 'aks-dot' + (i === 0 ? ' active' : '');
@@ -524,38 +527,71 @@ layout: default
         let currentIndex = 1; 
         let isTransitioning = false;
 
-        slider.scrollLeft = slider.offsetWidth;
+        // 初始化：讓捲軸位置在第一張原圖（跳過前面的複製圖）
+        // 加上 setTimeout 確保圖片與 CSS 載入後能抓到正確的寬度
+        setTimeout(() => {
+            slider.scrollLeft = slider.offsetWidth;
+        }, 50);
 
-        function goToSlide(index, animate = true) {
-            if (isTransitioning) return;
-            isTransitioning = true;
-
-            currentIndex = index;
-            slider.scrollTo({
-                left: slider.offsetWidth * currentIndex,
-                behavior: animate ? 'smooth' : 'auto'
-            });
-
+        // 更新點點狀態
+        function updateDots(index) {
             let dotIndex = index - 1;
             if (index > originalCount) dotIndex = 0;
             if (index < 1) dotIndex = originalCount - 1;
             dots.forEach((d, i) => d.classList.toggle('active', i === dotIndex));
         }
 
-        slider.addEventListener('scroll', () => {
-            const currentLeft = slider.scrollLeft;
-            const width = slider.offsetWidth;
+        // 滑動處理函式
+        function goToSlide(index) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentIndex = index;
 
-            if (currentLeft >= width * (originalCount + 1)) {
+            slider.scrollTo({
+                left: slider.offsetWidth * currentIndex,
+                behavior: 'smooth'
+            });
+
+            updateDots(currentIndex);
+
+            // 等待平滑滾動完成後（約 400ms），再偷偷切換真實位置
+            setTimeout(() => {
+                handleWrap();
+                isTransitioning = false;
+            }, 400); 
+        }
+
+        // 無縫切換邊界處理
+        function handleWrap() {
+            const width = slider.offsetWidth;
+            // 往右滑到底（碰到第一張複製圖）時，瞬間切回真正的第一張
+            if (currentIndex >= originalCount + 1) {
                 slider.scrollTo({ left: width, behavior: 'auto' });
                 currentIndex = 1;
-            } else if (currentLeft <= 0) {
+            } 
+            // 往左滑到底（碰到最後一張複製圖）時，瞬間切回真正的最後一張
+            else if (currentIndex <= 0) {
                 slider.scrollTo({ left: width * originalCount, behavior: 'auto' });
                 currentIndex = originalCount;
             }
-            isTransitioning = false;
+        }
+
+        // 手機版觸控滑動處理：當用戶停止滑動時進行重置
+        let scrollTimeout;
+        slider.addEventListener('scroll', () => {
+            if (isTransitioning) return; // 忽略由點擊按鈕觸發的 scroll
+            
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const width = slider.offsetWidth;
+                // 計算目前停止在哪一張
+                currentIndex = Math.round(slider.scrollLeft / width);
+                updateDots(currentIndex);
+                handleWrap(); // 如果滑到邊界就重置
+            }, 150);
         });
 
+        // 綁定左右按鈕
         document.getElementById('btnNext').addEventListener('click', () => {
             goToSlide(currentIndex + 1);
         });
@@ -564,6 +600,7 @@ layout: default
             goToSlide(currentIndex - 1);
         });
 
+        // 視窗縮放時重新對齊
         window.addEventListener('resize', () => {
             slider.scrollTo({ left: slider.offsetWidth * currentIndex, behavior: 'auto' });
         });
