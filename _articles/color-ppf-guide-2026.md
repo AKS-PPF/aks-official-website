@@ -18,7 +18,7 @@ tags: [改色犀牛皮, 汽車包膜, TPU改色膜]
 
 ## 一、「改色犀牛皮」正在取代傳統改色膜？
 
-![改色犀牛皮兼具改色及防護](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026-2.jpg)
+![改色犀牛皮兼具改色及防護](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026/color-ppf-guide-2026-2.jpg)
 
 相信早些年接觸過汽車貼膜的車主都聽過：改色跟犀牛皮是兩回事。過去，車主只能在「防護力」與「改色」之中痛苦二選一。貼了改色膜，就沒有防護效果；想要防護力，就只能妥協於現有的車色。
 
@@ -53,7 +53,7 @@ tags: [改色犀牛皮, 汽車包膜, TPU改色膜]
 
 ### 1. 露色
 
-![改色犀牛皮露色問題](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026-3.jpg)
+![改色犀牛皮露色問題](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026/color-ppf-guide-2026-3.jpg)
 
 邊角露色絕對是改色車主最介意的一點。門縫、鈑件交接處或後車廂邊緣如果露出一條原本的原廠車漆（特別是白車改黑、或黑車改亮色），整台車的精緻度會瞬間崩盤。
 
@@ -64,7 +64,7 @@ tags: [改色犀牛皮, 汽車包膜, TPU改色膜]
 
 ### 2. 翻翹
 
-![改色犀牛皮施工後翻翹](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026-4.jpg)
+![改色犀牛皮施工後翻翹](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026/color-ppf-guide-2026-4.jpg)
 
 改色犀牛皮使用的是 TPU 材質，這種材質極具韌性與強大的「記憶回彈」特性。在施工時，師傅必須順著膜料的延展性進行鋪平與收邊。
 
@@ -74,7 +74,7 @@ tags: [改色犀牛皮, 汽車包膜, TPU改色膜]
 
 ### 3. 價格落差
 
-![改色犀牛皮店家價格落差](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026-5.jpg)
+![改色犀牛皮店家價格落差](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026/color-ppf-guide-2026-5.jpg)
 
 俗話說一分錢一分貨，店家做法不同、成本不同，終端價格自然會有落差。只要不貪便宜選擇報價遠低於市價的店家，有做好與店家的事前溝通，通常都不會有太大問題。
 
@@ -84,7 +84,7 @@ tags: [改色犀牛皮, 汽車包膜, TPU改色膜]
 
 ## 三、2026 改色犀牛皮市場價格行情
 
-![改色犀牛皮價格](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026-6.jpg)
+![改色犀牛皮價格](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026/color-ppf-guide-2026-6.jpg)
 
 說了這麼多，但我也知道，價格永遠是決策的核心。只有了解目前的真實行情，才能更好地選擇適合自己需求的店家。相信大家還是想知道，貼一台車到底要多少錢？
 
@@ -103,7 +103,7 @@ tags: [改色犀牛皮, 汽車包膜, TPU改色膜]
 
 期間你還順便省下了換膜的疲勞，同時把每台車唯一的原廠漆面完美封存，在未來轉售時反而更具保值優勢。
 
-![特斯拉改色犀牛皮](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026-6-2.jpg)
+![特斯拉改色犀牛皮](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026/color-ppf-guide-2026-6-2.jpg)
 
 這也是為什麼這麼多特斯拉車主會選擇不加錢選配顏色，直接落地貼改色犀牛皮的原因。貼改色犀牛皮的價格遠遠低於選配顏色後再貼一層透明犀牛皮，卻能有比原廠更多的顏色選擇。
 
@@ -117,7 +117,7 @@ tags: [改色犀牛皮, 汽車包膜, TPU改色膜]
 
 > 裝潢前都有 3D 渲染圖可以看；買衣服都能線上逛，線下試穿喜歡再下單了，為什麼貼膜不能看到效果再決定呢？
 
-![改色犀牛皮AI實車預覽](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026-7.gif)
+![改色犀牛皮AI實車預覽](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026/color-ppf-guide-2026-7.gif)
 
 ### AKS COLOR PPF：從線上色卡到實體色卡，搭配 AI 換色
 
@@ -132,7 +132,7 @@ AKS PPF 首創，改色本來就該看了喜歡再貼！因此我們推出了：
 
 ## 五、如何選擇施工店家？
 
-![改色犀牛皮施工店家選擇](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026-8.jpg)
+![改色犀牛皮施工店家選擇](https://aks-ppf.github.io/images/articles/color-ppf-guide-2026/color-ppf-guide-2026-8.jpg)
 
 「三分膜，七分工」是貼膜界永遠不變的鐵律。膜料品質再好，遇到不對的店家也是白搭。
 
