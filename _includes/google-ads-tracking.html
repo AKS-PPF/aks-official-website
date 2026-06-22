@@ -1,0 +1,267 @@
+{% comment %}
+  Google Ads Conversion Tracking
+  AKS PPF
+  Google Ads ID: AW-18154611277
+
+  Conversion Actions:
+  - click_dealer_region：Primary
+  - click_color_chart：Secondary
+  - view_color_detail：Secondary
+  - click_ai_from_color：Secondary
+
+  路由：
+  - AI 換色頁：/pages/ai-preview/
+  - 線上色卡總頁：/pages/color-chart/
+  - 單色獨立頁：/pages/color-chart/gtpu-0001/ 等
+  - 單色頁 Jekyll layout：color-single
+{% endcomment %}
+
+<script>
+(function () {
+  'use strict';
+
+  var GOOGLE_ADS_ID = 'AW-18154611277';
+
+  var GOOGLE_ADS_LABELS = {
+    click_dealer_region: 'bI32CIq12MMcEM3E5dBD',
+    click_color_chart: 'zLNiCLqSwMMcEM3E5dBD',
+    view_color_detail: 'dfXQCLbF2sMcEM3E5dBD',
+    click_ai_from_color: 'PcgvCL3C1MMcEM3E5dBD'
+  };
+
+  var EVENT_TIMEOUT = 800;
+
+  function hasGtag() {
+    return typeof window.gtag === 'function';
+  }
+
+  function normalizeText(text) {
+    return (text || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function getLabel(eventName) {
+    return GOOGLE_ADS_LABELS[eventName] || '';
+  }
+
+  function getPathFromUrl(url) {
+    try {
+      return new URL(url, window.location.origin).pathname;
+    } catch (error) {
+      return '';
+    }
+  }
+
+  function getDealerRegionFromUrl(url) {
+    var path = getPathFromUrl(url);
+    var match = path.match(/\/pages\/dealers\/([^\/]+)\//);
+    return match && match[1] ? match[1] : '';
+  }
+
+  function shouldDelayNavigation(link, event) {
+    if (!link || !link.href) return false;
+    if (event.defaultPrevented) return false;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
+    if (link.target && link.target.toLowerCase() !== '_self') return false;
+
+    return true;
+  }
+
+  function fireGoogleAdsConversion(eventName, params, callback) {
+    try {
+      var label = getLabel(eventName);
+
+      if (!label) {
+        console.warn('[Google Ads Tracking] Missing conversion label:', eventName);
+        if (typeof callback === 'function') callback();
+        return false;
+      }
+
+      if (!hasGtag()) {
+        console.warn('[Google Ads Tracking] gtag is not available:', eventName);
+        if (typeof callback === 'function') callback();
+        return false;
+      }
+
+      var callbackDone = false;
+
+      function done() {
+        if (callbackDone) return;
+        callbackDone = true;
+
+        if (typeof callback === 'function') {
+          callback();
+        }
+      }
+
+      var payload = Object.assign({}, params || {}, {
+        send_to: GOOGLE_ADS_ID + '/' + label,
+        event_name: eventName,
+        event_callback: done,
+        event_timeout: EVENT_TIMEOUT
+      });
+
+      window.gtag('event', 'conversion', payload);
+
+      if (typeof callback === 'function') {
+        window.setTimeout(done, EVENT_TIMEOUT + 150);
+      }
+
+      return true;
+    } catch (error) {
+      console.error('[Google Ads Tracking] fireGoogleAdsConversion error:', error);
+
+      if (typeof callback === 'function') {
+        callback();
+      }
+
+      return false;
+    }
+  }
+
+  function bindConversionClick(selector, eventName, buildParams) {
+    try {
+      var links = document.querySelectorAll(selector);
+
+      links.forEach(function (link) {
+        if (link.dataset.googleAdsTrackingBound === '1') return;
+
+        link.dataset.googleAdsTrackingBound = '1';
+
+        link.addEventListener('click', function (event) {
+          try {
+            var params = typeof buildParams === 'function'
+              ? buildParams(link, event)
+              : {};
+
+            if (shouldDelayNavigation(link, event)) {
+              event.preventDefault();
+
+              fireGoogleAdsConversion(eventName, params, function () {
+                window.location.href = link.href;
+              });
+            } else {
+              fireGoogleAdsConversion(eventName, params);
+            }
+          } catch (error) {
+            console.error('[Google Ads Tracking] click listener error:', error);
+          }
+        });
+      });
+    } catch (error) {
+      console.error('[Google Ads Tracking] bindConversionClick error:', error);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    try {
+
+      {% if page.url contains '/pages/ai-preview/' %}
+      /*
+        Primary：
+        click_dealer_region
+
+        觸發場景：
+        AI 換色頁 → 點擊任一地區配合店家頁
+
+        例如：
+        /pages/dealers/taipei/
+        /pages/dealers/taichung/
+      */
+      bindConversionClick(
+        'a[href*="/pages/dealers/"]',
+        'click_dealer_region',
+        function (link) {
+          return {
+            page_path: {{ page.url | jsonify }},
+            page_title: {{ page.title | default: site.title | strip_html | strip | jsonify }},
+            link_url: link.href,
+            link_text: normalizeText(link.textContent),
+            dealer_region: getDealerRegionFromUrl(link.href),
+            source_page_type: 'ai_preview',
+            destination_page_type: 'dealer_region'
+          };
+        }
+      );
+
+      /*
+        Secondary：
+        click_color_chart
+
+        觸發場景：
+        AI 換色頁 → 點擊線上色卡總頁
+      */
+      bindConversionClick(
+        'a[href*="/pages/color-chart/"]',
+        'click_color_chart',
+        function (link) {
+          return {
+            page_path: {{ page.url | jsonify }},
+            page_title: {{ page.title | default: site.title | strip_html | strip | jsonify }},
+            link_url: link.href,
+            link_text: normalizeText(link.textContent),
+            source_page_type: 'ai_preview',
+            destination_page_type: 'color_chart'
+          };
+        }
+      );
+      {% endif %}
+
+
+      {% if page.layout == 'color-single' %}
+      /*
+        Secondary：
+        view_color_detail
+
+        觸發場景：
+        使用者進入任一單色獨立介紹頁
+
+        你的單色頁實際網址：
+        /pages/color-chart/gtpu-0001/
+
+        顏色名稱會優先送：
+        page.title_zh
+        例如：緞面冰霜白
+      */
+      fireGoogleAdsConversion('view_color_detail', {
+        color_name: {{ page.title_zh | default: page.title | default: page.name | strip_html | strip | jsonify }},
+        color_code: {{ page.code | default: page.slug | jsonify }},
+        color_name_en: {{ page.title_en | default: '' | jsonify }},
+        page_path: {{ page.url | jsonify }},
+        page_url: {{ page.url | absolute_url | jsonify }},
+        page_title: {{ page.title | default: page.title_zh | default: page.name | strip_html | strip | jsonify }},
+        source_page_type: 'color_detail'
+      });
+
+      /*
+        Secondary：
+        click_ai_from_color
+
+        觸發場景：
+        單色獨立介紹頁 → 點擊回 AI 換色頁
+      */
+      bindConversionClick(
+        'a[href*="/pages/ai-preview/"], a[data-ads-event="click_ai_from_color"]',
+        'click_ai_from_color',
+        function (link) {
+          return {
+            color_name: {{ page.title_zh | default: page.title | default: page.name | strip_html | strip | jsonify }},
+            color_code: {{ page.code | default: page.slug | jsonify }},
+            color_name_en: {{ page.title_en | default: '' | jsonify }},
+            page_path: {{ page.url | jsonify }},
+            page_url: {{ page.url | absolute_url | jsonify }},
+            page_title: {{ page.title | default: page.title_zh | default: page.name | strip_html | strip | jsonify }},
+            link_url: link.href,
+            link_text: normalizeText(link.textContent),
+            source_page_type: 'color_detail',
+            destination_page_type: 'ai_preview'
+          };
+        }
+      );
+      {% endif %}
+
+    } catch (error) {
+      console.error('[Google Ads Tracking] DOMContentLoaded error:', error);
+    }
+  });
+})();
+</script>
