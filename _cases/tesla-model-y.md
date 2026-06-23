@@ -12,7 +12,7 @@ cta_link: "/pages/dealers/"
 ---
 
 本次施工車輛為 Tesla Model Y
-由頭份知名店家 [ACME | Carwrap](https://www.instagram.com/acmecarwrap/?next=%2F) 精心施作 🎨🔧
+由頭份知名店家 [ACME | Carwrap](https://www.instagram.com/acmecarwrap_toufen/) 精心施作 🎨🔧
 
 🔹 施工亮點
 這位來自苗栗的車主剛牽到車，就立刻前往店家，選擇 「AKS MA-70消光犀牛皮」進行全車包覆 💯
@@ -31,7 +31,7 @@ AKS 全品項皆享有 5 年保固✅
 歡迎新車車主私訊聯繫 📩
 即刻為您的愛車提供最合理價格的頂級保護！💪
 
-【施工及成品照】
+## 施工及成品照
 
 ![Tesla Model Y 消光犀牛皮施工照 1](https://aks-ppf.github.io/images/cases/Tesla-Model-Y/02.jpg)
 

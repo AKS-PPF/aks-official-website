@@ -29,7 +29,7 @@ cta_link: "/pages/dealers/"
 能完美貼合每一處細節🛠️
 讓這台 720S 呈現出無與倫比的視覺效果🎉
 
-【施工及成品照】
+## 施工及成品照
 
 ![McLaren 720S 亮面犀牛皮施工照 1](https://aks-ppf.github.io/images/cases/McLaren-720S/03.jpg)
 
