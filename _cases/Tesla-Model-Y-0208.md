@@ -2,7 +2,7 @@
 layout: single-case
 title: "施工車輛分享 - Tesla Model Y"
 description: "本次由專業店家 DW22 施作 Tesla Model Y，選用 AKS TPU 改色犀牛皮消光鯊魚灰。純色消光質感完美勾勒立體車身線條，兼顧頂級外觀與漆面防護。"
-image: "[https://aks-ppf.github.io/images/cases/Tesla-Model-Y-0208/01.jpg]"
+image: "https://aks-ppf.github.io/images/cases/Tesla-Model-Y-0208/01.jpg"
 date: 2026-06-23
 car_model: "Tesla Model Y"
 film_color: "AKS TPU 改色犀牛皮 - 消光鯊魚灰"

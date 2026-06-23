@@ -2,7 +2,7 @@
 layout: single-case
 title: "施工車輛分享 - Tesla Model Y"
 description: "本次由專業店家 旺福車體保護膜 WF Legend 施作 Tesla Model Y，選用 AKS TPU 緞面液態金屬索瑪托藍。獨特絲綢緞面與液態漸變光影，搭配天窗隔熱膜升級，兼顧視覺質感與極致防護。"
-image: "[https://aks-ppf.github.io/images/cases/Tesla-Model-Y-0057/01.jpg]"
+image: "https://aks-ppf.github.io/images/cases/Tesla-Model-Y-0057/01.jpg"
 date: 2026-06-23
 car_model: "Tesla Model Y"
 film_color: "AKS TPU 改色犀牛皮 - 緞面液態金屬索瑪托藍"
