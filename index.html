@@ -849,29 +849,30 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
 
   <section class="aks-homeblocks" id="aksHomeBlocks">
     <div class="aks-wrap">
-
+  
       <div class="aks-head left">
         <div>
           <div class="aks-kicker">INSTALLER WORKS</div>
           <h2 class="aks-title">AKS-授權店家施工作品</h2>
           <p class="aks-sub"></p>
         </div>
-
+  
         <div class="aks-ctaRow">
           <a class="aks-btn" href="{{ '/pages/cases/' | relative_url }}">View All</a>
           <a class="aks-btn primary" href="{{ '/pages/dealers/' | relative_url }}">配合店家</a>
         </div>
       </div>
-
+  
       <div class="aks-carousel" data-carousel="works">
         <button class="aks-nav left" type="button" aria-label="上一個">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M15 18L9 12L15 6" stroke="rgba(233,238,247,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-
+  
         <div class="aks-track" data-track="works" role="list" aria-label="授權店家施工作品卡片列表">
-          {% for case in site.cases limit:8 %}
+          {% assign sorted_cases = site.cases | sort: 'date' | reverse %}
+          {% for case in sorted_cases limit:8 %}
           <a class="aks-card" role="listitem" href="{{ case.url | relative_url }}">
             <div class="aks-media">
               <div class="aks-corner" aria-hidden="true">↗</div>
@@ -881,37 +882,38 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
           </a>
           {% endfor %}
         </div>
-
+  
         <button class="aks-nav right" type="button" aria-label="下一個">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M9 6L15 12L9 18" stroke="rgba(233,238,247,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
       </div>
-
+  
       <div class="aks-divider" aria-hidden="true"></div>
-
+  
       <div class="aks-head left">
         <div>
           <div class="aks-kicker">KNOWLEDGE</div>
           <h2 class="aks-title">貼膜FAQ</h2>
           <p class="aks-sub"></p>
         </div>
-
+  
         <div class="aks-ctaRow">
           <a class="aks-btn" href="{{ '/pages/articles/' | relative_url }}">View All</a>
         </div>
       </div>
-
+  
       <div class="aks-carousel" data-carousel="faq">
         <button class="aks-nav left" type="button" aria-label="上一個">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M15 18L9 12L15 6" stroke="rgba(233,238,247,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-
+  
         <div class="aks-track" data-track="faq" role="list" aria-label="貼膜小知識卡片列表">
-          {% for article in site.articles limit:8 %}
+          {% assign sorted_articles = site.articles | sort: 'date' | reverse %}
+          {% for article in sorted_articles limit:8 %}
           <a class="aks-card" role="listitem" href="{{ article.url | relative_url }}">
             <div class="aks-media">
               <div class="aks-corner" aria-hidden="true">↗</div>
@@ -921,14 +923,14 @@ description: "AKS PPF 艾鎧斯車漆保護膜提供改色犀牛皮、TPU 透明
           </a>
           {% endfor %}
         </div>
-
+  
         <button class="aks-nav right" type="button" aria-label="下一個">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M9 6L15 12L9 18" stroke="rgba(233,238,247,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
       </div>
-
+  
     </div>
   </section>
 
