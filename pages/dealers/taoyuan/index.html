@@ -3,9 +3,14 @@ layout: page-hero
 title: 配合店家 桃園
 ---
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 <style>
-  .aks-dealers-taoyuan-wrapper * { box-sizing: border-box !important; }
-  .aks-dealers-taoyuan-wrapper {
+  .aks-dealers-taipei-wrapper * {
+    box-sizing: border-box !important;
+  }
+
+  .aks-dealers-taipei-wrapper {
     width: 100%;
     overflow-x: hidden;
     background: #000;
@@ -13,11 +18,12 @@ title: 配合店家 桃園
     font-family: 'Montserrat', "PingFang TC", "Microsoft JhengHei", sans-serif;
   }
 
-  .aks-dealers-taoyuan-wrapper .red {
+  .aks-dealers-taipei-wrapper .red {
     color: #c81f2a;
   }
 
-  .aks-dealers-taoyuan-wrapper .hero-header {
+  /* ====== 橫幅大標題 ====== */
+  .aks-dealers-taipei-wrapper .hero-header {
     background-image:
       linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
       url('https://aks-ppf.github.io/images/ui/dealers/dealers-bn.png');
@@ -34,7 +40,7 @@ title: 配合店家 桃園
     padding-top: 10px;
   }
 
-  .aks-dealers-taoyuan-wrapper .hero-title {
+  .aks-dealers-taipei-wrapper .hero-title {
     font-size: clamp(28px, 6vw, 48px);
     font-weight: 700;
     line-height: 1.4;
@@ -43,249 +49,343 @@ title: 配合店家 桃園
     padding: 10px 20px;
   }
 
-  .aks-dealers-taoyuan-wrapper .contact-section {
-    color: #fff;
-    padding: 50px 100px;
-  }
-
-  .aks-dealers-taoyuan-wrapper .contact-info {
-    max-width: 600px;
+  /* ====== 卡片網格容器 ====== */
+  .aks-dealers-taipei-wrapper .dealers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 1280px;
     margin: 0 auto;
+    padding: 40px 20px 80px;
   }
 
-  .aks-dealers-taoyuan-wrapper .contact-info h1 {
-    font-size: clamp(24px, 3vw, 36px);
+  @media (min-width: 1024px) {
+    .aks-dealers-taipei-wrapper .dealers-grid {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 60px 30px 100px;
+      gap: 40px;
+    }
+  }
+
+  /* ====== 店家精緻卡片 ====== */
+  .aks-dealers-taipei-wrapper .contact-section {
+    position: relative;
+    color: #fff;
+    background: #050505;
+    border: 1px solid #ffffff;
+    border-radius: 12px;
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  /* ====== 核心修改：左上角「上眉標容器」(標籤 + FB + IG) ====== */
+  .aks-dealers-taipei-wrapper .card-top-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    /* 將下方的 h1 標題優雅推開 */
+  }
+
+  /* AI 特約標籤 */
+  .aks-dealers-taipei-wrapper .ai-badge {
+    background: rgba(200, 31, 42, 0.5);
+    text-align: center;
+    color: #ffffff;
+    padding: 0 12px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .aks-dealers-taipei-wrapper .ai-badge b {
+    color: #dc2626;
+  }
+
+  /* 方形紅底社群 Icon 按鈕 */
+  .aks-dealers-taipei-wrapper .social-sq-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(200, 31, 42, 0.5);
+    /* 與 ai-badge 完全相同的紅底 */
+    color: #ffffff;
+    font-size: 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .aks-dealers-taipei-wrapper .social-sq-btn:hover {
+    background: #d31212;
+    transform: translateY(-2px);
+  }
+
+  .aks-dealers-taipei-wrapper .contact-info {
+    width: 100%;
+  }
+
+  /* 標題設定：解除了 padding-right 限制，文字可完整延伸 */
+  .aks-dealers-taipei-wrapper .contact-info h1 {
+    font-size: clamp(20px, 2.5vw, 26px);
     margin: 0 0 20px 0;
     font-weight: 800;
+    line-height: 1.4;
   }
 
-  .aks-dealers-taoyuan-wrapper .contact-info ul {
+  .aks-dealers-taipei-wrapper .contact-info ul {
     list-style: none;
     padding: 0;
-    margin: 0 0 30px 0;
+    margin: 0;
   }
 
-  .aks-dealers-taoyuan-wrapper .contact-info li {
-    font-size: 18px;
+  .aks-dealers-taipei-wrapper .contact-info li {
+    font-size: 16px;
     line-height: 1.8;
-    color: #ccc;
+    color: #aaa;
+    margin-bottom: 4px;
   }
 
-  .aks-dealers-taoyuan-wrapper .contact-info li span {
+  .aks-dealers-taipei-wrapper .contact-info li span {
     color: #fff;
+    font-weight: 500;
   }
 
-  .aks-dealers-taoyuan-wrapper .contact-visual {
+  /* ====== 視覺區塊 (Logo & 地圖) ====== */
+  .aks-dealers-taipei-wrapper .contact-visual {
     display: flex;
     gap: 0;
     flex-wrap: nowrap;
-    max-width: 600px;
-    margin: 0 auto;
+    width: 100%;
     border-radius: 6px;
     overflow: hidden;
+    border: 1px solid #1f1f22;
   }
 
-  .aks-dealers-taoyuan-wrapper .logo-box,
-  .aks-dealers-taoyuan-wrapper .map-box {
+  .aks-dealers-taipei-wrapper .logo-box,
+  .aks-dealers-taipei-wrapper .map-box {
     width: 50%;
+    aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
+    align-items: center;
     overflow: hidden;
     margin: 0;
     padding: 0;
     min-width: 0;
+    background: #0a0a0a;
   }
 
-  .aks-dealers-taoyuan-wrapper .logo-box img {
+  .aks-dealers-taipei-wrapper .logo-box img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
   }
 
-  .aks-dealers-taoyuan-wrapper .map-placeholder {
+  .aks-dealers-taipei-wrapper .map-placeholder {
     width: 100%;
+    height: 100%;
   }
 
-  .aks-dealers-taoyuan-wrapper .map-placeholder iframe {
+  .aks-dealers-taipei-wrapper .map-placeholder iframe {
     width: 100%;
     height: 100%;
     border: 0;
     display: block;
   }
 
-  .aks-dealers-taoyuan-wrapper .btn-wrapper {
-    margin-top: 25px;
-  }
-
+  /* ====== RWD 手機版設定 ====== */
   @media (max-width: 900px) {
-    .aks-dealers-taoyuan-wrapper .hero-header {
+    .aks-dealers-taipei-wrapper .hero-header {
       height: 200px;
     }
 
-    .aks-dealers-taoyuan-wrapper .hero-title {
-      font-size: clamp(28px, 5vw, 48px);
+    .aks-dealers-taipei-wrapper .hero-title {
+      font-size: clamp(24px, 5vw, 36px);
       padding: 8px 15px;
     }
 
-    .aks-dealers-taoyuan-wrapper .contact-section {
-      padding: 15px;
-      margin-bottom: 45px;
-    }
-
-    .aks-dealers-taoyuan-wrapper .contact-info li {
-      font-size: 16px;
+    .aks-dealers-taipei-wrapper .contact-section {
+      padding: 30px 20px;
     }
   }
 </style>
 
-<div class="aks-dealers-taoyuan-wrapper">
+<div class="aks-dealers-taipei-wrapper">
+
   <div class="hero-header">
     <h1 class="hero-title">配合店家 桃園</h1>
   </div>
 
-  <div class="contact-section">
-    <div class="contact-info">
-      <h1>潔特曼車體美研館</h1>
-      <ul>
-        <li><span>- 營業時間：</span>星期一至星期日 09:00-20:00</li>
-        <li><span>- 連絡電話：</span>03-495-0204</li>
-        <li><span>- 地址：</span>324桃園市平鎮區延平路二段193號</li>
-      </ul>
-    </div>
-    <div class="contact-visual">
-      <div class="logo-box">
-        <img
-          src="https://aks-ppf.github.io/images/ui/dealers/dealers-taoyuan-1.jpg"
-          alt="潔特曼車體美研館 店家 Logo">
-      </div>
-      <div class="map-box">
-        <div class="map-placeholder">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7235.102844426585!2d121.210648!3d24.947347!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468238f9e6cad65%3A0x38aeb8dfcde87df5!2z5r2U54m55pu86LuK6auU576O56CU6aSoIC0gVFBV44CB54qA54mb55qu44CB6LK86Iac44CB5YyF6Iac44CB5pS56Imy44CB6Y2N6Iac!5e0!3m2!1szh-TW!2stw!4v1770029741342!5m2!1szh-TW!2stw"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="潔特曼車體美研館 Google 地圖">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="dealers-grid">
 
-  <div class="contact-section">
-    <div class="contact-info">
-      <h1>克特先生尊爵車膜坊</h1>
-      <ul>
-        <li><span>- 營業時間：</span>星期一至星期六 10:00-19:00</li>
-        <li><span>- 連絡電話：</span>0976-096-706</li>
-        <li><span>- 地址：</span>330028桃園市桃園區埔新路153號</li>
-      </ul>
-    </div>
-    <div class="contact-visual">
-      <div class="logo-box">
-        <img
-          src="https://aks-ppf.github.io/images/ui/dealers/dealers-taoyuan-2.jpg"
-          alt="克特先生尊爵車膜坊 店家 Logo">
-      </div>
-      <div class="map-box">
-        <div class="map-placeholder">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7231.852608504669!2d121.305033!3d25.00262!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681f8f2759b171%3A0xb238a806a3a41873!2z5YWL54m55YWI55Sf5bCK54i16LuK6Iac5Z2KLeaxvei7iuWMheiGnCDmoYPlnJLmsb3ou4rpjY3ohpwg6LuK6auU576O5a65IOaUueiJsiDmiZPooJ8g5bCI5qWt6LuK6auU6LK86IacIOeKgOeJm-earuiyvOiGnOaOqOiWpg!5e0!3m2!1szh-TW!2stw!4v1770029594904!5m2!1szh-TW!2stw"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="克特先生尊爵車膜坊 Google 地圖">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </div>
+    <section class="contact-section">
+      <div class="contact-info">
 
-  <div class="contact-section">
-    <div class="contact-info">
-      <h1>奧沃美車工藝</h1>
-      <ul>
-        <li><span>- 營業時間：</span>星期一至星期四11:00-20:30 | 星期五 11:00-19:30 | 星期六 11:00-20:30</li>
-        <li><span>- 連絡電話：</span>0916-308-399</li>
-        <li><span>- 地址：</span>330桃園市桃園區國際路二段460號</li>
-      </ul>
-    </div>
-    <div class="contact-visual">
-      <div class="logo-box">
-        <img
-          src="https://aks-ppf.github.io/images/ui/dealers/dealers-taoyuan-3.jpg"
-          alt="奧沃美車工藝 店家 Logo">
-      </div>
-      <div class="map-box">
-        <div class="map-placeholder">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.0225001486906!2d121.28824230000001!3d24.9993514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681bac5935513d%3A0x7c62ba54a50829ed!2z5aWn5rKD576O6LuK5bel6Jed44CQ5rG96LuK5YyF6IacL-axvei7iuiyvOiGnC_nioDniZvnmq7ljIXohpwv5pS56Imy6LK86IacL-aWsOWMl-iyvOiGnC_lj7DljJfosrzohpwv5qGD5ZyS6LK86IacL-ahg-WckumNjeiGnC_moYPlnJLmsb3nvo7jgJE!5e0!3m2!1szh-TW!2stw!4v1773309187762!5m2!1szh-TW!2stw"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="奧沃美車工藝 Google 地圖">
-          </iframe>
+        <div class="card-top-bar">
+          <div class="ai-badge"><b class="text-red-600 font-bold uppercase">AI</b> 換色特約店家</div>
+          <a href="https://www.facebook.com/GTM666/?locale=zh_TW" target="_blank" class="social-sq-btn"
+            aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/gtmwrap_tw/" target="_blank" class="social-sq-btn"
+            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="contact-section">
-    <div class="contact-info">
-      <h1>采奕CAIYI車體包膜專門店</h1>
-      <ul>
-        <li><span>- 營業時間：</span>星期一至星期六 12:00-21:00</li>
-        <li><span>- 連絡電話：</span>0938-532-253</li>
-        <li><span>- 地址：</span>330桃園市桃園區寶慶路58號</li>
-      </ul>
-    </div>
-    <div class="contact-visual">
-      <div class="logo-box">
-        <img
-          src="https://aks-ppf.github.io/images/ui/dealers/dealers-taoyuan-4.jpg"
-          alt="采奕CAIYI車體包膜專門店 店家 Logo">
+        <h1>潔特曼車體美研館</h1>
+        <ul>
+          <li><span>- 營業時間：</span>星期一至星期日 09:00-20:00</li>
+          <li><span>- 連絡電話：</span>03-495-0204</li>
+          <li><span>- 地址：</span>324桃園市平鎮區延平路二段193號</li>
+        </ul>
       </div>
-      <div class="map-box">
-        <div class="map-placeholder">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.692443186296!2d121.29464449999999!3d25.0105646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468209d1c05940d%3A0xcddcdfcb0f4a2755!2z6YeH5aWVQ0FJWUnou4rpq5TljIXohpzlsIjploDlupc!5e0!3m2!1szh-TW!2stw!4v1773309251781!5m2!1szh-TW!2stw"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="采奕CAIYI車體包膜專門店 Google 地圖">
-          </iframe>
+      <div class="contact-visual">
+        <div class="logo-box">
+          <img src="https://aks-ppf.github.io/images/ui/dealers/dealers-taoyuan-1.jpg" alt="潔特曼車體美研館 店家 Logo">
+        </div>
+        <div class="map-box">
+          <div class="map-placeholder">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7235.102844426585!2d121.210648!3d24.947347!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468238f9e6cad65%3A0x38aeb8dfcde87df5!2z5r2U54m55pu86LuK6auU576O56CU6aSoIC0gVFBV44CB54qA54mb55qu44CB6LK86Iac44CB5YyF6Iac44CB5pS56Imy44CB6Y2N6Iac!5e0!3m2!1szh-TW!2stw!4v1770029741342!5m2!1szh-TW!2stw"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="潔特曼車體美研館 Google 地圖">
+            </iframe>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="contact-section">
-    <div class="contact-info">
-      <h1>TOP1車體工藝</h1>
-      <ul>
-        <li><span>- 營業時間：</span>星期一至星期日 10:00-19:00</li>
-        <li><span>- 連絡電話：</span>0980-39-4427</li>
-        <li><span>- 地址：</span>334桃園市八德區中華路181號</li>
-      </ul>
-    </div>
-    <div class="contact-visual">
-      <div class="logo-box">
-        <img
-          src="https://aks-ppf.github.io/images/ui/dealers/dealers-taoyuan-5-top1.png"
-          alt="TOP1車體工藝 店家 Logo">
+    <section class="contact-section">
+      <div class="contact-info">
+
+        <div class="card-top-bar">
+          <div class="ai-badge"><b class="text-red-600 font-bold uppercase">AI</b> 換色特約店家</div>
+          <a href="https://www.facebook.com/Mrkurt2022/?locale=zh_TW" target="_blank" class="social-sq-btn"
+            aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/mr.kurt_2022/" target="_blank" class="social-sq-btn"
+            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <h1>克特先生尊爵車膜坊</h1>
+        <ul>
+          <li><span>- 營業時間：</span>星期一至星期六 10:00-19:00</li>
+          <li><span>- 連絡電話：</span>0976-096-706</li>
+          <li><span>- 地址：</span>330028桃園市桃園區埔新路153號</li>
+        </ul>
       </div>
-      <div class="map-box">
-        <div class="map-placeholder">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.4848007365345!2d121.2787574!3d24.983637500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681f418205ffd9%3A0x60f7b05091ebd8c6!2zVE9QMei7iumrlOW3peiXnSDlsIjmpa3pjY3ohpzljIXohpzlnJjpmoo!5e0!3m2!1szh-TW!2stw!4v1773309390867!5m2!1szh-TW!2stw"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="TOP1車體工藝 Google 地圖">
-          </iframe>
+      <div class="contact-visual">
+        <div class="logo-box">
+          <img src="https://aks-ppf.github.io/images/ui/dealers/dealers-taoyuan-2.jpg" alt="克特先生尊爵車膜坊 店家 Logo">
+        </div>
+        <div class="map-box">
+          <div class="map-placeholder">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7231.852608504669!2d121.305033!3d25.00262!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681f8f2759b171%3A0xb238a806a3a41873!2z5YWL54m55YWI55Sf5bCK54i16LuK6Iac5Z2KLeaxvei7iuWMheiGnCDmoYPlnJLmsb3ou4rpjY3ohpwg6LuK6auU576O5a65IOaUueiJsiDmiZPooJ8g5bCI5qWt6LuK6auU6LK86IacIOeKgOeJm-earuiyvOiGnOaOqOiWpg!5e0!3m2!1szh-TW!2stw!4v1770029594904!5m2!1szh-TW!2stw"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="克特先生尊爵車膜坊 Google 地圖">
+            </iframe>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-info">
+
+        <div class="card-top-bar">
+          <a href="https://www.facebook.com/owldesigntw/?locale=zh_TW" target="_blank" class="social-sq-btn"
+            aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+
+        <h1>奧沃美車工藝</h1>
+        <ul>
+          <li><span>- 營業時間：</span>星期一至星期四11:00-20:30 | 星期五 11:00-19:30 | 星期六 11:00-20:30</li>
+          <li><span>- 連絡電話：</span>0916-308-399</li>
+          <li><span>- 地址：</span>330桃園市桃園區國際路二段460號</li>
+        </ul>
+      </div>
+      <div class="contact-visual">
+        <div class="logo-box">
+          <img src="https://aks-ppf.github.io/images/ui/dealers/dealers-taoyuan-3.jpg" alt="奧沃美車工藝 店家 Logo">
+        </div>
+        <div class="map-box">
+          <div class="map-placeholder">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.0225001486906!2d121.28824230000001!3d24.9993514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681bac5935513d%3A0x7c62ba54a50829ed!2z5aWn5rKD576O6LuK5bel6Jed44CQ5rG96LuK5YyF6IacL-axvei7iuiyvOiGnC_nioDniZvnmq7ljIXohpwv5pS56Imy6LK86IacL-aWsOWMl-iyvOiGnC_lj7DljJfosrzohpwv5qGD5ZyS6LK86IacL-ahg-WckumNjeiGnC_moYPlnJLmsb3nvo7jgJE!5e0!3m2!1szh-TW!2stw!4v1773309187762!5m2!1szh-TW!2stw"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="奧沃美車工藝 Google 地圖">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-info">
+
+        <div class="card-top-bar">
+          <a href="https://www.facebook.com/Caiyi.taoyuan/" target="_blank" class="social-sq-btn"
+            aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/caiyi.taoyuan/" target="_blank" class="social-sq-btn"
+            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <h1>采奕CAIYI車體包膜專門店</h1>
+        <ul>
+          <li><span>- 營業時間：</span>星期一至星期六 12:00-21:00</li>
+          <li><span>- 連絡電話：</span>0938-532-253</li>
+          <li><span>- 地址：</span>330桃園市桃園區寶慶路58號</li>
+        </ul>
+      </div>
+      <div class="contact-visual">
+        <div class="logo-box">
+          <img src="https://aks-ppf.github.io/images/ui/dealers/dealers-taoyuan-4.jpg" alt="采奕CAIYI車體包膜專門店 店家 Logo">
+        </div>
+        <div class="map-box">
+          <div class="map-placeholder">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.692443186296!2d121.29464449999999!3d25.0105646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468209d1c05940d%3A0xcddcdfcb0f4a2755!2z6YeH5aWVQ0FJWUnou4rpq5TljIXohpzlsIjploDlupc!5e0!3m2!1szh-TW!2stw!4v1773309251781!5m2!1szh-TW!2stw"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="采奕CAIYI車體包膜專門店 Google 地圖">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-info">
+
+        <div class="card-top-bar">
+          <a href="https://www.facebook.com/p/Top1%E8%BB%8A%E9%AB%94%E5%B7%A5%E8%97%9D-61568152591625/" target="_blank"
+            class="social-sq-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/top1_1688.car.detailing/" target="_blank" class="social-sq-btn"
+            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <h1>TOP1車體工藝</h1>
+        <ul>
+          <li><span>- 營業時間：</span>星期一至星期日 10:00-19:00</li>
+          <li><span>- 連絡電話：</span>0980-394-427</li>
+          <li><span>- 地址：</span>334桃園市八德區中華路181號</li>
+        </ul>
+      </div>
+      <div class="contact-visual">
+        <div class="logo-box">
+          <img src="https://aks-ppf.github.io/images/ui/dealers/dealers-taoyuan-5-top1.png" alt="TOP1車體工藝 店家 Logo">
+        </div>
+        <div class="map-box">
+          <div class="map-placeholder">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.4848007365345!2d121.2787574!3d24.983637500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681f418205ffd9%3A0x60f7b05091ebd8c6!2zVE9QMei7iumrlOW3peiXnSDlsIjmpa3pjY3ohpzljIXohpzlnJjpmoo!5e0!3m2!1szh-TW!2stw!4v1773309390867!5m2!1szh-TW!2stw"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="TOP1車體工藝 Google 地圖">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
