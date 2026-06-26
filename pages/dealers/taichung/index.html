@@ -3,8 +3,13 @@ layout: page-hero
 title: 配合店家 台中
 ---
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
 <style>
-  .aks-dealers-taichung-wrapper * { box-sizing: border-box !important; }
+  .aks-dealers-taichung-wrapper * {
+    box-sizing: border-box !important;
+  }
+
   .aks-dealers-taichung-wrapper {
     width: 100%;
     overflow-x: hidden;
@@ -17,6 +22,7 @@ title: 配合店家 台中
     color: #c81f2a;
   }
 
+  /* ====== 橫幅大標題 ====== */
   .aks-dealers-taichung-wrapper .hero-header {
     background-image:
       linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
@@ -43,68 +49,152 @@ title: 配合店家 台中
     padding: 10px 20px;
   }
 
+  /* ====== 卡片網格容器 ====== */
+  .aks-dealers-taichung-wrapper .dealers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  @media (min-width: 1024px) {
+    .aks-dealers-taichung-wrapper .dealers-grid {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 60px 30px 100px;
+      gap: 40px;
+    }
+  }
+
+  /* ====== 店家精緻卡片 ====== */
   .aks-dealers-taichung-wrapper .contact-section {
+    position: relative;
     color: #fff;
-    padding: 50px 100px;
+    background: #050505;
+    border: 1px solid #ffffff;
+    border-radius: 12px;
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  /* ====== 核心修改：左上角「上眉標容器」(標籤 + FB + IG) ====== */
+  .aks-dealers-taichung-wrapper .card-top-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    /* 將下方的 h1 標題優雅推開 */
+  }
+
+  /* AI 特約標籤 */
+  .aks-dealers-taichung-wrapper .ai-badge {
+    background: rgba(200, 31, 42, 0.5);
+    text-align: center;
+    color: #ffffff;
+    padding: 0 12px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .aks-dealers-taichung-wrapper .ai-badge b {
+    color: #dc2626;
+  }
+
+  /* 方形紅底社群 Icon 按鈕 */
+  .aks-dealers-taichung-wrapper .social-sq-btn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(200, 31, 42, 0.5);
+    /* 與 ai-badge 完全相同的紅底 */
+    color: #ffffff;
+    font-size: 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .aks-dealers-taichung-wrapper .social-sq-btn:hover {
+    background: #d31212;
+    transform: translateY(-2px);
   }
 
   .aks-dealers-taichung-wrapper .contact-info {
-    max-width: 600px;
-    margin: 0 auto;
+    width: 100%;
   }
 
+  /* 標題設定：解除了 padding-right 限制，文字可完整延伸 */
   .aks-dealers-taichung-wrapper .contact-info h1 {
-    font-size: clamp(24px, 3vw, 36px);
+    font-size: clamp(20px, 2.5vw, 26px);
     margin: 0 0 20px 0;
     font-weight: 800;
+    line-height: 1.4;
   }
 
   .aks-dealers-taichung-wrapper .contact-info ul {
     list-style: none;
     padding: 0;
-    margin: 0 0 30px 0;
+    margin: 0;
   }
 
   .aks-dealers-taichung-wrapper .contact-info li {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.8;
-    color: #ccc;
+    color: #aaa;
+    margin-bottom: 4px;
   }
 
   .aks-dealers-taichung-wrapper .contact-info li span {
     color: #fff;
+    font-weight: 500;
   }
 
+  /* ====== 視覺區塊 (Logo & 地圖) ====== */
   .aks-dealers-taichung-wrapper .contact-visual {
     display: flex;
     gap: 0;
     flex-wrap: nowrap;
-    max-width: 600px;
-    margin: 0 auto;
+    width: 100%;
     border-radius: 6px;
     overflow: hidden;
+    border: 1px solid #1f1f22;
   }
 
   .aks-dealers-taichung-wrapper .logo-box,
   .aks-dealers-taichung-wrapper .map-box {
     width: 50%;
+    aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
+    align-items: center;
     overflow: hidden;
     margin: 0;
     padding: 0;
     min-width: 0;
+    background: #0a0a0a;
   }
 
   .aks-dealers-taichung-wrapper .logo-box img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
   }
 
   .aks-dealers-taichung-wrapper .map-placeholder {
     width: 100%;
+    height: 100%;
   }
 
   .aks-dealers-taichung-wrapper .map-placeholder iframe {
@@ -114,91 +204,160 @@ title: 配合店家 台中
     display: block;
   }
 
-  .aks-dealers-taichung-wrapper .btn-wrapper {
-    margin-top: 25px;
-  }
-
+  /* ====== RWD 手機版設定 ====== */
   @media (max-width: 900px) {
     .aks-dealers-taichung-wrapper .hero-header {
       height: 200px;
     }
 
     .aks-dealers-taichung-wrapper .hero-title {
-      font-size: clamp(28px, 5vw, 48px);
+      font-size: clamp(24px, 5vw, 36px);
       padding: 8px 15px;
     }
 
     .aks-dealers-taichung-wrapper .contact-section {
-      padding: 15px;
-      margin-bottom: 45px;
-    }
-
-    .aks-dealers-taichung-wrapper .contact-info li {
-      font-size: 16px;
+      padding: 30px 20px;
     }
   }
 </style>
 
 <div class="aks-dealers-taichung-wrapper">
+
   <div class="hero-header">
     <h1 class="hero-title">配合店家 台中</h1>
   </div>
 
-  <div class="contact-section">
-    <div class="contact-info">
-      <h1>Stoner Garage 石洞車體鍍膜貼膜</h1>
-      <ul>
-        <li><span>- 營業時間：</span>星期一至星期六 09:00-18:00</li>
-        <li><span>- 連絡電話：</span>0985-933-855</li>
-        <li><span>- 地址：</span>406臺中市北屯區軍福十六路77號</li>
-      </ul>
-    </div>
-    <div class="contact-visual">
-      <div class="logo-box">
-        <img
-          src="https://aks-ppf.github.io/images/ui/dealers/dealers-taichung-1.jpg"
-          alt="Stoner Garage 石洞車體鍍膜貼膜 店家 Logo">
-      </div>
-      <div class="map-box">
-        <div class="map-placeholder">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12970.58787809948!2d120.71071065924885!3d24.180561725746752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917b6f18c04f7%3A0x8878955442752c1a!2zU3RvbmVyIEdhcmFnZSDnn7PmtJ7ou4rpq5TpjY3ohpzosrzohpw!5e0!3m2!1szh-TW!2stw!4v1773312038630!5m2!1szh-TW!2stw"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Stoner Garage 石洞車體鍍膜貼膜 Google 地圖">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="dealers-grid">
 
-  <div class="contact-section">
-    <div class="contact-info">
-      <h1>NL車體包膜｜恩霖車體包膜｜NL CAR WRAP</h1>
-      <ul>
-        <li><span>- 營業時間：</span>星期一至星期六 10:00-18:00</li>
-        <li><span>- 連絡電話：</span>0975-103-831</li>
-        <li><span>- 地址：</span>406臺中市北屯區經貿一路130-3號-5號</li>
-      </ul>
-    </div>
-    <div class="contact-visual">
-      <div class="logo-box">
-        <img
-          src="https://aks-ppf.github.io/images/ui/dealers/dealers-taichung-2-nl.jpg"
-          alt="NL車體包膜 恩霖車體包膜 NL CAR WRAP 店家 Logo">
+    <section class="contact-section">
+      <div class="contact-info">
+
+        <div class="card-top-bar">
+          <a href="https://www.facebook.com/2022.StonerGarage/" target="_blank" class="social-sq-btn"
+            aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/_stonergarage/" target="_blank" class="social-sq-btn"
+            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <h1>Stoner Garage 石洞車體鍍膜貼膜</h1>
+        <ul>
+          <li><span>- 營業時間：</span>星期一至星期六 09:00-18:00</li>
+          <li><span>- 連絡電話：</span>0985-933-855</li>
+          <li><span>- 地址：</span>406臺中市北屯區軍福十六路77號</li>
+        </ul>
       </div>
-      <div class="map-box">
-        <div class="map-placeholder">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.7183432278734!2d120.66426533942568!3d24.18160877498629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34691b31366d3e93%3A0x70212ffc910cce7c!2zTkzou4rpq5TljIXohpzvvZzmganpnJbou4rpq5TljIXohpzvvZxOTCBDQVIgV1JBUO-9nOWwiOalreeKgOeJm-earuWMheiGnO-9nOWPsOS4reaxvei7iuiyvOiGnA!5e0!3m2!1szh-TW!2stw!4v1773312160186!5m2!1szh-TW!2stw"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="NL車體包膜 恩霖車體包膜 NL CAR WRAP Google 地圖">
-          </iframe>
+      <div class="contact-visual">
+        <div class="logo-box">
+          <img src="https://aks-ppf.github.io/images/ui/dealers/dealers-taichung-1.jpg"
+            alt="Stoner Garage 石洞車體鍍膜貼膜 店家 Logo">
+        </div>
+        <div class="map-box">
+          <div class="map-placeholder">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12970.58787809948!2d120.71071065924885!3d24.180561725746752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346917b6f18c04f7%3A0x8878955442752c1a!2zU3RvbmVyIEdhcmFnZSDnn7PmtJ7ou4rpq5TpjY3ohpzosrzohpw!5e0!3m2!1szh-TW!2stw!4v1773312038630!5m2!1szh-TW!2stw"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Stoner Garage 石洞車體鍍膜貼膜 Google 地圖">
+            </iframe>
+          </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-info">
+
+        <div class="card-top-bar">
+          <a href="https://www.facebook.com/Neverland60/?ref=NONE_xav_ig_profile_page_web#" target="_blank"
+            class="social-sq-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/neverlan60/" target="_blank" class="social-sq-btn"
+            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <h1>NL車體包膜｜恩霖車體包膜｜NL CAR WRAP</h1>
+        <ul>
+          <li><span>- 營業時間：</span>星期一至星期六 10:00-18:00</li>
+          <li><span>- 連絡電話：</span>0975-103-831</li>
+          <li><span>- 地址：</span>406臺中市北屯區經貿一路130-3號-5號</li>
+        </ul>
+      </div>
+      <div class="contact-visual">
+        <div class="logo-box">
+          <img src="https://aks-ppf.github.io/images/ui/dealers/dealers-taichung-2-nl.jpg"
+            alt="NL車體包膜 恩霖車體包膜 NL CAR WRAP 店家 Logo">
+        </div>
+        <div class="map-box">
+          <div class="map-placeholder">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.7183432278734!2d120.66426533942568!3d24.18160877498629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34691b31366d3e93%3A0x70212ffc910cce7c!2zTkzou4rpq5TljIXohpzvvZzmganpnJbou4rpq5TljIXohpzvvZxOTCBDQVIgV1JBUO-9nOWwiOalreeKgOeJm-earuWMheiGnO-9nOWPsOS4reaxvei7iuiyvOiGnA!5e0!3m2!1szh-TW!2stw!4v1773312160186!5m2!1szh-TW!2stw"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="NL車體包膜 恩霖車體包膜 NL CAR WRAP Google 地圖">
+            </iframe>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-info">
+
+        <div class="card-top-bar">
+          <a href="https://www.facebook.com/dnm.com.tw/" target="_blank" class="social-sq-btn" aria-label="Facebook"><i
+              class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/dmsense.tc/" target="_blank" class="social-sq-btn"
+            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <h1>DM SENSE 車體鍍膜貼膜 台中旗艦店</h1>
+        <ul>
+          <li><span>- 營業時間：</span>星期二至星期日 09:00-12:30 13:30-18:30</li>
+          <li><span>- 連絡電話：</span>04-2452-3533</li>
+          <li><span>- 地址：</span>407臺中市西屯區西墩里環中路二段1332號</li>
+        </ul>
+      </div>
+      <div class="contact-visual">
+        <div class="logo-box">
+          <img src="https://aks-ppf.github.io/images/ui/dealers/dealers-taichung-dm.jpg"
+            alt="DM SENSE 車體鍍膜貼膜 台中旗艦店 店家 Logo">
+        </div>
+        <div class="map-box">
+          <div class="map-placeholder">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7279.652693088657!2d120.6341739!3d24.177822199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3469161c8ac335e7%3A0x7a427d66c44999be!2zRE0gU0VOU0Ug6LuK6auU6Y2N6Iac6LK86IacIOWPsOS4reaXl-iJpuW6lw!5e0!3m2!1szh-TW!2stw!4v1782464059694!5m2!1szh-TW!2stw"
+              style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-info">
+
+        <div class="card-top-bar">
+          <a href="https://www.facebook.com/dnm.com.tw/" target="_blank" class="social-sq-btn" aria-label="Facebook"><i
+              class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/dmsense.tc/" target="_blank" class="social-sq-btn"
+            aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <h1>DM SENSE 車體鍍膜貼膜 北屯旗艦店</h1>
+        <ul>
+          <li><span>- 營業時間：</span>星期二至星期日 09:00-12:30 13:30-18:30</li>
+          <li><span>- 連絡電話：</span>04-2452-3534</li>
+          <li><span>- 地址：</span>406臺中市北屯區后庄里敦化三街280號</li>
+        </ul>
+      </div>
+      <div class="contact-visual">
+        <div class="logo-box">
+          <img src="https://aks-ppf.github.io/images/ui/dealers/dealers-taichung-dm.jpg"
+            alt="DM SENSE 車體鍍膜貼膜 北屯旗艦店 店家 Logo">
+        </div>
+        <div class="map-box">
+          <div class="map-placeholder">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.462134568969!2d120.6660126748054!3d24.19058917173593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3469179dcaf48e31%3A0xc3653fbe26f394a8!2zRE0gU0VOU0Ug6LuK6auU6Y2N6Iac6LK86IacIOWMl-Wxr-aXl-iJpuW6lw!5e0!3m2!1szh-TW!2stw!4v1782464347640!5m2!1szh-TW!2stw"
+              style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </div>
+    </section>
   </div>
 </div>
