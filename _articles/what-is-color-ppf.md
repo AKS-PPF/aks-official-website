@@ -25,24 +25,6 @@ faq:
 
 ---
 
-<style>
-.article-figure {
-  margin: 32px 0;
-}
-.article-figure img {
-  width: 100%;
-  display: block;
-  border-radius: 12px;
-}
-.article-figure figcaption {
-  margin-top: 10px;
-  color: #aaa;
-  font-size: 14px;
-  line-height: 1.7;
-  text-align: center;
-}
-</style>
-
 近年來，「犀牛皮」、「改色膜」與「改色犀牛皮」成為新車主最常搜尋的關鍵字。傳統透明犀牛皮能保護車漆，卻無法改變車色；一般改色膜能快速換色，但在防護力、耐候性與長期質感上通常較有限。
 
 **改色犀牛皮（Color PPF）** 的出現，正是為了解決這個矛盾：車主不必再於「想改色」與「想保護原漆」之間二選一。
@@ -106,10 +88,9 @@ faq:
 | **拆除風險** | 合理年限與原版原漆狀況下較穩定            | 超過年限可能殘膠或傷漆             | 合理年限下較穩定                |
 | **適合族群** | 想改色、重視防護、在意質感的人            | 預算導向、短期換色的人             | 不想改色，只想保護原漆的人           |
 
-<figure class="article-figure">
-  <img src="https://aks-ppf.github.io/images/articles/what-is-color-ppf/what-is-color-ppf-3.png" alt="改色犀牛皮、傳統改色膜與透明犀牛皮的差異比較">
-  <figcaption>改色犀牛皮同時具備車身換色與 TPU 車漆防護效果，和傳統改色膜、透明犀牛皮的產品定位不同。</figcaption>
-</figure>
+![改色犀牛皮、傳統改色膜與透明犀牛皮的差異比較](https://aks-ppf.github.io/images/articles/what-is-color-ppf/what-is-color-ppf-3.png)
+
+*改色犀牛皮同時具備車身換色與 TPU 車漆防護效果，和傳統改色膜、透明犀牛皮的產品定位不同。*
 
 簡單來說，如果你的目標只是短期換色，傳統改色膜仍然有它的市場；但如果你希望一次做到 **車身改色、烤漆質感、原漆保護與較長使用週期**，改色犀牛皮會更符合需求。
 
@@ -193,10 +174,9 @@ TPU 改色膜材比一般改色膜更考驗施工經驗。若店家對改色 TPU
 * **中層（TPU 主體層）：** 將 TPU 覆蓋在色料上，提供延展性、抗衝擊性與耐候表現，能緊密服貼車身曲面，形成「有顏色的保護殼」。
 * **底層（壓敏膠層）：** 負責將 TPU 主體層穩固地附著於車漆表面，並能在合理年限與良好車況下，降低拆除時對原漆造成影響的風險。
 
-<figure class="article-figure">
-  <img src="https://aks-ppf.github.io/images/articles/what-is-color-ppf/what-is-color-ppf-2.png" alt="改色犀牛皮 TPU 材料構造與施工細節">
-  <figcaption>改色犀牛皮以 TPU 車漆保護膜為基礎，透過自修復塗層、TPU 主體層與壓敏膠層，同時提供改色效果與漆面防護。</figcaption>
-</figure>
+![改色犀牛皮 TPU 材料構造與施工細節](https://aks-ppf.github.io/images/articles/what-is-color-ppf/what-is-color-ppf-2.png)
+
+*改色犀牛皮以 TPU 車漆保護膜為基礎，透過自修復塗層、TPU 主體層與壓敏膠層，同時提供改色效果與漆面防護。*
 
 TPU 面料在光澤度、延展性與耐候表現上，對比傳統 PET 改色膜具有更明顯的優勢，完工後視覺質感也更容易接近烤漆的立體與深邃感。
 
