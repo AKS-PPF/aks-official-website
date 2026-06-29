@@ -1,0 +1,974 @@
+---
+layout: page-hero
+title: "AKS Color PPF 改色犀牛皮｜400+ 色線上色卡與 AI 換色預覽"
+description: "AKS Color PPF 改色犀牛皮以 TPU 車漆保護膜為基礎，結合車身換色、漆面防護、400+ 色線上色卡與 AI 實車換色預覽。了解產品特色、適合族群、純乾貼施工與配合店家服務。"
+------------------------------------------------------------------------------------------------------------
+
+<style>
+  .aks-color-ppf-wrapper * { box-sizing: border-box !important; }
+
+  .aks-color-ppf-wrapper {
+    width: 100%;
+    overflow-x: hidden;
+    color: #f3f3f5;
+    background: transparent;
+    font-family: inherit;
+    --bg: #111111;
+    --fg: #f3f3f5;
+    --muted: rgba(255,255,255,.72);
+    --line: rgba(255,255,255,.12);
+    --red: #c81f2a;
+    --card: rgba(0,0,0,.35);
+  }
+
+  .aks-color-ppf-wrapper a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .aks-color-ppf-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .aks-color-ppf-wrapper .red { color: var(--red); }
+  .aks-color-ppf-wrapper .thin { font-weight: 400; }
+
+  @font-face {
+    font-family: 'YouSheBiaoTiHei';
+    src: url('https://aks-ppf.github.io/font/YouSheBiaoTiHei-2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .aks-color-ppf-wrapper .hero-display {
+    font-family: 'YouSheBiaoTiHei', 'Montserrat', sans-serif;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .aks-color-ppf-wrapper .font-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .aks-color-ppf-wrapper .io-reveal {
+    opacity: 0;
+    transform: translateY(18px) scale(.99);
+    filter: blur(6px);
+    transition: opacity .7s ease, transform .7s ease, filter .7s ease;
+    will-change: opacity, transform, filter;
+  }
+
+  .aks-color-ppf-wrapper .io-reveal.is-in {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  .aks-color-ppf-wrapper .io-reveal[data-delay="1"] { transition-delay: .06s; }
+  .aks-color-ppf-wrapper .io-reveal[data-delay="2"] { transition-delay: .12s; }
+  .aks-color-ppf-wrapper .io-reveal[data-delay="3"] { transition-delay: .18s; }
+  .aks-color-ppf-wrapper .io-reveal[data-delay="4"] { transition-delay: .24s; }
+  .aks-color-ppf-wrapper .io-reveal[data-delay="5"] { transition-delay: .30s; }
+
+  .aks-color-ppf-wrapper .hero {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .aks-color-ppf-wrapper .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(.45);
+  }
+
+  .aks-color-ppf-wrapper .hero__inner {
+    position: relative;
+    padding: 10px 28px 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .aks-color-ppf-wrapper .hero__brandline {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    justify-content: center;
+  }
+
+  .aks-color-ppf-wrapper .hero__brand {
+    font-weight: 800;
+    letter-spacing: .06em;
+    font-size: clamp(28px, 4.4vw, 56px);
+  }
+
+  .aks-color-ppf-wrapper .hero__brand--red { color: var(--red); }
+
+  .aks-color-ppf-wrapper .product-h1 {
+    margin: 18px auto 0;
+    max-width: 980px;
+    text-align: center;
+    font-size: clamp(30px, 4vw, 58px);
+    letter-spacing: .04em;
+    color: #fff;
+  }
+
+  .aks-color-ppf-wrapper .hero__lead {
+    max-width: 900px;
+    margin: 16px auto 0;
+    color: rgba(255,255,255,.82);
+    text-align: center;
+    font-size: clamp(14px, 1.25vw, 18px);
+    line-height: 1.9;
+    letter-spacing: .03em;
+  }
+
+  .aks-color-ppf-wrapper .hero__cta {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  .aks-color-ppf-wrapper .cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 25px;
+  }
+
+  .aks-color-ppf-wrapper .card {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(0,0,0,.8);
+    min-height: 140px;
+    transition: transform .3s ease, box-shadow .3s ease, filter .3s ease;
+    will-change: transform;
+  }
+
+  .aks-color-ppf-wrapper .card__img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(.75);
+  }
+
+  .aks-color-ppf-wrapper .card__text {
+    position: relative;
+    padding: 16px;
+  }
+
+  .aks-color-ppf-wrapper .card__kicker {
+    font-size: 12px;
+    letter-spacing: .18em;
+    opacity: .8;
+    margin-bottom: 6px;
+  }
+
+  .aks-color-ppf-wrapper .card__title {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .aks-color-ppf-wrapper .card__sub {
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: .75;
+    letter-spacing: .06em;
+  }
+
+  .aks-color-ppf-wrapper .sec {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 86px 0;
+  }
+
+  .aks-color-ppf-wrapper .sec__grid {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 28px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 48px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .aks-color-ppf-wrapper .sec__grid--reverse {
+    grid-template-columns: .95fr 1.05fr;
+  }
+
+  .aks-color-ppf-wrapper .sec__grid--reverse .sec__content { order: 1; }
+  .aks-color-ppf-wrapper .sec__grid--reverse .sec__media { order: 2; }
+
+  .aks-color-ppf-wrapper .h2 {
+    margin: 0 0 12px;
+    font-size: clamp(26px, 3.4vw, 46px);
+    letter-spacing: .02em;
+  }
+
+  .aks-color-ppf-wrapper .h2--xl { font-size: clamp(30px, 4vw, 56px); }
+  .aks-color-ppf-wrapper .h2--center { text-align: center; }
+
+  .aks-color-ppf-wrapper .p {
+    margin: 0 0 18px;
+    color: var(--muted);
+    line-height: 1.85;
+    font-size: 14px;
+  }
+
+  .aks-color-ppf-wrapper .p--big { font-size: clamp(16px, 1.35vw, 22px); }
+  .aks-color-ppf-wrapper .p--bigger { font-size: clamp(18px, 1.55vw, 26px); }
+  .aks-color-ppf-wrapper .p--center { text-align: center; }
+  .aks-color-ppf-wrapper .p.strong {
+    color: var(--fg);
+    font-weight: 900;
+  }
+
+  .aks-color-ppf-wrapper .btn {
+    display: inline-block;
+    padding: 14px 22px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.22);
+    font-weight: 900;
+    letter-spacing: .08em;
+  }
+
+  .aks-color-ppf-wrapper .btn--red {
+    background: var(--red);
+    border-color: transparent;
+    color: #fff;
+    transition: transform .3s ease, filter .3s ease, box-shadow .3s ease, background .3s ease;
+    will-change: transform, filter;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .aks-color-ppf-wrapper .btn--red:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 30px rgba(170, 26, 36, 0.5);
+    transform: translateY(-3px);
+  }
+
+  .aks-color-ppf-wrapper .btn--red:active {
+    transform: translateY(0);
+    filter: brightness(0.95);
+  }
+
+  .aks-color-ppf-wrapper .btn--ghost {
+    background: rgba(0,0,0,.25);
+    border-color: rgba(255,255,255,.26);
+    color: #fff;
+    transition: transform .3s ease, filter .3s ease, border-color .3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .aks-color-ppf-wrapper .btn--ghost:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,.55);
+  }
+
+  .aks-color-ppf-wrapper .sec--ai {
+    background:
+      radial-gradient(1200px 600px at 20% 40%, rgba(255,255,255,.06), rgba(0,0,0,0) 60%),
+      radial-gradient(900px 500px at 75% 45%, rgba(255,255,255,.04), rgba(0,0,0,0) 55%),
+      #0b0b0c;
+  }
+
+  .aks-color-ppf-wrapper .sec--ai .sec__media {
+    display: flex;
+    justify-content: center;
+  }
+
+  .aks-color-ppf-wrapper .sec--ai img {
+    max-width: 520px;
+    width: 100%;
+    filter: drop-shadow(0 22px 44px rgba(0,0,0,.55));
+  }
+
+  .aks-color-ppf-wrapper .sec--colors {
+    position: relative;
+    padding: 96px 0;
+    overflow: hidden;
+  }
+
+  .aks-color-ppf-wrapper .colors__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(.35);
+    transform: scale(1.02);
+  }
+
+  .aks-color-ppf-wrapper .colors__inner {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 28px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .aks-color-ppf-wrapper .colors__inner .p {
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .aks-color-ppf-wrapper .panel {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #0b0b0c;
+  }
+
+  .aks-color-ppf-wrapper .panel__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(.5);
+    transform: scale(1.02);
+  }
+
+  .aks-color-ppf-wrapper .panel__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(900px 450px at 50% 50%, rgba(0,0,0,.12), rgba(0,0,0,.5));
+  }
+
+  .aks-color-ppf-wrapper .panel__inner {
+    position: relative;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 28px;
+    text-align: center;
+  }
+
+  .aks-color-ppf-wrapper .panel__title {
+    margin: 0 0 18px;
+    font-size: clamp(28px, 3.8vw, 54px);
+    font-weight: 900;
+    letter-spacing: .02em;
+  }
+
+  .aks-color-ppf-wrapper .panel__kicker {
+    margin: 0 0 18px;
+    font-size: clamp(24px, 3.2vw, 46px);
+    font-weight: 900;
+    letter-spacing: .02em;
+  }
+
+  .aks-color-ppf-wrapper .panel__sub {
+    margin: 0;
+    font-size: clamp(18px, 2.2vw, 34px);
+    font-weight: 900;
+    letter-spacing: .08em;
+    opacity: .95;
+  }
+
+  .aks-color-ppf-wrapper .sec--dry {
+    background:
+      radial-gradient(1100px 650px at 70% 40%, rgba(255,255,255,.05), rgba(0,0,0,0) 60%),
+      #0b0b0c;
+  }
+
+  .aks-color-ppf-wrapper .sec--dry .sec__media {
+    display: flex;
+    justify-content: center;
+  }
+
+  .aks-color-ppf-wrapper .sec--dry img {
+    max-width: 560px;
+    width: 100%;
+    filter: none;
+    opacity: .92;
+    mix-blend-mode: lighten;
+  }
+
+  .aks-color-ppf-wrapper .product-seo {
+    background:
+      radial-gradient(1000px 520px at 20% 0%, rgba(200,31,42,.14), rgba(0,0,0,0) 58%),
+      radial-gradient(900px 500px at 85% 20%, rgba(255,255,255,.05), rgba(0,0,0,0) 60%),
+      #0b0b0c;
+    padding: 96px 0;
+  }
+
+  .aks-color-ppf-wrapper .product-seo__inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .aks-color-ppf-wrapper .product-seo__eyebrow {
+    color: var(--red);
+    font-size: 12px;
+    letter-spacing: .22em;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .aks-color-ppf-wrapper .product-seo__lead {
+    max-width: 860px;
+    color: rgba(255,255,255,.82);
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 2;
+    margin: 0 0 28px;
+  }
+
+  .aks-color-ppf-wrapper .product-seo__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .aks-color-ppf-wrapper .value-card {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
+    background: rgba(255,255,255,.035);
+    min-height: 190px;
+  }
+
+  .aks-color-ppf-wrapper .value-card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  .aks-color-ppf-wrapper .value-card p {
+    margin: 0;
+    color: rgba(255,255,255,.72);
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .aks-color-ppf-wrapper .fit-section {
+    padding: 92px 0;
+    background: #111;
+  }
+
+  .aks-color-ppf-wrapper .fit-section__inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .aks-color-ppf-wrapper .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .aks-color-ppf-wrapper .fit-item {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+    background: rgba(0,0,0,.28);
+    color: rgba(255,255,255,.82);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .aks-color-ppf-wrapper .product-faq {
+    padding: 92px 0;
+    background:
+      radial-gradient(1000px 520px at 80% 20%, rgba(200,31,42,.12), rgba(0,0,0,0) 58%),
+      #0b0b0c;
+  }
+
+  .aks-color-ppf-wrapper .product-faq__inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .aks-color-ppf-wrapper .product-faq details {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin-bottom: 14px;
+    padding: 16px 18px;
+  }
+
+  .aks-color-ppf-wrapper .product-faq summary {
+    cursor: pointer;
+    list-style: none;
+    color: #fff;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .aks-color-ppf-wrapper .product-faq summary::-webkit-details-marker { display: none; }
+
+  .aks-color-ppf-wrapper .product-faq summary::after {
+    content: '+';
+    color: var(--red);
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  .aks-color-ppf-wrapper .product-faq details[open] summary::after {
+    content: '−';
+  }
+
+  .aks-color-ppf-wrapper .product-faq p {
+    margin: 12px 0 0;
+    color: rgba(255,255,255,.72);
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .aks-color-ppf-wrapper .product-faq a,
+  .aks-color-ppf-wrapper .product-seo a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .aks-color-ppf-wrapper .seo-wrap {
+    padding: 34px 0;
+    background: #0b0b0c;
+  }
+
+  .aks-color-ppf-wrapper .seo-mini {
+    margin: 0 auto;
+    max-width: 980px;
+    text-align: left;
+    background: rgba(0,0,0,.28);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px;
+  }
+
+  .aks-color-ppf-wrapper .seo-mini h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 900;
+  }
+
+  .aks-color-ppf-wrapper .seo-mini p {
+    margin: 0 0 10px;
+    color: rgba(255,255,255,.75);
+    line-height: 1.8;
+    font-size: 13px;
+  }
+
+  .aks-color-ppf-wrapper .seo-links a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (min-width: 901px) {
+    .aks-color-ppf-wrapper .sec--pin .sec__grid { align-items: start; }
+
+    .aks-color-ppf-wrapper .sec--pin .sec__content {
+      position: sticky;
+      top: 90px;
+      align-self: start;
+    }
+
+    .aks-color-ppf-wrapper .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .aks-color-ppf-wrapper .hero__inner {
+      max-width: 1240px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 10px 64px 64px;
+    }
+
+    .aks-color-ppf-wrapper .cards:hover .card {
+      transform: scale(0.95);
+      opacity: 0.6;
+      filter: blur(2px);
+    }
+
+    .aks-color-ppf-wrapper .cards .card:hover {
+      transform: scale(1.05);
+      opacity: 1;
+      filter: blur(0);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      z-index: 10;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .aks-color-ppf-wrapper .hero__bg { filter: brightness(0.2); }
+    .aks-color-ppf-wrapper .cards { grid-template-columns: 1fr; }
+
+    .aks-color-ppf-wrapper .sec__grid,
+    .aks-color-ppf-wrapper .sec__grid--reverse {
+      grid-template-columns: 1fr;
+    }
+
+    .aks-color-ppf-wrapper .sec__grid--reverse .sec__content,
+    .aks-color-ppf-wrapper .sec__grid--reverse .sec__media {
+      order: initial;
+    }
+
+    .aks-color-ppf-wrapper .product-seo__grid,
+    .aks-color-ppf-wrapper .fit-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .aks-color-ppf-wrapper .hero__inner { padding: 10px 16px 18px; }
+    .aks-color-ppf-wrapper .hero__cta { justify-content: stretch; }
+    .aks-color-ppf-wrapper .hero__cta .btn { width: 100%; text-align: center; }
+    .aks-color-ppf-wrapper .sec { padding: 72px 0; }
+
+    .aks-color-ppf-wrapper .panel {
+      border-radius: 0;
+      min-height: 50svh;
+    }
+
+    .aks-color-ppf-wrapper .sec--dry img {
+      mix-blend-mode: normal;
+      opacity: .96;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aks-color-ppf-wrapper * {
+      scroll-behavior: auto !important;
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+</style>
+
+<div class="aks-color-ppf-wrapper">
+  <section class="aks-colorppf-page">
+    <header class="hero" id="top">
+      <div class="hero__bg" aria-hidden="true" style="background-image: url('https://aks-ppf.github.io/images/ui/products/COLOR-PPF-HERO-BN.png');"></div>
+
+```
+  <div class="hero__inner">
+    <div class="hero__brandline io-reveal" data-delay="1">
+      <span class="hero__brand"><span class="red">改色</span>即防護</span>
+    </div>
+
+    <div class="hero__brandline hero-display io-reveal" data-delay="2">
+      <span class="hero__brand">AKS</span>
+      <span class="hero__brand hero__brand--red">COLOR</span>
+      <span class="hero__brand">PPF</span>
+    </div>
+
+    <h1 class="product-h1 hero-display io-reveal" data-delay="3">
+      AKS Color PPF 改色犀牛皮
+    </h1>
+
+    <p class="hero__lead io-reveal" data-delay="4">
+      AKS Color PPF 是以 TPU 車漆保護膜為基礎的改色犀牛皮，結合車身換色、漆面防護、400+ 色線上色卡與 AI 實車換色預覽，為台灣車主提供更完整的改色防護方案。
+    </p>
+
+    <div class="hero__cta io-reveal" data-delay="5">
+      <a class="btn btn--red" href="{{ '/pages/color-chart/' | relative_url }}">查看 400+ 色線上色卡</a>
+      <a class="btn btn--ghost" href="{{ '/pages/ai-preview/' | relative_url }}">預約 AI 實車換色</a>
+    </div>
+
+    <div class="cards">
+      <a class="card io-reveal" data-delay="3" href="#ai">
+        <div class="card__img" style="background-image:url('https://aks-ppf.github.io/images/ui/products/COLOR-PPF-feature-cards-1.png');" aria-hidden="true"></div>
+        <div class="card__text">
+          <div class="card__kicker">— 業界首創 —</div>
+          <div class="card__title"><span class="red">AI</span>換色完工預覽</div>
+          <div class="card__sub">AI real-time preview</div>
+        </div>
+      </a>
+
+      <a class="card io-reveal" data-delay="4" href="#colors">
+        <div class="card__img" style="background-image:url('https://aks-ppf.github.io/images/ui/products/COLOR-PPF-feature-cards-2.png');" aria-hidden="true"></div>
+        <div class="card__text">
+          <div class="card__kicker">— 全台最齊全 —</div>
+          <div class="card__title"><span class="red">400+</span>色線上挑選</div>
+          <div class="card__sub">Over 400+ colors to choose from</div>
+        </div>
+      </a>
+
+      <a class="card io-reveal" data-delay="5" href="#dry">
+        <div class="card__img" style="background-image:url('https://aks-ppf.github.io/images/ui/products/COLOR-PPF-feature-cards-3.png');" aria-hidden="true"></div>
+        <div class="card__text">
+          <div class="card__kicker">— 最新技術 —</div>
+          <div class="card__title"><span class="red">純乾貼</span>施工</div>
+          <div class="card__sub">COLOR PPF • DRY INSTALLATION</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="sec sec--ai" id="ai">
+  <div class="sec__grid">
+    <div class="sec__media io-reveal" data-delay="1">
+      <img src="https://aks-ppf.github.io/images/ui/products/COLOR-PPF-ai-preview.png" alt="AKS Color PPF AI 實車換色預覽示意圖" />
+    </div>
+
+    <div class="sec__content">
+      <h2 class="h2 h2--xl font-heading io-reveal" data-delay="2">
+        AI <span class="thin">Real-Time</span> <span class="red">Preview</span>
+      </h2>
+      <p class="p p--big io-reveal" data-delay="3">
+        選色，不用再靠想像。<br />
+        一張照片，即時預覽完工後的真實樣貌。
+      </p>
+      <p class="p io-reveal" data-delay="4">
+        改色最困難的不是選顏色，而是想像顏色上車後的完整效果。AKS Color PPF 透過 AI 實車換色預覽，讓車主在施工前先用自己的車輛照片確認不同顏色的大面積效果，降低只看小色卡造成的落差。
+      </p>
+      <a class="btn btn--red io-reveal" data-delay="5" href="{{ '/pages/ai-preview/' | relative_url }}">立即預約</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--colors" id="colors">
+  <div class="colors__bg" aria-hidden="true" style="background-image:url('https://aks-ppf.github.io/images/ui/products/COLOR-PPF- 400+colors.png');"></div>
+
+  <div class="colors__inner">
+    <h2 class="h2 h2--xl h2--center font-heading io-reveal" data-delay="1">
+      Over <span class="red">400+</span> Colors to Choose From
+    </h2>
+    <p class="p p--center p--big io-reveal" data-delay="2">
+      AKS Color PPF，收錄全台最齊全的車色資料庫<br />
+      從 Porsche、Lamborghini、Ferrari、Mercedes-Benz、BMW、Tesla<br />
+      到消光、碳纖維、金屬砂感、幻彩變色龍、液態電鍍色系
+    </p>
+    <p class="p p--center io-reveal" data-delay="3">
+      AKS Color PPF 收錄 400+ 色線上色卡，涵蓋亮面、消光、金屬、液態金屬、幻彩、特殊面料等多種色系。車主可以先在線上依色系、面料與色號篩選，再到配合店家確認實體色卡與實車預覽。
+    </p>
+    <p class="p p--center strong p--bigger io-reveal" data-delay="4">每一種顏色，都是一種態度。</p>
+    <a class="btn btn--red io-reveal" data-delay="5" style="margin-top: 24px;" href="{{ '/pages/color-chart/' | relative_url }}">線上色卡</a>
+  </div>
+</section>
+
+<section class="panel panel--cta" id="colorcard">
+  <div class="panel__bg" aria-hidden="true" style="background-image:url('https://aks-ppf.github.io/images/ui/products/COLOR-PPF-BOTTOM CTA.png');"></div>
+
+  <div class="panel__inner">
+    <h2 class="panel__title io-reveal" data-delay="1">為你的車，找到真正適合的顏色。</h2>
+  </div>
+</section>
+
+<section class="sec sec--dry sec--pin" id="dry">
+  <div class="sec__grid sec__grid--reverse">
+    <div class="sec__content">
+      <h2 class="h2 h2--xl font-heading io-reveal" data-delay="1">
+        Color PPF —<br />
+        <span class="red">Dry</span> Installation
+      </h2>
+
+      <p class="p p--big io-reveal" data-delay="2">
+        不同於傳統 PET 改色膜，<br />
+        AKS Color PPF 採用 TPU 基材 × <span class="red">純乾貼</span>膠層技術。<br /><br />
+        更深邃的烤漆光澤<br />
+        同時兼具 防刮、防污、耐候 的漆面防護效果。
+      </p>
+      <p class="p io-reveal" data-delay="3">
+        AKS Color PPF 以 TPU 基材為核心，兼顧延展性、漆面防護與接近烤漆的視覺質感。相較傳統 PET / PVC 改色膜，Color PPF 更適合想同時追求外觀改色與原漆保護的車主。
+      </p>
+    </div>
+
+    <div class="sec__media sec__media--blend io-reveal" data-delay="4" data-parallax="0.12">
+      <img src="https://aks-ppf.github.io/images/ui/products/COLOR-PPF-dry installation-2.png" alt="AKS Color PPF TPU 純乾貼施工結構示意圖" />
+    </div>
+  </div>
+</section>
+
+<section class="panel panel--statement" id="statement">
+  <div class="panel__bg" aria-hidden="true" style="background-image:url('https://aks-ppf.github.io/images/ui/products/COLOR-PPF-BIG QUOTE-STATEMENT.png');"></div>
+
+  <div class="panel__inner">
+    <p class="panel__kicker io-reveal" data-delay="1"><span class="red">改色</span>，從來不該只是好看。</p>
+    <p class="panel__sub io-reveal" data-delay="2">AKS Color PPF，讓外觀與保護同時到位。</p>
+  </div>
+</section>
+
+<section class="product-seo" id="about-color-ppf">
+  <div class="product-seo__inner">
+    <div class="product-seo__eyebrow io-reveal">AKS COLOR PPF</div>
+    <h2 class="h2 h2--xl font-heading io-reveal" data-delay="1">AKS Color PPF 改色犀牛皮是什麼？</h2>
+
+    <p class="product-seo__lead io-reveal" data-delay="2">
+      AKS Color PPF 是一款以 TPU 車漆保護膜為基礎的改色犀牛皮。和傳統改色膜最大的差異在於，它不是單純改變車色，而是在換色的同時保護原廠漆面。
+    </p>
+
+    <p class="product-seo__lead io-reveal" data-delay="3">
+      對車主來說，Color PPF 的價值不只是「換一個顏色」，而是把車身外觀、烤漆質感、跳石防護、日常耐候與未來轉售時的原漆狀態一起考慮進去。
+    </p>
+
+    <p class="product-seo__lead io-reveal" data-delay="4">
+      AKS 將 Color PPF 的選色流程重新整理成更適合台灣車主的體驗：線上先看 400+ 色卡，挑出喜歡的色系與面料，再透過配合店家的實體色卡與 AI 實車換色預覽，確認不同光線與車身曲面下的效果。
+    </p>
+
+    <div class="product-seo__grid">
+      <div class="value-card io-reveal" data-delay="1">
+        <h3>改色，同時保護原漆</h3>
+        <p>以 TPU 車漆保護膜為基礎，讓車主在改變車色的同時，降低跳石、細紋與日常使用對原廠漆面的傷害。</p>
+      </div>
+
+      <div class="value-card io-reveal" data-delay="2">
+        <h3>400+ 色線上資料庫</h3>
+        <p>透過線上色卡先依色系、面料與色號篩選，縮短到店選色時間，也讓車主更容易比較不同顏色的實際風格。</p>
+      </div>
+
+      <div class="value-card io-reveal" data-delay="3">
+        <h3>AI 實車換色預覽</h3>
+        <p>用自己的車輛照片預覽不同 Color PPF 顏色上車後的效果，降低只看小色卡造成的想像落差。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fit-section" id="fit">
+  <div class="fit-section__inner">
+    <h2 class="h2 h2--xl font-heading io-reveal" data-delay="1">AKS Color PPF 適合哪些車主？</h2>
+    <p class="product-seo__lead io-reveal" data-delay="2">
+      如果你正在評估改色犀牛皮，AKS Color PPF 特別適合以下幾種使用情境。
+    </p>
+
+    <div class="fit-grid">
+      <div class="fit-item io-reveal" data-delay="1">想改色，但不想犧牲原漆保護的車主。</div>
+      <div class="fit-item io-reveal" data-delay="2">剛交車的新車、電動車或高階車款。</div>
+      <div class="fit-item io-reveal" data-delay="3">想要比原廠選配色更多顏色選擇。</div>
+      <div class="fit-item io-reveal" data-delay="4">在意烤漆質感，不想要明顯貼膜感。</div>
+      <div class="fit-item io-reveal" data-delay="5">想先看 AI 實車預覽，再決定施工顏色。</div>
+    </div>
+  </div>
+</section>
+
+<section class="product-faq" id="faq">
+  <div class="product-faq__inner">
+    <h2 class="h2 h2--xl font-heading io-reveal" data-delay="1">AKS Color PPF 常見問題</h2>
+
+    <details class="io-reveal" data-delay="1">
+      <summary>AKS Color PPF 和一般改色膜差在哪？</summary>
+      <p>AKS Color PPF 是以 TPU 車漆保護膜為基礎的改色犀牛皮，重點在於同時提供車身換色與漆面防護。一般改色膜多以 PVC / PET 為主，主要功能是改變外觀顏色，防護力與耐候表現通常較有限。</p>
+    </details>
+
+    <details class="io-reveal" data-delay="2">
+      <summary>AKS Color PPF 有多少顏色可以選？</summary>
+      <p>AKS Color PPF 提供 400+ 色線上色卡，涵蓋亮面、消光、金屬、液態金屬、幻彩、特殊面料等多種色系。你可以先前往 <a href="{{ '/pages/color-chart/' | relative_url }}">AKS 400+ 色線上色卡</a> 篩選喜歡的顏色。</p>
+    </details>
+
+    <details class="io-reveal" data-delay="3">
+      <summary>可以先看 AI 換色預覽再施工嗎？</summary>
+      <p>可以。AKS 提供 AI 實車換色預覽服務，讓車主在施工前先使用自己的車輛照片預覽不同顏色上車後的大面積效果，再搭配實體色卡確認不同光線下的實際膜面質感。</p>
+    </details>
+
+    <details class="io-reveal" data-delay="4">
+      <summary>AKS Color PPF 保固多久？</summary>
+      <p>AKS Color PPF 提供 5 年保固。實際使用狀態仍會受到停車環境、洗車方式、使用習慣、保養頻率與施工完整度影響，建議依配合店家說明進行後續保養與回廠檢查。</p>
+    </details>
+
+    <details class="io-reveal" data-delay="5">
+      <summary>我要去哪裡看實體色卡或施工？</summary>
+      <p>你可以先透過線上色卡挑選喜歡的顏色，再前往 AKS 配合店家查看實體色卡、確認 AI 實車換色預覽與施工細節。也可以參考 <a href="{{ '/pages/dealers/' | relative_url }}">AKS 配合店家資訊</a>。</p>
+    </details>
+  </div>
+</section>
+
+<section class="seo-wrap">
+  <div class="seo-mini io-reveal">
+    <h2>改色犀牛皮（Color PPF）產品延伸閱讀</h2>
+    <p>
+      改色犀牛皮（Color PPF）為 TPU 車漆保護膜的一種，兼具改色外觀與漆面防護。
+      若你正在比較改色犀牛皮、Color PPF 與傳統改色膜差異，可先由 AKS 色卡與 AI 預覽快速縮小選色方向，再與配合店家確認施工範圍、收邊方式與保固細節。
+    </p>
+    <p class="seo-links">
+      <a href="{{ '/articles/what-is-color-ppf/' | relative_url }}">了解改色犀牛皮的價格、缺點、壽命與改色膜差異</a>
+    </p>
+    <p class="seo-links">
+      <a href="{{ '/articles/color-ppf-guide-2026/' | relative_url }}">閱讀改色犀牛皮貼前必看指南：2026價格行情、施工店家與10個確認問題</a>
+    </p>
+  </div>
+</section>
+```
+
+  </section>
+</div>
+
+<script>
+(function(){
+  const root = document.querySelector('.aks-color-ppf-wrapper .aks-colorppf-page');
+  if (!root) return;
+
+  const els = root.querySelectorAll('.io-reveal');
+  if (!('IntersectionObserver' in window) || !els.length) {
+    els.forEach(el => el.classList.add('is-in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+    els.forEach(el => io.observe(el));
+  }
+
+  const items = [...root.querySelectorAll('[data-parallax]')];
+  if (!items.length) return;
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+  function tick() {
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      items.forEach(el => el.style.transform = '');
+      requestAnimationFrame(tick);
+      return;
+    }
+
+    const vh = window.innerHeight || 800;
+    items.forEach(el => {
+      const k = parseFloat(el.dataset.parallax || '0.12');
+      const r = el.getBoundingClientRect();
+      const p = clamp(1 - (r.top / vh), 0, 1);
+      const y = (p - 0.5) * 120 * k;
+      const s = 1 + p * 0.06;
+      el.style.transform = `translateY(${y}px) scale(${s})`;
+    });
+
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+})();
+</script>
